@@ -13,7 +13,7 @@
   
   
   <meta property="og:description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse, ministrado no IPEA entre março e abril de 2020." />
-  <meta name="github-repo" content="allanvc/curso-R-IPEA" />
+  <meta name="github-repo" content="allanvc/book_IADR-T" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content=" 2 Módulo II | Introdução à Análise de Dados em R utilizando Tidyverse" />
@@ -284,7 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="leitura-de-dados-no-r" class="section level2">
 <h2><span class="header-section-number">2.1</span> Leitura de Dados no R</h2>
 <p>Até o momento, trabalhamos criando objetos a partir de dados informados via script ou console. No entanto, o mais comum quando se faz análise de dados, é ler dados a partir de fontes externas, como um arquivo .txt ou .csv, um banco de dados relacional (SQL) no servidor de nosso trabalho, ou ainda, a partir de páginas da internet. Nesta seção, veremos como ler bases de dados armazenadas localmente no computador.</p>
-<p>Eu costumo dizer que, em R, sempre há pelo menos 3 formas diferentes de realizar uma mesma tarefa. No caso caso da leitura de dados, isso não é diferente. o R possui diversos pacotes para realizar a leitura dos dados; uns focam na rapidez, outros na praticidade e outros, ainda, são feitos especificamente para manusear bases de dados massivas. Quanto a esse último aspecto, há de se reconhecer que o R não tem um gerenciamento de memória que permita ao usuário carregar bancos de dados muito grandes (na casa das 10 milhões de linhas mais ou menos). Isso é, de certa forma, proposital, uma vez que o R foi criado para tornar mais fácil a vida do usuário que lida com análise dados. Mas há que se ressaltar que, devido a sua comunidade extremamente ativa, vários pacotes foram e vem sendo desenvolvidos com o objetivo de melhorar a forma como o R lida com o armazenamento de objetos na memória.</p>
+<p>Eu costumo dizer que, em R, sempre há pelo menos 3 formas diferentes de realizar uma mesma tarefa. No caso da leitura de dados, isso não é diferente, uma vez que o R possui diversos pacotes para realizar a leitura dos dados; uns focam na rapidez, outros na praticidade e outros, ainda, são feitos especificamente para manusear bases de dados massivas. Quanto a esse último aspecto, há de se reconhecer que o R não tem um gerenciamento de memória que permita ao usuário carregar bancos de dados muito grandes (na casa das 10 milhões de linhas mais ou menos). Isso é, de certa forma, proposital, uma vez que o R foi criado para tornar mais fácil a vida do usuário que lida com análise dados. Mas há que se ressaltar que, devido a sua comunidade extremamente ativa, vários pacotes foram e vem sendo desenvolvidos com o objetivo de melhorar a forma como o R lida com o armazenamento de objetos na memória.</p>
 <p>Neste curso, nos focaremos na utilização do pacote <code>readr</code>, por entendermos ser um meio termo entre praticidade e rapidez, considerando as alternativas do <code>base R</code> e da função <code>fread()</code> do pacote <code>data.table</code>.</p>
 <div id="o-tidyverse" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> O Tidyverse</h3>

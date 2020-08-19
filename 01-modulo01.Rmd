@@ -4,7 +4,7 @@
 
 ### Breve Histórico
 
-**R** é uma linguagem e um ambiente para programação estatística que roda em diversas plataformas UNIX, Windows e MacOS ([R-project.org](https://www.r-project.org)), podendo ser baixado e distribuído gratuitamente de acordo com a General Public license (GPL).
+**R** é uma linguagem e um ambiente para programação estatística que roda em diversas plataformas *NIX, no Windows e MacOS ([R-project.org](https://www.r-project.org)), podendo ser baixado e distribuído gratuitamente de acordo com a General Public license (GPL).
 
 A origem do nome próprio **R** remonta à linguagem e **S**, desenvolvida por John Chambers entre 1975 e 76 na Bell Labs (antiga AT&T e atual Lucent Technologies) – mesmo local de origem de importantes inovações na área de computação, como o sistema operacional UNIX, a linguagem de programação C, os transístores, dentre outras.
 
@@ -504,11 +504,11 @@ help("log")
 ![Documentação da função `log()`](./fig/help3.png)
 
 
-Geralmente, os tópicos mais importantes dos arquivos de ajuda são _Description_, _Usage_, _Arguments_ e _Examples_. O primeiro mostra o que a função faz, o segundo como a função deve ser usada, o terceiro quais argumentos ela recebe e, no quarto, você encontra exemplos de como ela funciona. _Value_ tambpem pode ser interessante, pois informa o que tipo de objeto a funçaõ retorna.
+Geralmente, os tópicos mais importantes dos arquivos de ajuda são _Description_, _Usage_, _Arguments_ e _Examples_. O primeiro mostra o que a função faz, o segundo como a função deve ser usada, o terceiro quais argumentos ela recebe e, no quarto, você encontra exemplos de como ela funciona. _Value_ também pode ser interessante, pois informa qual tipo de objeto a função retorna.
 
 ##### _Vignettes_
 
-Mais a frente, veremos como instalar novos pacotes no R. Esses pacotes são como módulos adicionais que permitem ao usuário realizar mais operações e atividades na linguagem. Muitos desses pacotes trazem consigo, além da documentação básica, verdaderos tutoriais sobre como utilizar o pacote ou funções específicas desses pacotes. São muito mais detalhados que a simples documentação do _Help_ do pacote ou de uma função. Enquanto alguns não fornecem qualquer _vignette_, outros podem trazem mais de uma _vignette_. Caso você queira verificar utilize:
+Mais a frente, veremos como instalar novos pacotes no R. Esses pacotes são como módulos adicionais que permitem ao usuário realizar mais operações e atividades na linguagem. Muitos desses pacotes trazem consigo, além da documentação básica, verdadeiros tutoriais sobre como utilizar o pacote em si ou funções específicas desses pacotes. São muito mais detalhados que a simples documentação do _Help_ do pacote ou de uma função. Enquanto alguns não fornecem qualquer _vignette_, outros podem trazem mais de uma _vignette_. Caso você queira verificar utilize:
 
 ```{r, eval=FALSE}
 vignette("nome_do_pacote")
@@ -752,7 +752,7 @@ Os Dataframes são as "tabelas" do R. Provavelmente será um dos objetos que voc
 
 #### Como criar um Dataframe
 
-Para criarmos um dataframe, utilizamos a função `data.frame()`. No entanto, o mais comum é que o dataframe seja criado a aprtir da leitura de alguma base de dados, por meio das função de leitura que serão apresentadas principalmente no Módulo \@ref(m2).
+Para criarmos um dataframe, utilizamos a função `data.frame()`. No entanto, o mais comum é que o dataframe seja criado a a partir da leitura de alguma base de dados, por meio das funções de leitura que serão apresentadas principalmente no Módulo \@ref(m2).
 
 Vamos criar um dataframe de 3 colunas. Os argumentos principais são os vetores que compõem as colunas. 
 
@@ -768,7 +768,7 @@ df1
 
 ```
 
-**DICA:**No entanto, há vários outros argumentos que tambpem podem ser usados. Vejamos a estrutura da função `data.frame()`. Vale a pena consultar o help da função `data.frame` também (`help(data.frame)`).
+**DICA:** Há vários outros argumentos que também podem ser usados. Vejamos a estrutura da função `data.frame()`. Vale a pena consultar o help da função `data.frame` também (`help(data.frame)`).
 
 ```{r, eval=FALSE}
 data.frame
@@ -799,7 +799,7 @@ str(df1)
 ```
 
 
-Note que a coluna 2 `col2` foi tratada como _factor_ e não como _character_, como esperávamos. _factor_ é uma abstração que o R utiliza para salvar variáveis categóricas na memória de modo a ocupar menos espaço. Basicamente, ele converte as categorias em um número, de mod a otimizar a utilização de memória. Se a variável for impressa no console, ele faz uma reconversão apenas para apresentá-la ao usuário. Para que a `col2` seja realmente criada como uma coluna do tipo `character`, devemos setar o parâmetro `stringsAsFactors = FALSE`. Guarde bem essa dica, pois você usará esse mesmo parâmetro ao ler dados externos, transformando-os em dataframes no R. 
+Note que a coluna 2 `col2` foi tratada como _factor_ e não como _character_, como esperávamos. _factor_ é uma abstração que o R utiliza para salvar variáveis categóricas na memória de modo a ocupar menos espaço. Basicamente, ele converte as categorias em um número, de modo a otimizar a utilização de memória. Se a variável for impressa no console, ele faz uma reconversão apenas para apresentá-la ao usuário. Para que a `col2` seja realmente criada como uma coluna do tipo `character`, devemos setar o parâmetro `stringsAsFactors = FALSE`. Guarde bem essa dica, pois você usará esse mesmo parâmetro ao ler dados externos, transformando-os em dataframes no R. 
 
 ```{r}
 
@@ -809,7 +809,8 @@ str(df1)
 
 ```
 
-Note que, diferentemente dos vetores que erão unidimensionais, os dataframes são bidimensionais. Temos uma dimensão representada pelas linhas e outra dimensão representada pelas colunas. Para calcular as dimensões de seu dataframe você pode usar utilizar as seguintes funções:
+**DICA:** A partir da versão __4.0.0__, não é mais necessário declarar `stringsAsFactors = FALSE` na função data.frame. Este passou a ser o comportamento padrão da função: __não__ transformar colunas de strings em fatores.
+Note que, diferentemente dos vetores que eram unidimensionais, os dataframes são bidimensionais. Temos uma dimensão representada pelas linhas e outra dimensão representada pelas colunas. Para calcular as dimensões de seu dataframe você pode usar utilizar as seguintes funções:
 
 ```{r}
 # linhas vs colunas
@@ -907,7 +908,7 @@ df1$col3
 ```
 
 
-Note que o output é impresso na horizontal Isso ocorre, porque, quando extraímos apenas uma coluna, estamos extraindo um vetor. E a forma de output de um vetor é na horizontal, como vmos anteriormente.
+Note que o output é impresso na horizontal Isso ocorre, porque, quando extraímos apenas uma coluna, estamos extraindo um vetor. E a forma de output de um vetor é na horizontal, como vimos anteriormente.
 
 ***
 
