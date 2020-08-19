@@ -1,5 +1,5 @@
 --- 
-title: "Curso Introdutório de Análise de Dados em **R** utilizando Tidyverse"
+title: "Introdução à Análise de Dados em **R** utilizando Tidyverse"
 author: "Allan Vieira de Castro Quadros"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -35,7 +35,7 @@ Para reproduzir os códigos presentes no livro, você precisa de uma versão rec
 
 Todos os datasets e outros arquivos de dados a serem utilizados durante os Módulos, estão disponíveis no repositório _Git_ deste livro, na pasta __datasets__:  https://github.com/allanvc/book_ADR-T/tree/master/datasets
 
-Também recomenda-se a utilização da versão mais recente do Ambiente Integrado de Desenvolvimento (IDE) [RStudio](https://www.rstudio.com/download).
+Também recomenda-se a utilização da versão mais recente do Ambiente Integrado de Desenvolvimento (IDE) [__RStudio__](https://www.rstudio.com/download).
 
 ## Por que R ? {-}
 
@@ -79,5 +79,5 @@ Por fim, o Módulo \@ref(m5) apresenta um ferramental de análise econômica reg
 
 <!-- Around a single page (does not need to fill it) on the book ready by the end of September (aiming for 1st October submission of final manuscript to CRC Press). -->
 
-Allan V. C. Quadros é autor dos pacotes **R**, [emstreeR](https://www.github.com/allanvc/emstreeR) e [mRpostman![](./fig/mRpostman.png)](https://allanvc.github.io/mRpostman); Atualmente, atua como _Lead Data Scientist_ no Núcleo de Métodos Quantitativos (QUANT) do FNDE. Trabalha com Análise de Dados e Aprendizagem de Máquina, implementando soluções em R e Python para colocar a administração da educação brasileira no século XXI. Além do Bacharelado em Estatística (UnB, 2018), possui mestrado em Desenvolvimento Econômico pela Unicamp (2012) e Licenciatura em Geografia (2008) pela mesma universidade. Seus outros interesses são Statistical & Mathematical Finance, Análise de Clusters, Otimização, Machine Learning, Processos Estocásticos e Astroestatística. Mais informações sobre o autor podem ser encontradas em: https://allanvc.github.io.
+Allan V. C. Quadros é autor dos pacotes **R**, [emstreeR](https://www.github.com/allanvc/emstreeR) e [mRpostman![](./fig/mRpostman.png)](https://allanvc.github.io/mRpostman). Atua como _Lead Data Scientist_ no Núcleo de Métodos Quantitativos (QUANT) do FNDE. Trabalha com Análise de Dados e Aprendizagem de Máquina, implementando soluções em R e Python para colocar a administração da educação brasileira no século XXI. Além do Bacharelado em Estatística (UnB, 2018), possui mestrado em Desenvolvimento Econômico pela Unicamp (2012) e Licenciatura em Geografia (2008) pela mesma universidade. Seus outros interesses são Statistical & Mathematical Finance, Análise de Clusters, Otimização, Machine Learning, Processos Estocásticos e Astroestatística. Mais informações sobre o autor podem ser encontradas em: https://allanvc.github.io.
 

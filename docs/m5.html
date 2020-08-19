@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title> 5 Extra | Curso Introdutório de Análise de Dados em R utilizando Tidyverse</title>
+  <title> 5 Extra | Introdução à Análise de Dados em R utilizando Tidyverse</title>
   <meta name="description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse, ministrado no IPEA entre março e abril de 2020." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content=" 5 Extra | Curso Introdutório de Análise de Dados em R utilizando Tidyverse" />
+  <meta property="og:title" content=" 5 Extra | Introdução à Análise de Dados em R utilizando Tidyverse" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="allanvc/curso-R-IPEA" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content=" 5 Extra | Curso Introdutório de Análise de Dados em R utilizando Tidyverse" />
+  <meta name="twitter:title" content=" 5 Extra | Introdução à Análise de Dados em R utilizando Tidyverse" />
   
   <meta name="twitter:description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse, ministrado no IPEA entre março e abril de 2020." />
   
@@ -272,7 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Curso Introdutório de Análise de Dados em <strong>R</strong> utilizando Tidyverse</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introdução à Análise de Dados em <strong>R</strong> utilizando Tidyverse</a>
           </h1>
         </div>
 
@@ -308,8 +308,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Para a prática, vamos utilizar dados que acompanham o pacote <code>REAT</code>, referentes à inequidade de oferta de serviços de saúde em dois condados alemães: Göttingen (Goettingen) e Northeim.</p>
 <p>O <em>dataset</em> <code>GoettinggenHealth2</code> contém os dados de oferta de serviços de saúde, tamanho de população e localização geográfica de 420 distritos.</p>
 <p>Inicialmente, carregamos o <em>dataset</em> e verificamos a estrutura de nossos dados.</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="m5.html#cb561-1"></a><span class="kw">data</span>(GoettingenHealth2)</span>
-<span id="cb561-2"><a href="m5.html#cb561-2"></a><span class="kw">str</span>(GoettingenHealth2)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;REAT&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     spec</code></pre>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="m5.html#cb563-1"></a><span class="kw">data</span>(GoettingenHealth2)</span>
+<span id="cb563-2"><a href="m5.html#cb563-2"></a><span class="kw">str</span>(GoettingenHealth2)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:	420 obs. of  7 variables:
 ##  $ district: int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ pop     : num  3102 995 310 446 617 ...
@@ -320,41 +325,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ pharm   : num  1 0 0 0 0 0 0 1 0 0 ...</code></pre>
 <p>As colunas <code>phys_gen</code>, <code>psych</code> e <code>pharm</code> contém as respectivas quantidades de médicos, pscioterapeutas (psicólogos) e farmácias por distrito. Estas são as variáveis de interesse para a análise das disparidades regionais entre os distritos.</p>
 <p>Primeiramente, calculamos o <em>coeficiente de Gini</em> e o índice de Herfindahl-Hirschman para a concentração de clínicos gerais, utilizando respectivamente a função <code>gini()</code> e <code>herf()</code>:</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="m5.html#cb563-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>phys_gen)</span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="m5.html#cb565-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>phys_gen)</span></code></pre></div>
 <pre><code>## [1] 0.8386269</code></pre>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="m5.html#cb565-1"></a><span class="kw">herf</span>(GoettingenHealth2<span class="op">$</span>phys_gen)</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="m5.html#cb567-1"></a><span class="kw">herf</span>(GoettingenHealth2<span class="op">$</span>phys_gen)</span></code></pre></div>
 <pre><code>## [1] 0.01528053</code></pre>
 <p>O Gini próximo a <span class="math inline">\(1\)</span> e o HHI acima de <span class="math inline">\(1/N = 1/420 =\)</span> 0.002381 indicam sensível desigualdade entre os <span class="math inline">\(420\)</span> distritos do <em>dataset</em>.</p>
 <p>Você pode calcular também as versões normalizadas de ambos os coeficientes/índices. Para isso, basta acrescentar o argumento <code>coefnorm=TRUE</code>.</p>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="m5.html#cb567-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>phys_gen, <span class="dt">coefnorm=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="m5.html#cb569-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>phys_gen, <span class="dt">coefnorm=</span><span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 0.8406284</code></pre>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="m5.html#cb569-1"></a><span class="kw">herf</span>(GoettingenHealth2<span class="op">$</span>phys_gen, <span class="dt">coefnorm=</span><span class="ot">TRUE</span>) <span class="co"># agora 0 &lt;= HHI &lt;= 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="m5.html#cb571-1"></a><span class="kw">herf</span>(GoettingenHealth2<span class="op">$</span>phys_gen, <span class="dt">coefnorm=</span><span class="ot">TRUE</span>) <span class="co"># agora 0 &lt;= HHI &lt;= 1</span></span></code></pre></div>
 <pre><code>## [1] 0.01293036</code></pre>
 <p><strong>ATENÇÃO:</strong> Particularmente no cálculo do coeficiente de Gini (não normalizado) para concentração, o valor máximo do coeficiente não é exatmente <span class="math inline">\(1\)</span>, mas sim <span class="math inline">\(1 - \frac{1}{n}\)</span>, devido à derivação de seu cálculo ter como base a área estabelecida pela curva de Lorenz. Se considerarmos a situação extrema em que uma única pessoa se apropria de toda a renda e as demais <span class="math inline">\(n-1\)</span> pessoas não recebem nada, a área de desigualdade será um triângulo com base <span class="math inline">\(1-\frac{1}{n}\)</span> no eixo das abscissas e altura <span class="math inline">\(h=1\)</span>. Neste caso, o índice de Gini será dado por <span class="math inline">\(G=\frac{\alpha}{0.5}=2\alpha\)</span>, sendo <span class="math inline">\(\alpha\)</span> a área de desigualdade e <span class="math inline">\(0,5\)</span> o valor máximo atingido por <span class="math inline">\(\alpha_{max}=\frac{1}{2}\big(1-\frac{1}{n}\big)\)</span> quando o tamanho da população <span class="math inline">\(n\)</span> tende ao infinito: <span class="math inline">\(\lim_{n\to\infty}{\alpha_{max} = \lim_{n\to\infty}{\frac{1}{2}\big(1-\frac{1}{n}}\big)} = 0,5\)</span> . Como <span class="math inline">\(0\le \alpha \le \frac{1}{2}\big(1-\frac{1}{n}\big)\)</span> e <span class="math inline">\(G = 2\alpha\)</span>, temos o índice de Gini variando no intervalo <span class="math inline">\(0 \le G \le \big(1-\frac{1}{n}\big)\)</span>. Por isso, o índice de Gini só poderá ter máximo igual a <span class="math inline">\(1-\frac{1}{n}\)</span>, no caso de seu cálculo exato a partir da Curva de Lorenz. Isso faz com que seja possível calcular uma versão normalizada do coeficiente fazendo <span class="math inline">\(\frac{n}{n-1}G\)</span>. Dessa forma o índice passa a variar no intervalo <span class="math inline">\([0,1]\)</span>. Para saber mais sobre a metodologia de cálculo, recomendam-se as referências desta seção, mais especificamente Hoffman (1998). Cabe destacar que é possível calcular-se o coeficiente de Gini utilizando outras abordagens. Para as demais aplicações (por exemplo npivel de especialização industrial), o pacote <code>REAT</code> empregará outra metodologia de cálculo (funções <code>gini.spec()</code> e <code>gini.conc()</code> para concentração espacial), em que o índice varia exatamente no intervalo <span class="math inline">\([0,1]\)</span>.</p>
 <p>Para checar a concentração graficamente, podemos plotar uma <em>Curva de Lorenz</em> rapidamente utilizando a função <code>lorenz()</code> ou mesmo a função <code>gini(x, lc=TRUE)</code>. Os argumentos são os mesmos. A diferença é que a função <code>lorenz()</code> traz apenas o gráfico ao passo que <code>gini(x, lc=TRUE)</code> plota o gráfico e imprime na tela o índice de gini para a variável de interesse.</p>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="m5.html#cb571-1"></a><span class="kw">lorenz</span>(GoettingenHealth2<span class="op">$</span>phys_gen)</span></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="m5.html#cb573-1"></a><span class="kw">lorenz</span>(GoettingenHealth2<span class="op">$</span>phys_gen)</span></code></pre></div>
 <p><img src="IADR-T_files/figure-html/unnamed-chunk-246-1.png" width="672" /></p>
 <p>Com <code>gini(x, lc=TRUE, add.lc=TRUE, ...)</code>Podemos inclusive sobrepor as curvas de cada uma dos tipos de profissionais e serviço de saúde com a da população. Iniciaremos com a curv da distribuição da população e acrescentamos as demais.</p>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="m5.html#cb572-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>pop, </span>
-<span id="cb572-2"><a href="m5.html#cb572-2"></a>     <span class="dt">lc =</span> <span class="ot">TRUE</span>, <span class="dt">lsize =</span> <span class="dv">1</span>, <span class="dt">le.col =</span> <span class="st">&quot;black&quot;</span>,  </span>
-<span id="cb572-3"><a href="m5.html#cb572-3"></a>     <span class="dt">lc.col =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">lcx =</span> <span class="st">&quot;Participação dos distritos&quot;</span>, </span>
-<span id="cb572-4"><a href="m5.html#cb572-4"></a>     <span class="dt">lcy =</span> <span class="st">&quot;Participação dos provedores&quot;</span>, </span>
-<span id="cb572-5"><a href="m5.html#cb572-5"></a>     <span class="dt">lctitle =</span> <span class="st">&quot;Concentração espacial dos prestadores de serviços de saúde&quot;, </span></span>
-<span id="cb572-6"><a href="m5.html#cb572-6"></a><span class="st">     lcg = TRUE, lcgn = TRUE, lcg.caption = &quot;</span>População <span class="dv">2016</span><span class="op">:</span><span class="st">&quot;, lcg.lab.x = 0, </span></span>
-<span id="cb572-7"><a href="m5.html#cb572-7"></a><span class="st">     lcg.lab.y = 1)  </span></span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="m5.html#cb574-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>pop, </span>
+<span id="cb574-2"><a href="m5.html#cb574-2"></a>     <span class="dt">lc =</span> <span class="ot">TRUE</span>, <span class="dt">lsize =</span> <span class="dv">1</span>, <span class="dt">le.col =</span> <span class="st">&quot;black&quot;</span>,  </span>
+<span id="cb574-3"><a href="m5.html#cb574-3"></a>     <span class="dt">lc.col =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">lcx =</span> <span class="st">&quot;Participação dos distritos&quot;</span>, </span>
+<span id="cb574-4"><a href="m5.html#cb574-4"></a>     <span class="dt">lcy =</span> <span class="st">&quot;Participação dos provedores&quot;</span>, </span>
+<span id="cb574-5"><a href="m5.html#cb574-5"></a>     <span class="dt">lctitle =</span> <span class="st">&quot;Concentração espacial dos prestadores de serviços de saúde&quot;, </span></span>
+<span id="cb574-6"><a href="m5.html#cb574-6"></a><span class="st">     lcg = TRUE, lcgn = TRUE, lcg.caption = &quot;</span>População <span class="dv">2016</span><span class="op">:</span><span class="st">&quot;, lcg.lab.x = 0, </span></span>
+<span id="cb574-7"><a href="m5.html#cb574-7"></a><span class="st">     lcg.lab.y = 1)  </span></span></code></pre></div>
 <pre><code>## [1] 0.5840336</code></pre>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="m5.html#cb574-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>phys_gen, <span class="dt">lc =</span> <span class="ot">TRUE</span>, <span class="dt">lsize =</span> <span class="dv">1</span>, <span class="dt">add.lc =</span> <span class="ot">TRUE</span>,  </span>
-<span id="cb574-2"><a href="m5.html#cb574-2"></a>     <span class="dt">lc.col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lcg =</span> <span class="ot">TRUE</span>, <span class="dt">lcgn =</span> <span class="ot">TRUE</span>, </span>
-<span id="cb574-3"><a href="m5.html#cb574-3"></a>     <span class="dt">lcg.caption =</span>  <span class="st">&quot;Clínicos gerais 2016:&quot;</span>, <span class="dt">lcg.lab.x =</span> <span class="dv">0</span>, <span class="dt">lcg.lab.y =</span> <span class="fl">0.85</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="m5.html#cb576-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>phys_gen, <span class="dt">lc =</span> <span class="ot">TRUE</span>, <span class="dt">lsize =</span> <span class="dv">1</span>, <span class="dt">add.lc =</span> <span class="ot">TRUE</span>,  </span>
+<span id="cb576-2"><a href="m5.html#cb576-2"></a>     <span class="dt">lc.col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lcg =</span> <span class="ot">TRUE</span>, <span class="dt">lcgn =</span> <span class="ot">TRUE</span>, </span>
+<span id="cb576-3"><a href="m5.html#cb576-3"></a>     <span class="dt">lcg.caption =</span>  <span class="st">&quot;Clínicos gerais 2016:&quot;</span>, <span class="dt">lcg.lab.x =</span> <span class="dv">0</span>, <span class="dt">lcg.lab.y =</span> <span class="fl">0.85</span>)  </span></code></pre></div>
 <pre><code>## [1] 0.8386269</code></pre>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="m5.html#cb576-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>psych, <span class="dt">lc =</span> <span class="ot">TRUE</span>, <span class="dt">lsize =</span> <span class="dv">1</span>, <span class="dt">add.lc =</span> <span class="ot">TRUE</span>,  </span>
-<span id="cb576-2"><a href="m5.html#cb576-2"></a>     <span class="dt">lc.col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lcg =</span> <span class="ot">TRUE</span>, <span class="dt">lcgn =</span> <span class="ot">TRUE</span>, <span class="dt">lcg.caption =</span>  <span class="st">&quot;Psicólogos 2016:&quot;</span>, </span>
-<span id="cb576-3"><a href="m5.html#cb576-3"></a>     <span class="dt">lcg.lab.x =</span> <span class="dv">0</span>, <span class="dt">lcg.lab.y =</span> <span class="fl">0.7</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="m5.html#cb578-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>psych, <span class="dt">lc =</span> <span class="ot">TRUE</span>, <span class="dt">lsize =</span> <span class="dv">1</span>, <span class="dt">add.lc =</span> <span class="ot">TRUE</span>,  </span>
+<span id="cb578-2"><a href="m5.html#cb578-2"></a>     <span class="dt">lc.col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lcg =</span> <span class="ot">TRUE</span>, <span class="dt">lcgn =</span> <span class="ot">TRUE</span>, <span class="dt">lcg.caption =</span>  <span class="st">&quot;Psicólogos 2016:&quot;</span>, </span>
+<span id="cb578-3"><a href="m5.html#cb578-3"></a>     <span class="dt">lcg.lab.x =</span> <span class="dv">0</span>, <span class="dt">lcg.lab.y =</span> <span class="fl">0.7</span>)  </span></code></pre></div>
 <p><img src="IADR-T_files/figure-html/unnamed-chunk-247-1.png" width="672" /></p>
 <pre><code>## [1] 0.9329298</code></pre>
 <p>Note que, pela aparência dos gráficos, conclui-se que eles são feitos utilizando <code>ggplot2</code>, que é chamado em plano de fundo pelo pacote <code>REAT</code>.</p>
 <p>Há diversos outros coeficientes de concentração e disperção no pacote <code>REAT</code>, os quais podem ser calculados de uma só vez por meio da função <code>disp()</code>. Os resultados podem demorar um pouco a serem exibidos devido a quantidade de coeficientes que serão calculados. Note também que informar o parâmetro <em>weighting</em> é uma vantagem, pois o <em>output</em> será mais completo.</p>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="m5.html#cb578-1"></a><span class="kw">disp</span>(GoettingenHealth2[,<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)], <span class="dt">weighting =</span> GoettingenHealth2<span class="op">$</span>pop)  </span></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="m5.html#cb580-1"></a><span class="kw">disp</span>(GoettingenHealth2[,<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)], <span class="dt">weighting =</span> GoettingenHealth2<span class="op">$</span>pop)  </span></code></pre></div>
 <pre><code>## Concentration and dispersion measures 
 ## Note: w = weighted, n = normalized, eq = equivalent number 
 ## 
@@ -487,9 +492,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Vamos carregar o <em>dataset</em> e verificar sua estrutura.</p>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="m5.html#cb580-1"></a><span class="kw">data</span>(Goettingen)</span>
-<span id="cb580-2"><a href="m5.html#cb580-2"></a></span>
-<span id="cb580-3"><a href="m5.html#cb580-3"></a><span class="kw">str</span>(Goettingen)</span></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="m5.html#cb582-1"></a><span class="kw">data</span>(Goettingen)</span>
+<span id="cb582-2"><a href="m5.html#cb582-2"></a></span>
+<span id="cb582-3"><a href="m5.html#cb582-3"></a><span class="kw">str</span>(Goettingen)</span></code></pre></div>
 <pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:	16 obs. of  22 variables:
 ##  $ WZ2008_Code   : chr  &quot;A-R&quot; &quot;A&quot; &quot;BDE&quot; &quot;C&quot; ...
 ##  $ WZ2008_Name   : chr  &quot;A-R Insgesamt&quot; &quot;A Land- und Forstwirtschaft, Fischerei&quot; &quot;B+D+E Bergbau, Energie, Wasser&quot; &quot;C Verarbeitendes Gewerbe&quot; ...
@@ -515,15 +520,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ BRD2017       : num  32164973 248052 538768 6797172 1798954 ...</code></pre>
 <p>As colunas começando no padrão <code>GoettingerANO</code> referem-se aos empregos na indústria, em cada nível de atividade econômica, na cidade de Göttingen no referido ano, ao passo que as colunas no padrão <code>BRDANO</code>, indicam os empregos na indústria, em cada nível de atividade econômica, para a Alemanha.</p>
 <p>Começaremos calculando o <strong>Coeficiente de Locação (LQ)</strong> para a cidade de Göttingen em 2017 com relação a indústria de manufaturados (_“Verarbeitendes Gewerbe”), representada pela letra C (linha 4), conforme a tabela de atividades econômicas alemã: Para isso, utilizamos a função <code>locq()</code>.</p>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="m5.html#cb582-1"></a><span class="kw">locq</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">4</span>], Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">1</span>],</span>
-<span id="cb582-2"><a href="m5.html#cb582-2"></a>     Goettingen<span class="op">$</span>BRD2017[<span class="dv">4</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">1</span>])  </span></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="m5.html#cb584-1"></a><span class="kw">locq</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">4</span>], Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">1</span>],</span>
+<span id="cb584-2"><a href="m5.html#cb584-2"></a>     Goettingen<span class="op">$</span>BRD2017[<span class="dv">4</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">1</span>])  </span></code></pre></div>
 <pre><code>## [1] 0.5368737</code></pre>
 <p>O <em>output</em> apresenta o o coeficiente de locação <span class="math inline">\(LQ_{ij}\)</span> para 2017, onde <span class="math inline">\(i\)</span> é a indústria de manufatura e <span class="math inline">\(j\)</span> é a cidade de Göttingen. Nota-se que o valor é bastante baixo, indicando que a indústria de manufatura tem pouca representatividade na economia de Göttingen, em comparação com a economia alemã.</p>
 <p>A seguir, calculamos o <strong>LQ</strong> para todas as indústrias (A-R, linhas de 2 a 16) no ano de 2017, incluindo um plot simples (argumento <code>plot.results=TRUE</code>).</p>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="m5.html#cb584-1"></a><span class="kw">locq</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">1</span>],</span>
-<span id="cb584-2"><a href="m5.html#cb584-2"></a>     Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">1</span>],</span>
-<span id="cb584-3"><a href="m5.html#cb584-3"></a>     <span class="dt">industry.names =</span> Goettingen<span class="op">$</span>WZ2008_Code[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], <span class="dt">plot.results =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb584-4"><a href="m5.html#cb584-4"></a>     <span class="dt">plot.title =</span> <span class="st">&quot;Quocientes de Locação para Göttingen 2017&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="m5.html#cb586-1"></a><span class="kw">locq</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">1</span>],</span>
+<span id="cb586-2"><a href="m5.html#cb586-2"></a>     Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">1</span>],</span>
+<span id="cb586-3"><a href="m5.html#cb586-3"></a>     <span class="dt">industry.names =</span> Goettingen<span class="op">$</span>WZ2008_Code[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], <span class="dt">plot.results =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb586-4"><a href="m5.html#cb586-4"></a>     <span class="dt">plot.title =</span> <span class="st">&quot;Quocientes de Locação para Göttingen 2017&quot;</span>)</span></code></pre></div>
 <pre><code>## Location quotients 
 ## I = 15 industries</code></pre>
 <pre><code>##             LQ
@@ -545,18 +550,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="fig/locq_goettingen.png" /></p>
 <!-- Não imprimia o gráfico de jeito nenhum -->
 <p>Para medir o nível de especialização industrial de Göttingen utilizando um indicador único, podemos utilizar o coeficiente de Herfindahl-Hirschman <code>herf()</code>, calculando-o separadamente para Göttingen e para a economia Alemã.</p>
-<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="m5.html#cb587-1"></a><span class="co"># Göttingen</span></span>
-<span id="cb587-2"><a href="m5.html#cb587-2"></a><span class="kw">herf</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="m5.html#cb589-1"></a><span class="co"># Göttingen</span></span>
+<span id="cb589-2"><a href="m5.html#cb589-2"></a><span class="kw">herf</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
 <pre><code>## [1] 0.127314</code></pre>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="m5.html#cb589-1"></a><span class="co"># Alemanha</span></span>
-<span id="cb589-2"><a href="m5.html#cb589-2"></a><span class="kw">herf</span>(Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="m5.html#cb591-1"></a><span class="co"># Alemanha</span></span>
+<span id="cb591-2"><a href="m5.html#cb591-2"></a><span class="kw">herf</span>(Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
 <pre><code>## [1] 0.1104567</code></pre>
 <p>Outras alternativas para se medir o nível de especialização regional são o coeficiente de especialização de Hoover <code>hoover()</code>, e os coeficientes de especialização regional de Gini <code>gini.spec()</code> e de Krugman <code>krugman.spec()</code>, todos utilizando como referência <code>ref</code> os dados da economia alemã na mesma seleção de atividades econômicas.</p>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="m5.html#cb591-1"></a><span class="kw">hoover</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], <span class="dt">ref =</span> Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="m5.html#cb593-1"></a><span class="kw">hoover</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], <span class="dt">ref =</span> Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
 <pre><code>## [1] 0.2254234</code></pre>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="m5.html#cb593-1"></a><span class="kw">gini.spec</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="m5.html#cb595-1"></a><span class="kw">gini.spec</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
 <pre><code>## [1] 0.359852</code></pre>
-<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="m5.html#cb595-1"></a><span class="kw">krugman.spec</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="m5.html#cb597-1"></a><span class="kw">krugman.spec</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
 <pre><code>## [1] 0.4508469</code></pre>
 </div>
 </div>
@@ -582,8 +587,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Vamos novamente utilizar o dataset <code>Goettingen</code>, contendo os dados de emprego por setor de atividade econômica na cidade de Göttingen e na Alemanha entre 2008 e 2017.</p>
 <p>A análise <em>shift-share</em> nos permitirá decompor o crescimento do emprego nos componentes nacional, industrial e regional.</p>
 <p>Inicialmente, faremos uma análise estática (método clássico de Dunn) aplicando a função <code>shift()</code>:</p>
-<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="m5.html#cb597-1"></a><span class="kw">shift</span>(Goettingen<span class="op">$</span>Goettingen2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>],  </span>
-<span id="cb597-2"><a href="m5.html#cb597-2"></a>      Goettingen<span class="op">$</span>BRD2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="m5.html#cb599-1"></a><span class="kw">shift</span>(Goettingen<span class="op">$</span>Goettingen2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>],  </span>
+<span id="cb599-2"><a href="m5.html#cb599-2"></a>      Goettingen<span class="op">$</span>BRD2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
 <pre><code>## 
 ## Shift-Share Analysis 
 ## Method: Dunn 
@@ -601,9 +606,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## National employment at time t: 27695398, at time t+1: 32164973 (4469575 / 16.13833 %)</code></pre>
 <p>Nessa análise transversal, nota-se que o emprego em Göttingen cresceu em 10.411 pessoas entre 2008 e 2017. No entanto, nota-se que a maior parte desse crescimento deve-se ao componente nacional, que apresentou valor pouco menor que o da cidade. O <em>regional share</em> apresenta valor negativo, indicando desvantagens locacionais. O valor de <em>industrial mix</em> pode ser atribuído a uma sobrerepresentação de indústrias em crescimento na cidade segundo Wieland (2019).</p>
 <p>Os resultados são corroborados pelo método de Gerfin:</p>
-<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="m5.html#cb599-1"></a><span class="kw">shift</span>(Goettingen<span class="op">$</span>Goettingen2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>],</span>
-<span id="cb599-2"><a href="m5.html#cb599-2"></a>      Goettingen<span class="op">$</span>BRD2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>],</span>
-<span id="cb599-3"><a href="m5.html#cb599-3"></a>      <span class="dt">shift.method =</span> <span class="st">&quot;Gerfin&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="m5.html#cb601-1"></a><span class="kw">shift</span>(Goettingen<span class="op">$</span>Goettingen2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>],</span>
+<span id="cb601-2"><a href="m5.html#cb601-2"></a>      Goettingen<span class="op">$</span>BRD2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>],</span>
+<span id="cb601-3"><a href="m5.html#cb601-3"></a>      <span class="dt">shift.method =</span> <span class="st">&quot;Gerfin&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Shift-Share Analysis 
 ## Method: Gerfin 
@@ -619,13 +624,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## National employment at time t: 27695398, at time t+1: 32164973 (4469575 / 16.13833 %)</code></pre>
 <p>Os métodos anteriores somente consideram o crescimento geral em relação aos dados em carater transversal, sem considerar a particularidade de cada setor. Para detalhar os dados por indústria e considerar também efeitos sazonais entre os períodos, utiliza-se o modelo dinâmico e indústria específico <code>shiftid()</code>.</p>
 <p>Para isso, nós precisaremos de dados para o período inicial <code>time1</code> e pelo menos para dois períodos seguintes <code>time2</code>. Uma outra diferença da função <code>shiftid()</code> é que podemos informar os nomes dos setores industriais no arumento <code>industry.names</code>, já que a análise é indústria-específica.</p>
-<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="m5.html#cb601-1"></a><span class="co"># Cuidado!</span></span>
-<span id="cb601-2"><a href="m5.html#cb601-2"></a><span class="co"># transformar em data frame antes (bug do pacote - nao aceita tibble)</span></span>
-<span id="cb601-3"><a href="m5.html#cb601-3"></a>Goettingen &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Goettingen, <span class="dt">stringsASFactors =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb601-4"><a href="m5.html#cb601-4"></a><span class="kw">shiftid</span>(Goettingen<span class="op">$</span>Goettingen2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">12</span>],  </span>
-<span id="cb601-5"><a href="m5.html#cb601-5"></a>        Goettingen<span class="op">$</span>BRD2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>, <span class="dv">13</span><span class="op">:</span><span class="dv">22</span>],</span>
-<span id="cb601-6"><a href="m5.html#cb601-6"></a>        <span class="dt">time1 =</span> <span class="dv">2008</span>, <span class="dt">time2 =</span> <span class="dv">2017</span>,</span>
-<span id="cb601-7"><a href="m5.html#cb601-7"></a>        <span class="dt">industry.names =</span> Goettingen<span class="op">$</span>WZ2008_Code[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="m5.html#cb603-1"></a><span class="co"># Cuidado!</span></span>
+<span id="cb603-2"><a href="m5.html#cb603-2"></a><span class="co"># transformar em data frame antes (bug do pacote - nao aceita tibble)</span></span>
+<span id="cb603-3"><a href="m5.html#cb603-3"></a>Goettingen &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Goettingen, <span class="dt">stringsASFactors =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb603-4"><a href="m5.html#cb603-4"></a><span class="kw">shiftid</span>(Goettingen<span class="op">$</span>Goettingen2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">12</span>],  </span>
+<span id="cb603-5"><a href="m5.html#cb603-5"></a>        Goettingen<span class="op">$</span>BRD2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>, <span class="dv">13</span><span class="op">:</span><span class="dv">22</span>],</span>
+<span id="cb603-6"><a href="m5.html#cb603-6"></a>        <span class="dt">time1 =</span> <span class="dv">2008</span>, <span class="dt">time2 =</span> <span class="dv">2017</span>,</span>
+<span id="cb603-7"><a href="m5.html#cb603-7"></a>        <span class="dt">industry.names =</span> Goettingen<span class="op">$</span>WZ2008_Code[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
 <pre><code>## 
 ## Dynamic Shift-Share Analysis 
 ## Method: Dunn 
