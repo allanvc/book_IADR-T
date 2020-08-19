@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 5 Extra | Curso Introdutório de Análise de Dados em R utilizando Tidyverse</title>
+  <meta name="description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse, ministrado no IPEA entre março e abril de 2020." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 5 Extra | Curso Introdutório de Análise de Dados em R utilizando Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse, ministrado no IPEA entre março e abril de 2020." />
+  <meta name="github-repo" content="allanvc/curso-R-IPEA" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 5 Extra | Curso Introdutório de Análise de Dados em R utilizando Tidyverse" />
+  
+  <meta name="twitter:description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse, ministrado no IPEA entre março e abril de 2020." />
+  
+
+<meta name="author" content="Allan Vieira de Castro Quadros" />
+
+
+<meta name="date" content="2020-08-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="m4.html"/>
+<link rel="next" href="conclusão.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análise de Dados em R - Tidyverse</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bem-vindo!</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#por-que-r"><i class="fa fa-check"></i>Por que R ?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#organização-da-apostila"><i class="fa fa-check"></i>Organização da Apostila</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#sobre-o-autor"><i class="fa fa-check"></i>Sobre o autor</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="m1.html"><a href="m1.html"><i class="fa fa-check"></i><b>1</b> Módulo I</a><ul>
+<li class="chapter" data-level="1.1" data-path="m1.html"><a href="m1.html#primeiros-passos"><i class="fa fa-check"></i><b>1.1</b> Primeiros Passos</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="m1.html"><a href="m1.html#breve-histórico"><i class="fa fa-check"></i><b>1.1.1</b> Breve Histórico</a></li>
+<li class="chapter" data-level="1.1.2" data-path="m1.html"><a href="m1.html#instalação-do-r"><i class="fa fa-check"></i><b>1.1.2</b> Instalação do <strong>R</strong></a></li>
+<li class="chapter" data-level="1.1.3" data-path="m1.html"><a href="m1.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> Instalação do <strong>RStudio</strong></a></li>
+<li class="chapter" data-level="1.1.4" data-path="m1.html"><a href="m1.html#instalação-do-rtools-no-windows"><i class="fa fa-check"></i><b>1.1.4</b> Instalação do <strong>RTools</strong> no Windows</a></li>
+<li class="chapter" data-level="1.1.5" data-path="m1.html"><a href="m1.html#funcionalidades-básicas-do-r-e-do-rstudio"><i class="fa fa-check"></i><b>1.1.5</b> Funcionalidades Básicas do R e do RStudio</a></li>
+<li class="chapter" data-level="1.1.6" data-path="m1.html"><a href="m1.html#estrutura-da-linguagem-r"><i class="fa fa-check"></i><b>1.1.6</b> Estrutura da linguagem R</a></li>
+<li class="chapter" data-level="1.1.7" data-path="m1.html"><a href="m1.html#como-obter-ajuda"><i class="fa fa-check"></i><b>1.1.7</b> Como obter ajuda</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="m1.html"><a href="m1.html#estrutura-de-objetos-da-linguagem-r"><i class="fa fa-check"></i><b>1.2</b> Estrutura de Objetos da Linguagem R</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="m1.html"><a href="m1.html#vetores"><i class="fa fa-check"></i><b>1.2.1</b> Vetores</a></li>
+<li class="chapter" data-level="1.2.2" data-path="m1.html"><a href="m1.html#dataframes"><i class="fa fa-check"></i><b>1.2.2</b> Dataframes</a></li>
+<li class="chapter" data-level="1.2.3" data-path="m1.html"><a href="m1.html#referências-do-módulo"><i class="fa fa-check"></i><b>1.2.3</b> Referências do Módulo</a></li>
+<li class="chapter" data-level="1.2.4" data-path="m1.html"><a href="m1.html#exercícios"><i class="fa fa-check"></i><b>1.2.4</b> Exercícios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="m2.html"><a href="m2.html"><i class="fa fa-check"></i><b>2</b> Módulo II</a><ul>
+<li class="chapter" data-level="2.1" data-path="m2.html"><a href="m2.html#leitura-de-dados-no-r"><i class="fa fa-check"></i><b>2.1</b> Leitura de Dados no R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="m2.html"><a href="m2.html#o-tidyverse"><i class="fa fa-check"></i><b>2.1.1</b> O Tidyverse</a></li>
+<li class="chapter" data-level="2.1.2" data-path="m2.html"><a href="m2.html#leitura-e-exportação-de-dados-usando-readr"><i class="fa fa-check"></i><b>2.1.2</b> Leitura e Exportação de Dados usando <code>readr</code></a></li>
+<li class="chapter" data-level="2.1.3" data-path="m2.html"><a href="m2.html#escrita-e-exportação-de-dados"><i class="fa fa-check"></i><b>2.1.3</b> Escrita e exportação de dados</a></li>
+<li class="chapter" data-level="2.1.4" data-path="m2.html"><a href="m2.html#leitura-de-dados-oriundos-do-stata-sas-e-spss"><i class="fa fa-check"></i><b>2.1.4</b> Leitura de dados oriundos do Stata, SAS e SPSS</a></li>
+<li class="chapter" data-level="2.1.5" data-path="m2.html"><a href="m2.html#referências-da-seção"><i class="fa fa-check"></i><b>2.1.5</b> Referências da seção</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="m2.html"><a href="m2.html#manipulação-de-dados-com-dplyr"><i class="fa fa-check"></i><b>2.2</b> Manipulação de dados com <code>dplyr</code></a><ul>
+<li class="chapter" data-level="2.2.1" data-path="m2.html"><a href="m2.html#filtrando-linhas-com-filter"><i class="fa fa-check"></i><b>2.2.1</b> Filtrando linhas com <code>filter()</code></a></li>
+<li class="chapter" data-level="2.2.2" data-path="m2.html"><a href="m2.html#ordenando-linhas-com-arrange"><i class="fa fa-check"></i><b>2.2.2</b> Ordenando linhas com <code>arrange()</code></a></li>
+<li class="chapter" data-level="2.2.3" data-path="m2.html"><a href="m2.html#selecionando-colunas-com-select"><i class="fa fa-check"></i><b>2.2.3</b> Selecionando colunas com <code>select()</code></a></li>
+<li class="chapter" data-level="2.2.4" data-path="m2.html"><a href="m2.html#adicionando-novas-colunas-com-mutate"><i class="fa fa-check"></i><b>2.2.4</b> Adicionando novas colunas com <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.2.5" data-path="m2.html"><a href="m2.html#modificando-entradas-com-mutate-ou-transmute-case_when"><i class="fa fa-check"></i><b>2.2.5</b> Modificando entradas com <code>mutate()</code> ou <code>transmute()</code> + <code>case_when()</code></a></li>
+<li class="chapter" data-level="2.2.6" data-path="m2.html"><a href="m2.html#sumarizando-valores-com-summarise"><i class="fa fa-check"></i><b>2.2.6</b> Sumarizando valores com <code>summarise()</code></a></li>
+<li class="chapter" data-level="2.2.7" data-path="m2.html"><a href="m2.html#estrutura-do-dplyr"><i class="fa fa-check"></i><b>2.2.7</b> Estrutura do <code>dplyr</code></a></li>
+<li class="chapter" data-level="2.2.8" data-path="m2.html"><a href="m2.html#usando-o-pipe"><i class="fa fa-check"></i><b>2.2.8</b> Usando o Pipe <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="2.2.9" data-path="m2.html"><a href="m2.html#referências-da-seção-1"><i class="fa fa-check"></i><b>2.2.9</b> Referências da seção</a></li>
+<li class="chapter" data-level="2.2.10" data-path="m1.html"><a href="m1.html#exercícios"><i class="fa fa-check"></i><b>2.2.10</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="m2.html"><a href="m2.html#gráficos-com-ggplot2"><i class="fa fa-check"></i><b>2.3</b> Gráficos com <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="2.3.1" data-path="m2.html"><a href="m2.html#introdução"><i class="fa fa-check"></i><b>2.3.1</b> Introdução</a></li>
+<li class="chapter" data-level="2.3.2" data-path="m2.html"><a href="m2.html#a-gramática-de-gráficos"><i class="fa fa-check"></i><b>2.3.2</b> A gramática de gráficos</a></li>
+<li class="chapter" data-level="2.3.3" data-path="m2.html"><a href="m2.html#data-dados"><i class="fa fa-check"></i><b>2.3.3</b> Data (Dados)</a></li>
+<li class="chapter" data-level="2.3.4" data-path="m2.html"><a href="m2.html#a-função-ggplot"><i class="fa fa-check"></i><b>2.3.4</b> A função <code>ggplot()</code></a></li>
+<li class="chapter" data-level="2.3.5" data-path="m2.html"><a href="m2.html#aesthetics-elementos-estéticos-dos-gráficos"><i class="fa fa-check"></i><b>2.3.5</b> Aesthetics (elementos estéticos dos gráficos)</a></li>
+<li class="chapter" data-level="2.3.6" data-path="m2.html"><a href="m2.html#exemplos-para-aesthetics"><i class="fa fa-check"></i><b>2.3.6</b> Exemplos para <em>aesthetics</em></a></li>
+<li class="chapter" data-level="2.3.7" data-path="m2.html"><a href="m2.html#geoms"><i class="fa fa-check"></i><b>2.3.7</b> Geoms</a></li>
+<li class="chapter" data-level="2.3.8" data-path="m2.html"><a href="m2.html#exemplos-para-geoms"><i class="fa fa-check"></i><b>2.3.8</b> Exemplos para <em>Geoms</em></a></li>
+<li class="chapter" data-level="2.3.9" data-path="m2.html"><a href="m2.html#facetting"><i class="fa fa-check"></i><b>2.3.9</b> Facetting</a></li>
+<li class="chapter" data-level="2.3.10" data-path="m2.html"><a href="m2.html#títulos-rótulos-temas-e-legendas"><i class="fa fa-check"></i><b>2.3.10</b> Títulos, rótulos, temas e legendas</a></li>
+<li class="chapter" data-level="2.3.11" data-path="m2.html"><a href="m2.html#alterar-cores-e-paleta-de-cores"><i class="fa fa-check"></i><b>2.3.11</b> Alterar cores e paleta de cores</a></li>
+<li class="chapter" data-level="2.3.12" data-path="m2.html"><a href="m2.html#área-de-plotagem-e-tema"><i class="fa fa-check"></i><b>2.3.12</b> Área de Plotagem e Tema</a></li>
+<li class="chapter" data-level="2.3.13" data-path="m2.html"><a href="m2.html#referências-da-seção-2"><i class="fa fa-check"></i><b>2.3.13</b> Referências da seção</a></li>
+<li class="chapter" data-level="2.3.14" data-path="m2.html"><a href="m2.html#exercícios-1"><i class="fa fa-check"></i><b>2.3.14</b> Exercícios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="m3.html"><a href="m3.html"><i class="fa fa-check"></i><b>3</b> Módulo III</a><ul>
+<li class="chapter" data-level="3.1" data-path="m3.html"><a href="m3.html#acesso-a-bancos-de-dados-relacionais-com-dbplyr"><i class="fa fa-check"></i><b>3.1</b> Acesso a Bancos de Dados relacionais com <code>dbplyr</code></a><ul>
+<li class="chapter" data-level="3.1.1" data-path="m2.html"><a href="m2.html#introdução"><i class="fa fa-check"></i><b>3.1.1</b> Introdução</a></li>
+<li class="chapter" data-level="3.1.2" data-path="m3.html"><a href="m3.html#conectando-a-um-database"><i class="fa fa-check"></i><b>3.1.2</b> Conectando a um database</a></li>
+<li class="chapter" data-level="3.1.3" data-path="m3.html"><a href="m3.html#gerando-queries"><i class="fa fa-check"></i><b>3.1.3</b> Gerando queries</a></li>
+<li class="chapter" data-level="3.1.4" data-path="m3.html"><a href="m3.html#outros-pacotes-para-geração-de-mapas"><i class="fa fa-check"></i><b>3.1.4</b> Outros pacotes para geração de mapas</a></li>
+<li class="chapter" data-level="3.1.5" data-path="m2.html"><a href="m2.html#referências-da-seção"><i class="fa fa-check"></i><b>3.1.5</b> Referências da seção</a></li>
+<li class="chapter" data-level="3.1.6" data-path="m1.html"><a href="m1.html#exercícios"><i class="fa fa-check"></i><b>3.1.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="m3.html"><a href="m3.html#manipulação-de-dados-com-two-table-verbs---dplyr"><i class="fa fa-check"></i><b>3.2</b> Manipulação de dados com <em>Two-table verbs</em> - <code>dplyr</code></a><ul>
+<li class="chapter" data-level="3.2.1" data-path="m3.html"><a href="m3.html#mutating-joins"><i class="fa fa-check"></i><b>3.2.1</b> <em>Mutating joins</em></a></li>
+<li class="chapter" data-level="3.2.2" data-path="m3.html"><a href="m3.html#filtering-joins"><i class="fa fa-check"></i><b>3.2.2</b> <em>Filtering joins</em></a></li>
+<li class="chapter" data-level="3.2.3" data-path="m2.html"><a href="m2.html#referências-da-seção-1"><i class="fa fa-check"></i><b>3.2.3</b> Referências da seção</a></li>
+<li class="chapter" data-level="3.2.4" data-path="m2.html"><a href="m2.html#exercícios-1"><i class="fa fa-check"></i><b>3.2.4</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="m3.html"><a href="m3.html#análise-de-dados-geográficos-no-r"><i class="fa fa-check"></i><b>3.3</b> Análise de dados geográficos no <strong>R</strong></a><ul>
+<li class="chapter" data-level="3.3.1" data-path="m3.html"><a href="m3.html#introdução-1"><i class="fa fa-check"></i><b>3.3.1</b> Introdução</a></li>
+<li class="chapter" data-level="3.3.2" data-path="m3.html"><a href="m3.html#produção-de-mapas-no-r"><i class="fa fa-check"></i><b>3.3.2</b> Produção de Mapas no R</a></li>
+<li class="chapter" data-level="3.3.3" data-path="m3.html"><a href="m3.html#exportando-dados-geográficos"><i class="fa fa-check"></i><b>3.3.3</b> Exportando dados geográficos</a></li>
+<li class="chapter" data-level="3.3.4" data-path="m2.html"><a href="m2.html#referências-da-seção-2"><i class="fa fa-check"></i><b>3.3.4</b> Referências da seção</a></li>
+<li class="chapter" data-level="3.3.5" data-path="m3.html"><a href="m3.html#exercícios-2"><i class="fa fa-check"></i><b>3.3.5</b> Exercícios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="m4.html"><a href="m4.html"><i class="fa fa-check"></i><b>4</b> Módulo IV</a><ul>
+<li class="chapter" data-level="4.1" data-path="m4.html"><a href="m4.html#manipulação-de-strings-no-r-com-stringr"><i class="fa fa-check"></i><b>4.1</b> Manipulação de <em>strings</em> no R com <code>stringr</code></a><ul>
+<li class="chapter" data-level="4.1.1" data-path="m2.html"><a href="m2.html#introdução"><i class="fa fa-check"></i><b>4.1.1</b> Introdução</a></li>
+<li class="chapter" data-level="4.1.2" data-path="m4.html"><a href="m4.html#operações-com-caracteres-individuais"><i class="fa fa-check"></i><b>4.1.2</b> Operações com caracteres individuais</a></li>
+<li class="chapter" data-level="4.1.3" data-path="m4.html"><a href="m4.html#pattern-matching"><i class="fa fa-check"></i><b>4.1.3</b> <em>Pattern matching</em></a></li>
+<li class="chapter" data-level="4.1.4" data-path="m2.html"><a href="m2.html#referências-da-seção"><i class="fa fa-check"></i><b>4.1.4</b> Referências da seção</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="m4.html"><a href="m4.html#expressões-regulares-regex"><i class="fa fa-check"></i><b>4.2</b> Expressões Regulares (REGEX)</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="m3.html"><a href="m3.html#introdução-1"><i class="fa fa-check"></i><b>4.2.1</b> Introdução</a></li>
+<li class="chapter" data-level="4.2.2" data-path="m4.html"><a href="m4.html#exemplos-de-regex-usando-stringr"><i class="fa fa-check"></i><b>4.2.2</b> Exemplos de REGEX usando <code>stringr</code></a></li>
+<li class="chapter" data-level="4.2.3" data-path="m2.html"><a href="m2.html#referências-da-seção-1"><i class="fa fa-check"></i><b>4.2.3</b> Referências da seção</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="m4.html"><a href="m4.html#relatórios-e-pesquisa-reproduzível-com-rmarkdown"><i class="fa fa-check"></i><b>4.3</b> Relatórios e pesquisa reproduzível com <code>rmarkdown</code></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="m4.html"><a href="m4.html#introdução-2"><i class="fa fa-check"></i><b>4.3.1</b> Introdução</a></li>
+<li class="chapter" data-level="4.3.2" data-path="m4.html"><a href="m4.html#cabeçalho"><i class="fa fa-check"></i><b>4.3.2</b> Cabeçalho</a></li>
+<li class="chapter" data-level="4.3.3" data-path="m4.html"><a href="m4.html#formatação-de-texto"><i class="fa fa-check"></i><b>4.3.3</b> Formatação de Texto</a></li>
+<li class="chapter" data-level="4.3.4" data-path="m4.html"><a href="m4.html#inserção-de-figuras-externas"><i class="fa fa-check"></i><b>4.3.4</b> Inserção de figuras externas</a></li>
+<li class="chapter" data-level="4.3.5" data-path="m4.html"><a href="m4.html#inserção-de-links"><i class="fa fa-check"></i><b>4.3.5</b> Inserção de links</a></li>
+<li class="chapter" data-level="4.3.6" data-path="m4.html"><a href="m4.html#fórmulas-matemáticas"><i class="fa fa-check"></i><b>4.3.6</b> Fórmulas matemáticas</a></li>
+<li class="chapter" data-level="4.3.7" data-path="m4.html"><a href="m4.html#inserção-e-execução-de-códigos"><i class="fa fa-check"></i><b>4.3.7</b> Inserção e execução de códigos</a></li>
+<li class="chapter" data-level="4.3.8" data-path="m4.html"><a href="m4.html#tabelas-mais-sofisticadas"><i class="fa fa-check"></i><b>4.3.8</b> Tabelas mais sofisticadas</a></li>
+<li class="chapter" data-level="4.3.9" data-path="m2.html"><a href="m2.html#referências-da-seção-2"><i class="fa fa-check"></i><b>4.3.9</b> Referências da seção</a></li>
+<li class="chapter" data-level="4.3.10" data-path="m1.html"><a href="m1.html#exercícios"><i class="fa fa-check"></i><b>4.3.10</b> Exercícios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="m5.html"><a href="m5.html"><i class="fa fa-check"></i><b>5</b> Extra</a><ul>
+<li class="chapter" data-level="5.1" data-path="m5.html"><a href="m5.html#análise-econômica-regional-com-pacote-reat"><i class="fa fa-check"></i><b>5.1</b> Análise Econômica Regional com pacote <code>REAT</code></a><ul>
+<li class="chapter" data-level="5.1.1" data-path="m2.html"><a href="m2.html#introdução"><i class="fa fa-check"></i><b>5.1.1</b> Introdução</a></li>
+<li class="chapter" data-level="5.1.2" data-path="m5.html"><a href="m5.html#concentração-e-dispersão"><i class="fa fa-check"></i><b>5.1.2</b> Concentração e dispersão</a></li>
+<li class="chapter" data-level="5.1.3" data-path="m5.html"><a href="m5.html#especialização-regional-e-concentração-espacial-industrial"><i class="fa fa-check"></i><b>5.1.3</b> Especialização regional e concentração espacial industrial</a></li>
+<li class="chapter" data-level="5.1.4" data-path="m5.html"><a href="m5.html#crescimento-regional-anpalise-shift-share"><i class="fa fa-check"></i><b>5.1.4</b> Crescimento regional: anpalise <em>shift-share</em></a></li>
+<li class="chapter" data-level="5.1.5" data-path="m5.html"><a href="m5.html#aplicação-2"><i class="fa fa-check"></i><b>5.1.5</b> Aplicação</a></li>
+<li class="chapter" data-level="5.1.6" data-path="m2.html"><a href="m2.html#referências-da-seção"><i class="fa fa-check"></i><b>5.1.6</b> Referências da seção</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusão.html"><a href="conclusão.html"><i class="fa fa-check"></i>Conclusão</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Curso Introdutório de Análise de Dados em <strong>R</strong> utilizando Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="m5" class="section level1">
+<h1><span class="header-section-number"> 5</span> Extra</h1>
+<div id="análise-econômica-regional-com-pacote-reat" class="section level2">
+<h2><span class="header-section-number">5.1</span> Análise Econômica Regional com pacote <code>REAT</code></h2>
+<div id="introdução" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Introdução</h3>
+<p>Nesta seção, introduzeremos ao leitor as possibilidades de se realizar análises econômicas regionais no <strong>R</strong>, utilizando o pacote <code>REAT</code> - Regional Economic Analysis Toolbox. Este pacote fornece métodos para:</p>
+<ul>
+<li><p>Identificar disparidades regionais, por meio de indicadores de concentração e/ou dispersão;</p></li>
+<li><p>Medir disparidades regionais ao longo do tempo;</p></li>
+<li><p>Medir aglomerações, isto é, especialização de regiões e concentração espacial industrial;</p></li>
+<li><p>medidas pontuais de clusterização e acessibilidade;</p></li>
+<li><p>crescimento regional, especialmente análise <em>shift_share</em>.</p></li>
+</ul>
+<p>Infelizmente, nem todas as funcionalidades do pacote <code>REAT</code>, poderão ser abordadas nesta apostila, mas você poderá sempre recorrer a documentação do pacote e de outros para utilizar outras funcionalidades que possa vir a utilizar no futuro.</p>
+</div>
+<div id="concentração-e-dispersão" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> Concentração e dispersão</h3>
+<p>Antes de tudo vamos instalar e carregar o pacote:</p>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="m5.html#cb559-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;REAT&quot;</span>)</span>
+<span id="cb559-2"><a href="m5.html#cb559-2"></a><span class="kw">library</span>(REAT)</span></code></pre></div>
+<p>Todas as funções que calculam medidas de concentração/dispersão presentes no pacote <code>REAT</code> funcionam de forma semelhante: elas precisam de pelo menos um argumento, um <strong>vetor numérico</strong> de tamanho <span class="math inline">\(n\)</span>, contendo a variável de interesse <code>x</code> (ex: renda) com <span class="math inline">\(i\)</span> observações (ex: regiões), onde <span class="math inline">\(i = 1,...,n\)</span>. Estes dados podem ser vetores distintos ou colunas de uma tibble, data frame ou matriz.</p>
+<p>Pode ser utilizado ainda o argumento opcional <code>weighting</code>, que atribui pesos a variável <code>x</code>, dependendo do valor de <span class="math inline">\(i\)</span>. O argumento <code>weighting</code> também deve ser um vetor numérico de tamnho <span class="math inline">\(n\)</span>.</p>
+<div id="aplicação" class="section level4">
+<h4><span class="header-section-number">5.1.2.1</span> Aplicação</h4>
+<p>Para a prática, vamos utilizar dados que acompanham o pacote <code>REAT</code>, referentes à inequidade de oferta de serviços de saúde em dois condados alemães: Göttingen (Goettingen) e Northeim.</p>
+<p>O <em>dataset</em> <code>GoettinggenHealth2</code> contém os dados de oferta de serviços de saúde, tamanho de população e localização geográfica de 420 distritos.</p>
+<p>Inicialmente, carregamos o <em>dataset</em> e verificamos a estrutura de nossos dados.</p>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="m5.html#cb560-1"></a><span class="kw">data</span>(GoettingenHealth2)</span>
+<span id="cb560-2"><a href="m5.html#cb560-2"></a><span class="kw">str</span>(GoettingenHealth2)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:	420 obs. of  7 variables:
+##  $ district: int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ pop     : num  3102 995 310 446 617 ...
+##  $ lat     : num  51.6 51.6 51.6 51.6 51.5 ...
+##  $ lon     : num  9.75 9.78 9.72 9.81 9.74 ...
+##  $ phys_gen: num  4 1 0 0 1 0 0 1 0 0 ...
+##  $ psych   : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ pharm   : num  1 0 0 0 0 0 0 1 0 0 ...</code></pre>
+<p>As colunas <code>phys_gen</code>, <code>psych</code> e <code>pharm</code> contém as respectivas quantidades de médicos, pscioterapeutas (psicólogos) e farmácias por distrito. Estas são as variáveis de interesse para a análise das disparidades regionais entre os distritos.</p>
+<p>Primeiramente, calculamos o <em>coeficiente de Gini</em> e o índice de Herfindahl-Hirschman para a concentração de clínicos gerais, utilizando respectivamente a função <code>gini()</code> e <code>herf()</code>:</p>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="m5.html#cb562-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>phys_gen)</span></code></pre></div>
+<pre><code>## [1] 0.8386269</code></pre>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="m5.html#cb564-1"></a><span class="kw">herf</span>(GoettingenHealth2<span class="op">$</span>phys_gen)</span></code></pre></div>
+<pre><code>## [1] 0.01528053</code></pre>
+<p>O Gini próximo a <span class="math inline">\(1\)</span> e o HHI acima de <span class="math inline">\(1/N = 1/420 =\)</span> 0.002381 indicam sensível desigualdade entre os <span class="math inline">\(420\)</span> distritos do <em>dataset</em>.</p>
+<p>Você pode calcular também as versões normalizadas de ambos os coeficientes/índices. Para isso, basta acrescentar o argumento <code>coefnorm=TRUE</code>.</p>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="m5.html#cb566-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>phys_gen, <span class="dt">coefnorm=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.8406284</code></pre>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="m5.html#cb568-1"></a><span class="kw">herf</span>(GoettingenHealth2<span class="op">$</span>phys_gen, <span class="dt">coefnorm=</span><span class="ot">TRUE</span>) <span class="co"># agora 0 &lt;= HHI &lt;= 1</span></span></code></pre></div>
+<pre><code>## [1] 0.01293036</code></pre>
+<p><strong>ATENÇÃO:</strong> Particularmente no cálculo do coeficiente de Gini (não normalizado) para concentração, o valor máximo do coeficiente não é exatmente <span class="math inline">\(1\)</span>, mas sim <span class="math inline">\(1 - \frac{1}{n}\)</span>, devido à derivação de seu cálculo ter como base a área estabelecida pela curva de Lorenz. Se considerarmos a situação extrema em que uma única pessoa se apropria de toda a renda e as demais <span class="math inline">\(n-1\)</span> pessoas não recebem nada, a área de desigualdade será um triângulo com base <span class="math inline">\(1-\frac{1}{n}\)</span> no eixo das abscissas e altura <span class="math inline">\(h=1\)</span>. Neste caso, o índice de Gini será dado por <span class="math inline">\(G=\frac{\alpha}{0.5}=2\alpha\)</span>, sendo <span class="math inline">\(\alpha\)</span> a área de desigualdade e <span class="math inline">\(0,5\)</span> o valor máximo atingido por <span class="math inline">\(\alpha_{max}=\frac{1}{2}\big(1-\frac{1}{n}\big)\)</span> quando o tamanho da população <span class="math inline">\(n\)</span> tende ao infinito: <span class="math inline">\(\lim_{n\to\infty}{\alpha_{max} = \lim_{n\to\infty}{\frac{1}{2}\big(1-\frac{1}{n}}\big)} = 0,5\)</span> . Como <span class="math inline">\(0\le \alpha \le \frac{1}{2}\big(1-\frac{1}{n}\big)\)</span> e <span class="math inline">\(G = 2\alpha\)</span>, temos o índice de Gini variando no intervalo <span class="math inline">\(0 \le G \le \big(1-\frac{1}{n}\big)\)</span>. Por isso, o índice de Gini só poderá ter máximo igual a <span class="math inline">\(1-\frac{1}{n}\)</span>, no caso de seu cálculo exato a partir da Curva de Lorenz. Isso faz com que seja possível calcular uma versão normalizada do coeficiente fazendo <span class="math inline">\(\frac{n}{n-1}G\)</span>. Dessa forma o índice passa a variar no intervalo <span class="math inline">\([0,1]\)</span>. Para saber mais sobre a metodologia de cálculo, recomendam-se as referências desta seção, mais especificamente Hoffman (1998). Cabe destacar que é possível calcular-se o coeficiente de Gini utilizando outras abordagens. Para as demais aplicações (por exemplo npivel de especialização industrial), o pacote <code>REAT</code> empregará outra metodologia de cálculo (funções <code>gini.spec()</code> e <code>gini.conc()</code> para concentração espacial), em que o índice varia exatamente no intervalo <span class="math inline">\([0,1]\)</span>.</p>
+<p>Para checar a concentração graficamente, podemos plotar uma <em>Curva de Lorenz</em> rapidamente utilizando a função <code>lorenz()</code> ou mesmo a função <code>gini(x, lc=TRUE)</code>. Os argumentos são os mesmos. A diferença é que a função <code>lorenz()</code> traz apenas o gráfico ao passo que <code>gini(x, lc=TRUE)</code> plota o gráfico e imprime na tela o índice de gini para a variável de interesse.</p>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="m5.html#cb570-1"></a><span class="kw">lorenz</span>(GoettingenHealth2<span class="op">$</span>phys_gen)</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-246-1.png" width="672" /></p>
+<p>Com <code>gini(x, lc=TRUE, add.lc=TRUE, ...)</code>Podemos inclusive sobrepor as curvas de cada uma dos tipos de profissionais e serviço de saúde com a da população. Iniciaremos com a curv da distribuição da população e acrescentamos as demais.</p>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="m5.html#cb571-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>pop, </span>
+<span id="cb571-2"><a href="m5.html#cb571-2"></a>     <span class="dt">lc =</span> <span class="ot">TRUE</span>, <span class="dt">lsize =</span> <span class="dv">1</span>, <span class="dt">le.col =</span> <span class="st">&quot;black&quot;</span>,  </span>
+<span id="cb571-3"><a href="m5.html#cb571-3"></a>     <span class="dt">lc.col =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">lcx =</span> <span class="st">&quot;Participação dos distritos&quot;</span>, </span>
+<span id="cb571-4"><a href="m5.html#cb571-4"></a>     <span class="dt">lcy =</span> <span class="st">&quot;Participação dos provedores&quot;</span>, </span>
+<span id="cb571-5"><a href="m5.html#cb571-5"></a>     <span class="dt">lctitle =</span> <span class="st">&quot;Concentração espacial dos prestadores de serviços de saúde&quot;, </span></span>
+<span id="cb571-6"><a href="m5.html#cb571-6"></a><span class="st">     lcg = TRUE, lcgn = TRUE, lcg.caption = &quot;</span>População <span class="dv">2016</span><span class="op">:</span><span class="st">&quot;, lcg.lab.x = 0, </span></span>
+<span id="cb571-7"><a href="m5.html#cb571-7"></a><span class="st">     lcg.lab.y = 1)  </span></span></code></pre></div>
+<pre><code>## [1] 0.5840336</code></pre>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="m5.html#cb573-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>phys_gen, <span class="dt">lc =</span> <span class="ot">TRUE</span>, <span class="dt">lsize =</span> <span class="dv">1</span>, <span class="dt">add.lc =</span> <span class="ot">TRUE</span>,  </span>
+<span id="cb573-2"><a href="m5.html#cb573-2"></a>     <span class="dt">lc.col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lcg =</span> <span class="ot">TRUE</span>, <span class="dt">lcgn =</span> <span class="ot">TRUE</span>, </span>
+<span id="cb573-3"><a href="m5.html#cb573-3"></a>     <span class="dt">lcg.caption =</span>  <span class="st">&quot;Clínicos gerais 2016:&quot;</span>, <span class="dt">lcg.lab.x =</span> <span class="dv">0</span>, <span class="dt">lcg.lab.y =</span> <span class="fl">0.85</span>)  </span></code></pre></div>
+<pre><code>## [1] 0.8386269</code></pre>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="m5.html#cb575-1"></a><span class="kw">gini</span>(GoettingenHealth2<span class="op">$</span>psych, <span class="dt">lc =</span> <span class="ot">TRUE</span>, <span class="dt">lsize =</span> <span class="dv">1</span>, <span class="dt">add.lc =</span> <span class="ot">TRUE</span>,  </span>
+<span id="cb575-2"><a href="m5.html#cb575-2"></a>     <span class="dt">lc.col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lcg =</span> <span class="ot">TRUE</span>, <span class="dt">lcgn =</span> <span class="ot">TRUE</span>, <span class="dt">lcg.caption =</span>  <span class="st">&quot;Psicólogos 2016:&quot;</span>, </span>
+<span id="cb575-3"><a href="m5.html#cb575-3"></a>     <span class="dt">lcg.lab.x =</span> <span class="dv">0</span>, <span class="dt">lcg.lab.y =</span> <span class="fl">0.7</span>)  </span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-247-1.png" width="672" /></p>
+<pre><code>## [1] 0.9329298</code></pre>
+<p>Note que, pela aparência dos gráficos, conclui-se que eles são feitos utilizando <code>ggplot2</code>, que é chamado em plano de fundo pelo pacote <code>REAT</code>.</p>
+<p>Há diversos outros coeficientes de concentração e disperção no pacote <code>REAT</code>, os quais podem ser calculados de uma só vez por meio da função <code>disp()</code>. Os resultados podem demorar um pouco a serem exibidos devido a quantidade de coeficientes que serão calculados. Note também que informar o parâmetro <em>weighting</em> é uma vantagem, pois o <em>output</em> será mais completo.</p>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="m5.html#cb577-1"></a><span class="kw">disp</span>(GoettingenHealth2[,<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)], <span class="dt">weighting =</span> GoettingenHealth2<span class="op">$</span>pop)  </span></code></pre></div>
+<pre><code>## Concentration and dispersion measures 
+## Note: w = weighted, n = normalized, eq = equivalent number 
+## 
+##                phys_gen        psych        pharm
+## Gini        0.838626907  0.932929782  0.891547619
+## Gini n      0.840628403  0.935156345  0.893675418
+## Gini w      0.629454516  0.770895945  0.705628058
+## Gini w n    0.630956794  0.772735792  0.707312135
+## HHI         0.015280527  0.038494685  0.024166667
+## HHI n       0.012930361  0.036199923  0.021837709
+## HHI eq     65.442769020 25.977611940 41.379310345
+## Hoover      0.721428571  0.883333333  0.838095238
+## Hoover w    0.001852337  0.003130602  0.003418787
+## Theil                NA           NA           NA
+## Theil w              NA           NA           NA
+## Coulter     0.049850824  0.123305927  0.065569205
+## Atkinson    0.761164110  0.900755425  0.854223763
+## Dalton               NA           NA           NA
+## SD          1.714506606  1.095496987  0.865286915
+## SD w        4.010246439  1.847716870  2.401476794
+## CV          2.330397328  3.899226565  3.028504203
+## CV n        0.113847359  0.190489683  0.147952112
+## Williamson  1.429449565  1.965446423  1.709288672</code></pre>
+</div>
+</div>
+<div id="especialização-regional-e-concentração-espacial-industrial" class="section level3">
+<h3><span class="header-section-number">5.1.3</span> Especialização regional e concentração espacial industrial</h3>
+<p>Em todas as funções que calculam indicadores de especialização e concentração espacial seguem a seguinte base: <span class="math inline">\(e_{ij}\)</span> é o nível de emprego na indústria <span class="math inline">\(i\)</span> e região <span class="math inline">\(j\)</span>. Este valor é comparado a alguma referência, a qual pode ser o nível geral de emprego na região <span class="math inline">\(j\)</span>, <span class="math inline">\(e_j\)</span> e/ou o nível geral de emprego na indústria <span class="math inline">\(i\)</span>, <span class="math inline">\(e_i\)</span>.</p>
+<p>Todas as funções que realizam este tipo de cálculo no pacote <code>REAT</code> requerem, então, pelo menos as informações sobre o nível de emprego em uma ou mais regiões <span class="math inline">\(j\)</span> em uma ou mais indústrias <span class="math inline">\(i\)</span>, <span class="math inline">\(e_{ij}\)</span></p>
+<div id="aplicação-1" class="section level4">
+<h4><span class="header-section-number">5.1.3.1</span> Aplicação</h4>
+<p>Vamos analisar a especialização regional da cidade de Göttingen, utilizando os dados contidos no <em>dataset</em> <code>Goettingen</code>. Este data frame apresenta a quantidade de empregos entre 2008 e 2017 em cada uma das indústrias elencadas de A a R (linhas de 2 a 16), sendo que a linha 1 contém o nível geral de emprego em determinado ano, considerando todas as indústrias.</p>
+<p>Vejamos antes a tabela de classificações de ativadades econômicas alemãs no ano de 2008 (WZ 2008):</p>
+<table>
+<colgroup>
+<col width="5%" />
+<col width="94%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Código</th>
+<th align="left">Atividade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">Agriculture, forestry and fishing</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="left">Mining and quarrying</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left">Manufacturing</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="left">Electricity, gas, steam and air conditioning supply</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="left">Water supply; sewerage, waste management and remediation activities</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="left">Construction</td>
+</tr>
+<tr class="odd">
+<td align="left">G</td>
+<td align="left">Wholesale and retail trade; repair of motor vehicles and motorcycles</td>
+</tr>
+<tr class="even">
+<td align="left">H</td>
+<td align="left">Transportation and storage</td>
+</tr>
+<tr class="odd">
+<td align="left">I</td>
+<td align="left">Accommodation and food service activities</td>
+</tr>
+<tr class="even">
+<td align="left">J</td>
+<td align="left">Information and communication</td>
+</tr>
+<tr class="odd">
+<td align="left">K</td>
+<td align="left">Financial and insurance activities</td>
+</tr>
+<tr class="even">
+<td align="left">L</td>
+<td align="left">Real estate activities</td>
+</tr>
+<tr class="odd">
+<td align="left">M</td>
+<td align="left">Professional, scientific and technical activities</td>
+</tr>
+<tr class="even">
+<td align="left">N</td>
+<td align="left">Administrative and support service activities</td>
+</tr>
+<tr class="odd">
+<td align="left">O</td>
+<td align="left">Public administration and defence; compulsory social security</td>
+</tr>
+<tr class="even">
+<td align="left">P</td>
+<td align="left">Education</td>
+</tr>
+<tr class="odd">
+<td align="left">Q</td>
+<td align="left">Human health and social work activities</td>
+</tr>
+<tr class="even">
+<td align="left">R</td>
+<td align="left">Arts, entertainment and recreation</td>
+</tr>
+<tr class="odd">
+<td align="left">S</td>
+<td align="left">Other service activities</td>
+</tr>
+<tr class="even">
+<td align="left">T</td>
+<td align="left">Activities of households as employers; undifferentiated goods-and services-producing activities of households for own use</td>
+</tr>
+<tr class="odd">
+<td align="left">U</td>
+<td align="left">Activities of extraterritorial organisations and bodies</td>
+</tr>
+</tbody>
+</table>
+<p>Vamos carregar o <em>dataset</em> e verificar sua estrutura.</p>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="m5.html#cb579-1"></a><span class="kw">data</span>(Goettingen)</span>
+<span id="cb579-2"><a href="m5.html#cb579-2"></a></span>
+<span id="cb579-3"><a href="m5.html#cb579-3"></a><span class="kw">str</span>(Goettingen)</span></code></pre></div>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:	16 obs. of  22 variables:
+##  $ WZ2008_Code   : chr  &quot;A-R&quot; &quot;A&quot; &quot;BDE&quot; &quot;C&quot; ...
+##  $ WZ2008_Name   : chr  &quot;A-R Insgesamt&quot; &quot;A Land- und Forstwirtschaft, Fischerei&quot; &quot;B+D+E Bergbau, Energie, Wasser&quot; &quot;C Verarbeitendes Gewerbe&quot; ...
+##  $ Goettingen2008: num  59125 44 446 9116 1611 ...
+##  $ Goettingen2009: num  59201 39 466 8978 1562 ...
+##  $ Goettingen2010: num  61524 45 452 9044 1575 ...
+##  $ Goettingen2011: num  63538 48 458 8886 1575 ...
+##  $ Goettingen2012: num  63643 47 484 8526 1506 ...
+##  $ Goettingen2013: num  64351 45 508 8550 1522 ...
+##  $ Goettingen2014: num  67212 41 495 8372 1308 ...
+##  $ Goettingen2015: num  67137 43 490 8268 1192 ...
+##  $ Goettingen2016: num  67818 41 475 7999 1356 ...
+##  $ Goettingen2017: num  69403 45 466 7874 1334 ...
+##  $ BRD2008       : num  27695398 215570 545874 6528569 1569359 ...
+##  $ BRD2009       : num  27603281 218548 549648 6363086 1570440 ...
+##  $ BRD2010       : num  27966601 220753 552291 6256701 1604017 ...
+##  $ BRD2011       : num  28643583 226043 546277 6395463 1637168 ...
+##  $ BRD2012       : num  29280034 231109 551263 6519169 1663477 ...
+##  $ BRD2013       : num  29615680 236862 547782 6544148 1671811 ...
+##  $ BRD2014       : num  30174505 244677 543076 6613194 1697305 ...
+##  $ BRD2015       : num  30771297 247538 536566 6666275 1711831 ...
+##  $ BRD2016       : num  31443318 246467 535808 6725261 1748807 ...
+##  $ BRD2017       : num  32164973 248052 538768 6797172 1798954 ...</code></pre>
+<p>As colunas começando no padrão <code>GoettingerANO</code> referem-se aos empregos na indústria, em cada nível de atividade econômica, na cidade de Göttingen no referido ano, ao passo que as colunas no padrão <code>BRDANO</code>, indicam os empregos na indústria, em cada nível de atividade econômica, para a Alemanha.</p>
+<p>Começaremos calculando o <strong>Coeficiente de Locação (LQ)</strong> para a cidade de Göttingen em 2017 com relação a indústria de manufaturados (_“Verarbeitendes Gewerbe”), representada pela letra C (linha 4), conforme a tabela de atividades econômicas alemã: Para isso, utilizamos a função <code>locq()</code>.</p>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="m5.html#cb581-1"></a><span class="kw">locq</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">4</span>], Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">1</span>],</span>
+<span id="cb581-2"><a href="m5.html#cb581-2"></a>     Goettingen<span class="op">$</span>BRD2017[<span class="dv">4</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">1</span>])  </span></code></pre></div>
+<pre><code>## [1] 0.5368737</code></pre>
+<p>O <em>output</em> apresenta o o coeficiente de locação <span class="math inline">\(LQ_{ij}\)</span> para 2017, onde <span class="math inline">\(i\)</span> é a indústria de manufatura e <span class="math inline">\(j\)</span> é a cidade de Göttingen. Nota-se que o valor é bastante baixo, indicando que a indústria de manufatura tem pouca representatividade na economia de Göttingen, em comparação com a economia alemã.</p>
+<p>A seguir, calculamos o <strong>LQ</strong> para todas as indústrias (A-R, linhas de 2 a 16) no ano de 2017, incluindo um plot simples (argumento <code>plot.results=TRUE</code>).</p>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="m5.html#cb583-1"></a><span class="kw">locq</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">1</span>],</span>
+<span id="cb583-2"><a href="m5.html#cb583-2"></a>     Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">1</span>],</span>
+<span id="cb583-3"><a href="m5.html#cb583-3"></a>     <span class="dt">industry.names =</span> Goettingen<span class="op">$</span>WZ2008_Code[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], <span class="dt">plot.results =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb583-4"><a href="m5.html#cb583-4"></a>     <span class="dt">plot.title =</span> <span class="st">&quot;Quocientes de Locação para Göttingen 2017&quot;</span>)</span></code></pre></div>
+<pre><code>## Location quotients 
+## I = 15 industries</code></pre>
+<pre><code>##             LQ
+## A   0.08407652
+## BDE 0.40085663
+## C   0.53687366
+## F   0.34366928
+## G   0.74603541
+## H   0.67117311
+## I   0.98141916
+## J   0.91654277
+## K   0.82650178
+## M   1.53027645
+## N   0.95843423
+## O   1.03509027
+## P   2.77790858
+## Q   1.67459967
+## R   0.35317012</code></pre>
+<p><img src="fig/locq_goettingen.png" /></p>
+<!-- Não imprimia o gráfico de jeito nenhum -->
+<p>Para medir o nível de especialização industrial de Göttingen utilizando um indicador único, podemos utilizar o coeficiente de Herfindahl-Hirschman <code>herf()</code>, calculando-o separadamente para Göttingen e para a economia Alemã.</p>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="m5.html#cb586-1"></a><span class="co"># Göttingen</span></span>
+<span id="cb586-2"><a href="m5.html#cb586-2"></a><span class="kw">herf</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<pre><code>## [1] 0.127314</code></pre>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="m5.html#cb588-1"></a><span class="co"># Alemanha</span></span>
+<span id="cb588-2"><a href="m5.html#cb588-2"></a><span class="kw">herf</span>(Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<pre><code>## [1] 0.1104567</code></pre>
+<p>Outras alternativas para se medir o nível de especialização regional são o coeficiente de especialização de Hoover <code>hoover()</code>, e os coeficientes de especialização regional de Gini <code>gini.spec()</code> e de Krugman <code>krugman.spec()</code>, todos utilizando como referência <code>ref</code> os dados da economia alemã na mesma seleção de atividades econômicas.</p>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="m5.html#cb590-1"></a><span class="kw">hoover</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], <span class="dt">ref =</span> Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<pre><code>## [1] 0.2254234</code></pre>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="m5.html#cb592-1"></a><span class="kw">gini.spec</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<pre><code>## [1] 0.359852</code></pre>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="m5.html#cb594-1"></a><span class="kw">krugman.spec</span>(Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<pre><code>## [1] 0.4508469</code></pre>
+</div>
+</div>
+<div id="crescimento-regional-anpalise-shift-share" class="section level3">
+<h3><span class="header-section-number">5.1.4</span> Crescimento regional: anpalise <em>shift-share</em></h3>
+<p>Os modelos <em>shift-share</em> permitem decompor o crescimento regional em componentes, reconhecendo que regiões econômicas estão circunstcritas e são influenciadas por um sitema regional maior, que normalmente é a própria economia nacional.</p>
+<p>Dessa forma, o crescimento da indústria <span class="math inline">\(i\)</span> n região <span class="math inline">\(j\)</span> do tempo <span class="math inline">\(t\)</span> atpe <span class="math inline">\(t + y\)</span> pode ser atribuído a:</p>
+<ul>
+<li><p>uma tendência nacional (soma dos crescimentos regionais): <em>national share</em></p></li>
+<li><p>crescimento ou declínio das indústrias consideradas na análise: <em>industrial mix</em></p></li>
+<li><p>performance indústria-específica na região devido a vantagens/desvantagens locacionais: <em>regional share</em> (ou resíduo dos dois primeiros componentes)</p></li>
+</ul>
+<p>O pacote <code>REAT</code> abrange diversos modelos diferentes de análise <em>shift-share</em>: padrão <code>shift()</code>; dinâmico <code>shiftd()</code>; indústria-específico <code>shifti()</code>; indústria-específico e dinâmica <code>shiftid()</code>; prognóstico <code>shiftp()</code>.</p>
+<p>Todas as funções para análise <em>shift-share</em> (com exceção de prognóstico <em>shift-share</em> <code>shiftp()</code>) no pacote <code>REAT</code> provém 3 variantes para cálculo dos componentes:</p>
+<ul>
+<li><p>método clássico de Dunn, que é o <em>defualt</em> (<code>shift.method="Dunn"</code>);</p></li>
+<li><p>extensão de Dunn (<code>shift.method="Esteban"</code>), que produz 4 componentes e não 3;</p></li>
+<li><p>método de Gerfin (<code>shift.method="Gerfin"</code>).</p></li>
+</ul>
+</div>
+<div id="aplicação-2" class="section level3">
+<h3><span class="header-section-number">5.1.5</span> Aplicação</h3>
+<p>Vamos novamente utilizar o dataset <code>Goettingen</code>, contendo os dados de emprego por setor de atividade econômica na cidade de Göttingen e na Alemanha entre 2008 e 2017.</p>
+<p>A análise <em>shift-share</em> nos permitirá decompor o crescimento do emprego nos componentes nacional, industrial e regional.</p>
+<p>Inicialmente, faremos uma análise estática (método clássico de Dunn) aplicando a função <code>shift()</code>:</p>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="m5.html#cb596-1"></a><span class="kw">shift</span>(Goettingen<span class="op">$</span>Goettingen2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>],  </span>
+<span id="cb596-2"><a href="m5.html#cb596-2"></a>      Goettingen<span class="op">$</span>BRD2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<pre><code>## 
+## Shift-Share Analysis 
+## Method: Dunn 
+## 
+## Shift-share components 
+##                 Components
+## Growth (t1-t)   10411.0000
+## National share   9178.1916
+## Industrial mix   2204.8202
+## Regional share   -972.0118
+## Net total shift  1232.8084
+## 
+## Calculation for 15 industries 
+## Regional employment at time t: 56872, at time t+1: 67283 (10411 / 18.30602 %)
+## National employment at time t: 27695398, at time t+1: 32164973 (4469575 / 16.13833 %)</code></pre>
+<p>Nessa análise transversal, nota-se que o emprego em Göttingen cresceu em 10.411 pessoas entre 2008 e 2017. No entanto, nota-se que a maior parte desse crescimento deve-se ao componente nacional, que apresentou valor pouco menor que o da cidade. O <em>regional share</em> apresenta valor negativo, indicando desvantagens locacionais. O valor de <em>industrial mix</em> pode ser atribuído a uma sobrerepresentação de indústrias em crescimento na cidade segundo Wieland (2019).</p>
+<p>Os resultados são corroborados pelo método de Gerfin:</p>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="m5.html#cb598-1"></a><span class="kw">shift</span>(Goettingen<span class="op">$</span>Goettingen2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>Goettingen2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>],</span>
+<span id="cb598-2"><a href="m5.html#cb598-2"></a>      Goettingen<span class="op">$</span>BRD2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen<span class="op">$</span>BRD2017[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>],</span>
+<span id="cb598-3"><a href="m5.html#cb598-3"></a>      <span class="dt">shift.method =</span> <span class="st">&quot;Gerfin&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## Shift-Share Analysis 
+## Method: Gerfin 
+## 
+## Shift-share components 
+##                 Components
+## Industrial mix   1.0333810
+## Regional share   0.9857591
+## Net total shift  1.0186647
+## 
+## Calculation for 15 industries 
+## Regional employment at time t: 56872, at time t+1: 67283 (10411 / 18.30602 %)
+## National employment at time t: 27695398, at time t+1: 32164973 (4469575 / 16.13833 %)</code></pre>
+<p>Os métodos anteriores somente consideram o crescimento geral em relação aos dados em carater transversal, sem considerar a particularidade de cada setor. Para detalhar os dados por indústria e considerar também efeitos sazonais entre os períodos, utiliza-se o modelo dinâmico e indústria específico <code>shiftid()</code>.</p>
+<p>Para isso, nós precisaremos de dados para o período inicial <code>time1</code> e pelo menos para dois períodos seguintes <code>time2</code>. Uma outra diferença da função <code>shiftid()</code> é que podemos informar os nomes dos setores industriais no arumento <code>industry.names</code>, já que a análise é indústria-específica.</p>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="m5.html#cb600-1"></a><span class="co"># Cuidado!</span></span>
+<span id="cb600-2"><a href="m5.html#cb600-2"></a><span class="co"># transformar em data frame antes (bug do pacote - nao aceita tibble)</span></span>
+<span id="cb600-3"><a href="m5.html#cb600-3"></a>Goettingen &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Goettingen, <span class="dt">stringsASFactors =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb600-4"><a href="m5.html#cb600-4"></a><span class="kw">shiftid</span>(Goettingen<span class="op">$</span>Goettingen2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">12</span>],  </span>
+<span id="cb600-5"><a href="m5.html#cb600-5"></a>        Goettingen<span class="op">$</span>BRD2008[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>], Goettingen[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>, <span class="dv">13</span><span class="op">:</span><span class="dv">22</span>],</span>
+<span id="cb600-6"><a href="m5.html#cb600-6"></a>        <span class="dt">time1 =</span> <span class="dv">2008</span>, <span class="dt">time2 =</span> <span class="dv">2017</span>,</span>
+<span id="cb600-7"><a href="m5.html#cb600-7"></a>        <span class="dt">industry.names =</span> Goettingen<span class="op">$</span>WZ2008_Code[<span class="dv">2</span><span class="op">:</span><span class="dv">16</span>])</span></code></pre></div>
+<pre><code>## 
+## Dynamic Shift-Share Analysis 
+## Method: Dunn 
+## 
+## Shift-share components 
+##                         A      BDE          C         F         G        H         I         J           K        M
+## Growth (t1-t)   -3.000000 29.00000 -1117.0000 -255.0000  -51.0000 524.0000 470.00000 274.00000 -465.000000 2229.000
+## National share   6.103502 -9.46377   254.5217  160.0638  561.7436 368.2053 515.03493 286.32383    6.356612 1821.392
+## Regional share  -9.103502 38.46377 -1371.5217 -415.0638 -612.7436 155.7947 -45.03493 -12.32383 -471.356612  407.608
+## Net total shift -9.103502 38.46377 -1371.5217 -415.0638 -612.7436 155.7947 -45.03493 -12.32383 -471.356612  407.608
+##                         N        O         P        Q         R
+## Growth (t1-t)   1178.0000 268.0000 1272.0000 4211.000 363.00000
+## National share   977.9869 167.9118 1138.5383 3556.692  47.50353
+## Regional share   200.0131 100.0882  133.4617  654.308 315.49647
+## Net total shift  200.0131 100.0882  133.4617  654.308 315.49647
+## 
+## Calculation for 15 industries 
+## Regional employment at time t: 56872, at time t+1: 67283 (10411 / 18.30602 %)
+## National employment at time t: 27695398, at time t+1: 32164973 (4469575 / 16.13833 %)</code></pre>
+<hr />
+</div>
+<div id="referências-da-seção" class="section level3">
+<h3><span class="header-section-number">5.1.6</span> Referências da seção</h3>
+<ul>
+<li><p>Wieland, T. (2019). <em>REAT: A Regional Economic Analysis Toolbox for R</em>. REGION, 6(3), 2019, R1-R57. URL <a href="https://doi.org/10.18335/region.v6i3.267">https://doi.org/10.18335/region.v6i3.267</a>. Disponível em: <a href="https://openjournals.wu-wien.ac.at/region/paper_267/267.html">https://openjournals.wu-wien.ac.at/region/paper_267/267.html</a></p></li>
+<li><p>Hoffman, R. (1998). <em>Distribuição de renda</em>: medidas de desigualdade e pobreza. São Paulo: Editora da Universidade de São Paulo, 1998.</p></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="m4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusão.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": true,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "sepia",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

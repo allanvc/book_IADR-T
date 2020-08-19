@@ -1,0 +1,283 @@
+# Extra {#m5}
+
+## Análise Econômica Regional com pacote `REAT`
+
+### Introdução
+
+Nesta seção, introduzeremos ao leitor as possibilidades de se realizar análises econômicas regionais no **R**, utilizando o pacote `REAT` - Regional Economic Analysis Toolbox. Este pacote fornece métodos para:
+
+* Identificar disparidades regionais, por meio de indicadores de concentração e/ou dispersão;
+
+* Medir disparidades regionais ao longo do tempo;
+
+* Medir aglomerações, isto é, especialização de regiões e concentração espacial industrial;
+
+* medidas pontuais de clusterização e acessibilidade;
+
+* crescimento regional, especialmente análise _shift_share_.
+
+Infelizmente, nem todas as funcionalidades do pacote `REAT`, poderão ser abordadas nesta apostila, mas você poderá sempre recorrer a documentação do pacote e de outros para utilizar outras funcionalidades que possa vir a utilizar no futuro.
+
+
+### Concentração e dispersão
+
+Antes de tudo vamos instalar e carregar o pacote:
+
+```{r, eval=FALSE}
+install.packages("REAT")
+library(REAT)
+```
+
+Todas as funções que calculam medidas de concentração/dispersão presentes no pacote `REAT` funcionam de forma semelhante: elas precisam de pelo menos um argumento, um **vetor numérico** de tamanho $n$, contendo a variável de interesse `x` (ex: renda) com $i$ observações (ex: regiões), onde $i = 1,...,n$. Estes dados podem ser vetores distintos ou colunas de uma tibble, data frame ou matriz.
+
+Pode ser utilizado ainda o argumento opcional `weighting`, que atribui pesos a variável `x`, dependendo do valor de $i$. O argumento `weighting` também deve ser um vetor numérico de tamnho $n$.
+
+#### Aplicação
+
+Para a prática, vamos utilizar dados que acompanham o pacote `REAT`, referentes à inequidade de oferta de serviços de saúde em dois condados alemães: Göttingen (Goettingen) e Northeim.
+
+O _dataset_ `GoettinggenHealth2` contém os dados de oferta de serviços de saúde, tamanho de população e localização geográfica de 420 distritos.
+
+Inicialmente, carregamos o _dataset_ e verificamos a estrutura de nossos dados.
+
+```{r, echo=FALSE}
+library(REAT)
+```
+
+```{r}
+data(GoettingenHealth2)
+str(GoettingenHealth2)
+```
+
+As colunas `phys_gen`, `psych` e `pharm` contém as respectivas quantidades de médicos, pscioterapeutas (psicólogos) e farmácias por distrito. Estas são as variáveis de interesse  para a análise das disparidades regionais entre os distritos.
+
+Primeiramente, calculamos o _coeficiente de Gini_ e o índice de Herfindahl-Hirschman para a concentração de clínicos gerais, utilizando respectivamente a função `gini()` e `herf()`:
+
+```{r}
+gini(GoettingenHealth2$phys_gen)
+
+herf(GoettingenHealth2$phys_gen)
+```
+
+O Gini próximo a $1$ e o HHI acima de $1/N = 1/420 =$ `r 1/nrow(GoettingenHealth2)` indicam sensível desigualdade entre os $420$ distritos do _dataset_.
+
+Você pode calcular também as versões normalizadas de ambos os coeficientes/índices. Para isso, basta acrescentar o argumento `coefnorm=TRUE`.
+
+```{r}
+gini(GoettingenHealth2$phys_gen, coefnorm=TRUE)
+
+herf(GoettingenHealth2$phys_gen, coefnorm=TRUE) # agora 0 <= HHI <= 1
+```
+
+**ATENÇÃO:** Particularmente no cálculo do coeficiente de Gini (não normalizado) para concentração, o valor máximo do coeficiente não é exatmente $1$, mas sim $1 - \frac{1}{n}$, devido à derivação de seu cálculo ter como base a área estabelecida pela curva de Lorenz. Se considerarmos a situação extrema em que uma única pessoa se apropria de toda a renda e as demais $n-1$ pessoas não recebem nada, a área de desigualdade será um triângulo com base $1-\frac{1}{n}$ no eixo das abscissas e altura $h=1$. Neste caso, o índice de Gini será dado por $G=\frac{\alpha}{0.5}=2\alpha$, sendo $\alpha$ a área de desigualdade e $0,5$ o valor máximo atingido por $\alpha_{max}=\frac{1}{2}\big(1-\frac{1}{n}\big)$ quando o tamanho da população $n$ tende ao infinito: $\lim_{n\to\infty}{\alpha_{max} = \lim_{n\to\infty}{\frac{1}{2}\big(1-\frac{1}{n}}\big)} = 0,5$ .  Como $0\le \alpha \le \frac{1}{2}\big(1-\frac{1}{n}\big)$ e $G = 2\alpha$, temos o índice de Gini variando no intervalo $0 \le G \le \big(1-\frac{1}{n}\big)$. Por isso, o índice de Gini só poderá ter máximo igual a $1-\frac{1}{n}$, no caso de seu cálculo exato a partir da Curva de Lorenz. Isso faz com que seja possível calcular uma versão normalizada do coeficiente fazendo $\frac{n}{n-1}G$. Dessa forma o índice passa a variar no intervalo $[0,1]$. Para saber mais sobre a metodologia de cálculo, recomendam-se as referências desta seção, mais especificamente Hoffman (1998). Cabe destacar que é possível calcular-se o coeficiente de Gini utilizando outras abordagens. Para as demais aplicações (por exemplo npivel de especialização industrial), o pacote `REAT` empregará outra metodologia de cálculo (funções `gini.spec()` e `gini.conc()` para concentração espacial), em que o índice varia exatamente no intervalo $[0,1]$.
+
+Para checar a concentração graficamente, podemos plotar uma _Curva de Lorenz_ rapidamente utilizando a função `lorenz()` ou mesmo a função `gini(x, lc=TRUE)`. Os argumentos são os mesmos. A diferença é que a função `lorenz()` traz apenas o gráfico ao passo que `gini(x, lc=TRUE)` plota o gráfico e imprime na tela o índice de gini para a variável de interesse. 
+
+
+```{r}
+lorenz(GoettingenHealth2$phys_gen)
+
+```
+
+Com `gini(x, lc=TRUE, add.lc=TRUE, ...)`Podemos inclusive sobrepor as curvas de cada uma dos tipos de profissionais e serviço de saúde com a da população. Iniciaremos com a curv da distribuição da população e acrescentamos as demais.
+
+```{r}
+gini(GoettingenHealth2$pop, 
+     lc = TRUE, lsize = 1, le.col = "black",  
+     lc.col = "orange", lcx = "Participação dos distritos", 
+     lcy = "Participação dos provedores", 
+     lctitle = "Concentração espacial dos prestadores de serviços de saúde", 
+     lcg = TRUE, lcgn = TRUE, lcg.caption = "População 2016:", lcg.lab.x = 0, 
+     lcg.lab.y = 1)  
+
+gini(GoettingenHealth2$phys_gen, lc = TRUE, lsize = 1, add.lc = TRUE,  
+     lc.col = "red", lcg = TRUE, lcgn = TRUE, 
+     lcg.caption =  "Clínicos gerais 2016:", lcg.lab.x = 0, lcg.lab.y = 0.85)  
+
+gini(GoettingenHealth2$psych, lc = TRUE, lsize = 1, add.lc = TRUE,  
+     lc.col = "blue", lcg = TRUE, lcgn = TRUE, lcg.caption =  "Psicólogos 2016:", 
+     lcg.lab.x = 0, lcg.lab.y = 0.7)  
+```
+
+
+Note que, pela aparência dos gráficos, conclui-se que eles são feitos utilizando `ggplot2`, que é chamado em plano de fundo pelo pacote `REAT`.
+
+Há diversos outros coeficientes de concentração e disperção no pacote `REAT`, os quais podem ser calculados de uma só vez por meio da função `disp()`. Os resultados podem demorar um pouco a serem exibidos devido a quantidade de coeficientes que serão calculados. Note também que informar o parâmetro _weighting_ é uma vantagem, pois o _output_ será mais completo.
+
+```{r, cache=TRUE}
+disp(GoettingenHealth2[,c(5,6,7)], weighting = GoettingenHealth2$pop)  
+```
+
+
+### Especialização regional e concentração espacial industrial
+
+
+Em todas as funções que calculam indicadores de especialização e concentração espacial seguem a seguinte base: $e_{ij}$ é o nível de emprego na indústria $i$ e região $j$. Este valor é comparado a alguma referência, a qual pode ser o nível geral de emprego na região $j$, $e_j$ e/ou o nível geral de emprego na indústria $i$, $e_i$.
+
+Todas as funções que realizam este tipo de cálculo no pacote `REAT` requerem, então, pelo menos as informações sobre o nível de emprego em uma ou mais regiões $j$ em uma ou mais indústrias $i$, $e_{ij}$
+
+
+#### Aplicação
+
+Vamos analisar a especialização regional da cidade de Göttingen, utilizando os dados contidos no _dataset_ `Goettingen`. Este data frame apresenta a quantidade de empregos entre 2008 e 2017 em cada uma das indústrias elencadas de A a R (linhas de 2 a 16), sendo que a linha 1 contém o nível geral de emprego em determinado ano, considerando todas as indústrias.
+
+Vejamos antes a tabela de classificações de ativadades econômicas alemãs no ano de 2008 (WZ 2008):
+
+```{r, echo=FALSE}
+econ_activ <- "A	Agriculture, forestry and fishing
+B	Mining and quarrying
+C	Manufacturing
+D	Electricity, gas, steam and air conditioning supply
+E	Water supply; sewerage, waste management and remediation activities
+F	Construction
+G	Wholesale and retail trade; repair of motor vehicles and motorcycles
+H	Transportation and storage
+I	Accommodation and food service activities
+J	Information and communication
+K	Financial and insurance activities
+L	Real estate activities
+M	Professional, scientific and technical activities
+N	Administrative and support service activities
+O	Public administration and defence; compulsory social security
+P	Education
+Q	Human health and social work activities
+R	Arts, entertainment and recreation
+S	Other service activities
+T	Activities of households as employers; undifferentiated goods-and services-producing activities of households for own use
+U	Activities of extraterritorial organisations and bodies"
+
+econ_activ_germ2008 <- read.delim(text = econ_activ,
+                                  sep="\t",
+                                stringsAsFactors = FALSE,
+                                header = FALSE)
+
+colnames(econ_activ_germ2008) <- c("Código", "Atividade")
+
+library(knitr)
+kable(econ_activ_germ2008)
+```
+
+Vamos carregar o _dataset_ e verificar sua estrutura.
+
+```{r}
+data(Goettingen)
+
+str(Goettingen)
+```
+
+As colunas começando no padrão `GoettingerANO` referem-se aos empregos na indústria, em cada nível de atividade econômica, na cidade de Göttingen no referido ano, ao passo que as colunas no padrão `BRDANO`, indicam os empregos na indústria, em cada nível de atividade econômica, para a Alemanha.
+
+Começaremos calculando o **Coeficiente de Locação (LQ)**  para a cidade de Göttingen em 2017 com relação a indústria de manufaturados (_"Verarbeitendes Gewerbe"), representada pela letra C (linha 4), conforme a tabela de atividades econômicas alemã: Para isso, utilizamos a função `locq()`.
+
+```{r}
+locq(Goettingen$Goettingen2017[4], Goettingen$Goettingen2017[1],
+     Goettingen$BRD2017[4], Goettingen$BRD2017[1])  
+```
+
+O _output_ apresenta o o coeficiente de locação $LQ_{ij}$ para 2017, onde $i$ é a indústria de manufatura e $j$ é a cidade de Göttingen. Nota-se que o valor é bastante baixo, indicando que a indústria de manufatura tem pouca representatividade na economia de Göttingen, em comparação com a economia alemã.
+
+A seguir, calculamos o **LQ** para todas as indústrias (A-R, linhas de 2 a 16) no ano de 2017, incluindo um plot simples (argumento `plot.results=TRUE`).
+
+```{r}
+locq(Goettingen$Goettingen2017[2:16], Goettingen$Goettingen2017[1],
+     Goettingen$BRD2017[2:16], Goettingen$BRD2017[1],
+     industry.names = Goettingen$WZ2008_Code[2:16], plot.results = TRUE,
+     plot.title = "Quocientes de Locação para Göttingen 2017")
+
+```
+
+![](./fig/locq_goettingen.png)
+
+<!-- Não imprimia o gráfico de jeito nenhum -->
+
+Para medir o nível de especialização industrial de Göttingen utilizando um indicador único, podemos utilizar o coeficiente de Herfindahl-Hirschman `herf()`, calculando-o separadamente para Göttingen e para a economia Alemã.
+
+
+```{r}
+# Göttingen
+herf(Goettingen$Goettingen2017[2:16])
+
+# Alemanha
+herf(Goettingen$BRD2017[2:16])
+```
+
+Outras alternativas para se medir o nível de especialização regional são o coeficiente de especialização de Hoover `hoover()`, e os coeficientes de especialização regional de Gini `gini.spec()` e de Krugman `krugman.spec()`, todos utilizando como referência `ref` os dados da economia alemã na mesma seleção de atividades econômicas.
+
+```{r}
+
+hoover(Goettingen$Goettingen2017[2:16], ref = Goettingen$BRD2017[2:16])
+
+gini.spec(Goettingen$Goettingen2017[2:16], Goettingen$BRD2017[2:16])
+
+krugman.spec(Goettingen$Goettingen2017[2:16], Goettingen$BRD2017[2:16])
+```
+
+
+### Crescimento regional: anpalise _shift-share_
+
+Os modelos _shift-share_ permitem decompor o crescimento regional em componentes, reconhecendo que regiões econômicas estão circunstcritas e são influenciadas por um sitema regional maior, que normalmente é a própria economia nacional.
+
+Dessa forma, o crescimento da indústria $i$ n região $j$ do tempo $t$ atpe $t + y$ pode ser atribuído a: 
+
+* uma tendência nacional (soma dos crescimentos regionais): _national share_
+
+* crescimento ou declínio das indústrias consideradas na análise: _industrial mix_
+
+* performance indústria-específica na região devido a vantagens/desvantagens locacionais: _regional share_ (ou resíduo dos dois primeiros componentes)
+
+O pacote `REAT` abrange diversos modelos diferentes de análise _shift-share_: padrão `shift()`; dinâmico `shiftd()`; indústria-específico `shifti()`; indústria-específico e dinâmica `shiftid()`; prognóstico `shiftp()`.
+
+Todas as funções para análise _shift-share_ (com exceção de prognóstico _shift-share_ `shiftp()`) no pacote `REAT` provém 3 variantes para cálculo dos componentes:
+
+* método clássico de Dunn, que é o _defualt_ (`shift.method="Dunn"`);
+
+* extensão de Dunn (`shift.method="Esteban"`), que produz 4 componentes e não 3;
+
+* método de Gerfin (`shift.method="Gerfin"`).
+
+### Aplicação
+
+Vamos novamente utilizar o dataset `Goettingen`, contendo os dados de emprego por setor de atividade econômica na cidade de Göttingen e na Alemanha entre 2008 e 2017.
+
+A análise _shift-share_ nos permitirá decompor o crescimento do emprego nos componentes nacional, industrial e regional. 
+
+Inicialmente, faremos uma análise estática (método clássico de Dunn) aplicando a função `shift()`:
+
+```{r}
+shift(Goettingen$Goettingen2008[2:16], Goettingen$Goettingen2017[2:16],  
+      Goettingen$BRD2008[2:16], Goettingen$BRD2017[2:16])
+
+```
+
+Nessa análise transversal, nota-se que o emprego em Göttingen cresceu em 10.411 pessoas entre 2008 e 2017. No entanto, nota-se que a maior parte desse crescimento deve-se ao componente nacional, que apresentou valor pouco menor que o da cidade. O _regional share_ apresenta valor negativo, indicando desvantagens locacionais. O valor de _industrial mix_ pode ser atribuído a uma sobrerepresentação de indústrias em crescimento na cidade segundo Wieland (2019).
+
+Os resultados são corroborados pelo método de Gerfin:
+
+```{r}
+shift(Goettingen$Goettingen2008[2:16], Goettingen$Goettingen2017[2:16],
+      Goettingen$BRD2008[2:16], Goettingen$BRD2017[2:16],
+      shift.method = "Gerfin")
+
+```
+
+Os métodos anteriores somente consideram o crescimento geral em relação aos dados em carater transversal, sem considerar a particularidade de cada setor. Para detalhar os dados por indústria e considerar também efeitos sazonais entre os períodos, utiliza-se o modelo dinâmico e indústria específico `shiftid()`.
+
+Para isso, nós precisaremos de dados para o período inicial `time1` e pelo menos para dois períodos seguintes `time2`. Uma outra diferença da função `shiftid()` é que podemos informar os nomes dos setores industriais no arumento `industry.names`, já que a análise é indústria-específica.
+
+```{r}
+# Cuidado!
+# transformar em data frame antes (bug do pacote - nao aceita tibble)
+Goettingen <- as.data.frame(Goettingen, stringsASFactors = FALSE)
+shiftid(Goettingen$Goettingen2008[2:16], Goettingen[2:16, 3:12],  
+        Goettingen$BRD2008[2:16], Goettingen[2:16, 13:22],
+        time1 = 2008, time2 = 2017,
+        industry.names = Goettingen$WZ2008_Code[2:16])
+```
+
+***
+
+### Referências da seção
+
+- Wieland, T. (2019). _REAT: A Regional Economic Analysis Toolbox for R_. REGION, 6(3), 2019, R1-R57. URL [https://doi.org/10.18335/region.v6i3.267](https://doi.org/10.18335/region.v6i3.267). Disponível em: [https://openjournals.wu-wien.ac.at/region/paper_267/267.html](https://openjournals.wu-wien.ac.at/region/paper_267/267.html)
+
+- Hoffman, R. (1998). _Distribuição de renda_: medidas de desigualdade e pobreza. São Paulo: Editora da Universidade de São Paulo, 1998.

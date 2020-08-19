@@ -1,0 +1,804 @@
+# Módulo III {#m3}
+
+## Acesso a Bancos de Dados relacionais com `dbplyr`
+
+### Introdução
+
+O conteúdo desse capítulo foi adaptado a partir da _vignette_ de `dbplyr` e do artigo _Databases using R_ de Edgar Ruiz, autor do pacote e integrante da **RStudio**. `dbplyr` permite combinar a fácil gramática de manipulação de dados fornecida por `dplyr` e o acesso a bancos de dados relacionais SQL sem precisarmos utilizar efetivamente comandos **SQL**.
+
+Usar bancos de dados é inevitável para aqueles cuja parte do trabalho é analisar dados. A esta altura, como utilizadores da linguagem `R`, o instinto nos leva a adotar um _approach_ com as bases de dados do mesmo modo com o qual faríamos a leitura de um arquivo de dados `.txt` ou `.csv`: nos tentaríamos ler os dados todos de uma vez ou partes dele até atpe formar todo o dataset. O objetivo seria "voltar" ao banco de dados o mínimo possível, de modo que para isso, nossas _queries_ extrairiam o máximo de dados possível. Depois disso, nós passaríamos vários ciclos analisando aqueles dados salvos na memória de nosso computador. Seguiríamos mais ou menos o seguinte esquema:
+
+<!-- \newline -->
+
+![R & Acesso a Banco de Dados NÃO otimizado](./fig/todaydb.png)
+Fonte: _Databases using R_, Edgar Ruiz
+
+Essa abordagem tem alguns problemas:
+
+- o volume de dados com que teríamos que trabalhar seria muito grande. Por isso, passaríamos alguns momentos pensando em como minimizar o consumo de recursos e o tempo para chegarmos ao subset dos dados que realmente precisamos para trabalhar;
+
+- para economizar recursos, optaríamos por utilizar diretamente um cliente externo de SQL, trabalhar os dados o máximo possível para então extrairmos os que nos interessam e só depois utilizar o **R**;
+
+- precisaríamos conhecer a fundo SQL para fazermos o máximo de consultas possível usando um "_client_" do _SQL Server_ por exemplo. Salvaríamos os diferentes scripts para que conseguíssemos repetir as consultas novamente;
+
+Qual seria então a melhor abordagem?
+
+
+![R & Acesso a Banco de Dados otimizado](./fig/betterdb.png)
+Fonte: _Databases using R_, Edgar Ruiz
+
+
+Com `dbplyr`, a tarefa de acessar bancos de dados relacionais seria **EXTREMAMENTE** otimizada, porque:
+
+- 1º) Você não precisa conhecer sintaxe de SQL para acessar os dados. Basta saber **R** e ter uma leve noção de SQL e você já poderá fazer um número considerável de manipulações nos dados;
+
+- 2º) Você somente precisará do RStudio e não mais de um cliente externo de SQL para fazer as _queries_;
+
+- 3º) Os códigos que você precisaria na primeira abordagem caírão pela metade com a segunda
+
+- 4º) Ao invés de passar horas pensando em qual base de dados você realmente precisa importar, poderemos analisar os dados dentro do servidor SQL;
+
+- 5º) Ao invés de usar memória do seu computador, você vai usar a _engine_ do servidor SQL, porque `dbplyr` em conjunto com `dplyr` vai enviar as _queries_ para o servidor;
+
+- 6) Manipular dados com comandos de **R** (e mais ainda com `dplyr`) é muito mais fácil do que manipular os dados com comandos de SQL. Então, você poderá investigar e manipular os dados de forma muito mais fácil apenas com R para só ao final salvar o resultado no seu computador 
+
+
+Antes de começarmos é necessário que você instale e carregue os seguintes pacotes: `DBI` e `dbplyr`. `DBI` é um _backend_ que permite ao `dplyr` se comunicar com vários tipos de bancos de dados SQL utilizando o mesmo código. No entanto, ao instalarmos e carregarmos `dbplyr` automaticamente também o será o pacote `DBI`.
+
+```{r, warning=FALSE, message=FALSE}
+# install.packages("dbplyr")
+library(dbplyr)
+```
+
+Além de `dbplyr` (e `DBI`), nós precisaremos de um _backend_ ou _driver_ específico para o tipo de servidor SQL que vamos acessar. Os mais comuns são:
+
+- **RMySQL** conecta a MySQL e MariaDB;
+- **RPostgreSQL** conecta a Postgres e Redshift;
+- **RSQLite** incorpora uma base de SQLite embutida (muito útil para treinarmos);
+- **odbc** conecta a váriás bases de dados comerciais (SQL Server, por exemplo) utilizando o _open conectivity protocol_;
+- **biquery** conecta ao BigQuery do Google.
+
+Essas _backends_ estão implementados como pacotes do R também.
+
+Para acessar os dados do IPEA, utilizaremos o backend `odbc`, uma vez que o servidor é o SQL Server ou MS SQL Server. Maiores detalhes sobre como conectar e exemplos de _queries_ contra essas bases de dados serão passados em aula.
+
+Para os exemplos desta apostila, utilizaremos `RSQlite`, porque teremos que emular uma base de dados tipo SQL.
+
+### Conectando a um database
+
+Para podermos trabalhar com uma base de dados junto com `dplyr`, primeiro devemos estabelecer uma conexão com esta base, usando `DBI::dbConnect()`. Criamos assim um objeto de conexão dentro do R que fará a ligação em nossa sessão no RStudio e o anco de dados.
+
+```{r, message=FALSE}
+# install.packages("RSQLite")
+library(dplyr)
+con <- DBI::dbConnect(drv = RSQLite::SQLite(), path = ":memory:")
+```
+
+O argumento `drv` de *DBI::dbConnect()* pode variar de database para database, mas o primeiro argumento é sempre o _driver_ do tipo de banco de dados ao qual você irá se conectar. Seria `RSQLite::SQLite()` para SQLite, `RMySQL::MySQL()` para MySQL, `RPostgreSQL::PostgreSQL()` para PostgreSQL, `odbc::odbc()` para SQL Server e `bigrquery::bigquery()`* para Google BigQuery. SQLite somente precisa de mais um outro argumento: o caminho para a base de dados. No nosso caso, nós usamos a _string_ especial `[:memory:]` que fará com que SQLite construa uma base de dados temporária na memória de nosso computador.
+
+Contudo, a maioria das databases não "vivem" em um arquivo, mas sim em um servidor. Isso significa que na vida real seu código seria mais parecido com:
+
+```{r, eval=FALSE}
+con <- DBI::dbConnect(RMySQL::MySQL(), 
+  host = "database.ipea",
+  user = "treinamento",
+  password = rstudioapi::askForPassword("Database password")
+)
+```
+
+
+**DICA:** Na vida real, ao criarmos o objeto de conexão com o servidor relacional de verdade, você veria uma aba de conexões no RStudio, com os respectivos _schemas_ e/ou tabelas presentes no servidor. É como se fosse um _Global Environment_ do banco de dados:
+
+![Aba _Connections_ do RStudio](./fig/rstudio_connections.png)
+
+A base de dados temporária que criamos anteriormente não possui qualquer tabela de dados ainda. Começaremos, então, por copiar o _tibble_ `tb_ibama`, usando a função `copy_to()`. Embora esta não seja a maneira mais indicada de colocar dados em uma database, é bastante útil e fácil para utilizarmos em demonstrações:
+
+Caso você não possua mais o _tibble_, vamos refrescar sua memória:
+
+```{r, message=FALSE}
+library(readr)
+
+tb_ibama <- read_csv(file="https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv",
+                     col_types = cols(
+                       X1 = col_double(),
+                       TIPO_GF = col_character(),
+                       STATUS_GF = col_character(),
+                       UF_REMETENTE = col_character(),
+                       MUNICÍPIO_REMETENTE = col_character(),
+                       TIPO_DESTINO = col_character(),
+                       CEPROF_DESTINATÁRIO = col_character(),
+                       UF_DESTINATÁRIO = col_character(),
+                       MUNICÍPIO_DESTINATÁRIO = col_character(),
+                       N_AUTORIZAÇÃO = col_character(),
+                       PROCESSO = col_character(),
+                       EMISSAO = col_integer(),
+                       NOME_CIENTÍFICO = col_character(),
+                       PRODUTO = col_character(),
+                       VOLUME = col_double(),
+                       UNID = col_character(),
+                       PRECO_TOTAL = col_double()
+                       )
+                     )
+
+
+# tb_ibama$STATUS_GF[1:50000] <- rep("NÃO VERIFICADO", 50000)
+# 
+# tb_ibama2 <- mutate(tb_ibama,
+#   preco_unidade = PRECO_TOTAL / VOLUME,
+#   preco_unidade_vezes_1000 = preco_unidade * 1000
+# )
+
+```
+
+
+Feito isso, podemos adicionar o _tibble_ contendo os dados do IBAMA para o nosso Banco de Dados relacional fictício:
+
+
+```{r}
+copy_to(con, tb_ibama, "tb_ibamaDB",
+  temporary = FALSE, 
+  indexes = list(
+    "UF_REMETENTE", 
+    "MUNICÍPIO_REMETENTE", 
+    "UF_DESTINATÁRIO",
+    "MUNICÍPIO_DESTINATÁRIO"
+  )
+)
+```
+
+A função `copy_to()` possui alguns argumentos adicionais que nos permitem fornecer índices para a tabela. Nós, então, criamos índices que nos permitirão rapidamente processar os dados por `UF_REMETENTE`, `MUNICÍPIO_REMETENTE`, `uf_DESTINATÁRIO` e `MUNICÍPIO_DESTINATÁRIO`. Criar os índices de escrita é um ponto chave para uma boa performance da base de dados ao enviarmos _queries_. No entanto, está fora do escopo deste curso.
+
+Uma vez que copiamos os dados para o servidor, podemos referenciar (ainda não estamos importando) essa tabela no **R** usando a função `tbl()`, que extrai a tabela chamada `"tb_ibamaDB"` do database.
+
+```{r}
+tb_ibama_db <- tbl(con, "tb_ibamaDB")
+```
+
+Se imprimirmos a referência recém criada, veremos que ela se parece com um _tibble_, embora seja retratada como uma ista no _Global Environment_.
+
+```{r}
+tb_ibama_db 
+```
+
+A única diferença é a referência de que os dados estão em um banco de dados SQLite.
+
+### Gerando queries
+
+Para interagir com um banco de dados nós geralmente usamos _SQL - Structured Query Language_. SQL tem mais de 40 anos e é usado em praticamente todas as bases de dados que existem. O objetivo de `dbplyr` é automaticamente gerar códigos em _SQL_ para que nós não sejamos forçados a utilizá-los. No entanto, `dbplyr` não faz tudo que uma linguagem SQL faz. Ele foca na declarativa **SELECT** e derivados, o que consideramos suficiente para o escopo desse curso.
+
+Veja como, na maioria das vezes, não precisamos saber nada de SQL e podemos continuar utilizando os verbos de `dplyr` com os quais já estamos familiarizados.
+
+```{r, message=FALSE, warning=FALSE}
+tb_ibama_db %>% select(TIPO_GF:UF_REMETENTE, UF_DESTINATÁRIO, VOLUME)
+
+tb_ibama_db %>% filter(VOLUME > 1)
+
+tb_ibama_db %>% 
+  group_by(UF_DESTINATÁRIO) %>%
+  summarise(vol_medio_por_UF = mean(VOLUME))
+```
+
+No entanto, no longo prazo é altamente recomendado que você aprenda pelo menos o básico de SQL. SQL é uma _skill_ bastante importante para qualquer cientista de dados ou pessoas que lidam com dados rotineiramente.
+
+A diferença mais importante entre dataframes comuns e _queries_ a bancos de dados remotos é que nosso código **R** é traduzido para linguagem _SQL_ e **executado na database**, não no **R**. Quando trabalhamos com _databases_ o `dplyr` tenta ser o mais preguiçoso possível. O `dplyr` se vale de um conceito bastante utilizado no R, que é o _lazy evaluation_:
+
+- Ele nunca traz dados para o **R** a não ser que explicitamente solicitemos que ele faça isso;
+
+- Ele "atrasa" fazer qualquer tarefa até o último momento: ele coleta todos comandos e manda para o banco de dados em um único passo.
+
+Veja o exemplo a seguir:
+
+```{r}
+por_uf_dest_db <- tb_ibama_db %>% 
+  group_by(UF_DESTINATÁRIO) %>%
+  summarise(
+    preco_medio = mean(PRECO_TOTAL, na.rm=TRUE),
+    n = n()
+  ) %>% 
+  arrange(desc(preco_medio)) %>%
+  filter(n > 100)
+```
+
+É suprpreendente o que vamos dizer agora, mas todos esses códigos não chegam a tocar a base de dados em nenhum momento; não até que solicitemos, por exemplo fazendo um **printing** do objeto criado `por_uf_dest_db`. Somente, então, é que `dplyr` gera o código _SQL_ e solicita os resultados da base de dados no servidor SQL. Ainda sim, ele tenta minimizar o que será impresso, trazendo apenas algumas linhas e não tudo. Vea:
+
+```{r}
+por_uf_dest_db
+```
+
+Por de trás dos panos, `dbplyr`/`dplyr` está traduzindo o código em **R** para código _SQL_. Se você quiser ver (e aprender) o código SQL que está sendo enviado ao servidor, use `show_query()`:
+
+```{r}
+por_uf_dest_db %>% show_query()
+```
+
+Para aqueles que são mais familiazrizados com SQL, o código acima provavelmente não seria o que você escreveria, mas ele cumpre a missão. Veja a `vignette("SQL-translation")`.
+
+Mesmo com `dbplyr`/`dplyr`, nós ainda faremos algumas iterações e tentativas até descobrir o que realmente vamos precisar dos dados. No entanto, o faremos de forma muito mais rápida. Uma vez que soubermos exatamente nosso objetivo, podemos usar `collect()` para trazer todos os dados em um _tibble_ (local) em nossa máquina:
+
+```{r}
+por_uf_dest_final <- por_uf_dest_db %>% collect()
+por_uf_dest_final
+```
+
+`collect()` precisa que o banco de dados trabalhe e, por isso, a operação pode tomar algum tempo até ser completada. Por outro lado, `dbplyr` tenta evitar que você acidentalmente faça _queries_ bem custosas computacionalmente:
+
+- Geralmente não há forma de determinar quantas linhas uma _query_ vai retornar até que realmente a executemos. Diferente de quando estamos trabalhando com base de dados em nosso PC, o comando `nrow()` sempre retorna `NA` ao dispararmos contra bancos de dados relacionais;
+
+- Como não podemos encontrar as poucas últimas linhas sem executar a _query_ de todo os dados, não podemos usar `tail()`, que imprime as $n$ últimas linhas de um tibble ou dataframe.
+
+```{r, error=TRUE}
+nrow(por_uf_dest_db)
+
+tail(por_uf_dest_db)
+```
+
+### Outros pacotes para geração de mapas
+
+Embora `tmap` seja um pacote bastante poderoso e flexível para a geração de mapas, há diversas outras alternativas no ecosistema do **R** para geração tanto de mapas estáticos quanto interativos: `maptools`, `maps`, `ggmap` + `ggplot2`, `cartograph`, `ggVis`, `leaflet`, dentre outros.
+
+
+***
+
+### Referências da seção
+
+- Wickham, H.; Ruiz, E. (2019). _dbplyr: A 'dplyr' Back End for Databases_. R package version 1.4.0. URL [https://CRAN.R-project.org/package=dbplyr](https://CRAN.R-project.org/package=dbplyr).
+
+- ____. (2020). _dbplyr vignette: Introduction_. URL [http://dbplyr.tidyverse.org](http://dbplyr.tidyverse.org).
+
+- Ruiz, E. (2017). _Databases using R_. RViews-RStudio. May 05, 2017. Disponível em: [https://rviews.rstudio.com/2017/05/17/databases-using-r/](https://rviews.rstudio.com/2017/05/17/databases-using-r/)
+
+### Exercícios
+
+1) Utilize os dados de acesso ao servidor do IPEA que serão informados em aula para explorar as bases existentes e aplicar o conhecimento adquirido sobre os pacotes `dplyr`, `dbplyr` e `ggplot2`
+
+
+***
+***
+
+## Manipulação de dados com _Two-table verbs_ - `dplyr`
+
+A Análise de dados, na maioria das vezes, envolve mais de uma base de dados. Na prática, são bases de fontes distintas que contribuem para chegarmos a um resultado final. Dessa forma, precisamos de ferramentas flexiveis para combiná-las. No pacote `dplyr`, existem três famílias de verbos que trabalham com duas tabelas de uma vez:
+
+- _mutating joins_, que adicionam novas variáveis a uma tabela a partir da correspondência (_matching_) das linhas em outra;
+- _filtering joins_, que filtram observações de uma tabela se estas observações fazem o _matching_ com uma observação em outra tabela;
+
+- _set oeprations_, que combinam observações nos datasets caso eles sejam elementos do conjunto informado.
+
+Esses itens assumem que seus dados encontram-se no formto de _tidy data_, ou seja, linhas são observações e colunas são variáveis.
+
+Todos os _two-table verbs_ (ou funções de duas tabelas) funcionam de forma similar: os primeiros dois argumentos são `x` e `y` e fornecem as duas tabelas que desejamos comparar e combinar. O _output_ será sempre uma nova tabela com o mesmo tipo de objeto de `x`.
+
+### _Mutating joins_
+
+_Mutating joins_ nos permitem combinar variáveis de múltiplas tabelas. Vamos utilizar alguns datasets do pacote `nycflights13` que contempla os dados de 336.776 voos (tibble `flights`), as condições climáticas (tibble `weather`) e as aeronaves (tibble `planes`) que pousaram e decolaram de 3 aeroportos (tibble `airports`) de Nova York em 2013. Os dados são oriundos do _US Bureau of Transportation Statistics_. 
+
+Inicialmente usaremos o datase `flights`. Vamos separar algumas colunas do tibble original em outro. Depois tentaremos juntar os dois com base no nome da cia aérea.
+
+```{r}
+library("nycflights13")
+# Drop unimportant variables so it's easier to understand the join results.
+flights2 <- flights %>% select(year:day, hour, origin, dest, tailnum, carrier)
+
+flights2 %>% 
+  left_join(airlines)
+```
+
+#### Controlando como as tabelas sofrem _match_ nos _mutating joins_
+
+Juntamente com os argumentos `x` e `y`, cada _mutating join_ recebe também um argumento `by` que é utilizado como índice para fazer o _matching_ entre as tabelas. Há algumas maneiras de especificar esse argumento. 
+Vejamos exemplos de como especificar o parâmetro `by`, utilizando algumas tabelas de `nycflights13`.
+
+- 1ª forma) `NULL`: o _default_. `dplyr` vai usar todas as variáveis que aparecerem nas duas tabelas. Chamamos isso de **natural join**. No exeplo a seguir, as tabelas `flights` e `wheather` serão "juntadas" com base nas variáveis comuns: `year`, `month`, `day`, `hour` e `origin`.
+
+```{r}
+flights2 %>% left_join(weather)
+```
+
+- 2ª forma) `by = "var1"` ou `by = c("var1", "var2", "var3")`: um vetor de caracteres. Opera como se fosse um _natural join_, mas utiliza somente algumas das variáveis comuns. Por exemplo, `flights` e `planes` possuem uma variável `year`, mas elas significam coisas diferentes em cada tibbe/dataframe. Então, queremos especificar uma coluna que sabemos que significa a mesma coisa em ambos os tibbles e que possa servir de índice para o _matching_. Vamos usar `tailnum` que é o número (de cauda) do avião.
+
+```{r}
+flights2 %>% left_join(planes, by = "tailnum")
+```
+
+Note que ao juntar todas as colunas de ambos os tibbles, `dplyr` acrescenta um sufixo à segunda variável `year`.
+
+- 3ª forma) `by = c("var1" = "var3")`: um vetor de caracteres com nomes: . Isto vai fazer o _matching_ da variável `var1` na tabela `x` com a variável `var3` na tabela `y`. As variáveis da tabela de origem `x` serão usadas no _output_.
+
+Cada voo tem uma origem e um aeroporto de destino. Então precisamos especificar em qual dessas variáveis do dataset `flight` queremos fazer o _matching_ com a coluna `faa` do dataset `airports`.
+
+```{r}
+flights2 %>% left_join(airports, c("dest" = "faa"))
+```
+
+```{r}
+flights2 %>% left_join(airports, c("origin" = "faa"))
+```
+
+#### Tipos de _mutating joins_
+
+Há 4 tipos de _mutating join_, que diferem pelo comportamento nas linhas em que **não ocorre** o *matching* entre as bases.
+
+Vamos criar dois dataframes e depois veremos exemplos de cada caso.
+
+```{r}
+library(dplyr)
+(df1 <- data_frame(x = c(1, 2), y = 2:1))
+# note que a função dplyr::data_frame é diferente da função data.frame do R base
+
+(df2 <- data_frame(x = c(1, 3), a = 10, b = "a"))
+```
+
+- `inner_join(x, y)`: inclui somente observações que possuem correspondência tanto em `x` quanto em `y` (ou seja, linhas iguais nos dataframes).
+
+```{r}
+df1 %>% inner_join(df2)
+```
+
+Note que o argumento `by` foi suprido. Dessa forma, o comportamento da funçõ foi o _default_. A coluna `x` foi utilizada como índice para juntar os dois data frames. As linhas iguais para a variável `x` em ambos os datafrmaes são trazidas na íntegra (ou seja, apresentam-se todas as colunas).
+
+- `left_join(x, y)`: inclui todas as observações em  `x`, independente haver _matching_ ou não entre as tabelas. Esse é o tipo de _join_ mais usado, porque ele garante que nós não perderemos nenhuma informação da nossa tabela primária `x`.
+
+```{r}
+df1 %>% left_join(df2)
+```
+
+- `right_join(x, y)`: inclui todas as observações da tabela `y`. É equivalente a `left_join(**y**, **x**)`, mas a ordenação das variáveis será diferente nesse último caso:
+
+```{r}
+df1 %>% right_join(df2)
+
+df2 %>% left_join(df1)
+```
+
+
+- `full_join()`: inclui todas as observações da tabela `x` e da `y`:
+
+```{r}
+df1 %>% full_join(df2)
+```
+
+
+Os _left_, _right_ e _full joins_ são conhecidos coletivamente como **outer joins** (ou joins externos). Quando a linha de uma tabela não possui correspondência nenhuma na outra tabel, em um **outer join**, as novas variáveis são preenchidas com _missing values_ (`NA`).
+
+Embora os _mutating joins_ existam para adicionar novas variáveis, em alguns casos eles podem gerar novas observações. Se uma correspondência não é única, um _join_ vai acrescentar linhas para todas as combinações possíveis (produto cartesiano) do _matching_ das observações. Esta é uma observação importante, pois muitas vezes, ao realiza um join entre duas tabelas, não compreendemos o porquê de a tabela resultante do _join_ possuir mais observações que as duas tabelas originais.
+
+```{r}
+df1 <- data_frame(x = c(1, 1, 2), y = 1:3)
+df2 <- data_frame(x = c(1, 1, 2), z = c("a", "b", "a"))
+
+df1 %>% left_join(df2)
+```
+
+### _Filtering joins_
+
+**Filtering joins** "casam" observações da mesma forma que os _mutating joins_, mas **afetam as próprias observações e não as variáveis**. Existem dois tipos de _filtering joins_:
+
+- `semi_join()` **MANTÉM** todas as observações em `x` que possuem correspondência em `y`;
+- `anti_join()` **RETIRA** todas as observações em `x` que possuem correspondência em `y`.
+
+Esses joins são muito úteis para identificar "descasamentos" entre tabelas. Por exemplos, há diversos voos no dataset `flights` que não possuem correspondências com relação ao `tailnum` no dataset `planes`:
+
+```{r}
+flights %>% 
+  anti_join(planes, by = "tailnum") %>% 
+  count(tailnum, sort = TRUE)
+```
+
+Caso você esteja preocupado com quais observações nosso _join_ vai fazer o *matching*, sugere-se iniciar com um `semi_join()` ou `anti_join()` pelo seguinte motivo: esses _joins_ nunca duplicam as observações, eles somente removem ou as mantém no mesmo número.
+
+
+```{r}
+df1 <- data_frame(x = c(1, 1, 3, 4), y = 1:4)
+df2 <- data_frame(x = c(1, 1, 2), z = c("a", "b", "a"))
+
+# Four rows to start with:
+df1 %>% nrow()
+
+# And we get four rows after the join
+df1 %>% inner_join(df2, by = "x") %>% nrow()
+
+# But only two rows actually match
+df1 %>% semi_join(df2, by = "x") %>% nrow()
+```
+
+
+Por fim, cabe fazer menção a funções que seriam úteis caso você tivesse que trabalhar com 3 ou mais tabelas. Dê uma lida em `purrr::reduce()` ou `Reduce()`, como descrito em _"Advanced R"_, para iterativamente combinar espandir seus conhecimentos de _two-table verbs_ de modo a lidar com um número maior de tabelas.
+
+O conteúdo deste capítulo foi adaptado da vignette de *two-table verbs*, disponível em [http://dplyr.tidyverse.org/articles/two-table.html](http://dplyr.tidyverse.org/articles/two-table.html).
+
+***
+
+### Referências da seção
+
+- Wickham H.; François, R.; Henry, L.; Müller K. (2019). _dplyr: A Grammar of Data Manipulation_. R package version 0.8.1. URL [https://CRAN.R-project.org/package=dplyr](https://CRAN.R-project.org/package=dplyr).
+
+- Wickham H.; François, R.; Henry, L.; Müller K. (2020). _dplyr vignette: Two-table_. Article._ Disponível em: [http://dplyr.tidyverse.org/articles/two-table.html](http://dplyr.tidyverse.org/articles/two-table.html).
+
+- Wickham, H.; Grolemund, G. (2016). _R for Data Science: Import, Tidy, Transform, Visualize, and Model Data_. O'Reilly Media. december 2016. 522 pages. Disponível em: [htps://www.r4ds.co.nz](htps://www.r4ds.co.nz).
+
+
+### Exercícios
+
+- 1) Procure replicar cada um dos _joins_ apresentados nesta seção às tabelas `[dbo].[licitacoes]` nos _schemas_ `ComprasPI` e `ComprasCE` do servidor relacional do IPEA.
+
+
+***
+***
+
+
+## Análise de dados geográficos no **R**
+
+### Introdução
+
+Nas últimas décadas houve uma verdadeira revolução das técnicas de geocomputação. Graças a esse grande avanço, a análise de dados geográficos não se restringe mais apenas àqueles que tem acesso a hardwares e softwares caros. De certa forma, podemos dizer que o **R** também contribuiu para este avanço. Embora a linguagem possuísse algumas limitações referentes à geocomputação nos anos iniciais de desenvolvimento da linguagem, ultimamente diversos pacotes do **R** levaram a geocomputação a um novo patamar, principalmente no que diz respeito à **reproducibilidade**.
+
+Enquanto os softwares baseados em Sistemas de Informações Geográficas (SIG ou GIS no inglês), que tem como disciplina base a Geografia e o foco voltado para interfaces gráficas, deixam a desejar na reproducibilidade dos mapas gerados, o **R**, que tem como base a Estatística e Computação por meio de linha de comando e programação, faz com que a análise geográfica de dados seja muito mais fluida e passível de reprodução por outros usuários e desenvolvedores.
+
+Nesta seção, apresentaremos alguns dos principais pacotes e técnicas utilizadas para produção de mapas usando **R**.
+
+
+#### Modelos de dados geográficos: _vetor_ vs _raster_
+
+No campo da geocomputação, precisamos saber diferenciar os dois tipos de dados geográficos principais: _vetor_ e _raster_.
+
+Dados geográficos em forma de **vetor** utilizam _pontos_, _linhas_ e _polígonos_ para representar um mapa. Nesse caso, as bordas dos objetos (ex: Estados, Municípios, Países) são bem definidos.
+
+```{r, echo=FALSE, message=FALSE, fig.cap="Exemplo de plot em _vetor_"}
+# library(sp)
+library(sf)
+
+library(spData)
+# world_sp = as(world, Class = "Spatial")
+
+
+world_SA = world[world$continent == "South America", ]
+SA = st_union(world_SA)
+
+brazil = world[world$name_long == "Brazil", ]
+plot(st_geometry(brazil), expandBB = c(0, 0.2, 0.1, 1), col = "gray", lwd = 3)
+plot(world_SA[0], add = TRUE)
+
+```
+
+
+Já os dados em formato **raster** dividem a superfície de um mapa em células de tamanhos constantes. Os datasets em formato _raster_ são comumente utilizados para gerar mapas como imagens de fundo (_background_). Os modelos _raster_ são utilizados praticamente desde a origem dos aparelhos e satélites de Sensoriamento Remoto.
+
+```{r, echo=FALSE, message=FALSE, cache=TRUE, fig.cap="Plot em _raster_: Batimetria do Golfo do México (https://geo.gcoos.org/data/topography/SRTM30PLUS.html)"}
+library(raster)
+
+# download the data 
+# download.file("https://geo.gcoos.org/data/topography/SRTM30PLUS_files/gom_bathy_srtm30plus_asc.txt", destfile = 'raster_test.asc')
+# 
+# # unzip the file
+# unzip(zipfile = "raster_test.zip", 
+#       exdir = 'raster_test')
+
+# load raster data in r
+gulf_bathy <- raster("./geofiles/raster_files/raster_test.asc")
+# disponivel tb no meu github
+
+library("RColorBrewer")
+
+# nesse a paleta é discreta, então não fica bom para fazer um plot de profundidade
+# plot(gulf_bathy, box = FALSE, 
+#      xlab="Long",
+#      ylab="Lat",
+#      col=rev(brewer.pal(n = 9, name = "YlGnBu")),
+#      legend.width=0.3, legend.shrink=0.5,
+#      axis.args= list(cex.axis=0.65),
+#      legend.args=list(text='Profundidade (m)', side=4, font=2, line=2.5, cex=0.8))
+
+plot(gulf_bathy, box = FALSE,
+     xlab="Long",
+     ylab="Lat",
+     col=topo.colors(100),
+     legend.width=0.3, legend.shrink=0.5,
+     axis.args= list(cex.axis=0.65),
+     legend.args=list(text='Profundidade (m)', side=4, font=2, line=2.5, cex=0.8))
+# sol para ajustar legenda: https://stackoverflow.com/questions/9436947/legend-properties-when-legend-only-t-raster-package
+
+```
+
+Neste curso, focaremos nos modelos de dados geográficos em **_vetor_**, que é o modelo de dados predominante nas Ciências Sociais. Isso, porque os arranjos espaciais produzidos pelo homem tendem a possuir limites discretos e bem definidos. Já o modelo _raster_ é mais utilizado em ciências ambientais ou da terra devido à utilização de dados oriundos de sensoriamento remoto.
+
+Agora que sabemos as diferenças conceituais entre os principais modelos de dados geográficos, vamos à prática.
+
+### Produção de Mapas no R
+
+#### _Shapefiles_
+
+_Shapefiles_ são arquivos que seguem o modelo de dados geográficos em _vetor_, contendo elementos gráficos em formato de _ponto_, _linha_ e/ou _polígonos_ podendo ser trabalhados juntamente com coordenadas geográficas para descrever um fenômeno específico, como tamanho de população, incidência de doenças, etc. A partir dessas informações, é possível, então, construir-se um mapa. 
+
+Um _shapefile_, normalmente, contém três arquivos principais `.shp`, `.shx`, `.dbf`. Existem diversos locais de onde você pode obter _shapefiles_ para confecção de mapas. 
+
+Se o seu objetivo é obter _shapefiles_ para a malha territorial brasileira, você pode obtê-las nessas três fontes:
+
+* IBGE: [ftp://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2017/](ftp://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2017/)
+
+* IPEAGEO: [http://www.ipea.gov.br/ipeageo/malhas.html](http://www.ipea.gov.br/ipeageo/malhas.html]http://www.ipea.gov.br/ipeageo/malhas.html)
+
+* GADM: [https://gadm.org/download_country_v3.html](https://gadm.org/download_country_v3.html)
+
+No caso da _GADM_, o repositório possui tanto as _shapefiles_ quanto arquivos em R para importação da malha terriorial de diversos países e suas subdivisões administrativas. É um repositório bastante completo e mais fácil de navegar do que o do IBGE e do IPEA.
+
+**DICA:** O IPEA recentemente desenvolveu o pacote [`geobr`](https://www.github.com/geobr), que facilita a obtenção das _shapefiles_ diretamente pelo R.
+
+Focaremos na demonstração de como obter _shapefiles_ a partir do repositório do IBGE. Para qualquer outra fonte de dados, os procedimentos serão praticamente os mesmos.
+
+#### Mapa da malha estadual brasileira
+
+##### Obtenção do arquivo
+
+Você pode obtar por realizar o download do arquivo `br_unidade_da_federacao.zip`, que contém as _shapefiles_ para os estados brasileiros, diretamente do _ftp_ do IBGE, como na imagem abaixo:
+
+![FTP Server do IBGE](./fig/ftp_ibge.png)
+
+No entanto, sugerimos utilizar a solução abaixo que faz tudo issoa partir do **R**, utilizando as funções `download.file()` e `unzip()`.
+
+```{r, cache=TRUE}
+
+# obtém arquivo zip
+download.file("ftp://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2018/Brasil/BR/br_unidades_da_federacao.zip",
+              destfile = 'shp_ibge_uf2018.zip') # escolhe um nome para o arquivo zip na máquina
+
+
+# descompactar arquivo
+unzip(zipfile = "shp_ibge_uf2018.zip",
+      exdir = 'shp_ibge_uf2018') # nome da pasta a ser criada para receber os arquivos do zip
+
+
+```
+
+##### Leitura do arquivo `.shp`
+
+Agora podemos ler o _shapefile_ utilizando o pacote `sf`, que quer dizer _simple features_. Este é um termo bastante utilizado na geocomputação, pois serve para descrever como objetos do mundo real são representados no computador, principalmente objetos de cunho geográfico. O pacote `sf`, portanto, serve como interface para que isto possa ser feito no R. Além disso, o pacote `sf` facilita a integração com pacotes do _tidyverse_.
+
+A princípio, a função que você mais vai utilizar do pacote `sf` é a `st_read()`, que serve justamente para ler _shapefiles_ de modo que sejam representadas como um por um objeto de classe `data.frame` no R. Como na leitura de todo dataframe, a função `st_read()` também precisa que setemos `stringsAsFactors=FALSE`, para que as variáveis categóricas não sejam lidas como fatores.
+
+```{r}
+
+# lendo arquivo .shp
+shp_uf = st_read("./shp_ibge_uf2018/BRUFE250GC_SIR.shp", stringsAsFactors=FALSE)
+
+```
+
+
+Vejamos o conteúdo deste arquivo:
+
+```{r}
+shp_uf
+
+```
+
+Note que além dos nomes dos Estados, da Região a que pertence e o código de geoidentificação do estado `CD_GEOCUF`, este dataframe especial possui uma coluna chamada `geometry`. Esta coluna possui os elementos vetoriais geométricos para confecção do mapa no modelo de dados _vetor_ mencionado anteriormente.
+
+##### Plotagem do Mapa
+
+Para realizar a plotagem do mapa, precisaremos de outro pacote. Há diversos pacotes para plotagem de mapas no R, mas optaremos pelo pacote `tmap`, por entendermos ser o mais completo atualmente. Um aspecto interessante de `tmap` é que ele funciona com a plotagem em camadas, assim como o `ggplot2` visto no Módulo \@ref(m2). Podemos ajustar diversos aspectos como legendas, bordas, fronteiras, cores, etc.
+
+Primeiramente devemos especificar o dataframe base criado a partir da leitura da shapefile, utilizando a função `tm_shape(nome_data_frame)`. Feito isso, a plotagem dos polígonos da coluna `geometry` de `shp_uf` já pode ser feita ao acrescentarmos a camada de polígonos com `tm_borders()` ou `tm_ploygons()`.
+
+```{r}
+library(tmap)
+
+tm_shape(shp_uf)+
+  tm_borders()
+
+# OU
+# tm_shape(shp_uf)+
+#   tm_polygons()
+
+```
+
+**DICA:** Pode ocorrer de alguns _shapefiles_ do IBGE perderem a formatação dentro do **R** e não serem mais reconhecidos como um datatframe que contem dados espaciais, o que acarretará em um erro ao tentarmos plotar o mapa. Para retomar o tipo adequado do objeto, você pode utilizar a função `st_as_sf()` do pacote `sf`, i.e. `objeto_espacial <- st_as_sf(objeto_espacial)`.
+
+Muito simples fazer mapas no **R**, não? 
+
+##### Adicionando dados ao mapa
+
+Normalmente, ao fazermos análises geográficas, nosso objetivo é representar algum fênomeno que ocorre no território, como por exemplo o comportamento da taxa de desemprego por UF. Normalmente esses dados vem de uma outra fonte, ou seja, estão em outra base de dados que precisa ser "juntada" ao nosso dataframe de _shapefile_. 
+
+Aqui será muito útil o conhecimento sobre _Two table verbs_ e as funções de _join_, porque teremos que juntar o dataset que possui os dados do fenômeno que desejamos tratar separado por UF com os dados vetoriais/geométricos de plotagem para cada UF também.
+
+Faça a leitura da incidência da taxa de desemprego por UF no Brasil para o ano de 2007 conforme o código abaixo:
+
+```{r, message=FALSE}
+library(readr)
+
+tb_desemp_uf <- read_csv2(file="https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/tx_desemp_uf2007.csv")
+
+tb_desemp_uf
+
+```
+
+
+Agora devemos juntar esses dados ao dataframe contendo os os limites da malha estadual brasileira que trabalhamos anteriormente. Vamos utilizar a função `left_join()` de `dplyr`. Vamos fazer a junção das tabelas com base na coluna que contém os nomes dos Estados. Contudo, note que as colunas com os nomes possuem nomes diferentes em cada uma das bases: `NM_ESTADO` vs `Nome`. Ainda bem, que já sabemos como tratar este pequeno problema com `dplyr`. Se estiver em dúvida, volte ao Módulo \@ref(m2).
+
+Antes de você continuar, note também que os nomes dos estados em `shp_uf` estão em caixa alta, ao passo que em `tb_desemp_uf` estão apenas com a primeira letra maiúscula. Para contornar este problema, usaremos a função `mutate()` de `dplyr` em conjunto com a função `toupper()` do `base R`, para transformar todos os nomes da base `tb_desemp_uf` para caixa alta.
+
+```{r}
+library(dplyr)
+
+tb_desemp_uf <- tb_desemp_uf %>%
+  mutate(Nome = toupper(Nome))
+
+shape_data_join <- left_join(shp_uf, 
+                             tb_desemp_uf, 
+                             by = c("NM_ESTADO" = "Nome")) # utilizando aula do two table verbs
+
+
+shape_data_join
+```
+
+
+Agora temos praticamente tudo pronto para plotar como a taxa de desemprego se distribuia pelos estados no ano de 2007. Para fazer com que essas informações sejam incluídas no mapa, acrescentamos uma _layer_ ao gráfico anterior, utilizando a função `tm_fill("Taxa_desemp")`. Assim, o polígono de cada estado será preenchido com uma cor diferente dependendo da intensidade da taxa de desemprego verificada naquela UF. Note que nossos dados base agora são `shape_data_join`.
+
+```{r}
+tm_shape(shape_data_join)+
+  tm_borders()+
+  tm_fill("Taxa_desemp")
+  
+  
+```
+
+**DICA:** Uma vez que acrescentamos uma nova _layer_ com `tm_fill()`, não poderemos utilizar `tm_polygons()` para traçar as fronteiras, apenas `tm_borders()`.
+
+
+##### Melhorias no mapa
+
+Podemos melhorar ainda mais nossos mapas, acrescentando outras _layers_. Podemos controlar a intensidade das fronterias estaduais, o posicionamento da legenda com `tm_legend()`, o estilo do mapa `tm_style()`,  exibir uma régua de escala `tm_scale_bar()`, uma rosa dos ventos com `tm_compass()` e muito mais. Sugerimos ler a documentação do pacote `tmap`.
+
+```{r}
+mapa_desemp2007_uf <- tm_shape(shape_data_join)+
+  # linhas fronteiras:
+  tm_borders(alpha = 0.1)+
+  # preenchimento e título legenda:
+  tm_fill("Taxa_desemp", title="Taxa desemprego (%)")+
+  # estilo (formatação do gráfico, cores, etc):
+  # tm_style("classic")+
+  # posição da legenda:
+  tm_legend(position=c("left", "bottom"))+
+  # agulha ou rosa dos ventos (posição e tipo):
+  tm_compass(position=c("right", "top"), size=3, type="arrow")+
+  # régua de escala:
+  tm_scale_bar()+
+  # tpitulo fora da área de plotagem:
+  tm_layout(main.title="Taxa de desemprego por UF, 2007")+
+  # créditos/fonte:
+  tm_credits(text="Fonte: IBGE")
+  
+mapa_desemp2007_uf  
+```
+
+
+##### Acrescentando mais dados ao mapa
+
+Com `tmap`, podemos acrescentar mais uma dimensão de dados ao nosso mapa, a partir de outro dataset. Imagine, por exemplo, que desejássemos plotar, além da taxa de desemprego, o \% de crescimento do PIB no ano de 2007. Isso, forneceria uma melhor compreensão sobre a situação da economia de cada estado naquele ano.
+
+Primeiro vamos ler o dataset `cresc_PIB_uf2007.csv`, que estão disponíveis no repositório da apostila:
+
+```{r, message=FALSE}
+tb_cresc_PIB_uf2007 <- read_csv2(file="https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/cresc_PIB_uf2007.csv")
+
+tb_cresc_PIB_uf2007
+
+```
+
+
+Vamos realizar o join dessa nova base com o dataset `shape_data_join` que já conta com os dados de polígono e taxa de desemprego para as unidades da federação. Lembre-se que as colunas referentes aos nomes dos estados em cada base possuem denominações diferentes e que os nomes do dataset do PIB não estão em caixa alta.
+
+**CUIDADO:** Antes que você quebre a cabeça tentando resolver um problema, temos um detalhe na coluna `UF` do tibble `tb_cresc_PIB_uf2007`: há um espaço em branco à frente dos nomes dos estados. Resolveremos isso com `mutate()` + `str_trim()` do pacote `stringr`, que remove todos os espaços em branco à frente e depois do nome de uma _string_. O pacote `stringr` e a amnipulação de _strings_ serão tratados mais profundamente no Módulo \@ref(m4).
+
+```{r}
+library(stringr)
+
+tb_cresc_PIB_uf2007 <- tb_cresc_PIB_uf2007 %>%
+  mutate(UF = toupper(str_trim(UF)))
+
+
+shape_data_join2 <- left_join(shape_data_join, 
+                             tb_cresc_PIB_uf2007, 
+                             by = c("NM_ESTADO" = "UF")) # utilizando aula do two table verbs
+
+
+shape_data_join2
+
+```
+
+Feitos os devidos ajustes, partimos para a plotagem do mapa. ANtes, porém, precisamos pensar em qual forma geométrica usaremos para apresentação do dado de crescimento do PIB. Considerando, que utilizamos `tm_fill()` para a variável `Taxa_desemp`, podemos utilizar círculos cujo tamanho vçao variar conforme a intensidade de crescimento do PIB do estado. Fazemos isso com a função `tm_bubbles()`, passando o nome da variável para o argumento `size`.
+
+
+```{r}
+
+mapa_desempvsPIB2007_uf <- tm_shape(shape_data_join2)+
+  # linhas fronteiras:
+  tm_borders(alpha = 0.1)+
+  # preenchimento e título legenda:
+  tm_fill("Taxa_desemp", title="Taxa desemprego (%)")+
+  # inserindo a camada que retrata o crescimento do PIB em 2007
+  tm_bubbles(size="var_PIB2007", col = 'yellow', title.size='Variação PIB (%)')+
+  # estilo (formatação do gráfico, cores, etc):
+  # tm_style("classic")+
+  # posição da legenda:
+  tm_legend(position=c("left", "bottom"))+
+  # agulha ou rosa dos ventos (posição e tipo):
+  tm_compass(position=c("right", "top"), size=3, type="arrow")+
+  # régua de escala:
+  tm_scale_bar()+
+  # tpitulo fora da área de plotagem:
+  tm_layout(main.title="Taxa de desemprego por UF, 2007")+
+  # créditos/fonte:
+  tm_credits(text="Fonte: IBGE")
+  
+mapa_desempvsPIB2007_uf  
+
+```
+
+### Exportando dados geográficos
+
+#### Escrevendo arquivos de dados vetoriais
+
+Assim como na leitura de dados vetoriais, o pacote recomendado para se proceder a escrita de dados é o `sf`. A função equivalente à `st_read()` no que se refere à escrita de dados é `st_write()`. Há vários tipos de arquivos vetoriais que se pode escrever: `ESRI Shapefile` a mais comum (extensão de arquivo `shp`), `GPX`, `KML`, `GeoJSON` e `GPKG`. Normalmente, ao especificar a extensão do arquivo, `st_read()` já se encarrega de "advinhar" o tipo de arquivo vetorial. 
+
+Veja um exemplo, com a escrita de uma _shapefile_ `.shp`:
+
+```{r, eval=FALSE}
+
+st_write(obj = shape_data_join2, dsn = "uf_join.shp")
+
+```
+
+Serão produzidos 4 arquivos com extensões `.shp`, `.dbf`, `.shx` e `.prj`. Caso `st_write()` não consiga reconhecer o driver adequado, você pode passá-lo como `driver="ESRI Shapefile"` por exemplo.
+
+#### Escrevendo arquivos de figuras
+
+O `base R` fornece uma série de funções que permitem salvar qualquer tipo de plot, incluindo mapas, nas mais diversas extensões de imagens. As funções são `png()`, `jpeg()`, `bmp()`, `tiff()`. Para salvar um mapa (e qualquer tipo de plot), você pode seguir a seguinte sequência:
+
+* abrir um dispositivo de plotagem com qualquer uma das funções anteriores, especificando o nome do arquivo de destino a ser criado `filename` e as dimensões da figura `width` e `height`;
+
+* executar um plot;
+
+* fechar o dispositivo de plotagem com `dev.off()`.
+
+```{r, eval=FALSE}
+png(filename = "mapa_BR_UF.png", width = 500, height = 350)
+
+tm_shape(shp_uf)+
+  tm_polygons()
+
+dev.off()
+
+```
+
+O pacote `tmap` também possui uma função para salvar os mapas criados a partir do pacote como figuras. Vamos salvar o objeto `mapa_desempvsPIB2007_uf`, que contém um mapa criado com o pacote `tmap`.
+
+```{r, eval=FALSE}
+library(tmap)
+
+tmap_save(tm = mapa_desempvsPIB2007_uf  , filename = "lifeExp_tmap.png")
+
+```
+
+
+***
+
+### Referências da seção
+
+- Battisti, I.; Smolski, F. (2019). _Software R: curso avançado_. Disponível em: [https://smolski.github.io/livroavancado/](https://smolski.github.io/livroavancado/)
+
+- Lovelace, R.; Nowosad,  J.; Muenchow, J. (2019). _Geocomputation with R_. CRS Press. Disponível em: [https://geocompr.robinlovelace.net/](https://geocompr.robinlovelace.net/)
+
+- Pebesma, E. (2018). Simple Features for R: Standardized Support for Spatial Vector Data. _The R Journal_ 10 (1), 439-446, [https://doi.org/10.32614/RJ-2018-009](https://doi.org/10.32614/RJ-2018-009).
+
+- Tennekes, M. (2018). _tmap: Thematic Maps in R_. _Journal of Statistical Software_, *84*(6), 1-39. doi:10.18637/jss.v084.i06 (URL:[https://doi.org/10.18637/jss.v084.i06](https://doi.org/10.18637/jss.v084.i06)).
+
+
+### Exercícios
+
+1) 
+
++ a) Importe, a partir do R, os datasets `tx_part_mulheres_munSP2000.csv` e `pop_SP.csv` disponíveis no repositório git do curso, que contém respectivamente os dados da taxa de participação das mulheres no mercado de trabalho dos municípios paulistas no ano 2000 e a a população de cada município do estado de São Paulo no mesmo. 
+
++ b) Baixe a malha territorial do Brasil do repositório da GADM (GADM36) [https://gadm.org/download_country_v3.html](https://gadm.org/download_country_v3.html).
+
++ c) Faça um mapa do estado de São Paulo, mostrando a distribuição da taxa de participação feminina no mercado de trabalho por município, juntamente com a população por município.

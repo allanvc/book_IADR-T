@@ -1,0 +1,17 @@
+base
+dbplyr
+dplyr
+readr
+nycflights13
+sf
+spData
+sp
+raster
+RColorBrewer
+REAT
+leaflet
+stringr
+ggplot2
+knitr
+magrittr
+tmap

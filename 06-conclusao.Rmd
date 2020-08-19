@@ -1,0 +1,9 @@
+# Conclusão {-}
+
+Embora o curso seja introdutório, acredito que você pôde alcançar um nível de fluência em **R** que terá um impacto significativo em seu trabalho. Passamos por tópicos básicos sobre o funcionamento da linguagem, seus principais objetos, ferramentas para a análise de dados e seguimos até o tema da reproducibilidade, finalizando com uma aplicação de modelos de análise econômica regional em **R**. Ao longo deste caminho, você teve contato com excelentes pacotes e técnicas que facilitarão muito o seu trabalho no que se refere à análise de dados.
+
+A partir de agora, você encontra-se pronto para seguir de forma mais independente no caminho de desenvolver soluções em Análise de Dados utilizando o **R**. Seu nível de proficiência agora lhe permite pensar melhor sobre a organização dos seus dados, que tipo de problema você possui, qual a melhor forma de abordá-lo e o principal: como e onde procurar ajuda para resolvê-lo. Aproveite o excelente material que você possui em mãos e retorne a ele e às referências sempre que precisar. 
+
+Obrigado pela companhia ao longo desta jornada!
+
+__Allan V. C. Quadros__

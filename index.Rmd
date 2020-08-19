@@ -1,0 +1,83 @@
+--- 
+title: "Curso Introdutório de Análise de Dados em **R** utilizando Tidyverse"
+author: "Allan Vieira de Castro Quadros"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: 
+  bookdown::gitbook:
+    config:
+      edit : null
+      download: null
+      search: yes
+      sharing:
+       facebook: yes
+       github: yes
+       twitter: yes
+       linkedin: yes
+       weibo: no
+       instapaper: no
+       vk: no
+      fontsettings:
+        theme: sepia
+documentclass: book
+# bibliography: [book.bib, packages.bib]
+# biblio-style: apalike
+# link-citations: no
+github-repo: allanvc/curso-R-IPEA
+description: "Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse, ministrado no IPEA entre março e abril de 2020."
+---
+
+# Bem-vindo! {-}
+
+Este é o repositório do livro texto do *Curso Introdutório de Análise de Dados em R, utilizando Tidyverse*. A principal função desta apostila é servir como **fonte de consulta** para os alunos do Instituto de Pesquisa Econômica Aplicada (IPEA) que realizam o curso. Alguns dos exemplos e exercícios a serem tratados em aula não estão presentes na apostila e constarão apenas dos slides a serem apresentados.
+
+Para reproduzir os códigos presentes no livro, você precisa de uma versão recente do [R](https://cran.r-project.org/) e pacotes atualizados. Ao início de cada seção, você será apresentado aos pacotes necessários para executar os códigos referentes àquele assunto. 
+
+Todos os datasets e outros arquivos de dados a serem utilizados durante os Módulos, estão disponíveis no repositório _Git_ deste livro, na pasta __datasets__:  https://github.com/allanvc/book_ADR-T/tree/master/datasets
+
+Também recomenda-se a utilização da versão mais recente do Ambiente Integrado de Desenvolvimento (IDE) [RStudio](https://www.rstudio.com/download).
+
+## Por que R ? {-}
+
+A linguagem de programação **R** é conhecida por ter uma curva de aprendizagem relativamente lenta, mas, uma vez que o aluno entende a estrutura básica de objetos que compõe a linguagem, o aprendizado passa a ser exponencial.
+
+```{r nice-fig, echo=FALSE, fig.cap='Curva de Aprendizagem **R**', out.width='50%', fig.asp=.75, fig.align='center'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19, xlab = "tempo", ylab = "aprendizado", axes = FALSE)
+```
+
+**R** é relativamente diferente das demais linguagens de programação porque foi _desenvolvida por Estatísticos para Estatísticos_. Ela não foi pensada para ser a mais eficiente das linguagens em termos de rapidez, mas sim para tornar mais fácil a vida de quem analisa dados. Minha experiência com outras linguagens de programação levam me a afirmar que isto é verdade: não há linguagem mais adequada para realizar análise de dados do que **R**. Preferêncas individuais e outras conveniências podem levar a escolha de uma ou outra linguagem, mas não há como não concordar com o fato de que **R** possui as melhores ferramentas de *Data Wrangling* (preparação de dados), geração de gráficos, geração de relatórios e reproducibilidade.
+
+Além disso, **R** é mundialmente reconhecido por sua comunidade extremamente ativa e inclusiva. É a linguagen preferida na academia, tendo em vista que novas técnicas matemáticas, estatísticas, e/ou computacionais são implementadas primeiro em **R**. É também uma das liguagens mais usadas na indústria para Ciência de Dados, juntamente com Python. 
+
+Por esses motivos e por ser uma linguagem _open source_, dotada de um poderoso ambiente de gerenciamento de pacotes, a disseminação do uso de **R** em seus 20 anos de história foi extremamente rápida e acabou por relegar ao segundo plano ambientes de análise de dados e linguagens como SAS, SPSS e Stata. No **R**, você encontra pacotes para as mais diversas finalidades: desde pacotes que geram provas a partir de um banco de questões, passando por pacotes de preparação de dados, otimização matemática, Machine Learning, até pacotes para análise de áudio, criação de aplicativos, leitura e envio de emails.
+
+Hoje em dia, há diversos ambientes e linguagens utilizadas para Análise de Dados, como Python, Julia, Scala, SAS, etc. No entanto, nenhuma delas fornece a combinação de um excelente ecositema de gerenciamento de pacotes, capacidades estatísticas, opções de visualização e um poderoso IDE (Integrated Development Environment) - tudo implementado pela comunidade **R**. Por todas essas características, os benefícios ao aprender a linguagem **R** são realmente consideráveis.
+
+## Organização da Apostila {-}
+
+Este curso é dividido em 5 Módulos. O Módulo \@ref(m1) busca ambientar o aluno com os conceitos básicos da linguagem, passando pelo histórico, funcionalidades básicas e a estrutura dos objetos mais importantes no R.
+
+Os Módulos \@ref(m2) e \@ref(m3) são divididos sempre em 3 partes: leitura de dados, manipulação de dados e visualização. A cada Módulo, são apresentados novos pacotes para estas funcionalidades, com um nível um pouco mais profundo de especialização em relação ao módulo anterior. 
+
+O Módulo \@ref(m4) inicia-se com foco na manipulação de _strings_ e expressões regulares (REGEX) e finaliza aprsentando técnicas de produção de relatórios e reproducibilidade no **R**.
+
+Por fim, o Módulo \@ref(m5) apresenta um ferramental de análise econômica regional, interessante aos Pesquisadores do IPEA, público-alvo deste curso.
+
+
+\newpage
+\vspace*{5cm}
+\thispagestyle{empty}
+\begin{center} \Large \emph{For Katy  } \end{center}
+\vspace*{2cm}
+\begin{center} \Large \emph{Dla Jagody} \end{center}
+\vspace*{2cm}
+\begin{center} \Large \emph{F{\"u}r meine Katharina und alle unsere Kinder  } \end{center}
+
+
+## Sobre o autor {-}
+
+<!-- Around a single page (does not need to fill it) on the book ready by the end of September (aiming for 1st October submission of final manuscript to CRC Press). -->
+
+Allan V. C. Quadros é autor dos pacotes **R**, [emstreeR](https://www.github.com/allanvc/emstreeR) e [mRpostman![](./fig/mRpostman.png)](https://allanvc.github.io/mRpostman); Atualmente, atua como _Lead Data Scientist_ no Núcleo de Métodos Quantitativos (QUANT) do FNDE. Trabalha com Análise de Dados e Aprendizagem de Máquina, implementando soluções em R e Python para colocar a administração da educação brasileira no século XXI. Além do Bacharelado em Estatística (UnB, 2018), possui mestrado em Desenvolvimento Econômico pela Unicamp (2012) e Licenciatura em Geografia (2008) pela mesma universidade. Seus outros interesses são Statistical & Mathematical Finance, Análise de Clusters, Otimização, Machine Learning, Processos Estocásticos e Astroestatística. Mais informações sobre o autor podem ser encontradas em: https://allanvc.github.io.
+

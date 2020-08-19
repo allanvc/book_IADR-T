@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 2 Módulo II | Curso Introdutório de Análise de Dados em R utilizando Tidyverse</title>
+  <meta name="description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse, ministrado no IPEA entre março e abril de 2020." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 2 Módulo II | Curso Introdutório de Análise de Dados em R utilizando Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse, ministrado no IPEA entre março e abril de 2020." />
+  <meta name="github-repo" content="allanvc/curso-R-IPEA" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 2 Módulo II | Curso Introdutório de Análise de Dados em R utilizando Tidyverse" />
+  
+  <meta name="twitter:description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse, ministrado no IPEA entre março e abril de 2020." />
+  
+
+<meta name="author" content="Allan Vieira de Castro Quadros" />
+
+
+<meta name="date" content="2020-08-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="m1.html"/>
+<link rel="next" href="m3.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análise de Dados em R - Tidyverse</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bem-vindo!</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#por-que-r"><i class="fa fa-check"></i>Por que R ?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#organização-da-apostila"><i class="fa fa-check"></i>Organização da Apostila</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#sobre-o-autor"><i class="fa fa-check"></i>Sobre o autor</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="m1.html"><a href="m1.html"><i class="fa fa-check"></i><b>1</b> Módulo I</a><ul>
+<li class="chapter" data-level="1.1" data-path="m1.html"><a href="m1.html#primeiros-passos"><i class="fa fa-check"></i><b>1.1</b> Primeiros Passos</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="m1.html"><a href="m1.html#breve-histórico"><i class="fa fa-check"></i><b>1.1.1</b> Breve Histórico</a></li>
+<li class="chapter" data-level="1.1.2" data-path="m1.html"><a href="m1.html#instalação-do-r"><i class="fa fa-check"></i><b>1.1.2</b> Instalação do <strong>R</strong></a></li>
+<li class="chapter" data-level="1.1.3" data-path="m1.html"><a href="m1.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> Instalação do <strong>RStudio</strong></a></li>
+<li class="chapter" data-level="1.1.4" data-path="m1.html"><a href="m1.html#instalação-do-rtools-no-windows"><i class="fa fa-check"></i><b>1.1.4</b> Instalação do <strong>RTools</strong> no Windows</a></li>
+<li class="chapter" data-level="1.1.5" data-path="m1.html"><a href="m1.html#funcionalidades-básicas-do-r-e-do-rstudio"><i class="fa fa-check"></i><b>1.1.5</b> Funcionalidades Básicas do R e do RStudio</a></li>
+<li class="chapter" data-level="1.1.6" data-path="m1.html"><a href="m1.html#estrutura-da-linguagem-r"><i class="fa fa-check"></i><b>1.1.6</b> Estrutura da linguagem R</a></li>
+<li class="chapter" data-level="1.1.7" data-path="m1.html"><a href="m1.html#como-obter-ajuda"><i class="fa fa-check"></i><b>1.1.7</b> Como obter ajuda</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="m1.html"><a href="m1.html#estrutura-de-objetos-da-linguagem-r"><i class="fa fa-check"></i><b>1.2</b> Estrutura de Objetos da Linguagem R</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="m1.html"><a href="m1.html#vetores"><i class="fa fa-check"></i><b>1.2.1</b> Vetores</a></li>
+<li class="chapter" data-level="1.2.2" data-path="m1.html"><a href="m1.html#dataframes"><i class="fa fa-check"></i><b>1.2.2</b> Dataframes</a></li>
+<li class="chapter" data-level="1.2.3" data-path="m1.html"><a href="m1.html#referências-do-módulo"><i class="fa fa-check"></i><b>1.2.3</b> Referências do Módulo</a></li>
+<li class="chapter" data-level="1.2.4" data-path="m1.html"><a href="m1.html#exercícios"><i class="fa fa-check"></i><b>1.2.4</b> Exercícios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="m2.html"><a href="m2.html"><i class="fa fa-check"></i><b>2</b> Módulo II</a><ul>
+<li class="chapter" data-level="2.1" data-path="m2.html"><a href="m2.html#leitura-de-dados-no-r"><i class="fa fa-check"></i><b>2.1</b> Leitura de Dados no R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="m2.html"><a href="m2.html#o-tidyverse"><i class="fa fa-check"></i><b>2.1.1</b> O Tidyverse</a></li>
+<li class="chapter" data-level="2.1.2" data-path="m2.html"><a href="m2.html#leitura-e-exportação-de-dados-usando-readr"><i class="fa fa-check"></i><b>2.1.2</b> Leitura e Exportação de Dados usando <code>readr</code></a></li>
+<li class="chapter" data-level="2.1.3" data-path="m2.html"><a href="m2.html#escrita-e-exportação-de-dados"><i class="fa fa-check"></i><b>2.1.3</b> Escrita e exportação de dados</a></li>
+<li class="chapter" data-level="2.1.4" data-path="m2.html"><a href="m2.html#leitura-de-dados-oriundos-do-stata-sas-e-spss"><i class="fa fa-check"></i><b>2.1.4</b> Leitura de dados oriundos do Stata, SAS e SPSS</a></li>
+<li class="chapter" data-level="2.1.5" data-path="m2.html"><a href="m2.html#referências-da-seção"><i class="fa fa-check"></i><b>2.1.5</b> Referências da seção</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="m2.html"><a href="m2.html#manipulação-de-dados-com-dplyr"><i class="fa fa-check"></i><b>2.2</b> Manipulação de dados com <code>dplyr</code></a><ul>
+<li class="chapter" data-level="2.2.1" data-path="m2.html"><a href="m2.html#filtrando-linhas-com-filter"><i class="fa fa-check"></i><b>2.2.1</b> Filtrando linhas com <code>filter()</code></a></li>
+<li class="chapter" data-level="2.2.2" data-path="m2.html"><a href="m2.html#ordenando-linhas-com-arrange"><i class="fa fa-check"></i><b>2.2.2</b> Ordenando linhas com <code>arrange()</code></a></li>
+<li class="chapter" data-level="2.2.3" data-path="m2.html"><a href="m2.html#selecionando-colunas-com-select"><i class="fa fa-check"></i><b>2.2.3</b> Selecionando colunas com <code>select()</code></a></li>
+<li class="chapter" data-level="2.2.4" data-path="m2.html"><a href="m2.html#adicionando-novas-colunas-com-mutate"><i class="fa fa-check"></i><b>2.2.4</b> Adicionando novas colunas com <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.2.5" data-path="m2.html"><a href="m2.html#modificando-entradas-com-mutate-ou-transmute-case_when"><i class="fa fa-check"></i><b>2.2.5</b> Modificando entradas com <code>mutate()</code> ou <code>transmute()</code> + <code>case_when()</code></a></li>
+<li class="chapter" data-level="2.2.6" data-path="m2.html"><a href="m2.html#sumarizando-valores-com-summarise"><i class="fa fa-check"></i><b>2.2.6</b> Sumarizando valores com <code>summarise()</code></a></li>
+<li class="chapter" data-level="2.2.7" data-path="m2.html"><a href="m2.html#estrutura-do-dplyr"><i class="fa fa-check"></i><b>2.2.7</b> Estrutura do <code>dplyr</code></a></li>
+<li class="chapter" data-level="2.2.8" data-path="m2.html"><a href="m2.html#usando-o-pipe"><i class="fa fa-check"></i><b>2.2.8</b> Usando o Pipe <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="2.2.9" data-path="m2.html"><a href="m2.html#referências-da-seção-1"><i class="fa fa-check"></i><b>2.2.9</b> Referências da seção</a></li>
+<li class="chapter" data-level="2.2.10" data-path="m1.html"><a href="m1.html#exercícios"><i class="fa fa-check"></i><b>2.2.10</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="m2.html"><a href="m2.html#gráficos-com-ggplot2"><i class="fa fa-check"></i><b>2.3</b> Gráficos com <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="2.3.1" data-path="m2.html"><a href="m2.html#introdução"><i class="fa fa-check"></i><b>2.3.1</b> Introdução</a></li>
+<li class="chapter" data-level="2.3.2" data-path="m2.html"><a href="m2.html#a-gramática-de-gráficos"><i class="fa fa-check"></i><b>2.3.2</b> A gramática de gráficos</a></li>
+<li class="chapter" data-level="2.3.3" data-path="m2.html"><a href="m2.html#data-dados"><i class="fa fa-check"></i><b>2.3.3</b> Data (Dados)</a></li>
+<li class="chapter" data-level="2.3.4" data-path="m2.html"><a href="m2.html#a-função-ggplot"><i class="fa fa-check"></i><b>2.3.4</b> A função <code>ggplot()</code></a></li>
+<li class="chapter" data-level="2.3.5" data-path="m2.html"><a href="m2.html#aesthetics-elementos-estéticos-dos-gráficos"><i class="fa fa-check"></i><b>2.3.5</b> Aesthetics (elementos estéticos dos gráficos)</a></li>
+<li class="chapter" data-level="2.3.6" data-path="m2.html"><a href="m2.html#exemplos-para-aesthetics"><i class="fa fa-check"></i><b>2.3.6</b> Exemplos para <em>aesthetics</em></a></li>
+<li class="chapter" data-level="2.3.7" data-path="m2.html"><a href="m2.html#geoms"><i class="fa fa-check"></i><b>2.3.7</b> Geoms</a></li>
+<li class="chapter" data-level="2.3.8" data-path="m2.html"><a href="m2.html#exemplos-para-geoms"><i class="fa fa-check"></i><b>2.3.8</b> Exemplos para <em>Geoms</em></a></li>
+<li class="chapter" data-level="2.3.9" data-path="m2.html"><a href="m2.html#facetting"><i class="fa fa-check"></i><b>2.3.9</b> Facetting</a></li>
+<li class="chapter" data-level="2.3.10" data-path="m2.html"><a href="m2.html#títulos-rótulos-temas-e-legendas"><i class="fa fa-check"></i><b>2.3.10</b> Títulos, rótulos, temas e legendas</a></li>
+<li class="chapter" data-level="2.3.11" data-path="m2.html"><a href="m2.html#alterar-cores-e-paleta-de-cores"><i class="fa fa-check"></i><b>2.3.11</b> Alterar cores e paleta de cores</a></li>
+<li class="chapter" data-level="2.3.12" data-path="m2.html"><a href="m2.html#área-de-plotagem-e-tema"><i class="fa fa-check"></i><b>2.3.12</b> Área de Plotagem e Tema</a></li>
+<li class="chapter" data-level="2.3.13" data-path="m2.html"><a href="m2.html#referências-da-seção-2"><i class="fa fa-check"></i><b>2.3.13</b> Referências da seção</a></li>
+<li class="chapter" data-level="2.3.14" data-path="m2.html"><a href="m2.html#exercícios-1"><i class="fa fa-check"></i><b>2.3.14</b> Exercícios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="m3.html"><a href="m3.html"><i class="fa fa-check"></i><b>3</b> Módulo III</a><ul>
+<li class="chapter" data-level="3.1" data-path="m3.html"><a href="m3.html#acesso-a-bancos-de-dados-relacionais-com-dbplyr"><i class="fa fa-check"></i><b>3.1</b> Acesso a Bancos de Dados relacionais com <code>dbplyr</code></a><ul>
+<li class="chapter" data-level="3.1.1" data-path="m2.html"><a href="m2.html#introdução"><i class="fa fa-check"></i><b>3.1.1</b> Introdução</a></li>
+<li class="chapter" data-level="3.1.2" data-path="m3.html"><a href="m3.html#conectando-a-um-database"><i class="fa fa-check"></i><b>3.1.2</b> Conectando a um database</a></li>
+<li class="chapter" data-level="3.1.3" data-path="m3.html"><a href="m3.html#gerando-queries"><i class="fa fa-check"></i><b>3.1.3</b> Gerando queries</a></li>
+<li class="chapter" data-level="3.1.4" data-path="m3.html"><a href="m3.html#outros-pacotes-para-geração-de-mapas"><i class="fa fa-check"></i><b>3.1.4</b> Outros pacotes para geração de mapas</a></li>
+<li class="chapter" data-level="3.1.5" data-path="m2.html"><a href="m2.html#referências-da-seção"><i class="fa fa-check"></i><b>3.1.5</b> Referências da seção</a></li>
+<li class="chapter" data-level="3.1.6" data-path="m1.html"><a href="m1.html#exercícios"><i class="fa fa-check"></i><b>3.1.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="m3.html"><a href="m3.html#manipulação-de-dados-com-two-table-verbs---dplyr"><i class="fa fa-check"></i><b>3.2</b> Manipulação de dados com <em>Two-table verbs</em> - <code>dplyr</code></a><ul>
+<li class="chapter" data-level="3.2.1" data-path="m3.html"><a href="m3.html#mutating-joins"><i class="fa fa-check"></i><b>3.2.1</b> <em>Mutating joins</em></a></li>
+<li class="chapter" data-level="3.2.2" data-path="m3.html"><a href="m3.html#filtering-joins"><i class="fa fa-check"></i><b>3.2.2</b> <em>Filtering joins</em></a></li>
+<li class="chapter" data-level="3.2.3" data-path="m2.html"><a href="m2.html#referências-da-seção-1"><i class="fa fa-check"></i><b>3.2.3</b> Referências da seção</a></li>
+<li class="chapter" data-level="3.2.4" data-path="m2.html"><a href="m2.html#exercícios-1"><i class="fa fa-check"></i><b>3.2.4</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="m3.html"><a href="m3.html#análise-de-dados-geográficos-no-r"><i class="fa fa-check"></i><b>3.3</b> Análise de dados geográficos no <strong>R</strong></a><ul>
+<li class="chapter" data-level="3.3.1" data-path="m3.html"><a href="m3.html#introdução-1"><i class="fa fa-check"></i><b>3.3.1</b> Introdução</a></li>
+<li class="chapter" data-level="3.3.2" data-path="m3.html"><a href="m3.html#produção-de-mapas-no-r"><i class="fa fa-check"></i><b>3.3.2</b> Produção de Mapas no R</a></li>
+<li class="chapter" data-level="3.3.3" data-path="m3.html"><a href="m3.html#exportando-dados-geográficos"><i class="fa fa-check"></i><b>3.3.3</b> Exportando dados geográficos</a></li>
+<li class="chapter" data-level="3.3.4" data-path="m2.html"><a href="m2.html#referências-da-seção-2"><i class="fa fa-check"></i><b>3.3.4</b> Referências da seção</a></li>
+<li class="chapter" data-level="3.3.5" data-path="m3.html"><a href="m3.html#exercícios-2"><i class="fa fa-check"></i><b>3.3.5</b> Exercícios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="m4.html"><a href="m4.html"><i class="fa fa-check"></i><b>4</b> Módulo IV</a><ul>
+<li class="chapter" data-level="4.1" data-path="m4.html"><a href="m4.html#manipulação-de-strings-no-r-com-stringr"><i class="fa fa-check"></i><b>4.1</b> Manipulação de <em>strings</em> no R com <code>stringr</code></a><ul>
+<li class="chapter" data-level="4.1.1" data-path="m2.html"><a href="m2.html#introdução"><i class="fa fa-check"></i><b>4.1.1</b> Introdução</a></li>
+<li class="chapter" data-level="4.1.2" data-path="m4.html"><a href="m4.html#operações-com-caracteres-individuais"><i class="fa fa-check"></i><b>4.1.2</b> Operações com caracteres individuais</a></li>
+<li class="chapter" data-level="4.1.3" data-path="m4.html"><a href="m4.html#pattern-matching"><i class="fa fa-check"></i><b>4.1.3</b> <em>Pattern matching</em></a></li>
+<li class="chapter" data-level="4.1.4" data-path="m2.html"><a href="m2.html#referências-da-seção"><i class="fa fa-check"></i><b>4.1.4</b> Referências da seção</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="m4.html"><a href="m4.html#expressões-regulares-regex"><i class="fa fa-check"></i><b>4.2</b> Expressões Regulares (REGEX)</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="m3.html"><a href="m3.html#introdução-1"><i class="fa fa-check"></i><b>4.2.1</b> Introdução</a></li>
+<li class="chapter" data-level="4.2.2" data-path="m4.html"><a href="m4.html#exemplos-de-regex-usando-stringr"><i class="fa fa-check"></i><b>4.2.2</b> Exemplos de REGEX usando <code>stringr</code></a></li>
+<li class="chapter" data-level="4.2.3" data-path="m2.html"><a href="m2.html#referências-da-seção-1"><i class="fa fa-check"></i><b>4.2.3</b> Referências da seção</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="m4.html"><a href="m4.html#relatórios-e-pesquisa-reproduzível-com-rmarkdown"><i class="fa fa-check"></i><b>4.3</b> Relatórios e pesquisa reproduzível com <code>rmarkdown</code></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="m4.html"><a href="m4.html#introdução-2"><i class="fa fa-check"></i><b>4.3.1</b> Introdução</a></li>
+<li class="chapter" data-level="4.3.2" data-path="m4.html"><a href="m4.html#cabeçalho"><i class="fa fa-check"></i><b>4.3.2</b> Cabeçalho</a></li>
+<li class="chapter" data-level="4.3.3" data-path="m4.html"><a href="m4.html#formatação-de-texto"><i class="fa fa-check"></i><b>4.3.3</b> Formatação de Texto</a></li>
+<li class="chapter" data-level="4.3.4" data-path="m4.html"><a href="m4.html#inserção-de-figuras-externas"><i class="fa fa-check"></i><b>4.3.4</b> Inserção de figuras externas</a></li>
+<li class="chapter" data-level="4.3.5" data-path="m4.html"><a href="m4.html#inserção-de-links"><i class="fa fa-check"></i><b>4.3.5</b> Inserção de links</a></li>
+<li class="chapter" data-level="4.3.6" data-path="m4.html"><a href="m4.html#fórmulas-matemáticas"><i class="fa fa-check"></i><b>4.3.6</b> Fórmulas matemáticas</a></li>
+<li class="chapter" data-level="4.3.7" data-path="m4.html"><a href="m4.html#inserção-e-execução-de-códigos"><i class="fa fa-check"></i><b>4.3.7</b> Inserção e execução de códigos</a></li>
+<li class="chapter" data-level="4.3.8" data-path="m4.html"><a href="m4.html#tabelas-mais-sofisticadas"><i class="fa fa-check"></i><b>4.3.8</b> Tabelas mais sofisticadas</a></li>
+<li class="chapter" data-level="4.3.9" data-path="m2.html"><a href="m2.html#referências-da-seção-2"><i class="fa fa-check"></i><b>4.3.9</b> Referências da seção</a></li>
+<li class="chapter" data-level="4.3.10" data-path="m1.html"><a href="m1.html#exercícios"><i class="fa fa-check"></i><b>4.3.10</b> Exercícios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="m5.html"><a href="m5.html"><i class="fa fa-check"></i><b>5</b> Extra</a><ul>
+<li class="chapter" data-level="5.1" data-path="m5.html"><a href="m5.html#análise-econômica-regional-com-pacote-reat"><i class="fa fa-check"></i><b>5.1</b> Análise Econômica Regional com pacote <code>REAT</code></a><ul>
+<li class="chapter" data-level="5.1.1" data-path="m2.html"><a href="m2.html#introdução"><i class="fa fa-check"></i><b>5.1.1</b> Introdução</a></li>
+<li class="chapter" data-level="5.1.2" data-path="m5.html"><a href="m5.html#concentração-e-dispersão"><i class="fa fa-check"></i><b>5.1.2</b> Concentração e dispersão</a></li>
+<li class="chapter" data-level="5.1.3" data-path="m5.html"><a href="m5.html#especialização-regional-e-concentração-espacial-industrial"><i class="fa fa-check"></i><b>5.1.3</b> Especialização regional e concentração espacial industrial</a></li>
+<li class="chapter" data-level="5.1.4" data-path="m5.html"><a href="m5.html#crescimento-regional-anpalise-shift-share"><i class="fa fa-check"></i><b>5.1.4</b> Crescimento regional: anpalise <em>shift-share</em></a></li>
+<li class="chapter" data-level="5.1.5" data-path="m5.html"><a href="m5.html#aplicação-2"><i class="fa fa-check"></i><b>5.1.5</b> Aplicação</a></li>
+<li class="chapter" data-level="5.1.6" data-path="m2.html"><a href="m2.html#referências-da-seção"><i class="fa fa-check"></i><b>5.1.6</b> Referências da seção</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusão.html"><a href="conclusão.html"><i class="fa fa-check"></i>Conclusão</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Curso Introdutório de Análise de Dados em <strong>R</strong> utilizando Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="m2" class="section level1">
+<h1><span class="header-section-number"> 2</span> Módulo II</h1>
+<div id="leitura-de-dados-no-r" class="section level2">
+<h2><span class="header-section-number">2.1</span> Leitura de Dados no R</h2>
+<p>Até o momento, trabalhamos criando objetos a partir de dados informados via script ou console. No entanto, o mais comum quando se faz análise de dados, é ler dados a partir de fontes externas, como um arquivo .txt ou .csv, um banco de dados relacional (SQL) no servidor de nosso trabalho, ou ainda, a partir de páginas da internet. Nesta seção, veremos como ler bases de dados armazenadas localmente no computador.</p>
+<p>Eu costumo dizer que, em R, sempre há pelo menos 3 formas diferentes de realizar uma mesma tarefa. No caso caso da leitura de dados, isso não é diferente. o R possui diversos pacotes para realizar a leitura dos dados; uns focam na rapidez, outros na praticidade e outros, ainda, são feitos especificamente para manusear bases de dados massivas. Quanto a esse último aspecto, há de se reconhecer que o R não tem um gerenciamento de memória que permita ao usuário carregar bancos de dados muito grandes (na casa das 10 milhões de linhas mais ou menos). Isso é, de certa forma, proposital, uma vez que o R foi criado para tornar mais fácil a vida do usuário que lida com análise dados. Mas há que se ressaltar que, devido a sua comunidade extremamente ativa, vários pacotes foram e vem sendo desenvolvidos com o objetivo de melhorar a forma como o R lida com o armazenamento de objetos na memória.</p>
+<p>Neste curso, nos focaremos na utilização do pacote <code>readr</code>, por entendermos ser um meio termo entre praticidade e rapidez, considerando as alternativas do <code>base R</code> e da função <code>fread()</code> do pacote <code>data.table</code>.</p>
+<div id="o-tidyverse" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> O Tidyverse</h3>
+<p>O <code>readr</code> compõe um conjunto de pacotes chamado de <strong>Tidyverse</strong>.</p>
+<p><em>“The tidyverse is a set of packages that work with harmony because they share common data representtions and API design. The tidyverse package is designed to make it easy to install and load core packages from the tidyverse in a single command.”</em> * <strong>Hadley Wickham</strong> *</p>
+<div class="figure">
+<img src="fig/tidyverse2.png" width="150" alt="" />
+<p class="caption">Hexsticker do Tidyverse</p>
+</div>
+<p>Podemos definir o <em>Tidyverse</em>, então, como um <em>meta-package</em> que congrega uma coleção de diversos outros pacotes R voltados para importação, exploração, manipulação e visualização de dados. Vão desde pacotes para manipulação de strings, expressões regulares, datas, passando por pacotes de leitura e importação, manipulação e visualização de dados, até a geração de relatórios e criação de páginas web, dentre outras coisas.</p>
+<p>Esses pacotes buscam propiciar uma maior padronização e facilidade na forma de lidar com dados no R.</p>
+</div>
+<div id="leitura-e-exportação-de-dados-usando-readr" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Leitura e Exportação de Dados usando <code>readr</code></h3>
+<p>O objetivo do pacote <code>readr</code> é tornar mais fácil e amigável a leitura de bases de dados retangulares/tabulares (csv, txt e fwf) no R. Comparado às alternativas do <code>base R</code>, o <code>readr</code> é mais inteligente no sentido de tentar advinhar os formatos das colunas dos dados, ainda permitindo, se necessário, a especificação de padrões pelo usuário.</p>
+<p>As funções de leitura mais importantes no pacote são:</p>
+<ul>
+<li><code>read_csv()</code>: lê arquivos <code>.csv</code> ou <code>.txt</code> no formato americano, onde o separador de colunas é a vírgula;</li>
+<li><code>read_csv2()</code>: lê arquivos <code>.csv</code> ou <code>.txt</code> no formato pt-br, onde o separador de colunas é o ponto e vírgula;</li>
+<li><code>read_tsv()</code>: lê arquivos <code>.csv</code> ou <code>.txt</code>, onde o separador de colunas é o tab <code>\t</code>;</li>
+<li><code>read_table()</code>: lê arquivos <code>.txt</code>, onde o separador de colunas é é o espaço em branco`;</li>
+<li><code>read_delim()</code>: permite ler arquivos de diversas extensões, onde o usuário pode especificar o delimitador por meio do parâmetro <code>delim</code>.</li>
+</ul>
+<p>Vamos para a prática, utilizando dados editados a partir da base <a href="http://ibama.gov.br/flora-e-madeira/publicacoes"><em>Produção Madeireira de Espécies Nativas Brasileiras: 2012 a 2017</em></a> publicada pelo IBAMA. Há diversas bases nesse site, bem como scripts em R para facilitar a manipulação dos dados. Você pode baixar os dados. No entanto, como nosso objetivo é criar a experiência de leitua, editamos aleatoriamente essa base, reduzindo seu tamanho para 100 mil linhas, e a disponibilizamos neste <a href="https://raw.githubusercontent.com/allanvc/book_ADR-T/master/PA%20GF%202017%20jan-jun_editada.csv">link</a>. Uma vez na página, você pode salvá-la em seu computador clicando com o botão direito do mouse e depois em <code>Salvar como</code>.</p>
+<p>Note que os dados estão em um arquivo <code>.csv</code> no padrão norte-americano (colunas separadas por vírgulas <code>,</code>).</p>
+<p>Vamos fazer a leitura do arquivo que foi salvo em nosso computador.</p>
+<p><strong>DICA:</strong> No seu computador, o caminho para o arquivo será outro.</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="m2.html#cb172-1"></a><span class="kw">library</span>(readr)</span>
+<span id="cb172-2"><a href="m2.html#cb172-2"></a></span>
+<span id="cb172-3"><a href="m2.html#cb172-3"></a>tb_ibama &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file=</span><span class="st">&quot;C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">...</span><span class="ch">\\</span><span class="st">PA GF 2017 jan-jun.csv&quot;</span>)</span>
+<span id="cb172-4"><a href="m2.html#cb172-4"></a></span>
+<span id="cb172-5"><a href="m2.html#cb172-5"></a><span class="co"># ou utilizando a função mais genérica</span></span>
+<span id="cb172-6"><a href="m2.html#cb172-6"></a></span>
+<span id="cb172-7"><a href="m2.html#cb172-7"></a>tb_ibama &lt;-<span class="st"> </span><span class="kw">read_delim</span>(<span class="dt">file=</span><span class="st">&quot;C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">...</span><span class="ch">\\</span><span class="st">PA GF 2017 jan-jun.csv&quot;</span>,</span>
+<span id="cb172-8"><a href="m2.html#cb172-8"></a>                       <span class="dt">delim =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<p>Se você não quiser salvar a base em seu computador, lendo o aqruivo direto do site, você também pode. É só copiar o endereço do arquivo apresentado no browser e passar para o argumento <code>file</code>. Caminhos passados para o argumento <code>file</code> começados em <code>http://</code>, <code>https://</code>, <code>ftp://</code>, ou <code>ftps://</code> resultam no download e leitura automática do arquivo.</p>
+<pre><code>## Parsed with column specification:
+## cols(
+##   X1 = col_double(),
+##   TIPO_GF = col_character(),
+##   STATUS_GF = col_character(),
+##   UF_REMETENTE = col_character(),
+##   MUNICÍPIO_REMETENTE = col_character(),
+##   TIPO_DESTINO = col_character(),
+##   CEPROF_DESTINATÁRIO = col_character(),
+##   UF_DESTINATÁRIO = col_character(),
+##   MUNICÍPIO_DESTINATÁRIO = col_character(),
+##   N_AUTORIZAÇÃO = col_character(),
+##   PROCESSO = col_character(),
+##   EMISSAO = col_double(),
+##   NOME_CIENTÍFICO = col_character(),
+##   PRODUTO = col_character(),
+##   VOLUME = col_double(),
+##   UNID = col_character(),
+##   PRECO_TOTAL = col_double()
+## )</code></pre>
+<!-- **DICA:** `readr` realmente facilita o processo de leitura de arquivos. Podemos, por exemplo, ler arquivos de dados que estão dentro de arquivos zipados `.zip`, como no exemplo abaixo. Arquivos na extensão `.zip`, `.gz`, `.bz2` ou `.xz` são automaticamente descompactados. -->
+<!-- ```{r, eval=FALSE} -->
+<!-- library(readr) -->
+<!-- tb_ibama <- read_csv(file="https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.zip") -->
+<!-- ``` -->
+<p>Note que assim que o arquivo é lido, as funções imprimem no console os nomes de cada coluna e as formas como elas foram lidas. Isto permite ao usuário checar se tudo ocorreu bem durante a leitura. Caso alguma coluna não tenha sido lida no formato em que você esperava, é só copiar a saída e rodar a função novamente, mudando a especificação daquela coluna em particular.</p>
+<p>Por exemplo, vamos alterar a coluna EMISSAO de ponto flutante/decimal <code>double</code> (que ocupa mais espaço na memória), para que seja lida como número inteiro <code>integer</code>. Fazemos essa especificação no argumento <code>col_types</code>.</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="m2.html#cb174-1"></a>tb_ibama &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv&quot;</span>,</span>
+<span id="cb174-2"><a href="m2.html#cb174-2"></a>                     <span class="dt">col_types =</span> <span class="kw">cols</span>(</span>
+<span id="cb174-3"><a href="m2.html#cb174-3"></a>                       <span class="dt">X1 =</span> <span class="kw">col_double</span>(),</span>
+<span id="cb174-4"><a href="m2.html#cb174-4"></a>                       <span class="dt">TIPO_GF =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb174-5"><a href="m2.html#cb174-5"></a>                       <span class="dt">STATUS_GF =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb174-6"><a href="m2.html#cb174-6"></a>                       <span class="dt">UF_REMETENTE =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb174-7"><a href="m2.html#cb174-7"></a>                       MUNICÍ<span class="dt">PIO_REMETENTE =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb174-8"><a href="m2.html#cb174-8"></a>                       <span class="dt">TIPO_DESTINO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb174-9"><a href="m2.html#cb174-9"></a>                       CEPROF_DESTINATÁ<span class="dt">RIO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb174-10"><a href="m2.html#cb174-10"></a>                       UF_DESTINATÁ<span class="dt">RIO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb174-11"><a href="m2.html#cb174-11"></a>                       MUNICÍPIO_DESTINATÁ<span class="dt">RIO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb174-12"><a href="m2.html#cb174-12"></a>                       N_AUTORIZAÇÃ<span class="dt">O =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb174-13"><a href="m2.html#cb174-13"></a>                       <span class="dt">PROCESSO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb174-14"><a href="m2.html#cb174-14"></a>                       <span class="dt">EMISSAO =</span> <span class="kw">col_integer</span>(),</span>
+<span id="cb174-15"><a href="m2.html#cb174-15"></a>                       NOME_CIENTÍ<span class="dt">FICO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb174-16"><a href="m2.html#cb174-16"></a>                       <span class="dt">PRODUTO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb174-17"><a href="m2.html#cb174-17"></a>                       <span class="dt">VOLUME =</span> <span class="kw">col_double</span>(),</span>
+<span id="cb174-18"><a href="m2.html#cb174-18"></a>                       <span class="dt">UNID =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb174-19"><a href="m2.html#cb174-19"></a>                       <span class="dt">PRECO_TOTAL =</span> <span class="kw">col_double</span>()</span>
+<span id="cb174-20"><a href="m2.html#cb174-20"></a>                       )</span>
+<span id="cb174-21"><a href="m2.html#cb174-21"></a>                     )</span></code></pre></div>
+<p>Uma vez lido o arquivo, podemos inspecioná-lo chamando o objeto criado, ou clicando no nome do objeto em nosso <em>environment</em>.</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="m2.html#cb175-1"></a>tb_ibama</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 17
+##        X1 TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI…
+##     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;           
+##  1  40644 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              São Miguel do G…
+##  2 153879 GF1     RECEBIDO  PA           Alenquer         EMPREENDIME… XXXX             PA              Tailândia       
+##  3  66847 GF1     RECEBIDO  PA           Rurópolis        EMPREENDIME… XXXX             PA              Rurópolis       
+##  4 319645 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Macaúbas        
+##  5  19190 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas     
+##  6 317951 GF2     RECEBIDO  PA           Breu Branco      EMPREENDIME… XXXX             PA              Breu Branco     
+##  7 201275 GF3I    RECEBIDO  PA           Benevides        EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz       
+##  8 275969 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana
+##  9 158094 GF3I    RECEBIDO  PA           Moju             EMPREENDIME… &lt;NA&gt;             SE              Aracaju         
+## 10 181537 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              Santa Bárbara d…
+## # … with 99,990 more rows, and 8 more variables: N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;,
+## #   NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+<p>Note que esse arquivo não se parece muito com o formato clássico de Dataframe que vimos no Módulo <a href="m1.html#m1">1</a>. Ele na verdade é um novo tipo de objeto, que segue a filosofia do <em>Tydeverse</em>, comentada na seção anterior. Temos aqui um <code>tibble</code>, que nada mais é que um Dataframe mais amigável. Em termos gerais, a diferença de um Dataframe clássico para um <code>tibble</code> está principalmente nas informações que nos são apresentadas quando imprimimos o conteúdo do objeto no console. Diferentemente do Dataframe, um <code>tibble</code> nos apresenta apenas as 10 primeiras linhas da tabela, os tipos das colunas, e apenas o conteúdo das colunas que cabem em nossa tela.</p>
+<p>Uma outra diferença é no resultado ao executarmos uma identificação. Ainda podemos utilizar <code>[indice_linhas, indice_colunas]</code> ou <code>nome_dataframe$nome_coluna</code>. A questão é que indexações com chaves, retornaram um <code>tibble</code>, mesmo que a operação resulte em uma única coluna. Já a indexação via <code>$</code>, retornará um vetor. Resumindo, a primeira não altera o tipo de objeto - continuamos com um <code>tibble</code>. O A segunda altera o tipo de objeto.</p>
+<p>Teste isso na prática:</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="m2.html#cb177-1"></a>tb_ibama[,<span class="st">&quot;TIPO_GF&quot;</span>] <span class="co"># ou tb_ibama[,2]</span></span>
+<span id="cb177-2"><a href="m2.html#cb177-2"></a></span>
+<span id="cb177-3"><a href="m2.html#cb177-3"></a>tb_ibama<span class="op">$</span>TIPO_GF</span></code></pre></div>
+<p>Outras vantagens do <code>tibble</code> são:</p>
+<ul>
+<li>não precisarmos mais nos preocupar com <code>stringsAsFactors=FALSE</code>;</li>
+<li>ele funciona de forma muito mais fluida com os demais pacotes do tidyverse que utilizaremos mais a frente no curso;</li>
+</ul>
+<div id="alternativas" class="section level4">
+<h4><span class="header-section-number">2.1.2.1</span> Alternativas</h4>
+<p>Quando se trata de leitura de dados, há muitas alternativas no R. Embora não pertença ao escopo deste curso, sugerimos que você estude o funcionamento das funções da família <code>read.table()</code> do <code>base R</code>. Essas funções são mais lentas que as funções do pacote <code>readr</code>, mas apresentam maior flexibilidade em relação à especificação de parâmetros.</p>
+<p>No quesito grande bancos de dados, com milhões de observações, sugerimos a função <code>fread()</code> do pacote <code>data.table</code>. MAs essa velocidade vem com o preço de se ter que aprender um paradigma um pouco diferente de programação, mesmo sendo dentro do R.</p>
+<p>Muitas pessoas também tem interesse em ler dados que estão em planilhas ou abas de planilhas Excel em formatos <code>.xls</code> e <code>.xlsx</code>. Embora não seja a forma mais adequada de armazenar dados, é válido saber que existe uma alternativa para a leitura de dados do Excel. Leia sobre o pacote <code>readxl</code> e a função <code>read_excel()</code>.</p>
+</div>
+</div>
+<div id="escrita-e-exportação-de-dados" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> Escrita e exportação de dados</h3>
+<p>Apesar do nome, o pacote <code>readr</code>também possui funções para escrita de dados. Para exportarmos o resultado de nossas análises no R para uma tabela de extensão <code>.txt</code> ou <code>.csv</code>, por exemplo, vamos recorrer a funções bastante parecidas com as de leitura, alterando apenas os prefixos de <em>read</em> para <em>write</em>. Os sufixos, novamente, dependerão, do tipo de arquivo que se deseja gravar.</p>
+<p>As funções mais utilizadas são: <code>write.csv()</code>; <code>ẁrite_csv2</code>; <code>write_table()</code>; e <code>write.delim()</code>.</p>
+<p>Vamos alterar o arquivo <code>tb_ibama</code> para, então, exportarmos a nova versão como um novo arquivo <code>.csv</code> no padrão pt-br. Utilizando o conhecimento sobre indexação de objetos do Módulo <a href="m1.html#m1">1</a>, vamos substituir as 10 mil primeiras linhas da coluna <code>STATUS_GF</code> para <code>NÃO VERIFICADO</code>, e eliminar a primeira coluna, que era uma coluna de índices.</p>
+<p><strong>1º) mudando o status</strong></p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="m2.html#cb178-1"></a>tb_ibama[<span class="dv">1</span><span class="op">:</span><span class="dv">50000</span>, <span class="st">&quot;STATUS_GF&quot;</span>] &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;NÃO VERIFICADO&quot;</span>, <span class="dv">50000</span>)</span>
+<span id="cb178-2"><a href="m2.html#cb178-2"></a></span>
+<span id="cb178-3"><a href="m2.html#cb178-3"></a><span class="co"># ou</span></span>
+<span id="cb178-4"><a href="m2.html#cb178-4"></a>tb_ibama[<span class="dv">1</span><span class="op">:</span><span class="dv">50000</span>, <span class="dv">3</span>] &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;NÃO VERIFICADO&quot;</span>, <span class="dv">50000</span>)</span>
+<span id="cb178-5"><a href="m2.html#cb178-5"></a></span>
+<span id="cb178-6"><a href="m2.html#cb178-6"></a><span class="co"># ou</span></span>
+<span id="cb178-7"><a href="m2.html#cb178-7"></a>tb_ibama<span class="op">$</span>STATUS_GF[<span class="dv">1</span><span class="op">:</span><span class="dv">50000</span>] &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;NÃO VERIFICADO&quot;</span>, <span class="dv">50000</span>)</span></code></pre></div>
+<p><strong>2º) excluindo a primeira coluna</strong></p>
+<p>No R, temos uma palavra reservada pela linguagem que transforma os objetos ou elementos de um objeto em vazios. É a palavra <code>NULL</code>.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="m2.html#cb179-1"></a>tb_ibama[, <span class="st">&quot;X1&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="m2.html#cb180-1"></a><span class="co"># ou</span></span>
+<span id="cb180-2"><a href="m2.html#cb180-2"></a>tb_ibama[, <span class="dv">1</span>] &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb180-3"><a href="m2.html#cb180-3"></a></span>
+<span id="cb180-4"><a href="m2.html#cb180-4"></a><span class="co"># ou</span></span>
+<span id="cb180-5"><a href="m2.html#cb180-5"></a>tb_ibama_modif &lt;-<span class="st"> </span>tb_ibama[, <span class="dv">2</span><span class="op">:</span><span class="kw">ncol</span>(tb_ibama)]</span>
+<span id="cb180-6"><a href="m2.html#cb180-6"></a><span class="co"># substituimos a versão completa do tibble por uma versão que traz...</span></span>
+<span id="cb180-7"><a href="m2.html#cb180-7"></a><span class="co">#...apenas os dados da coluna 2 em diante</span></span></code></pre></div>
+<p><strong>3º) salvando o novo tibble em um arquivo</strong></p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="m2.html#cb181-1"></a><span class="kw">write_csv2</span>(<span class="dt">x=</span>tb_ibama,</span>
+<span id="cb181-2"><a href="m2.html#cb181-2"></a>           <span class="dt">path=</span><span class="st">&quot;C://caminho//...//tabela_ibama_alterada.csv&quot;</span>)</span>
+<span id="cb181-3"><a href="m2.html#cb181-3"></a></span>
+<span id="cb181-4"><a href="m2.html#cb181-4"></a><span class="co"># ou</span></span>
+<span id="cb181-5"><a href="m2.html#cb181-5"></a><span class="kw">write_delim</span>(<span class="dt">x=</span>tb_ibama,</span>
+<span id="cb181-6"><a href="m2.html#cb181-6"></a>            <span class="dt">path=</span><span class="st">&quot;C://caminho//...//tabela_ibama_alterada.csv&quot;</span>,</span>
+<span id="cb181-7"><a href="m2.html#cb181-7"></a>            <span class="dt">delim=</span><span class="st">&quot;;&quot;</span>)</span></code></pre></div>
+<p><strong>DICA:</strong> É muito comum termos dúvidas sobre quais são os prâmetros de uma função e como ela trabalha. Não se esqueça de sempre consultar o <em>Help</em> do R, ou de digitar o <code>nome_da_função</code> do Console, para ver todos os seus parâmetros.</p>
+</div>
+<div id="leitura-de-dados-oriundos-do-stata-sas-e-spss" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> Leitura de dados oriundos do Stata, SAS e SPSS</h3>
+<p>Nos vimos que nesses 20 anos de história, o <strong>R</strong> cresceu consideravelmente. Durante esse tempo, diversos pesquisadores e profissionais das mais diversas áreas migraram para o R, oriundos principalmente de Stata, SAS e SPSS. Ao encarar o custo da mudança, muitas pessoas se deparam com o desafio de “traduzir” seus scripts de uma linguagem para outra, bem como de lerem dados escritos ou armazenados em extensões usadas por aquelas linguagens.</p>
+<p>A instalação padrão do R já oferece uma biblioteca para ler bases de dados oriundas de outras linguagens. O nome do pacote faz todo o sentido: <code>foreign</code>. Ele traz diversas funções que tornam simples a importação. Em complemento, recomenda-se a instalação e utilização do pacote <code>HMisc</code> também.</p>
+<p>A seguir, apresentamos apenas algumas ideias sobre como lidar com datasets “estrangeiros” no R:</p>
+<ul>
+<li>SPSS:</li>
+</ul>
+<pre class="sas"><code># salvando o dataset no SPSS no formato transport (XPORT)
+get file=&#39;C:/meus_dados.sav&#39;.
+export outfile=&#39;C:/meus_dados.por&#39;.</code></pre>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="m2.html#cb183-1"></a><span class="co"># no R</span></span>
+<span id="cb183-2"><a href="m2.html#cb183-2"></a><span class="co"># install.packages(&quot;Hmisc&quot;) # caso necessário</span></span>
+<span id="cb183-3"><a href="m2.html#cb183-3"></a><span class="kw">library</span>(Hmisc)</span>
+<span id="cb183-4"><a href="m2.html#cb183-4"></a>df &lt;-<span class="st"> </span><span class="kw">spss.get</span>(<span class="st">&quot;C:/meus_dados_SPSS.por&quot;</span>, <span class="dt">use.value.labels=</span><span class="ot">TRUE</span>)</span>
+<span id="cb183-5"><a href="m2.html#cb183-5"></a><span class="co"># use.value.labels=TRUE converte os valores dos rótulos em factors</span></span></code></pre></div>
+<ul>
+<li>SAS:</li>
+</ul>
+<pre class="sas"><code># salva o dataset SAS no transport format (XPORT)
+libname out xport &#39;C:/meus_dados_SAS.xpt&#39;;
+data out.mydata;
+set sasuser.mydata;
+run;</code></pre>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="m2.html#cb185-1"></a><span class="co"># in R</span></span>
+<span id="cb185-2"><a href="m2.html#cb185-2"></a><span class="kw">library</span>(Hmisc)</span>
+<span id="cb185-3"><a href="m2.html#cb185-3"></a>mydata &lt;-<span class="st"> </span><span class="kw">sasxport.get</span>(<span class="st">&quot;C:/meus_dados_SAS.xpt&quot;</span>)</span>
+<span id="cb185-4"><a href="m2.html#cb185-4"></a><span class="co"># as variaveis do tipo character serão convertidas para factors</span></span></code></pre></div>
+<ul>
+<li>Stata:</li>
+</ul>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="m2.html#cb186-1"></a><span class="kw">library</span>(foreign)</span>
+<span id="cb186-2"><a href="m2.html#cb186-2"></a>mydata &lt;-<span class="st"> </span><span class="kw">read.dta</span>(<span class="st">&quot;C:/meus_dados_stata.dta&quot;</span>)</span></code></pre></div>
+<hr />
+</div>
+<div id="referências-da-seção" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Referências da seção</h3>
+<ul>
+<li><p><em>Quick R website</em>. (2020). URL <a href="https://www.statmethods.net/">https://www.statmethods.net/</a>.</p></li>
+<li><p>Wickham, H.; Hester, J.; François R. (2018). <em>readr: Read Rectangular Text Data</em>. R package version 1.3.1. URL <a href="https://readr.tidyverse.org/index.html">https://CRAN.R-project.org/package=readr</a>.</p></li>
+<li><p>____. (2020). <em>readr official website</em>. URL <a href="https://readr.tidyverse.org/index.html">https://readr.tidyverse.org/index.html</a>.</p></li>
+<li><p>Wickham, H.; Grolemund, G. (2016). <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. O’Reilly Media. december 2016. 522 pages. Disponível em: <a href="https://www.r4ds.co.nz">https://www.r4ds.co.nz</a>.</p></li>
+</ul>
+<hr />
+<hr />
+</div>
+</div>
+<div id="manipulação-de-dados-com-dplyr" class="section level2">
+<h2><span class="header-section-number">2.2</span> Manipulação de dados com <code>dplyr</code></h2>
+<p>Nesta seção, trataremos do pacote <code>dplyr</code>, que é um dos pacotes mais importantes da coleção <em>tidyverse</em>. Ele traz uma “gramática” específica de manipulação de dados, provendo um conjunto de funções que ajudam a resolver os desafios mais comuns na manipulação de dados. O objetivo é que você se familiarize com as funções do pacote <code>dplyr</code>; com as tarefas que elas executam; e veja exemplos de como aplicá-las a <em>data.frames</em>.</p>
+<!-- Além das funções básicas de **dplyr**, teremos um enfoque na utilização do pacote **dplyr** para trabalhar com bancos de dados relacionais **SQL** em conjunto com os pacotes **DBI** e **dbplyr**. -->
+<!-- Serão utilizados os conteúdos dos *vignettes* dos pacotes **dplyr** e **dbplyr** disponíveis no próprio **R** e em http://dplyr.tidyverse.org/articles/dplyr.html e http://dbplyr.tidyverse.org/articles/dbplyr.html. -->
+<p>Conforme os próprios autores do pacote apontam, quando trabalhamos com dados, nós precisamos:</p>
+<ul>
+<li><p>Descobrir o que desejamos fazer;</p></li>
+<li><p>Descrever essas tarefas na forma de um programa de computador;</p></li>
+<li><p>Executar o programa.</p></li>
+</ul>
+<p>O pacote <code>dplyr</code> torna estes passos mais rápidos e fáceis de executar, pois:</p>
+<ul>
+<li><p>ao invés de disponibilizar uma imensidão de funções, igual temos no <em>R base</em> e outros pacotes, ele restringe nossas opções e com isso nos ajuda a reciocinar de forma mais direta sobre o que desejamos e podemos fazer com os dados;</p></li>
+<li><p>provém “verbos” (ou funções) mais simples, ou seja, funções que correspondem às tarefas mais comuns de manipulação de dados, ajudando-nos assim a traduzir pensamentos em código;</p></li>
+<li><p>utiliza backends (códigos de final de processo, ou seja, mais próximos ao usuário) eficientes, de modo que gastamos menos tempo esperando pelo computador.</p></li>
+</ul>
+<p>O pacote <code>dplyr</code> proporciona uma função para cada “verbo” considerado importante em manipulação de dados:</p>
+<ul>
+<li><p><code>filter()</code> para selecionar “casos” baseados em seus valores;</p></li>
+<li><p><code>arrange()</code> para reordenar os “casos”;</p></li>
+<li><p><code>select()</code> e rename() para selecionar variáveis baseadas em seus nomes;</p></li>
+<li><p><code>mutate()</code> e <code>transmute()</code> para adicionar novas variáveis que são funções de variáveis já existentes nos dados;</p></li>
+<li><p><code>summarise()</code> ou <code>summarize()</code> para condensar multiplos valores em um único;</p></li>
+<li><p><code>group_by()</code> embora não seja considerado um dos “verbos”, serve para agruparmos os dados em torno de uma ou mais variáveis. As funções consideradas “verbos” podem ser utilizadas antes ou após o agrupamentodos dados.</p></li>
+</ul>
+<p>Veremos agora alguns exemplos de aplicação destas funções.</p>
+<p>Vamos utilizar o mesmo dataset sobre produção madeireira que utilizamos na seção de leitura e exportação de dados. Ele possui 100.000 mil linhas e 17 colunas.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="m2.html#cb187-1"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb187-2"><a href="m2.html#cb187-2"></a></span>
+<span id="cb187-3"><a href="m2.html#cb187-3"></a><span class="kw">dim</span>(tb_ibama)</span></code></pre></div>
+<pre><code>## [1] 100000     16</code></pre>
+<p>Note que pelo <em>print</em> que temos novamente um <em>tibble</em>, que é uma forma moderna de data.frame implementada pelo pessoal do <strong>tidyverse</strong> . Este formato é particularmente útil para grandes <em>datasets</em> porque só é impresso na tela as primeiras linhas e diversos resumos/informações sobre nossas variáveis. Para converter data.frames em tibbles, usamos <code>as_tibble()</code>.</p>
+<div id="filtrando-linhas-com-filter" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Filtrando linhas com <code>filter()</code></h3>
+<p><code>filter()</code> permite fazer um <em>subset</em> das linhas de um tibble/dataframe. Como todos os verbos simples de <code>dplyr</code>, o primeiro argumento será um <em>tibble</em> (ou data.frame). O segundo argumento e os subsequentes se referem a variáveis dentro do data.frame, em que se selecionam as linhas onde a expressão é verdadeira (TRUE).</p>
+<p>Vamos selecionar todos as linhas em que o tipo de destino das madeiras é o consumidor final, na cidade de Brasil Novo:</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="m2.html#cb189-1"></a><span class="kw">filter</span>(tb_ibama, TIPO_DESTINO <span class="op">==</span><span class="st"> &quot;CONSUMIDOR_FINAL&quot;</span>, MUNICÍPIO_DESTINATÁRIO <span class="op">==</span><span class="st"> &quot;Brasil Novo&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 16
+##   TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI…
+##   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;           
+## 1 GF3     RECEBIDO… PA           Altamira         CONSUMIDOR_… &lt;NA&gt;             PA              Brasil Novo     
+## 2 GF3     RECEBIDO… PA           Altamira         CONSUMIDOR_… &lt;NA&gt;             PA              Brasil Novo     
+## 3 GF3     RECEBIDO… PA           Altamira         CONSUMIDOR_… &lt;NA&gt;             PA              Brasil Novo     
+## 4 GF3     RECEBIDO… PA           Altamira         CONSUMIDOR_… &lt;NA&gt;             PA              Brasil Novo     
+## # … with 8 more variables: N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;, NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;,
+## #   VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+<p><strong>DICA:</strong> No <code>base R</code>, isso seria equivalente ao código: <code>tb_ibama[tb_ibama$TIPO_DESTINO == "CONSUMIDOR_FINAL" &amp; tb_ibama$MUNICÌPIO_DESTINATÁRIO == "Brasil Novo", ]</code>.</p>
+</div>
+<div id="ordenando-linhas-com-arrange" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Ordenando linhas com <code>arrange()</code></h3>
+<p><code>arrange()</code> funciona de modo semelhante a <em>filter</em>, mas ao invés de filtrar e selecionar linhas, ele apenas as reordena de acordo com alguma condição que passamos. Essa função recebe um data.frame e um conjunto de <em>column names</em> pelo qual vai ordenar. Se você fornecer mais de um nome de coluna, cada coluna adicional passada será usada como critério de desempate.</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="m2.html#cb191-1"></a><span class="kw">arrange</span>(tb_ibama, UF_DESTINATÁRIO, MUNICÍPIO_DESTINATÁRIO, VOLUME)</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 16
+##    TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI…
+##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;           
+##  1 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
+##  2 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
+##  3 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
+##  4 GF3I    RECEBIDO  PA           Paragominas      EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
+##  5 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
+##  6 GF3I    RECEBIDO  PA           Ipixuna do Pará  EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
+##  7 GF3I    RECEBIDO  PA           Rondon do Pará   EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
+##  8 GF3I    RECEBIDO  PA           Novo Repartimen… EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
+##  9 GF3I    RECEBIDO  PA           Rondon do Pará   EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
+## 10 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
+## # … with 99,990 more rows, and 8 more variables: N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;,
+## #   NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+<p>Se quiser ordenar de forma decrescente, utilize a função <code>desc(nome_da_coluna)</code> dentro de <code>arrange()</code>. Isso seria particularmente interessante se você quisesse ordenar os dados na coluna final do maior volume para o maior.</p>
+</div>
+<div id="selecionando-colunas-com-select" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Selecionando colunas com <code>select()</code></h3>
+<p>Geralmente trabalhamos com grandes <em>datasets</em> com muitas colunas, mas somente algumas poucas colunas serão de nosso interesse. <code>select()</code> nos permite rapidamente focar num subconjunto dos dados. O melhor é que podemos utilizar operações - que normalmente só funcionam com as posições das colunas - direto nos nomes das variáveis.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="m2.html#cb193-1"></a><span class="co"># Seleção por nome</span></span>
+<span id="cb193-2"><a href="m2.html#cb193-2"></a><span class="kw">select</span>(tb_ibama, UF_REMETENTE, MUNICÍPIO_REMETENTE, TIPO_DESTINO)</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 3
+##    UF_REMETENTE MUNICÍPIO_REMETENTE TIPO_DESTINO         
+##    &lt;chr&gt;        &lt;chr&gt;               &lt;chr&gt;                
+##  1 PA           Santarém            EMPREENDIMENTO_CEPROF
+##  2 PA           Alenquer            EMPREENDIMENTO_CEPROF
+##  3 PA           Rurópolis           EMPREENDIMENTO_CEPROF
+##  4 PA           Tucuruí             EMPREENDIMENTO_IBAMA 
+##  5 PA           Paragominas         EMPREENDIMENTO_CEPROF
+##  6 PA           Breu Branco         EMPREENDIMENTO_CEPROF
+##  7 PA           Benevides           EMPREENDIMENTO_IBAMA 
+##  8 PA           Tucuruí             EMPREENDIMENTO_IBAMA 
+##  9 PA           Moju                EMPREENDIMENTO_IBAMA 
+## 10 PA           Santarém            EMPREENDIMENTO_CEPROF
+## # … with 99,990 more rows</code></pre>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="m2.html#cb195-1"></a><span class="co"># Selecionando todas as colunas num intervalo de colunas (inclusive)</span></span>
+<span id="cb195-2"><a href="m2.html#cb195-2"></a><span class="kw">select</span>(tb_ibama, UF_REMETENTE<span class="op">:</span>TIPO_DESTINO)</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 3
+##    UF_REMETENTE MUNICÍPIO_REMETENTE TIPO_DESTINO         
+##    &lt;chr&gt;        &lt;chr&gt;               &lt;chr&gt;                
+##  1 PA           Santarém            EMPREENDIMENTO_CEPROF
+##  2 PA           Alenquer            EMPREENDIMENTO_CEPROF
+##  3 PA           Rurópolis           EMPREENDIMENTO_CEPROF
+##  4 PA           Tucuruí             EMPREENDIMENTO_IBAMA 
+##  5 PA           Paragominas         EMPREENDIMENTO_CEPROF
+##  6 PA           Breu Branco         EMPREENDIMENTO_CEPROF
+##  7 PA           Benevides           EMPREENDIMENTO_IBAMA 
+##  8 PA           Tucuruí             EMPREENDIMENTO_IBAMA 
+##  9 PA           Moju                EMPREENDIMENTO_IBAMA 
+## 10 PA           Santarém            EMPREENDIMENTO_CEPROF
+## # … with 99,990 more rows</code></pre>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="m2.html#cb197-1"></a><span class="co"># Selecionando todas as clunas exceto aqueles em um intervalo (inclusive)</span></span>
+<span id="cb197-2"><a href="m2.html#cb197-2"></a><span class="kw">select</span>(tb_ibama, <span class="op">-</span>(UF_REMETENTE<span class="op">:</span>TIPO_DESTINO))</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 13
+##    TIPO_GF STATUS_GF CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI… N_AUTORIZAÇÃO PROCESSO EMISSAO NOME_CIENTÍFICO
+##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;          
+##  1 GF1     RECEBIDO  XXXX             PA              São Miguel do G… 272866/2016   2015/00…   42752 Chrysophyllum …
+##  2 GF1     RECEBIDO  XXXX             PA              Tailândia        272870/2016   2014/00…   42789 Couratari taua…
+##  3 GF1     RECEBIDO  XXXX             PA              Rurópolis        272887/2016   2013/00…   42762 Manilkara hube…
+##  4 GF3I    RECEBIDO  &lt;NA&gt;             BA              Macaúbas         &lt;NA&gt;          &lt;NA&gt;       42900 Alexa grandifl…
+##  5 GF3     RECEBIDO  XXXX             PA              Paragominas      &lt;NA&gt;          &lt;NA&gt;       42746 Couratari stel…
+##  6 GF2     RECEBIDO  XXXX             PA              Breu Branco      3108/2016     2009/10…   42899 Eucalyptus pel…
+##  7 GF3I    RECEBIDO  &lt;NA&gt;             BA              Vera Cruz        &lt;NA&gt;          &lt;NA&gt;       42808 Manilkara hube…
+##  8 GF3I    RECEBIDO  &lt;NA&gt;             BA              Feira de Santana &lt;NA&gt;          &lt;NA&gt;       42860 Sclerolobium t…
+##  9 GF3I    RECEBIDO  &lt;NA&gt;             SE              Aracaju          &lt;NA&gt;          &lt;NA&gt;       42790 Hymenolobium e…
+## 10 GF1     RECEBIDO  XXXX             PA              Santa Bárbara d… 272861/2016   2015/00…   42798 Hymenaea courb…
+## # … with 99,990 more rows, and 4 more variables: PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+<p><strong>DICA:</strong> Existem <em>helper functions</em> que podemos usar dentro de <code>select()</code>. São funções que lembram o funcionamento de uma <em>regular expression</em> (conceito que veremos no Módulo <a href="m3.html#m3">3</a>) para identificarmos nomes de colunas que atendem a determinado critério. São muito úteis com grandes datasets: <code>starts_with()</code>, <code>ends_with()</code>, <code>matches()</code> e <code>contains()</code>.</p>
+<p>Vamos por exemplo selecionar todas as colunas que começam com UF:</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="m2.html#cb199-1"></a><span class="kw">select</span>(tb_ibama, <span class="kw">starts_with</span>(<span class="st">&quot;UF&quot;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 2
+##    UF_REMETENTE UF_DESTINATÁRIO
+##    &lt;chr&gt;        &lt;chr&gt;          
+##  1 PA           PA             
+##  2 PA           PA             
+##  3 PA           PA             
+##  4 PA           BA             
+##  5 PA           PA             
+##  6 PA           PA             
+##  7 PA           BA             
+##  8 PA           BA             
+##  9 PA           SE             
+## 10 PA           PA             
+## # … with 99,990 more rows</code></pre>
+<p><code>select()</code> pode ser usada inclusive para renomear variáveis:</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="m2.html#cb201-1"></a><span class="kw">select</span>(tb_ibama, <span class="dt">MUN_REMETENTE =</span> MUNICÍPIO_REMETENTE)</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 1
+##    MUN_REMETENTE
+##    &lt;chr&gt;        
+##  1 Santarém     
+##  2 Alenquer     
+##  3 Rurópolis    
+##  4 Tucuruí      
+##  5 Paragominas  
+##  6 Breu Branco  
+##  7 Benevides    
+##  8 Tucuruí      
+##  9 Moju         
+## 10 Santarém     
+## # … with 99,990 more rows</code></pre>
+<p>A nova variável será chamada <em>MUN_REMETENTE</em> e receberá toda a informação da original <em>MUNICÍPIO_REMETENTE</em>.</p>
+<p>No entanto, <code>select()</code> “abandona” todas as demais variáveis quando você faz uma renomeação. O melhor então é usar <code>rename()</code>:</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="m2.html#cb203-1"></a><span class="kw">rename</span>(tb_ibama, <span class="dt">MUN_REMETENTE =</span> MUNICÍPIO_REMETENTE)</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 16
+##    TIPO_GF STATUS_GF UF_REMETENTE MUN_REMETENTE TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI…
+##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;           
+##  1 GF1     RECEBIDO  PA           Santarém      EMPREENDIME… XXXX             PA              São Miguel do G…
+##  2 GF1     RECEBIDO  PA           Alenquer      EMPREENDIME… XXXX             PA              Tailândia       
+##  3 GF1     RECEBIDO  PA           Rurópolis     EMPREENDIME… XXXX             PA              Rurópolis       
+##  4 GF3I    RECEBIDO  PA           Tucuruí       EMPREENDIME… &lt;NA&gt;             BA              Macaúbas        
+##  5 GF3     RECEBIDO  PA           Paragominas   EMPREENDIME… XXXX             PA              Paragominas     
+##  6 GF2     RECEBIDO  PA           Breu Branco   EMPREENDIME… XXXX             PA              Breu Branco     
+##  7 GF3I    RECEBIDO  PA           Benevides     EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz       
+##  8 GF3I    RECEBIDO  PA           Tucuruí       EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana
+##  9 GF3I    RECEBIDO  PA           Moju          EMPREENDIME… &lt;NA&gt;             SE              Aracaju         
+## 10 GF1     RECEBIDO  PA           Santarém      EMPREENDIME… XXXX             PA              Santa Bárbara d…
+## # … with 99,990 more rows, and 8 more variables: N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;,
+## #   NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+</div>
+<div id="adicionando-novas-colunas-com-mutate" class="section level3">
+<h3><span class="header-section-number">2.2.4</span> Adicionando novas colunas com <code>mutate()</code></h3>
+<p>Além de selecionar conjuntos de colunas existentes, é geralmente útil adicionar novas colunas que são funções de colunas já presentes no tibble/dataframe. Veja um exemplo com <code>mutate()</code>, onde queremos calcular o preço por unidade de volume:</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="m2.html#cb205-1"></a><span class="kw">mutate</span>(tb_ibama,</span>
+<span id="cb205-2"><a href="m2.html#cb205-2"></a>  <span class="dt">preco_unidade =</span> PRECO_TOTAL <span class="op">/</span><span class="st"> </span>VOLUME,</span>
+<span id="cb205-3"><a href="m2.html#cb205-3"></a>)</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 17
+##    TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI…
+##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;           
+##  1 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              São Miguel do G…
+##  2 GF1     RECEBIDO  PA           Alenquer         EMPREENDIME… XXXX             PA              Tailândia       
+##  3 GF1     RECEBIDO  PA           Rurópolis        EMPREENDIME… XXXX             PA              Rurópolis       
+##  4 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Macaúbas        
+##  5 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas     
+##  6 GF2     RECEBIDO  PA           Breu Branco      EMPREENDIME… XXXX             PA              Breu Branco     
+##  7 GF3I    RECEBIDO  PA           Benevides        EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz       
+##  8 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana
+##  9 GF3I    RECEBIDO  PA           Moju             EMPREENDIME… &lt;NA&gt;             SE              Aracaju         
+## 10 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              Santa Bárbara d…
+## # … with 99,990 more rows, and 9 more variables: N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;,
+## #   NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;, preco_unidade &lt;dbl&gt;</code></pre>
+<p><code>mutate()</code> nos permite ainda nos referir a colunas que acabamos de criar no mesmo comando. Vamos salvar esta alteração em um novo <em>tibble</em>, chamado <code>tb_ibama2</code></p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="m2.html#cb207-1"></a>tb_ibama2 &lt;-<span class="st"> </span><span class="kw">mutate</span>(tb_ibama,</span>
+<span id="cb207-2"><a href="m2.html#cb207-2"></a>  <span class="dt">preco_unidade =</span> PRECO_TOTAL <span class="op">/</span><span class="st"> </span>VOLUME,</span>
+<span id="cb207-3"><a href="m2.html#cb207-3"></a>  <span class="dt">preco_unidade_vezes_1000 =</span> preco_unidade <span class="op">*</span><span class="st"> </span><span class="dv">1000</span></span>
+<span id="cb207-4"><a href="m2.html#cb207-4"></a>)</span></code></pre></div>
+<p>Se só nos interessarem as novas variáveis, usaríamos <em>transmute()</em>:</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="m2.html#cb208-1"></a><span class="kw">transmute</span>(tb_ibama,</span>
+<span id="cb208-2"><a href="m2.html#cb208-2"></a>  <span class="dt">preco_unidade =</span> PRECO_TOTAL <span class="op">/</span><span class="st"> </span>VOLUME,</span>
+<span id="cb208-3"><a href="m2.html#cb208-3"></a>  <span class="dt">preco_unidade_vezes_1000 =</span> preco_unidade <span class="op">*</span><span class="st"> </span><span class="dv">1000</span></span>
+<span id="cb208-4"><a href="m2.html#cb208-4"></a>)</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 2
+##    preco_unidade preco_unidade_vezes_1000
+##            &lt;dbl&gt;                    &lt;dbl&gt;
+##  1         167.                   166928.
+##  2         167.                   166869.
+##  3         180.                   180123.
+##  4         492.                   492249.
+##  5         167.                   167010.
+##  6          68.9                   68890.
+##  7         356.                   356196.
+##  8         356.                   356076.
+##  9         796.                   796081.
+## 10         207.                   207400.
+## # … with 99,990 more rows</code></pre>
+</div>
+<div id="modificando-entradas-com-mutate-ou-transmute-case_when" class="section level3">
+<h3><span class="header-section-number">2.2.5</span> Modificando entradas com <code>mutate()</code> ou <code>transmute()</code> + <code>case_when()</code></h3>
+<p><code>case_when()</code> é uma função do pacote <code>dplyr</code> que nos permite modificar as variáveis a partir de uma sequência de condições que devem ser respeitadas.</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb210-1"><a href="m2.html#cb210-1"></a></span>
+<span id="cb210-2"><a href="m2.html#cb210-2"></a><span class="ex">SE</span> CONDIÇÃO1 VERDADEIRA ~ FAÇA TAL COISA<span class="kw">;</span></span>
+<span id="cb210-3"><a href="m2.html#cb210-3"></a><span class="ex">SEN</span>ÃO ~ FAÇA OUTRA COISA</span></code></pre></div>
+<p>Ela substitui as estruturas condicionais nativas do R (função <code>ifelse()</code>) e é inspirada na declaração equivalente em <em>SQL</em> <code>CASE WHEN</code>. Os argumentos da função <code>case_when()</code> obedecem à seguinte estrutura: <code>operação condicional ~ novo valor</code>. No lado esquerdo do <code>~</code>, você tem a comparação a ser feita. No lado direito, temos o novo valor a ser atribuído caso o resultado da comparação seja <code>TRUE</code>. Você pode tratar, inclusive, mais de uma condição, desde que parta do caso mais específico para o mais geral.</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="m2.html#cb211-1"></a><span class="kw">case_when</span>(</span>
+<span id="cb211-2"><a href="m2.html#cb211-2"></a>  condição1 <span class="op">~</span><span class="st"> &quot;novo_valor1&quot;</span>,</span>
+<span id="cb211-3"><a href="m2.html#cb211-3"></a>  condição2 <span class="op">~</span><span class="st"> &quot;novo_valor2&quot;</span>,</span>
+<span id="cb211-4"><a href="m2.html#cb211-4"></a>  condição3 <span class="op">~</span><span class="st"> &quot;novo_valor3&quot;</span>,</span>
+<span id="cb211-5"><a href="m2.html#cb211-5"></a>  <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;valor para os demais casos não atendidos pelas condições acima&quot;</span></span>
+<span id="cb211-6"><a href="m2.html#cb211-6"></a>)</span></code></pre></div>
+<p>Geralmente, no contexto de análise de dados com <code>dplyr</code>, utilizamos <code>case_when()</code> dentro de uma função <code>mutate()</code> ou <code>transmute</code> (que traz a apenas a nova coluna criada), uma vez que pretendemos alterar as entradas de uma coluna, alterando, portanto, a própria coluna.</p>
+<p>No <em>tibble</em> <strong><code>tb_ibama2</code></strong>, amos criar uma nova coluna de caracteres chamada <code>nivel_preco</code>, em que classificaremos um preco em: <code>alto</code> se <code>preco_unidade &gt; 500</code>; <code>baixo</code> se <code>preco_unidade &lt; 300</code> ou <code>razoavel</code> nos demais casos:</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="m2.html#cb212-1"></a><span class="kw">transmute</span>(tb_ibama2,</span>
+<span id="cb212-2"><a href="m2.html#cb212-2"></a>       <span class="dt">nivel_preco =</span></span>
+<span id="cb212-3"><a href="m2.html#cb212-3"></a>         <span class="kw">case_when</span>(</span>
+<span id="cb212-4"><a href="m2.html#cb212-4"></a>           preco_unidade <span class="op">&gt;</span><span class="st"> </span><span class="dv">500</span> <span class="op">~</span><span class="st"> &quot;alto&quot;</span>,</span>
+<span id="cb212-5"><a href="m2.html#cb212-5"></a>           preco_unidade <span class="op">&lt;</span><span class="st"> </span><span class="dv">300</span> <span class="op">~</span><span class="st"> &quot;baixo&quot;</span>,</span>
+<span id="cb212-6"><a href="m2.html#cb212-6"></a>           <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;razoável&quot;</span></span>
+<span id="cb212-7"><a href="m2.html#cb212-7"></a>         ))</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 1
+##    nivel_preco
+##    &lt;chr&gt;      
+##  1 baixo      
+##  2 baixo      
+##  3 baixo      
+##  4 razoável   
+##  5 baixo      
+##  6 baixo      
+##  7 razoável   
+##  8 razoável   
+##  9 alto       
+## 10 baixo      
+## # … with 99,990 more rows</code></pre>
+<p><strong>DICA:</strong> Se os valores das colunas recém criadas forem exibidos em notação exponencial (científica), execute o código abaixo para forçar a exibição das casas decimais em modo convencional e depois imprima novamente as colunas.</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="m2.html#cb214-1"></a><span class="co"># scipen é uma espécie de penalização para a utilização de notação em valores exponenciais</span></span>
+<span id="cb214-2"><a href="m2.html#cb214-2"></a><span class="co"># valores positivos penalizam a exibição em notação exponencial</span></span>
+<span id="cb214-3"><a href="m2.html#cb214-3"></a><span class="co"># valores negativos penalizam a exibição em notação fixa/regular</span></span>
+<span id="cb214-4"><a href="m2.html#cb214-4"></a><span class="kw">options</span>(<span class="dt">scipen=</span><span class="dv">999</span>)</span></code></pre></div>
+</div>
+<div id="sumarizando-valores-com-summarise" class="section level3">
+<h3><span class="header-section-number">2.2.6</span> Sumarizando valores com <code>summarise()</code></h3>
+<p>O último “verbo” de <code>dplyr</code> é <code>summarise()</code> (ou <code>summarize</code>). Ele colapsa um tibble/dataframe em uma única linha.</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="m2.html#cb215-1"></a><span class="kw">summarise</span>(tb_ibama2,</span>
+<span id="cb215-2"><a href="m2.html#cb215-2"></a>  <span class="dt">preco_total_medio =</span> <span class="kw">mean</span>(PRECO_TOTAL, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb215-3"><a href="m2.html#cb215-3"></a>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##   preco_total_medio
+##               &lt;dbl&gt;
+## 1             2138.</code></pre>
+<p><strong>DICA:</strong> O parâmetro <code>na.rm = TRUE</code> dentro da função <code>mean()</code> serve para que esta desconsidere os valores falatantes (<code>NA</code>) ao calcular a média. Do contrário, na existência de <em>missing values</em> <code>NA</code>, a função sempre retornará <code>NA</code>. Isso também vale para outras funções matemáticas de funcionamento vetorizado, como <code>sum()</code>, por exemplo.</p>
+<p>Dependendo do seu objetivo, pode ser mais útil utilizar o “verbo” <code>group_by()</code> que veremos mais a frente. Com ele poderemos calcular o preço médio por categoria, i.e. por Estado, Município, etc.</p>
+</div>
+<div id="estrutura-do-dplyr" class="section level3">
+<h3><span class="header-section-number">2.2.7</span> Estrutura do <code>dplyr</code></h3>
+<p>Note que a sintaxe e funcionamento de todos os verbos de <code>dplyr</code> apresentados até aqui são bem similares:</p>
+<ul>
+<li><p>o primeiro argumento é um tibble/dataframe;</p></li>
+<li><p>os argumentos subsequentes descrevem o que fazer com os dados. Podemos nos referir às colunas do tibble/dataframe diretamente sem a necessidade de usar <code>$</code> ou indexação por <code>[]</code>.</p></li>
+<li><p>o resultado é um novo tibble/dataframe.</p></li>
+</ul>
+<p>Juntas, essas propriedades facilitam encadear múltiplos passos simples para alcançar um resultado complexo. O restante do que <code>dplyr</code> faz, vem de aplicar as 5 funções que vimos até aqui a diferentes tipos de dados. Ao invpes de trabalharmos com dados desagregados, vamos passar a trabalhar agora com dados agrupados por uma ou mais variáveis.</p>
+<div id="operações-agrupadas" class="section level4">
+<h4><span class="header-section-number">2.2.7.1</span> Operações agrupadas</h4>
+<p>Os verbos de <code>dplyr</code> tornam-se ainda mais poderosos quando os aplicamos a grupos de observações dentro de um conjunto de dados. Fazemos isso com a função <code>group_by()</code>. Ela “quebra” o dataset em grupos específicos de linhas. No início, não vemos qualquer alteração. É como se elas ficassem em segundo plano. No entanto, ao aplicarmos algum dos verbos principais no dataset “alterado” por <code>group_by</code>, eles automaticamente serão aplicados por grupo ou “by group”.</p>
+<p>O uso de agrupamento afeta o resultado dos verbos principais da seguinte forma:</p>
+<ul>
+<li><p><code>select()</code> agrupado é o mesmo que não agrupado, exceto pelo fato que as variáveis de agrupamento são sempre preservadas.</p></li>
+<li><p><code>arrange()</code> agrupado é mesmo que não agrupado, a não ser que usemos <code>.by_group = TRUE</code>, caso em que ordena primeiro pelas variáveis de agrupamento;</p></li>
+<li><p><code>mutate()</code> e <code>filter()</code> são bastante úteis em conjunto com window functions (como <code>rank()</code> ou <code>min(x) == x</code>) (Ver vignette de “window-functions” do <code>dplyr</code>);</p></li>
+<li><p><code>summarise()</code> calcula o sumário para cada grupo.</p></li>
+</ul>
+<p>No exemplo a seguir, nós separamos o dataset por <code>PRODUTO</code>, contando o número de registros para cada um dos produtos (<code>count = n()</code>), computando a preço médio por produto (<code>preco_medio_produto = mean(preco_unidade, na.rm = TRUE</code>)).</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="m2.html#cb217-1"></a>by_produto &lt;-<span class="st"> </span><span class="kw">group_by</span>(tb_ibama2, PRODUTO)</span>
+<span id="cb217-2"><a href="m2.html#cb217-2"></a>preco_medio_produto &lt;-<span class="st"> </span><span class="kw">summarise</span>(</span>
+<span id="cb217-3"><a href="m2.html#cb217-3"></a>  by_produto,</span>
+<span id="cb217-4"><a href="m2.html#cb217-4"></a>  <span class="dt">count =</span> <span class="kw">n</span>(),</span>
+<span id="cb217-5"><a href="m2.html#cb217-5"></a>  <span class="dt">pmp =</span> <span class="kw">mean</span>(preco_unidade, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb217-6"><a href="m2.html#cb217-6"></a>)</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<p>Note que <code>summarise()</code> é normalmente utilizada com <strong>aggregate functions</strong>, as quais recebem um vetor de valores e retornam um único número. Há muito exemplos úteis do <em>base R</em> que podem ser utilizados, como <code>min()</code>, <code>max()</code>, <code>mean()</code>, <code>sum()</code>, <code>sd()</code>, <code>median()</code>, etc. <code>dplyr</code> fornece mais algumas outras bem úteis:</p>
+<ul>
+<li><code>n()</code>: número de observações no grupo atual;</li>
+<li><code>n_distinct(x)</code>: número de valores únicos em x;</li>
+<li><code>first(x)</code>, <code>last(x)</code> e <code>nth(x, n)</code> funcionam de forma similar a <code>x[1]</code>, <code>x[length(x)]</code> e <code>x[n]</code>, mas nos dão maior controle sobre resultado caso algum valor seja <em>missing</em>.</li>
+</ul>
+<p>Veja um exemplo em que usamos estas funções para encontrar o número de produtos distintos que seguem para cada possível destino e quantidade total de produtos que o Município recebe:</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="m2.html#cb219-1"></a>destinos &lt;-<span class="st"> </span><span class="kw">group_by</span>(tb_ibama2, MUNICÍPIO_DESTINATÁRIO)</span>
+<span id="cb219-2"><a href="m2.html#cb219-2"></a><span class="kw">summarise</span>(destinos,</span>
+<span id="cb219-3"><a href="m2.html#cb219-3"></a>  <span class="dt">n_produtos_distintos =</span> <span class="kw">n_distinct</span>(PRODUTO),</span>
+<span id="cb219-4"><a href="m2.html#cb219-4"></a>  <span class="dt">qte_total_produtos =</span> <span class="kw">n</span>()</span>
+<span id="cb219-5"><a href="m2.html#cb219-5"></a>)</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 1,452 x 3
+##    MUNICÍPIO_DESTINATÁRIO n_produtos_distintos qte_total_produtos
+##    &lt;chr&gt;                                 &lt;int&gt;              &lt;int&gt;
+##  1 Abaetetuba                                1                  1
+##  2 Abaiara                                   5                 15
+##  3 Açailândia                                6                 28
+##  4 Acajutiba                                 1                  1
+##  5 Acaraú                                    3                  3
+##  6 Acopiara                                  4                 12
+##  7 Açu                                       9                 94
+##  8 Adamantina                                1                  1
+##  9 Afogados da Ingazeira                     8                 29
+## 10 Afuá                                      3                 59
+## # … with 1,442 more rows</code></pre>
+<p>Quando agrupamos mais de uma variável, cada <code>summarise()</code> que executamos, elimina um nível do agrupamento.</p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="m2.html#cb222-1"></a>by_uf_mun_dest &lt;-<span class="st"> </span><span class="kw">group_by</span>(tb_ibama2, UF_DESTINATÁRIO, MUNICÍPIO_DESTINATÁRIO)</span>
+<span id="cb222-2"><a href="m2.html#cb222-2"></a>(qte_produtos_por_mun_dest   &lt;-<span class="st"> </span><span class="kw">summarise</span>(by_uf_mun_dest, <span class="dt">qte =</span> <span class="kw">n</span>()))</span></code></pre></div>
+<pre><code>## `summarise()` regrouping output by &#39;UF_DESTINATÁRIO&#39; (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 1,480 x 3
+## # Groups:   UF_DESTINATÁRIO [23]
+##    UF_DESTINATÁRIO MUNICÍPIO_DESTINATÁRIO   qte
+##    &lt;chr&gt;           &lt;chr&gt;                  &lt;int&gt;
+##  1 AL              Arapiraca                633
+##  2 AL              Atalaia                   44
+##  3 AL              Barra de São Miguel        1
+##  4 AL              Batalha                   14
+##  5 AL              Cacimbinhas                5
+##  6 AL              Cajueiro                  10
+##  7 AL              Campestre                  2
+##  8 AL              Campo Grande               4
+##  9 AL              Canapi                    16
+## 10 AL              Capela                     8
+## # … with 1,470 more rows</code></pre>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="m2.html#cb225-1"></a><span class="co"># notar que da descrição &quot;Groups:&quot; do tibble, ou seja, o número de variáveis de agrupamento vai diminuindo.</span></span>
+<span id="cb225-2"><a href="m2.html#cb225-2"></a></span>
+<span id="cb225-3"><a href="m2.html#cb225-3"></a>(qte_produtos_por_uf_dest   &lt;-<span class="st"> </span><span class="kw">summarise</span>(qte_produtos_por_mun_dest, <span class="dt">qte =</span> <span class="kw">sum</span>(qte)))</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 23 x 2
+##    UF_DESTINATÁRIO   qte
+##    &lt;chr&gt;           &lt;int&gt;
+##  1 AL               2025
+##  2 AM                  1
+##  3 BA               4458
+##  4 CE               3172
+##  5 DF                 24
+##  6 ES                269
+##  7 GO                418
+##  8 MA                736
+##  9 MG               1573
+## 10 MS                 49
+## # … with 13 more rows</code></pre>
+<!-- ISSO SE CHAMA PROGRSSIVELY ROLLING UP SUMMARIES IN A DATA FRAME -->
+<!-- COMO MEDIAS PONDERADAS E VARIANCIAS EH COMPLICADO FAZER ISSO PQ EH UM EQUIVOCO -->
+</div>
+<div id="cuidados-com-os-nomes-de-variáveis" class="section level4">
+<h4><span class="header-section-number">2.2.7.2</span> Cuidados com os nomes de variáveis</h4>
+<p>Uma das melhores características do pacote <code>dplyr</code> é que podemos nos referir as variáveis de um <em>tibble</em> ou dataframe como se fossem variáveis regulares (aquelas que estão no <em>Global Environment</em>). No entanto, a sintaxe de referência para nomes de colunas escondem algumas diferenças entre os verbos. Por exemplo, um nome ou valor de coluna passado para <code>select()</code> não tem o mesmo significado do que teria em <code>mutate()</code>.</p>
+<p>Veja formas equivalentes do ponto de vista de <strong>dplyr</strong>:</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="m2.html#cb228-1"></a><span class="kw">select</span>(tb_ibama2, TIPO_GF)</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 1
+##    TIPO_GF
+##    &lt;chr&gt;  
+##  1 GF1    
+##  2 GF1    
+##  3 GF1    
+##  4 GF3I   
+##  5 GF3    
+##  6 GF2    
+##  7 GF3I   
+##  8 GF3I   
+##  9 GF3I   
+## 10 GF1    
+## # … with 99,990 more rows</code></pre>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="m2.html#cb230-1"></a><span class="kw">select</span>(tb_ibama2, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 1
+##    TIPO_GF
+##    &lt;chr&gt;  
+##  1 GF1    
+##  2 GF1    
+##  3 GF1    
+##  4 GF3I   
+##  5 GF3    
+##  6 GF2    
+##  7 GF3I   
+##  8 GF3I   
+##  9 GF3I   
+## 10 GF1    
+## # … with 99,990 more rows</code></pre>
+<p>Se houver uma variável no <em>Global Environment</em> com o mesmo nome de uma coluna de nosso tibble/dataframe, o <code>dplyr</code> dará prioridade à variável que está no <em>tibble</em>.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="m2.html#cb232-1"></a>TIPO_GF &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb232-2"><a href="m2.html#cb232-2"></a><span class="kw">select</span>(tb_ibama2, TIPO_GF)</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 1
+##    TIPO_GF
+##    &lt;chr&gt;  
+##  1 GF1    
+##  2 GF1    
+##  3 GF1    
+##  4 GF3I   
+##  5 GF3    
+##  6 GF2    
+##  7 GF3I   
+##  8 GF3I   
+##  9 GF3I   
+## 10 GF1    
+## # … with 99,990 more rows</code></pre>
+<p>Esse comportamento somente se aplica aos nomes “crus” e às chamadas de seleção como <code>select(tibble, var1, var2, var3)</code> ou <code>var1:var3</code>. Em todos os outros casos, os nomes das colunas dos tibbles são preteridas às “variáveis soltas” no <em>Global Environment</em>.</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="m2.html#cb234-1"></a>var1 &lt;-<span class="st"> &quot;UF&quot;</span></span>
+<span id="cb234-2"><a href="m2.html#cb234-2"></a><span class="kw">select</span>(tb_ibama2, <span class="kw">starts_with</span>(var1))</span></code></pre></div>
+<pre><code>## # A tibble: 100,000 x 2
+##    UF_REMETENTE UF_DESTINATÁRIO
+##    &lt;chr&gt;        &lt;chr&gt;          
+##  1 PA           PA             
+##  2 PA           PA             
+##  3 PA           PA             
+##  4 PA           BA             
+##  5 PA           PA             
+##  6 PA           PA             
+##  7 PA           BA             
+##  8 PA           BA             
+##  9 PA           SE             
+## 10 PA           PA             
+## # … with 99,990 more rows</code></pre>
+<p>Note que neste útlimo caso, o <code>dplyr</code> olhou para o conteúdo da variável <code>var1</code> e não para o nome literal da variável.</p>
+</div>
+</div>
+<div id="usando-o-pipe" class="section level3">
+<h3><span class="header-section-number">2.2.8</span> Usando o Pipe <code>%&gt;%</code></h3>
+<p><strong>dplyr</strong> é funcional no sentido de que os chamados às funções não tem efeitos colaterais. Ou seja, você sempre precisa salvar seus resultados. Isso faz com que não tenhámos um código tão elegante, especialmente quando vamos fazer várias operações, uma de cada vez:</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="m2.html#cb236-1"></a><span class="co"># agrupando por UF_DESTINATÁRIO, MUNICÍPIO_DESTINATÁRIO</span></span>
+<span id="cb236-2"><a href="m2.html#cb236-2"></a>nivel1 &lt;-<span class="st"> </span><span class="kw">group_by</span>(tb_ibama2, UF_DESTINATÁRIO, MUNICÍPIO_DESTINATÁRIO)</span>
+<span id="cb236-3"><a href="m2.html#cb236-3"></a></span>
+<span id="cb236-4"><a href="m2.html#cb236-4"></a><span class="co"># selecionando apenas colunas PRODUTO, PRECO_TOTAL, preco_unidade</span></span>
+<span id="cb236-5"><a href="m2.html#cb236-5"></a>nivel2 &lt;-<span class="st"> </span><span class="kw">select</span>(nivel1, PRODUTO, PRECO_TOTAL, preco_unidade)</span>
+<span id="cb236-6"><a href="m2.html#cb236-6"></a></span>
+<span id="cb236-7"><a href="m2.html#cb236-7"></a><span class="co"># calculando quantidade total de produtos e valor total por MUNICÍPIO_DESTINATÁRIO</span></span>
+<span id="cb236-8"><a href="m2.html#cb236-8"></a>nivel3 &lt;-<span class="st"> </span><span class="kw">summarise</span>(nivel2,</span>
+<span id="cb236-9"><a href="m2.html#cb236-9"></a>  <span class="dt">qte_total_produtos =</span> <span class="kw">n</span>(),</span>
+<span id="cb236-10"><a href="m2.html#cb236-10"></a>  <span class="dt">valor_total =</span> <span class="kw">sum</span>(PRECO_TOTAL, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb236-11"><a href="m2.html#cb236-11"></a>)</span>
+<span id="cb236-12"><a href="m2.html#cb236-12"></a></span>
+<span id="cb236-13"><a href="m2.html#cb236-13"></a><span class="co"># filtrando Municípios com quantidade de produtos acima de 100 OU</span></span>
+<span id="cb236-14"><a href="m2.html#cb236-14"></a><span class="co"># ... valor total acima de R$ 2.000.000,00</span></span>
+<span id="cb236-15"><a href="m2.html#cb236-15"></a>nivel4 &lt;-<span class="st"> </span><span class="kw">filter</span>(nivel3, qte_total_produtos <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span> <span class="op">|</span><span class="st"> </span>valor_total <span class="op">&gt;</span><span class="st"> </span><span class="dv">2000000</span>)</span></code></pre></div>
+<p>Note que há muitos resultados intermediários que vamos salvando, quando na verdade só nos interessaria o final. Para resolver isso poderíamos ir chamando uma função dentro da outra:</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="m2.html#cb237-1"></a><span class="kw">filter</span>(</span>
+<span id="cb237-2"><a href="m2.html#cb237-2"></a>  <span class="kw">summarise</span>(</span>
+<span id="cb237-3"><a href="m2.html#cb237-3"></a>    <span class="kw">select</span>(</span>
+<span id="cb237-4"><a href="m2.html#cb237-4"></a>      <span class="kw">group_by</span>(tb_ibama2, UF_DESTINATÁRIO, MUNICÍPIO_DESTINATÁRIO),</span>
+<span id="cb237-5"><a href="m2.html#cb237-5"></a>      PRODUTO, PRECO_TOTAL, preco_unidade</span>
+<span id="cb237-6"><a href="m2.html#cb237-6"></a>    ),</span>
+<span id="cb237-7"><a href="m2.html#cb237-7"></a>    <span class="dt">qte_total_produtos =</span> <span class="kw">n</span>(),</span>
+<span id="cb237-8"><a href="m2.html#cb237-8"></a>    <span class="dt">valor_total =</span> <span class="kw">sum</span>(PRECO_TOTAL, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb237-9"><a href="m2.html#cb237-9"></a>  ),</span>
+<span id="cb237-10"><a href="m2.html#cb237-10"></a>  qte_total_produtos <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span> <span class="op">|</span><span class="st"> </span>valor_total <span class="op">&gt;</span><span class="st"> </span><span class="dv">2000000</span></span>
+<span id="cb237-11"><a href="m2.html#cb237-11"></a>)</span></code></pre></div>
+<p>Embora resolva o problema de salvar os objetos intermediários, esta abordagem é difícil de se ler os passos porque a ordem das operações se dá dentro para fora. Então, os argumentos acabam ficando longe da função propriamente dita. Para dar uma solução elegante ao problema, <strong>dplyr</strong> utiliza o operador pipe <code>%&gt;%</code> do pacote <code>magritrr</code>. <code>x %&gt;% f(y)</code> equivale a <code>f(x, y)</code>. Então, podemos utilizar esse operador para reescrever múltiplas operações que podemos ler da esquerda para direita e de cima para baixo. É como se cada linha de código funcionasse como um departamento destinto de uma empresa. A produção começa na primeira linha. Terminada as alterações nesse primeiro departamento, o produto (dados) ainda inacabado é “jogado” para o departamento de baixo por meio do <em>pipe</em>, onde a produção continua. De lá segue para o próximo de partamento, e assim segue até que todas as alterações nos dados tenham sido realizadas.</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="m2.html#cb238-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb238-2"><a href="m2.html#cb238-2"></a><span class="st">  </span><span class="kw">group_by</span>(UF_DESTINATÁRIO, MUNICÍPIO_DESTINATÁRIO) <span class="op">%&gt;%</span></span>
+<span id="cb238-3"><a href="m2.html#cb238-3"></a><span class="st">  </span><span class="kw">select</span>(PRODUTO, PRECO_TOTAL, preco_unidade) <span class="op">%&gt;%</span></span>
+<span id="cb238-4"><a href="m2.html#cb238-4"></a><span class="st">  </span><span class="kw">summarise</span>(</span>
+<span id="cb238-5"><a href="m2.html#cb238-5"></a>    <span class="dt">qte_total_produtos =</span> <span class="kw">n</span>(),</span>
+<span id="cb238-6"><a href="m2.html#cb238-6"></a>    <span class="dt">valor_total =</span> <span class="kw">sum</span>(PRECO_TOTAL, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb238-7"><a href="m2.html#cb238-7"></a>  ) <span class="op">%&gt;%</span></span>
+<span id="cb238-8"><a href="m2.html#cb238-8"></a><span class="st">  </span><span class="kw">filter</span>(qte_total_produtos <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span> <span class="op">|</span><span class="st"> </span>valor_total <span class="op">&gt;</span><span class="st"> </span><span class="dv">2000000</span>)</span></code></pre></div>
+<pre><code>## Adding missing grouping variables: `UF_DESTINATÁRIO`, `MUNICÍPIO_DESTINATÁRIO`</code></pre>
+<pre><code>## `summarise()` regrouping output by &#39;UF_DESTINATÁRIO&#39; (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 71 x 4
+## # Groups:   UF_DESTINATÁRIO [11]
+##    UF_DESTINATÁRIO MUNICÍPIO_DESTINATÁRIO qte_total_produtos valor_total
+##    &lt;chr&gt;           &lt;chr&gt;                               &lt;int&gt;       &lt;dbl&gt;
+##  1 AL              Arapiraca                             633    1047426.
+##  2 AL              Maceió                                331     781763.
+##  3 BA              Cruz das Almas                        101     174860.
+##  4 BA              Feira de Santana                      389     591693.
+##  5 BA              Juazeiro                              256     298826.
+##  6 BA              Paulo Afonso                          279     211367.
+##  7 BA              Santo Antônio de Jesus                162     259659.
+##  8 BA              Vitória da Conquista                  157     295449.
+##  9 CE              Caucaia                               151     332010.
+## 10 CE              Fortaleza                             348    1225146.
+## # … with 61 more rows</code></pre>
+<p><strong>DICA:</strong> Note que o nome do <em>tibble</em> ou dataframe só precisa ser informado uma única vez logo ao início do processo.</p>
+<hr />
+</div>
+<div id="referências-da-seção-1" class="section level3">
+<h3><span class="header-section-number">2.2.9</span> Referências da seção</h3>
+<ul>
+<li><p>Wickham H.; François, R.; Henry, L.; Müller K. (2019). <em>dplyr: A Grammar of Data Manipulation</em>. R package version 0.8.1. URL <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.</p></li>
+<li><p>Wickham H.; François, R.; Henry, L.; Müller K. (2020). <em>dplyr vignette: Introduction</em>. URL <a href="http://dplyr.tidyverse.org">http://dplyr.tidyverse.org</a>.</p></li>
+<li><p>Wickham, H.; Grolemund, G. (2016). <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. O’Reilly Media. december 2016. 522 pages. Disponível em: <a href="https://www.r4ds.co.nz">https://www.r4ds.co.nz</a>.</p></li>
+</ul>
+</div>
+<div id="exercícios" class="section level3">
+<h3><span class="header-section-number">2.2.10</span> Exercícios</h3>
+<ol style="list-style-type: decimal">
+<li><p>Importe a tabela selecionada contendo uma projeção do Censo Escolar Agregado por número de alunos por etapa de ensino para os anos de 2020 e 2021 <a href="https://xxxxxx"></a>.</p></li>
+<li><p>Qual é o número de alunos por série de ensino em 2019? Escreva uma nova tabela txt ou csv com esses dados.</p></li>
+<li><p>Agrupe os dados pelos UFs de SP, RJ e MG e salve uma tabela separada (txt ou csv) para cada um dos agrupamentos. <strong>DICA:</strong> Pesquise sobre como separar dataframes por grupos com dplyr e como indexar listas.
+<!-- https://dplyr.tidyverse.org/reference/group_split.html --></p></li>
+<li><p>Identifique o estado com menor número de alunos projetado para 2020.</p></li>
+<li><p>Crie e salve uma nova tabela contendo o número de escolas por UF.</p></li>
+</ol>
+<hr />
+<hr />
+</div>
+</div>
+<div id="gráficos-com-ggplot2" class="section level2">
+<h2><span class="header-section-number">2.3</span> Gráficos com <code>ggplot2</code></h2>
+<!-- #USAR DADOS DELES (ibama OU DO CENSO ESCOLAR) -->
+<!-- # SCATTER/POINT, COL, BAR(HIST), LINE, BARRAS JUSTAPOSTAS -->
+<!-- # COMECAR PELOSN GEOMS E IR alterando aesthetics.. -->
+<!-- # alterações de legendas e themes -->
+<!-- # terminar no facetting -->
+<p>Nesta seção veremos como fazer gráficos sofisticados no <strong>R</strong>. Serão apenas noções básicas, uma vez que a <code>ggplot2</code> propicia um controle total de quase todos os aspectos de um gráfico ao usuário. No entanto, já serão ferramentas sufcientes para confecionar e personalizar diversos gráficos no <strong>R</strong>. A quantidade de tipos de gráficos que podemos fazer com <strong>ggplot2</strong> é imensurável. A ideia é enterdermos os conceitos básicos e estruturais do pacote para depois caminharmos com nossas próprias pernas.</p>
+<div id="introdução" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Introdução</h3>
+<p>O pacote <code>ggplot2</code> cria gráficos utilizando camadas de atributos, utilizando a chamada <strong>gramática de gráficos</strong>. Esta gramática permite construir gráficos componente por componente ao invés de termos que editar gráficos “pré-fabricados” como ocorre no <code>base R</code> e em todas as outras bibliotecas de linguagens usadas para <em>Data Science</em>, como <em>matplotlib</em> e <em>seaborn</em> de <em>Python</em>, por exemplo.</p>
+<p>Nós não precisamos conhecer a gramática para começar a produzir gráficos com <strong>ggplot2</strong>. Todavia, ao compreendermos a estrutura da gramática de gráficos, podemos:</p>
+<ul>
+<li><p>construir gráficos a partir de conceitos (do que desejamos fazer) ao invés de termos que lembrar comandos e opções;</p></li>
+<li><p>conceber novos e melhorados gráficos.</p></li>
+</ul>
+<p>O <code>ggplot2</code>, embora tenha surgido antes do <em>tidyverse</em>, também é um dos pacotes que do <em>core</em> deste <em>meta-packge</em>. Ele foi escrito por Hadley Wickham, o qual publicou o livro intitulado <em>“ggplot2 Elegant Graphics for Data Analysis”</em>. O sucesso de <code>ggplot2</code> é tão expressivo que foram feitos <em>APIs (Application Programming Interface)</em> para que as funcionalidades do pacote pudessem ser empregadas em outra s linguagens, como Python por exemplo.</p>
+</div>
+<div id="a-gramática-de-gráficos" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> A gramática de gráficos</h3>
+<p>A gramática de gráficos foi um conceito desenvolvido por Leland Wilkinson em 1999 e publicado por ele em <em>The Grammar of Graphics</em> em 2005. Essa gramática define regras para estruturar elementos matemáticos e estéticos (<em>aesthetics</em>) em um gráfico propriamente dito. <code>ggplot2</code> é escrito sob as regras desta gramática.</p>
+<div id="estrutura-da-gramática-de-gráficos-no-ggplot2" class="section level4">
+<h4><span class="header-section-number">2.3.2.1</span> Estrutura da gramática de gráficos no <code>ggplot2</code>:</h4>
+<ul>
+<li><strong>data</strong>
+<ul>
+<li>dados que contém as variáveis a serem plotadas ;</li>
+<li>variáveis a serem retratadas no gráfico;</li>
+<li>variáveis a serem mapeadas para os <em>aesthetics</em> (elementos perceptíveis) do gráfico;</li>
+</ul></li>
+<li><strong>Geoms</strong> (formas geométricas)
+<ul>
+<li>objetos e formas do gráfico (barras, pontos, linhas, etc)</li>
+</ul></li>
+<li><strong>Stats</strong>
+<ul>
+<li>transformações estatísticas , geralmente para sumarizar dados (média, variância, mediana, etc)</li>
+</ul></li>
+<li><strong>Scales</strong>
+<ul>
+<li>define quais elementos estéticos (<em>aesthetics</em>) do gráfico serão mapeados para as variáveis (ex: que cores serão mapeadas a quais valores)</li>
+</ul></li>
+<li><strong>Coordinate Systems</strong>
+<ul>
+<li>define como os dados serão mapeados para o plano/área do gráfico (Cartesiano, Polar, etc)</li>
+</ul></li>
+<li><strong>Facetting</strong>
+<ul>
+<li>divide os dados em subconjuntos para criar multiplas variações do mesmo gráfico (ex: gráficos em painel)</li>
+</ul></li>
+</ul>
+<p>Todos esses elementos são tratados como <em>layers</em> e podem ser adiconadas a parte principal do gráfico utilizando-se o sinal <code>+</code>.</p>
+<p>Neste curso, veremos de forma mais detalhada os elementos <em>data</em>, <em>aesthetics</em>, <em>stats</em> e <em>facetting</em> e o que significa cada um desses elementos na estrutura da gramática de gráficos. Vamos utilizar dois <em>datasets</em>: o de produção madeireira disponibilizado pelo IBAMA e um novo, contendo uma série histórica modificada do censo escolar agregado do Instituto de Pesquisas Educacionais Anísio Teixeira (INEP). Os dados contém o número de estudantes por série de ensino, escola, munícipio e outras variáveis para o período compreendido entre 2007 e 2019, apenas para os estados do Espírito Santo, Mato Grosso do Sul e Roraima.</p>
+<p>Como o arquivo do Censo Escolar está no formato <code>.csv</code> pt-br (separado por <code>;</code>), podemos utilizar a função <code>read_csv2()</code> do pacote <code>readr</code>.</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="m2.html#cb242-1"></a><span class="kw">library</span>(readr) <span class="co"># para ler os dados</span></span>
+<span id="cb242-2"><a href="m2.html#cb242-2"></a><span class="kw">library</span>(magrittr) <span class="co"># vamos usar pipe %&gt;%</span></span>
+<span id="cb242-3"><a href="m2.html#cb242-3"></a><span class="kw">library</span>(ggplot2) <span class="co"># para fazer os gráficos</span></span>
+<span id="cb242-4"><a href="m2.html#cb242-4"></a></span>
+<span id="cb242-5"><a href="m2.html#cb242-5"></a><span class="co"># leitura</span></span>
+<span id="cb242-6"><a href="m2.html#cb242-6"></a></span>
+<span id="cb242-7"><a href="m2.html#cb242-7"></a>tb_censo_escolar &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/tab_censo_sample_ES_MS_RR.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Missing column names filled in: &#39;X1&#39; [1]</code></pre>
+<p>Caso, você não possua mais a <code>tb_ibama2</code> em sua sessão do R, carregue a tabela original e fça novamente as alterações que fizemos nas seções anteriores</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="m2.html#cb244-1"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb244-2"><a href="m2.html#cb244-2"></a></span>
+<span id="cb244-3"><a href="m2.html#cb244-3"></a>tb_ibama &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv&quot;</span>,</span>
+<span id="cb244-4"><a href="m2.html#cb244-4"></a>                     <span class="dt">col_types =</span> <span class="kw">cols</span>(</span>
+<span id="cb244-5"><a href="m2.html#cb244-5"></a>                       <span class="dt">X1 =</span> <span class="kw">col_double</span>(),</span>
+<span id="cb244-6"><a href="m2.html#cb244-6"></a>                       <span class="dt">TIPO_GF =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb244-7"><a href="m2.html#cb244-7"></a>                       <span class="dt">STATUS_GF =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb244-8"><a href="m2.html#cb244-8"></a>                       <span class="dt">UF_REMETENTE =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb244-9"><a href="m2.html#cb244-9"></a>                       MUNICÍ<span class="dt">PIO_REMETENTE =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb244-10"><a href="m2.html#cb244-10"></a>                       <span class="dt">TIPO_DESTINO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb244-11"><a href="m2.html#cb244-11"></a>                       CEPROF_DESTINATÁ<span class="dt">RIO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb244-12"><a href="m2.html#cb244-12"></a>                       UF_DESTINATÁ<span class="dt">RIO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb244-13"><a href="m2.html#cb244-13"></a>                       MUNICÍPIO_DESTINATÁ<span class="dt">RIO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb244-14"><a href="m2.html#cb244-14"></a>                       N_AUTORIZAÇÃ<span class="dt">O =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb244-15"><a href="m2.html#cb244-15"></a>                       <span class="dt">PROCESSO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb244-16"><a href="m2.html#cb244-16"></a>                       <span class="dt">EMISSAO =</span> <span class="kw">col_integer</span>(),</span>
+<span id="cb244-17"><a href="m2.html#cb244-17"></a>                       NOME_CIENTÍ<span class="dt">FICO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb244-18"><a href="m2.html#cb244-18"></a>                       <span class="dt">PRODUTO =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb244-19"><a href="m2.html#cb244-19"></a>                       <span class="dt">VOLUME =</span> <span class="kw">col_double</span>(),</span>
+<span id="cb244-20"><a href="m2.html#cb244-20"></a>                       <span class="dt">UNID =</span> <span class="kw">col_character</span>(),</span>
+<span id="cb244-21"><a href="m2.html#cb244-21"></a>                       <span class="dt">PRECO_TOTAL =</span> <span class="kw">col_double</span>()</span>
+<span id="cb244-22"><a href="m2.html#cb244-22"></a>                       )</span>
+<span id="cb244-23"><a href="m2.html#cb244-23"></a>                     )</span>
+<span id="cb244-24"><a href="m2.html#cb244-24"></a></span>
+<span id="cb244-25"><a href="m2.html#cb244-25"></a></span>
+<span id="cb244-26"><a href="m2.html#cb244-26"></a>tb_ibama<span class="op">$</span>STATUS_GF[<span class="dv">1</span><span class="op">:</span><span class="dv">50000</span>] &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;NÃO VERIFICADO&quot;</span>, <span class="dv">50000</span>)</span>
+<span id="cb244-27"><a href="m2.html#cb244-27"></a></span>
+<span id="cb244-28"><a href="m2.html#cb244-28"></a>tb_ibama2 &lt;-<span class="st"> </span><span class="kw">mutate</span>(tb_ibama,</span>
+<span id="cb244-29"><a href="m2.html#cb244-29"></a>  <span class="dt">preco_unidade =</span> PRECO_TOTAL <span class="op">/</span><span class="st"> </span>VOLUME,</span>
+<span id="cb244-30"><a href="m2.html#cb244-30"></a>  <span class="dt">preco_unidade_vezes_1000 =</span> preco_unidade <span class="op">*</span><span class="st"> </span><span class="dv">1000</span></span>
+<span id="cb244-31"><a href="m2.html#cb244-31"></a>)</span></code></pre></div>
+</div>
+</div>
+<div id="data-dados" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Data (Dados)</h3>
+<p>Os dados utilizados com as funções de <code>ggplot2</code> <strong>DEVEM</strong> ser armazenados como um tibble ou dataframe. Há possibilidade, inclusive, de se usar mais de um dataframe em um gráfico. A recomendação é que se defina e se certifique acerca dos tipos das variáveis (<em>numeric</em>, <em>factor</em>, etc) antes de começar a construir um gráfico</p>
+</div>
+<div id="a-função-ggplot" class="section level3">
+<h3><span class="header-section-number">2.3.4</span> A função <code>ggplot()</code></h3>
+<p>Os dados que serão usados para plotagem serão especificados dentro da função <code>ggplot()</code>. Note que é <strong>ggplot()</strong> e não <strong>ggplot2()</strong>. O nosso dataframe/tibble sempre será primeiro argumento desta função.</p>
+<p>Um outro argumento a ser passado para a função <code>ggplot()</code> são os <em>aesthetics</em>, utilizando a função auxiliar <code>aes()</code> que mapeia as variáveis dos dados para os elementos gráficos perceptíveis (estéticos), como a posição nos eixos dos gráficos, a definição de cores por categorias, etc.</p>
+<p>Qualquer função subsequente vai herdar os dados e os <em>aesthetics</em> de <code>ggplot()</code>, a não ser que estes parâmetros sejam sobrescritos em outra camada. Para encadear outras funções a função <code>ggplot()</code>, usamos sempre <code>+</code>.</p>
+</div>
+<div id="aesthetics-elementos-estéticos-dos-gráficos" class="section level3">
+<h3><span class="header-section-number">2.3.5</span> Aesthetics (elementos estéticos dos gráficos)</h3>
+<p>Variáveis são mapeadas para os <strong>aesthetics</strong>, o que significa que são traduzidas para os elementos estéticos do gráfico. A função <code>aes()</code> é quem faz esse mapeamento. Ela também pode ser especificada dentro de outras camadas que compões o gráfico, como <em>geoms</em> e <em>stats</em>, por exemplo . Os <strong>aesthetics</strong> mais utilizados são:</p>
+<ul>
+<li><p><code>x</code> - posição no eixo x;</p></li>
+<li><p><code>y</code> - posição no eixo y;</p></li>
+<li><p><code>color</code> ou <code>colour</code> - “cor de fora” ou do contorno do objeto;</p></li>
+<li><p><code>fill</code> - “cor de dentro” do objeto;</p></li>
+<li><p><code>alpha</code> - nível transparência do gráfico;</p></li>
+<li><p><code>shape</code> - forma dos marcadores (pontos, triângilos, cruz, etc);</p></li>
+<li><p><code>size</code> - tamanho (do raio) dos objetos.</p></li>
+</ul>
+</div>
+<div id="exemplos-para-aesthetics" class="section level3">
+<h3><span class="header-section-number">2.3.6</span> Exemplos para <em>aesthetics</em></h3>
+<p>Para fazermos um gráfico, primeiro precisamos indicar os dados e fazer o mapeamento das variáveis aos <strong>aesthetics</strong>. Isso reserva uma área de gráfico a ser utilizada.</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="m2.html#cb245-1"></a><span class="kw">options</span>(<span class="dt">scipen=</span> <span class="dv">999</span>) <span class="co"># para enalizar a exibição em notação exponencial</span></span>
+<span id="cb245-2"><a href="m2.html#cb245-2"></a></span>
+<span id="cb245-3"><a href="m2.html#cb245-3"></a></span>
+<span id="cb245-4"><a href="m2.html#cb245-4"></a><span class="co"># ggplot(data=tb_ibama2, mapping = aes(x=VOLUME, y=PRECO_TOTAL))</span></span>
+<span id="cb245-5"><a href="m2.html#cb245-5"></a><span class="co"># OU</span></span>
+<span id="cb245-6"><a href="m2.html#cb245-6"></a></span>
+<span id="cb245-7"><a href="m2.html#cb245-7"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb245-8"><a href="m2.html#cb245-8"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">data=</span>tb_ibama2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL))</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-90-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Vejamos um primeiro exemplo para o cruzamento entre <em>VOLUME</em> vs <em>PRECO_TOTAL</em>.</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="m2.html#cb246-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb246-2"><a href="m2.html#cb246-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL))<span class="op">+</span></span>
+<span id="cb246-3"><a href="m2.html#cb246-3"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-91-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Note que não houve a necessidade de re-especificar os argumentos <code>data</code> e <code>aes()</code> para a função <code>geom_point()</code>.</p>
+<p>Poderíamos melhorar nosso gráfico adicionando cores dentro de <code>aes()</code>. Isso acrescentaria mais informação. Poderíamos atribuir cores diferentes para cada tipo de destino das toras de madeira:</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="m2.html#cb247-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb247-2"><a href="m2.html#cb247-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL))<span class="op">+</span></span>
+<span id="cb247-3"><a href="m2.html#cb247-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color=</span>TIPO_DESTINO))</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-92-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="m2.html#cb248-1"></a><span class="co"># ou</span></span>
+<span id="cb248-2"><a href="m2.html#cb248-2"></a></span>
+<span id="cb248-3"><a href="m2.html#cb248-3"></a><span class="co"># tb_ibama2 %&gt;%</span></span>
+<span id="cb248-4"><a href="m2.html#cb248-4"></a><span class="co">#   ggplot(mapping = aes(x=VOLUME, y=PRECO_TOTAL, color=TIPO_DESTINO))+</span></span>
+<span id="cb248-5"><a href="m2.html#cb248-5"></a><span class="co">#   geom_point()</span></span></code></pre></div>
+<p>Podemos atribuir diferentes intensidades aos pontos, dependendo do valor de uma terceira variável (de preferência contínua entre 0 e 1), utilizando o argumento <code>alpha</code>. Como no nosso dataset do IBAMA, não temos tal variável, vamos criar uma variável contínua por meio da simulação de valores dentro de uma distribuição de probabilidade Normal (<span class="math inline">\(N(0,1)\)</span>):</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="m2.html#cb249-1"></a><span class="co"># simulando valores</span></span>
+<span id="cb249-2"><a href="m2.html#cb249-2"></a>tb_ibama2 &lt;-<span class="st"> </span>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb249-3"><a href="m2.html#cb249-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">quant_sim =</span> <span class="kw">rnorm</span>(<span class="kw">n</span>()),</span>
+<span id="cb249-4"><a href="m2.html#cb249-4"></a>         <span class="dt">prob_sim =</span> <span class="kw">pnorm</span>(quant_sim)</span>
+<span id="cb249-5"><a href="m2.html#cb249-5"></a>  )</span>
+<span id="cb249-6"><a href="m2.html#cb249-6"></a></span>
+<span id="cb249-7"><a href="m2.html#cb249-7"></a></span>
+<span id="cb249-8"><a href="m2.html#cb249-8"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb249-9"><a href="m2.html#cb249-9"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL, <span class="dt">alpha=</span>prob_sim))<span class="op">+</span></span>
+<span id="cb249-10"><a href="m2.html#cb249-10"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-93-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Neste nosso caso, esse gráfico não é muito útil porque temos vários pontos sobrepostos e isto dificulta a percepção de como as cores estão variando. No entanto, serve para ilustrar essa possibilidade com <code>ggplot2</code>.</p>
+<p>Uma melhor forma de demonstrar os diferentes tipos de destino seria utilizar diferentes formas (argumento <code>shape</code>):</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="m2.html#cb250-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb250-2"><a href="m2.html#cb250-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL, <span class="dt">shape=</span>TIPO_DESTINO))<span class="op">+</span></span>
+<span id="cb250-3"><a href="m2.html#cb250-3"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-94-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="mapping-vs-setting-aesthetics" class="section level4">
+<h4><span class="header-section-number">2.3.6.1</span> Mapping vs Setting aesthetics</h4>
+<p>Nos exemplos anteriores, poderíamos optar por usar apenas uma única cor ou um único shape que não fosse o padrão de “bolinha” na cor preta. O que deveríamos fazer então, ao invés de <strong>mapear</strong> variáveis para <strong>aesthetic</strong>, é <strong>setar</strong> a <strong>aesthetic</strong> contante.</p>
+<p>Quando vamos mapear um <strong>aesthetic</strong>, as variáveis são passadas <strong>dentro</strong> de <code>aes()</code>; ao passo que quando vamos setar um <strong>aesthetic</strong> como constante, o valor é passado fora de <code>aes()</code>.</p>
+<p>Vejamos os exemplos anteriores com um <em>aesthetic</em> constante para cor e shape:</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="m2.html#cb251-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb251-2"><a href="m2.html#cb251-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL))<span class="op">+</span></span>
+<span id="cb251-3"><a href="m2.html#cb251-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-95-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="m2.html#cb252-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb252-2"><a href="m2.html#cb252-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL))<span class="op">+</span></span>
+<span id="cb252-3"><a href="m2.html#cb252-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-96-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Note que devemos passar as constantes para <code>geom_point()</code> (fora de <code>aes()</code>) - o elemento de objetos geométricos - e não para <code>ggplot()</code>.</p>
+<p>Veja quantos <em>shapes</em> podemos <em>usar</em> no <strong>R</strong>:</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="m2.html#cb253-1"></a>d=<span class="kw">data.frame</span>(<span class="dt">p=</span><span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">25</span>,<span class="dv">32</span><span class="op">:</span><span class="dv">127</span>))</span>
+<span id="cb253-2"><a href="m2.html#cb253-2"></a></span>
+<span id="cb253-3"><a href="m2.html#cb253-3"></a><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb253-4"><a href="m2.html#cb253-4"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name=</span><span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
+<span id="cb253-5"><a href="m2.html#cb253-5"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">name=</span><span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
+<span id="cb253-6"><a href="m2.html#cb253-6"></a><span class="st">  </span><span class="kw">scale_shape_identity</span>() <span class="op">+</span></span>
+<span id="cb253-7"><a href="m2.html#cb253-7"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>d, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>p<span class="op">%%</span><span class="dv">16</span>, <span class="dt">y=</span>p<span class="op">%/%</span><span class="dv">16</span>, <span class="dt">shape=</span>p), <span class="dt">size=</span><span class="dv">5</span>, <span class="dt">fill=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
+<span id="cb253-8"><a href="m2.html#cb253-8"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data=</span>d, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>p<span class="op">%%</span><span class="dv">16</span>, <span class="dt">y=</span>p<span class="op">%/%</span><span class="dv">16</span><span class="fl">+0.25</span>, <span class="dt">label=</span>p), <span class="dt">size=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-97-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="m2.html#cb254-1"></a><span class="co"># http://sape.inf.usi.ch/quick-reference/ggplot2/shape</span></span></code></pre></div>
+<p>Cuidado ao setar uma <em>aesthetic</em> como constante dentro de <code>aes()</code>, pois isso pode resultar em um comportamento inesperado.</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="m2.html#cb255-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb255-2"><a href="m2.html#cb255-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL)) <span class="op">+</span></span>
+<span id="cb255-3"><a href="m2.html#cb255-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-98-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Embora tenhámos setado a cor como <code>"green"</code>, o fato de termos feito dentro de <code>aes()</code> faz com que o <code>ggplot</code></p>
+</div>
+</div>
+<div id="geoms" class="section level3">
+<h3><span class="header-section-number">2.3.7</span> Geoms</h3>
+<p><strong>Geoms</strong> são as formas geométricas a serem plotadas nos gráficos, exemplo <code>geom_line()</code>, <code>geom_col()</code>, <code>geom_point()</code>, etc. Eles diferem de um para o outro nos tipos de <em>aesthetics</em> que eles <em>requerem</em> ou <em>entendem</em>. Por exemplo: <code>geom_point()</code> requer aes(x, y), ao passo que <code>geom_bar()</code> requer aes(x) apenas.</p>
+<p>Para obter ajuda digite <code>?geom_x</code>.</p>
+</div>
+<div id="exemplos-para-geoms" class="section level3">
+<h3><span class="header-section-number">2.3.8</span> Exemplos para <em>Geoms</em></h3>
+<p><strong><em>geoms</em> para uma variável numérica (contínua de preferência)</strong></p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="m2.html#cb256-1"></a>c &lt;-<span class="st"> </span>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb256-2"><a href="m2.html#cb256-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>quant_sim))</span></code></pre></div>
+<p><strong>DICA:</strong> Note que podemos atribuir o resultado do gráfico a um objeto no R e acrescentar outras <em>layers</em> posteriormente.</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="m2.html#cb257-1"></a>c <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>()</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-100-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="m2.html#cb258-1"></a>c <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-100-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><strong><em>geoms</em> para uma variável numérica discreta</strong></p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="m2.html#cb260-1"></a><span class="co"># contagem</span></span>
+<span id="cb260-2"><a href="m2.html#cb260-2"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb260-3"><a href="m2.html#cb260-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>TIPO_GF))<span class="op">+</span></span>
+<span id="cb260-4"><a href="m2.html#cb260-4"></a><span class="st">  </span><span class="kw">geom_bar</span>()</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-101-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><strong><em>geoms</em> para duas variáveis (contínuas)</strong></p>
+<p><code>geom_point()</code> tambpem pode ser usado neste caso:</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="m2.html#cb261-1"></a>e &lt;-<span class="st"> </span>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb261-2"><a href="m2.html#cb261-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL))</span>
+<span id="cb261-3"><a href="m2.html#cb261-3"></a></span>
+<span id="cb261-4"><a href="m2.html#cb261-4"></a>e <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-102-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><strong><em>geoms</em> para duas variáveis (uma discreta e uma contínua)</strong></p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="m2.html#cb262-1"></a>f &lt;-<span class="st"> </span>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb262-2"><a href="m2.html#cb262-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(TIPO_GF, quant_sim))</span>
+<span id="cb262-3"><a href="m2.html#cb262-3"></a></span>
+<span id="cb262-4"><a href="m2.html#cb262-4"></a></span>
+<span id="cb262-5"><a href="m2.html#cb262-5"></a>f <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-103-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="m2.html#cb263-1"></a>f <span class="op">+</span><span class="st"> </span><span class="kw">geom_violin</span>()</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-103-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><strong><em>geoms</em> para gráficos de linha</strong></p>
+<p>Neste ponto, vamos trocar de <em>dataset</em>. Passaremos a utilizar agora o dataset <code>tb_censo_escolar</code>. Faremos algumas transformações com <code>dplyr</code> e seguiremos direto para o plot usando pipe <code>%&gt;%</code>.</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="m2.html#cb264-1"></a>tb_censo_escolar <span class="op">%&gt;%</span></span>
+<span id="cb264-2"><a href="m2.html#cb264-2"></a><span class="st">  </span><span class="kw">group_by</span>(SG_UF, NU_ANO_CENSO) <span class="op">%&gt;%</span></span>
+<span id="cb264-3"><a href="m2.html#cb264-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">QTD_TOTAL =</span> <span class="kw">sum</span>(QTD_ALUNOS, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb264-4"><a href="m2.html#cb264-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(NU_ANO_CENSO, QTD_TOTAL, <span class="dt">colour=</span>SG_UF))<span class="op">+</span></span>
+<span id="cb264-5"><a href="m2.html#cb264-5"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<pre><code>## `summarise()` regrouping output by &#39;SG_UF&#39; (override with `.groups` argument)</code></pre>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-104-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>No caso de gráficos de linhas, ao invés usar cores diferentes, poderíamos ainda alterar o tipo de linha conforme as categorias de uma 3ª variável, por meio do argumento <code>linetype</code>:</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="m2.html#cb266-1"></a>tb_censo_escolar <span class="op">%&gt;%</span></span>
+<span id="cb266-2"><a href="m2.html#cb266-2"></a><span class="st">  </span><span class="kw">group_by</span>(SG_UF, NU_ANO_CENSO) <span class="op">%&gt;%</span></span>
+<span id="cb266-3"><a href="m2.html#cb266-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">QTD_TOTAL =</span> <span class="kw">sum</span>(QTD_ALUNOS, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb266-4"><a href="m2.html#cb266-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(NU_ANO_CENSO, QTD_TOTAL, <span class="dt">linetype=</span>SG_UF))<span class="op">+</span></span>
+<span id="cb266-5"><a href="m2.html#cb266-5"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<pre><code>## `summarise()` regrouping output by &#39;SG_UF&#39; (override with `.groups` argument)</code></pre>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-105-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><strong>DICA:</strong> Há também outros <em>geoms</em> que você encontrará na página de ajuda.</p>
+<div id="positions" class="section level4">
+<h4><span class="header-section-number">2.3.8.1</span> Positions</h4>
+<p>Um aspecto dos gráficos de <code>ggplot2</code> que não chega a ser uma <em>layer</em>, mas que será importante de observarmos diz respeito a ajustes de posição. Elas serão muito importantes para gráficos de de barras com duas variáveis.</p>
+<p>Os ajustes de posição definirão como os <em>geoms</em> se localizam no gráfico, de modo que não ocupem o mesmo espaço. No exemplo do gráfico de barras, podemos fazer gráficos de barras justapostas ou empilhadas.</p>
+<p>-<code>position="stacked</code> é o ajuste padrão de <code>geom_point()</code>. Ela coloca cada objeto na posição exata do contexto do gráfico. No caso de gráficos de barras, teríamos barras acumuladas (<em>stacked</em>):</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="m2.html#cb268-1"></a><span class="co"># tb_censo_escolar %&gt;%</span></span>
+<span id="cb268-2"><a href="m2.html#cb268-2"></a><span class="co">#   ggplot(mapping=aes(x=SG_UF, fill=factor(CO_ETAPA_ENSINO)))+</span></span>
+<span id="cb268-3"><a href="m2.html#cb268-3"></a><span class="co">#   geom_bar(position=&quot;stack&quot;)</span></span>
+<span id="cb268-4"><a href="m2.html#cb268-4"></a><span class="co"># precisa passar CO_ETAPA_ENSINO como factor, senao ele lê como numerica</span></span>
+<span id="cb268-5"><a href="m2.html#cb268-5"></a></span>
+<span id="cb268-6"><a href="m2.html#cb268-6"></a></span>
+<span id="cb268-7"><a href="m2.html#cb268-7"></a>tb_censo_escolar <span class="op">%&gt;%</span></span>
+<span id="cb268-8"><a href="m2.html#cb268-8"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>SG_UF, <span class="dt">fill=</span><span class="kw">factor</span>(NU_ANO_CENSO)))<span class="op">+</span></span>
+<span id="cb268-9"><a href="m2.html#cb268-9"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;stack&quot;</span>) <span class="co"># ou simplemente geom_bar()</span></span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-106-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><strong>DICA:</strong> Note que <em>forçamos</em> a variável <em>NU_ANO_CENSO</em> como um <em>factor</em>, para que o R a trate como uma variável categórica e não como uma data para realizar a plotagem. Um <em>factor</em> é uma abstração que o R faz para armazenas variáveis categóricas de mod mais eficiente na memória do computador. Para cada valor ele cria um <em>level</em> numérico. É muito mais eficiente guardar um número do que um nome ou uma data, por exemplo.</p>
+<ul>
+<li><strong>position = “dodge”</strong> coloca objetos sobrepostos um ao lado de outro. Nesse caso, teremos barras justapostas:</li>
+</ul>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="m2.html#cb269-1"></a>gg_barras &lt;-<span class="st"> </span>tb_censo_escolar <span class="op">%&gt;%</span></span>
+<span id="cb269-2"><a href="m2.html#cb269-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>SG_UF, <span class="dt">fill=</span><span class="kw">factor</span>(NU_ANO_CENSO)))<span class="op">+</span></span>
+<span id="cb269-3"><a href="m2.html#cb269-3"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
+<p><strong>DICA:</strong> Se voce quiser inverter as coordenadas do gráfico, pode fazer isso trocando os parâmetros <code>x</code> e <code>y</code> e em <code>aes()</code>, ou utilizando a função <code>coord_flip()</code>:</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="m2.html#cb270-1"></a>gg_barras <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-108-1.png" width="672" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>position=“fill”</strong> também empilhará os elementos, mas irá normalizar a altura de todas as barras para que fiquem na mesma escala. Isso torna mais fácil comparar as proporções entre os grupos:</li>
+</ul>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="m2.html#cb271-1"></a>tb_censo_escolar <span class="op">%&gt;%</span></span>
+<span id="cb271-2"><a href="m2.html#cb271-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>SG_UF, <span class="dt">fill=</span><span class="kw">factor</span>(NU_ANO_CENSO)))<span class="op">+</span></span>
+<span id="cb271-3"><a href="m2.html#cb271-3"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;fill&quot;</span>)</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-109-1.png" width="672" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>position=“jitter”</strong> é útil para gráficos de dispersão, pois hpa um problema muito comum neste tipo de gráfico que é a sobreposição de pontos (<em>overplotting</em>). Com <em>jitter</em>, <em>ggplot2</em> adiciona um ruído aleatório nas posições de X e Y para que eles não se sobreponham:</li>
+</ul>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="m2.html#cb272-1"></a><span class="co"># mpg %&gt;%</span></span>
+<span id="cb272-2"><a href="m2.html#cb272-2"></a><span class="co">#   ggplot(mapping=aes(x=displ, y=hwy))+</span></span>
+<span id="cb272-3"><a href="m2.html#cb272-3"></a><span class="co">#            geom_point(position=&quot;jitter&quot;)</span></span></code></pre></div>
+<p>Há outros ajustes de posição bem úteis, como:</p>
+<ul>
+<li><strong>position=“nudge”</strong> afasta os rótulos dos pontos;</li>
+<li><strong>position=“identity”</strong> sobrepõe os elementos uns sobre os outros.</li>
+</ul>
+</div>
+</div>
+<div id="facetting" class="section level3">
+<h3><span class="header-section-number">2.3.9</span> Facetting</h3>
+<p>As <strong>facetts</strong> em <code>ggplot2</code> nos permitem criar vários gráficos com base em subconjuntos de dados e plotá-los numma mesma área. É uma técnica muito útil (quando temos variáveis categóricas) e desejamos visualizar o comportamento de diferentes categorias num mesmo gráfico.</p>
+<p>Há duas funções que permitem criar facetas: <code>facet_wrap()</code> e <code>facet_grid()</code>.</p>
+<p>Tanto <strong>facet_wrap</strong> quanto <strong>facet_grid</strong> permitem a divisão do plot da(s) variável(is) passadas em <code>aes()</code> de acordo com as categorias de uma 3ª ou 3ª e 4ª variáveis.</p>
+<p>Voltaremos aos exemplos com a base modificada do IBAMA <code>tb_ibama2</code>. Usaremos o log do volume apenas para que os valores dos eixos não se sobreponham. Embora seja possível ajustar isso com as funções de <code>ggplot2</code>, por uma questão de priorização e espaço optamos por não abordar essa funcionalidade nesta apostila.</p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="m2.html#cb273-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb273-2"><a href="m2.html#cb273-2"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
+<span id="cb273-3"><a href="m2.html#cb273-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(VOLUME), <span class="dt">y=</span>PRECO_TOTAL))<span class="op">+</span></span>
+<span id="cb273-4"><a href="m2.html#cb273-4"></a><span class="st">  </span><span class="kw">facet_wrap</span>(TIPO_GF <span class="op">~</span><span class="st"> </span>UF_DESTINATÁRIO, <span class="dt">nrow =</span> <span class="dv">4</span>)</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-111-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Note acima que podemos definir o número de linhas desejado para plotagem com o argumento <code>nrow</code> ou o número de colunas com <code>ncol</code> e automaticamente o outro argumento será determinado. O símbolo <code>~</code> é muito utilizado no <strong>R</strong>. Nesse casos significa as variáveis de <code>aes()</code> serão plotadas em função das variáveis <code>STATUS_GF</code> e <code>TIPO_DESTINO</code>, ou seja, para cada combinação das categorias destas variáveis, será feito um plot com as variáveis passadas em <code>aes()</code>. Note que o arranjo das combinações das categorias <code>STATUS_GF</code> e <code>TIPO_DESTINO</code> são passadas nas colunas de gráficos, como se fossem os títulos de cada plot específico.</p>
+<p>No caso de <code>facet_grid()</code>, a organização do <em>output</em> será um pouco diferente. Será feito, como o próprio nome da função diz, um <em>grid</em>. Onde as linhas dirão respetio a uma das variáveis e a coluna à outra variável. É como se fosse um jogo de batalha naval, é uma matriz de pequenos gráficos. Como resultado, você verá que há cruzamentos entre as variáveis <em>TIPO_DESTINO</em> e <em>STATUS_GF</em> que resultam em um gráfico vazio por ausência de dados que estejam naquelas respectivas categorias das duas variáveis. No caso anterior, com <code>facte_wrap()</code> isso não ocorre.</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="m2.html#cb274-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb274-2"><a href="m2.html#cb274-2"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
+<span id="cb274-3"><a href="m2.html#cb274-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(VOLUME), <span class="dt">y=</span>PRECO_TOTAL))<span class="op">+</span></span>
+<span id="cb274-4"><a href="m2.html#cb274-4"></a><span class="st">  </span><span class="kw">facet_grid</span>(TIPO_GF <span class="op">~</span><span class="st"> </span>UF_DESTINATÁRIO)</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-112-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="títulos-rótulos-temas-e-legendas" class="section level3">
+<h3><span class="header-section-number">2.3.10</span> Títulos, rótulos, temas e legendas</h3>
+<p>USAR R4DS (para o Markdown tb)</p>
+<p>Há duas formas de alterar títulos e rótulos dos eixos em <code>ggplot2</code>. Você pode optar por <code>ggtitle("título do gráfico")</code>, <code>xlab("rótulo eixo x")</code>, <code>ylab("rótulo eixo y")</code>. Ou então, pode usar <code>labs()</code>. No caso, de usar labs, você pode alterar todos esses campos e outros, como o de legenda dentro da mesma função.</p>
+<p>Note, no entanto, que o parâmetro que controla o título da legenda muda dependendo do parâmetro dentro de <code>mapping = aes()</code> a partir do qual a legenda foi gerada. Normalmente, a legenda é gerada ou pelos parâmetros <code>colour</code>, <code>fill</code>, <code>size</code>, <code>shape</code>, <code>linetype</code> e <code>alpha</code>. Esses mesmos parâmetros, dependendo do caso, deverão ser passados dentro da função <code>labs()</code> para controlar o título da legenda, como por exemplo: <code>labs(..., shape = "Título da legenda")</code>.</p>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="m2.html#cb275-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb275-2"><a href="m2.html#cb275-2"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
+<span id="cb275-3"><a href="m2.html#cb275-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL, <span class="dt">colour=</span>TIPO_GF))<span class="op">+</span></span>
+<span id="cb275-4"><a href="m2.html#cb275-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Título do gráfico&quot;</span>,</span>
+<span id="cb275-5"><a href="m2.html#cb275-5"></a>       <span class="dt">x =</span> <span class="st">&quot;Rótulo eixo x&quot;</span>,</span>
+<span id="cb275-6"><a href="m2.html#cb275-6"></a>       <span class="dt">y =</span> <span class="st">&quot;Rótulo eixo y&quot;</span>,</span>
+<span id="cb275-7"><a href="m2.html#cb275-7"></a>       <span class="dt">colour =</span> <span class="st">&quot;Título da Legenda&quot;</span>)</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-113-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="m2.html#cb276-1"></a><span class="co"># OU</span></span>
+<span id="cb276-2"><a href="m2.html#cb276-2"></a></span>
+<span id="cb276-3"><a href="m2.html#cb276-3"></a><span class="co"># tb_ibama2 %&gt;%</span></span>
+<span id="cb276-4"><a href="m2.html#cb276-4"></a><span class="co">#   ggplot()+</span></span>
+<span id="cb276-5"><a href="m2.html#cb276-5"></a><span class="co">#   geom_point(mapping=aes(x=VOLUME, y=PRECO_TOTAL, colour=TIPO_GF))+</span></span>
+<span id="cb276-6"><a href="m2.html#cb276-6"></a><span class="co">#   ggtitle(&quot;Título do gráfico&quot;)+</span></span>
+<span id="cb276-7"><a href="m2.html#cb276-7"></a><span class="co">#   xlab(&quot;Rótulo eixo x&quot;)+</span></span>
+<span id="cb276-8"><a href="m2.html#cb276-8"></a><span class="co">#   ylab(&quot;Rótulo eixo y&quot;)+</span></span>
+<span id="cb276-9"><a href="m2.html#cb276-9"></a><span class="co">#   labs(colour=&quot;Título da legenda&quot;)</span></span></code></pre></div>
+<p>Há ainda funções específicas que também controlam o nome da legenda dependendo do argumento utilizado para gerar a legenda dentro de <code>aes()</code> e também a partir de qual tipo de dados, se contínuos ou discretos. Temos os seguintes casos:</p>
+<ul>
+<li><p><code>scale_GERADOR_discrete(name="título da legenda")</code></p></li>
+<li><p><code>scale_GERADOR_continuous(name="título da legenda")</code></p></li>
+</ul>
+<p>Dessa forma, temos: <code>scale_fill_discrete(name="título da legenda")</code>, <code>scale_fill_continuous(name="título da legenda")</code>, <code>scale_colour_discrete(name="título da legenda")</code>, <code>scale_colour_continuous(name="título da legenda")</code>, e assim por diante para os demais argumentos geradores da legenda, como <code>size</code>, <code>linetype</code>, <code>alpha</code> e <code>shape</code>.</p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="m2.html#cb277-1"></a>tb_censo_escolar <span class="op">%&gt;%</span></span>
+<span id="cb277-2"><a href="m2.html#cb277-2"></a><span class="st">  </span><span class="kw">group_by</span>(SG_UF, NU_ANO_CENSO) <span class="op">%&gt;%</span></span>
+<span id="cb277-3"><a href="m2.html#cb277-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">QTD_TOTAL =</span> <span class="kw">sum</span>(QTD_ALUNOS, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb277-4"><a href="m2.html#cb277-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(NU_ANO_CENSO, QTD_TOTAL, <span class="dt">linetype=</span>SG_UF))<span class="op">+</span></span>
+<span id="cb277-5"><a href="m2.html#cb277-5"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></span>
+<span id="cb277-6"><a href="m2.html#cb277-6"></a><span class="st">  </span><span class="kw">scale_linetype_discrete</span>(<span class="dt">name=</span><span class="st">&quot;UF&quot;</span>)</span></code></pre></div>
+<pre><code>## `summarise()` regrouping output by &#39;SG_UF&#39; (override with `.groups` argument)</code></pre>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-114-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Podemos inclusive ter mais de um argumento de <em>mapping</em> dentro de <code>aes()</code> e podemos controlar as legendas de cada um, adicionando mais uma camada ao gráfico:</p>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="m2.html#cb279-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb279-2"><a href="m2.html#cb279-2"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
+<span id="cb279-3"><a href="m2.html#cb279-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL,</span>
+<span id="cb279-4"><a href="m2.html#cb279-4"></a>                         <span class="dt">size=</span>preco_unidade,</span>
+<span id="cb279-5"><a href="m2.html#cb279-5"></a>                         <span class="dt">colour=</span>TIPO_GF))<span class="op">+</span></span>
+<span id="cb279-6"><a href="m2.html#cb279-6"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Produção madeireira - Dados IBAMA&quot;</span>)<span class="op">+</span></span>
+<span id="cb279-7"><a href="m2.html#cb279-7"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Volume toras&quot;</span>)<span class="op">+</span></span>
+<span id="cb279-8"><a href="m2.html#cb279-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Preço Total toras&quot;</span>)<span class="op">+</span></span>
+<span id="cb279-9"><a href="m2.html#cb279-9"></a><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">name=</span><span class="st">&quot;Preço por unidade de volume&quot;</span>)<span class="op">+</span></span>
+<span id="cb279-10"><a href="m2.html#cb279-10"></a><span class="st">  </span><span class="kw">scale_colour_discrete</span>(<span class="dt">name=</span><span class="st">&quot;Grupo&quot;</span>)</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-115-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="alterar-cores-e-paleta-de-cores" class="section level3">
+<h3><span class="header-section-number">2.3.11</span> Alterar cores e paleta de cores</h3>
+<p>Você deve ter notado, que na maioria dos gráficos, o <code>ggplot2</code> utiliza cores padrão da biblioteca para as plotagens. Se você não estiver contente com a paleta de cores padrão utilizada pelo pacote no <em>mapping</em> de suas variáveis, você pode definir manualmente esses cores utilizando uma outra paleta ou outras cores de sua preferência.</p>
+<p>O modo de alterar a paleta de cores utilizadas em um argumento de <em>mapping</em> dentro de <code>aes()</code> é por meio de funções do tipo <code>scale_GERADOR_manual()</code>, alterando-se o parâmetro <code>values</code>.</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="m2.html#cb280-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb280-2"><a href="m2.html#cb280-2"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
+<span id="cb280-3"><a href="m2.html#cb280-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL,</span>
+<span id="cb280-4"><a href="m2.html#cb280-4"></a>                         <span class="dt">size=</span>preco_unidade,</span>
+<span id="cb280-5"><a href="m2.html#cb280-5"></a>                         <span class="dt">colour=</span>TIPO_GF))<span class="op">+</span></span>
+<span id="cb280-6"><a href="m2.html#cb280-6"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Produção madeireira - Dados IBAMA&quot;</span>)<span class="op">+</span></span>
+<span id="cb280-7"><a href="m2.html#cb280-7"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Volume toras&quot;</span>)<span class="op">+</span></span>
+<span id="cb280-8"><a href="m2.html#cb280-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Preço Total toras&quot;</span>)<span class="op">+</span></span>
+<span id="cb280-9"><a href="m2.html#cb280-9"></a><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">name=</span><span class="st">&quot;Preço por unidade de volume&quot;</span>)<span class="op">+</span></span>
+<span id="cb280-10"><a href="m2.html#cb280-10"></a><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;yellow&quot;</span>))</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-116-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Por meio dessas mesmas funções do tipo de funções do tipo <code>scale_GERADOR_manual()</code>, podemos alterar também os rótulos das categorias exibidas na legenda utilizando o argumento <code>labels</code>.</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="m2.html#cb281-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb281-2"><a href="m2.html#cb281-2"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
+<span id="cb281-3"><a href="m2.html#cb281-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL,</span>
+<span id="cb281-4"><a href="m2.html#cb281-4"></a>                         <span class="dt">size=</span>preco_unidade,</span>
+<span id="cb281-5"><a href="m2.html#cb281-5"></a>                         <span class="dt">colour=</span>TIPO_GF))<span class="op">+</span></span>
+<span id="cb281-6"><a href="m2.html#cb281-6"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Produção madeireira - Dados IBAMA&quot;</span>)<span class="op">+</span></span>
+<span id="cb281-7"><a href="m2.html#cb281-7"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Volume toras&quot;</span>)<span class="op">+</span></span>
+<span id="cb281-8"><a href="m2.html#cb281-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Preço Total toras&quot;</span>)<span class="op">+</span></span>
+<span id="cb281-9"><a href="m2.html#cb281-9"></a><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">name=</span><span class="st">&quot;Preço por unidade de volume&quot;</span>)<span class="op">+</span></span>
+<span id="cb281-10"><a href="m2.html#cb281-10"></a><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;yellow&quot;</span>),</span>
+<span id="cb281-11"><a href="m2.html#cb281-11"></a>                      <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;tipo1&quot;</span>, <span class="st">&quot;tipo2&quot;</span>, <span class="st">&quot;tipo3&quot;</span>, <span class="st">&quot;tipo4&quot;</span>, <span class="st">&quot;tipo5&quot;</span>))</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-117-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Como menicionamos várias vezes atpe este ponto do curso, no <strong>R</strong> existem várias formas de fazer uma mesma coisa. As funções do tipo <code>scale_GERADOR_manual()</code> também permite alterar o título da legenda com o argumento <code>name</code>:</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="m2.html#cb282-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb282-2"><a href="m2.html#cb282-2"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
+<span id="cb282-3"><a href="m2.html#cb282-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL,</span>
+<span id="cb282-4"><a href="m2.html#cb282-4"></a>                         <span class="dt">size=</span>preco_unidade,</span>
+<span id="cb282-5"><a href="m2.html#cb282-5"></a>                         <span class="dt">colour=</span>TIPO_GF))<span class="op">+</span></span>
+<span id="cb282-6"><a href="m2.html#cb282-6"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Produção madeireira - Dados IBAMA&quot;</span>)<span class="op">+</span></span>
+<span id="cb282-7"><a href="m2.html#cb282-7"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Volume toras&quot;</span>)<span class="op">+</span></span>
+<span id="cb282-8"><a href="m2.html#cb282-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Preço Total toras&quot;</span>)<span class="op">+</span></span>
+<span id="cb282-9"><a href="m2.html#cb282-9"></a><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">name=</span><span class="st">&quot;Preço por unidade de volume&quot;</span>)<span class="op">+</span></span>
+<span id="cb282-10"><a href="m2.html#cb282-10"></a><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;yellow&quot;</span>),</span>
+<span id="cb282-11"><a href="m2.html#cb282-11"></a>                      <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;tipo1&quot;</span>, <span class="st">&quot;tipo2&quot;</span>, <span class="st">&quot;tipo3&quot;</span>, <span class="st">&quot;tipo4&quot;</span>, <span class="st">&quot;tipo5&quot;</span>),</span>
+<span id="cb282-12"><a href="m2.html#cb282-12"></a>                      <span class="dt">name=</span><span class="st">&quot;Grupo&quot;</span>)</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-118-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="área-de-plotagem-e-tema" class="section level3">
+<h3><span class="header-section-number">2.3.12</span> Área de Plotagem e Tema</h3>
+<p>Como já afirmamos antes, com <code>ggplot2</code> é possível modificar praticamente todos os parâmetros do seu gráfico. E normalmente há mais de uma forma para se fazer cada uma das alterações. Com a função <code>theme()</code>, é possível controlar desde o tamanho dos elementos do de plotagem do gráfico, passando pelo tamnho do texto dos rótulos e indo até o tamanho dos quadrados ou “bolinhas” da legenda. No entanto, esta será uma pesquisa a ser feita por você.</p>
+<p>Nesta seção traremos apenas algumas funções do <code>ggplot2</code> que trazem alguns temas pré-formatados:</p>
+<ul>
+<li><p><code>theme_gray()</code>: plano de fundo cinza e linhas de grid brancas. É como se trouxesse os dados para frente para facilitar comparações;</p></li>
+<li><p><code>theme_bw()</code>: plano de fundo branco e linhas de grid cinzas. Recomendado para apresentações utilizando projetor;</p></li>
+<li><p><code>theme_linedraw()</code>: plano de fundo branco e linhas de grid com largura diferenciada.</p></li>
+<li><p><code>theme_light()</code>: linhas de grid cor cinza claro e com presença de eixos. Parecido como <code>theme_linedraw()</code>;</p></li>
+<li><p><code>theme_dark()</code>: igual ao <code>theme_light()</code> mas com plano de fundo escuro. Faz linhas coloridas finas se destacarem;</p></li>
+<li><p><code>theme_minimal()</code>: tema minimalista sem plano de fundo;</p></li>
+<li><p><code>theme_classic()</code>: tema clássico sem linhas de grid;</p></li>
+<li><p><code>theme_void()</code>: tema vazio, sem cores de fundo e grid. Recomendado para plots de coordenadas não-usuais ou para desenhos.</p></li>
+</ul>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="m2.html#cb283-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
+<span id="cb283-2"><a href="m2.html#cb283-2"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
+<span id="cb283-3"><a href="m2.html#cb283-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL, <span class="dt">colour=</span>TIPO_GF))<span class="op">+</span></span>
+<span id="cb283-4"><a href="m2.html#cb283-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Título do gráfico&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Rótulo eixo x&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Rótulo eixo y&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;Título da Legenda&quot;</span>)<span class="op">+</span></span>
+<span id="cb283-5"><a href="m2.html#cb283-5"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
+<p><img src="ADR-T_files/figure-html/unnamed-chunk-119-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><strong>DICA:</strong> Estranhamente, <code>ggplot2</code> alinha o título do gráfico sempre à esquerda. Você pode centralizar o título usando justamente a função <code>theme()</code>, que comentamos mais acima, escrevendo <code>theme(plot.title = element_text(hjust=0.5)</code>. <code>0.5</code> indica que o título deve ficar no meio do gráfico, conforme alinhamento horizontal especificado (parâmetro <code>hjust</code>). <code>element_text()</code> é uma <em>helper function</em> que serve para controlar aspectos textuais como tamanho (<code>size</code>) e outros parâmetros como o próprio alinhamento horizontal.</p>
+<hr />
+</div>
+<div id="referências-da-seção-2" class="section level3">
+<h3><span class="header-section-number">2.3.13</span> Referências da seção</h3>
+<ul>
+<li><p><em>Ggplot themes gallery</em>. (2020). DATANOVIA website. URL <a href="https://www.datanovia.com/en/blog/ggplot-themes-gallery/">https://www.datanovia.com/en/blog/ggplot-themes-gallery/</a></p></li>
+<li><p>Lin, A. <em>Introduction to ggplot2</em>. Slides. IDRE Statistical Consulting Group. URL <a href="https://stats.idre.ucla.edu/stat/data/intro_ggplot2_int/ggplot2_intro_interactive.html#(1)">https://stats.idre.ucla.edu/stat/data/intro_ggplot2_int/ggplot2_intro_interactive.html#(1)</a></p></li>
+<li><p>Lopes, J. G. (2019). <em>O guia do ggplot2: como fazer qualquer tipo de gráfico no R</em>. Blog: Explorando o Universo da Ciência de Dados. 05, 2017. URL <a href="http://joseguilhermelopes.com.br/o-guia-do-ggplot2-como-fazer-qualquer-tipo-de-grafico-no-r/">http://joseguilhermelopes.com.br/o-guia-do-ggplot2-como-fazer-qualquer-tipo-de-grafico-no-r/</a></p></li>
+<li><p>Wickham, H.; Grolemund, G. (2016). <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. O’Reilly Media. december 2016. 522 pages. Disponível em: <a href="https://www.r4ds.co.nz">https://www.r4ds.co.nz</a>.</p></li>
+<li><p>Wickham, H. (2016). <em>ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. 2016. URL <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a></p></li>
+</ul>
+</div>
+<div id="exercícios-1" class="section level3">
+<h3><span class="header-section-number">2.3.14</span> Exercícios</h3>
+<ol style="list-style-type: decimal">
+<li><p>Escolha uma base que você tenha utilizado recentemente no trabalho e a partir da qual você tenha gerado algum gráfico no excel ou outro software. Tente reproduzir dois ou três gráficos utilizando o pacote <code>ggplot2</code>. Não se esqueça de procurar ajuda na internet, principalmente no <em>Stack Overflow</em> e na documentação do pacote, além da apostila.</p></li>
+<li><p>Nos gráficos do exercício 1, há algum aspecto que você gostaria de melhorar? Pesquise sobre como fazê-lo utilizando <code>ggplot2</code>.</p></li>
+<li><p>Sofistique seu gráfico do <code>ggplot2</code> pro meio da função <code>ggplotly(objeto_criado_com_ggplot2)</code> do pacote <code>plotly</code>. Você pode tornar o seu gráfico interativo e também construir outros gráficos diferentes com <code>plotly</code>.</p></li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="m1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="m3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": true,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "sepia",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
