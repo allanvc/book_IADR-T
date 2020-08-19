@@ -232,10 +232,6 @@ nrow(por_uf_dest_db)
 tail(por_uf_dest_db)
 ```
 
-### Outros pacotes para geração de mapas
-
-Embora `tmap` seja um pacote bastante poderoso e flexível para a geração de mapas, há diversas outras alternativas no ecosistema do **R** para geração tanto de mapas estáticos quanto interativos: `maptools`, `maps`, `ggmap` + `ggplot2`, `cartograph`, `ggVis`, `leaflet`, dentre outros.
-
 
 ***
 
@@ -733,6 +729,10 @@ mapa_desempvsPIB2007_uf <- tm_shape(shape_data_join2)+
 mapa_desempvsPIB2007_uf  
 
 ```
+
+##### Outros pacotes para geração de mapas
+
+Embora `tmap` seja um pacote bastante poderoso e flexível para a geração de mapas, há diversas outras alternativas no ecosistema do **R** para geração tanto de mapas estáticos quanto interativos: `maptools`, `maps`, `ggmap` + `ggplot2`, `cartograph`, `ggVis`, `leaflet`, dentre outros.
 
 ### Exportando dados geográficos
 
