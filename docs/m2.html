@@ -24,7 +24,7 @@
 <meta name="author" content="Allan Vieira de Castro Quadros" />
 
 
-<meta name="date" content="2020-08-18" />
+<meta name="date" content="2020-08-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -139,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Análise de Dados em R - Tidyverse</a></li>
+<li><a href="./">Introdução à Análise de Dados em R utilizando Tidyverse</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bem-vindo!</a><ul>
@@ -1136,18 +1136,18 @@ run;</code></pre>
 <span id="cb245-6"><a href="m2.html#cb245-6"></a></span>
 <span id="cb245-7"><a href="m2.html#cb245-7"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb245-8"><a href="m2.html#cb245-8"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">data=</span>tb_ibama2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL))</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-90-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-90-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Vejamos um primeiro exemplo para o cruzamento entre <em>VOLUME</em> vs <em>PRECO_TOTAL</em>.</p>
 <div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="m2.html#cb246-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb246-2"><a href="m2.html#cb246-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL))<span class="op">+</span></span>
 <span id="cb246-3"><a href="m2.html#cb246-3"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-91-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-91-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Note que não houve a necessidade de re-especificar os argumentos <code>data</code> e <code>aes()</code> para a função <code>geom_point()</code>.</p>
 <p>Poderíamos melhorar nosso gráfico adicionando cores dentro de <code>aes()</code>. Isso acrescentaria mais informação. Poderíamos atribuir cores diferentes para cada tipo de destino das toras de madeira:</p>
 <div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="m2.html#cb247-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb247-2"><a href="m2.html#cb247-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL))<span class="op">+</span></span>
 <span id="cb247-3"><a href="m2.html#cb247-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color=</span>TIPO_DESTINO))</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-92-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-92-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="m2.html#cb248-1"></a><span class="co"># ou</span></span>
 <span id="cb248-2"><a href="m2.html#cb248-2"></a></span>
 <span id="cb248-3"><a href="m2.html#cb248-3"></a><span class="co"># tb_ibama2 %&gt;%</span></span>
@@ -1164,13 +1164,13 @@ run;</code></pre>
 <span id="cb249-8"><a href="m2.html#cb249-8"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb249-9"><a href="m2.html#cb249-9"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL, <span class="dt">alpha=</span>prob_sim))<span class="op">+</span></span>
 <span id="cb249-10"><a href="m2.html#cb249-10"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-93-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-93-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Neste nosso caso, esse gráfico não é muito útil porque temos vários pontos sobrepostos e isto dificulta a percepção de como as cores estão variando. No entanto, serve para ilustrar essa possibilidade com <code>ggplot2</code>.</p>
 <p>Uma melhor forma de demonstrar os diferentes tipos de destino seria utilizar diferentes formas (argumento <code>shape</code>):</p>
 <div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="m2.html#cb250-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb250-2"><a href="m2.html#cb250-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL, <span class="dt">shape=</span>TIPO_DESTINO))<span class="op">+</span></span>
 <span id="cb250-3"><a href="m2.html#cb250-3"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-94-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-94-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div id="mapping-vs-setting-aesthetics" class="section level4">
 <h4><span class="header-section-number">2.3.6.1</span> Mapping vs Setting aesthetics</h4>
 <p>Nos exemplos anteriores, poderíamos optar por usar apenas uma única cor ou um único shape que não fosse o padrão de “bolinha” na cor preta. O que deveríamos fazer então, ao invés de <strong>mapear</strong> variáveis para <strong>aesthetic</strong>, é <strong>setar</strong> a <strong>aesthetic</strong> contante.</p>
@@ -1179,11 +1179,11 @@ run;</code></pre>
 <div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="m2.html#cb251-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb251-2"><a href="m2.html#cb251-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL))<span class="op">+</span></span>
 <span id="cb251-3"><a href="m2.html#cb251-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-95-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-95-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="m2.html#cb252-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb252-2"><a href="m2.html#cb252-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL))<span class="op">+</span></span>
 <span id="cb252-3"><a href="m2.html#cb252-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-96-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-96-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Note que devemos passar as constantes para <code>geom_point()</code> (fora de <code>aes()</code>) - o elemento de objetos geométricos - e não para <code>ggplot()</code>.</p>
 <p>Veja quantos <em>shapes</em> podemos <em>usar</em> no <strong>R</strong>:</p>
 <div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="m2.html#cb253-1"></a>d=<span class="kw">data.frame</span>(<span class="dt">p=</span><span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">25</span>,<span class="dv">32</span><span class="op">:</span><span class="dv">127</span>))</span>
@@ -1194,13 +1194,13 @@ run;</code></pre>
 <span id="cb253-6"><a href="m2.html#cb253-6"></a><span class="st">  </span><span class="kw">scale_shape_identity</span>() <span class="op">+</span></span>
 <span id="cb253-7"><a href="m2.html#cb253-7"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>d, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>p<span class="op">%%</span><span class="dv">16</span>, <span class="dt">y=</span>p<span class="op">%/%</span><span class="dv">16</span>, <span class="dt">shape=</span>p), <span class="dt">size=</span><span class="dv">5</span>, <span class="dt">fill=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
 <span id="cb253-8"><a href="m2.html#cb253-8"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data=</span>d, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>p<span class="op">%%</span><span class="dv">16</span>, <span class="dt">y=</span>p<span class="op">%/%</span><span class="dv">16</span><span class="fl">+0.25</span>, <span class="dt">label=</span>p), <span class="dt">size=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-97-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-97-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="m2.html#cb254-1"></a><span class="co"># http://sape.inf.usi.ch/quick-reference/ggplot2/shape</span></span></code></pre></div>
 <p>Cuidado ao setar uma <em>aesthetic</em> como constante dentro de <code>aes()</code>, pois isso pode resultar em um comportamento inesperado.</p>
 <div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="m2.html#cb255-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb255-2"><a href="m2.html#cb255-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL)) <span class="op">+</span></span>
 <span id="cb255-3"><a href="m2.html#cb255-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-98-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-98-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Embora tenhámos setado a cor como <code>"green"</code>, o fato de termos feito dentro de <code>aes()</code> faz com que o <code>ggplot</code></p>
 </div>
 </div>
@@ -1216,32 +1216,32 @@ run;</code></pre>
 <span id="cb256-2"><a href="m2.html#cb256-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>quant_sim))</span></code></pre></div>
 <p><strong>DICA:</strong> Note que podemos atribuir o resultado do gráfico a um objeto no R e acrescentar outras <em>layers</em> posteriormente.</p>
 <div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="m2.html#cb257-1"></a>c <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>()</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-100-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-100-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="m2.html#cb258-1"></a>c <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-100-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-100-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p><strong><em>geoms</em> para uma variável numérica discreta</strong></p>
 <div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="m2.html#cb260-1"></a><span class="co"># contagem</span></span>
 <span id="cb260-2"><a href="m2.html#cb260-2"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb260-3"><a href="m2.html#cb260-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>TIPO_GF))<span class="op">+</span></span>
 <span id="cb260-4"><a href="m2.html#cb260-4"></a><span class="st">  </span><span class="kw">geom_bar</span>()</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-101-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-101-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><strong><em>geoms</em> para duas variáveis (contínuas)</strong></p>
 <p><code>geom_point()</code> tambpem pode ser usado neste caso:</p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="m2.html#cb261-1"></a>e &lt;-<span class="st"> </span>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb261-2"><a href="m2.html#cb261-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL))</span>
 <span id="cb261-3"><a href="m2.html#cb261-3"></a></span>
 <span id="cb261-4"><a href="m2.html#cb261-4"></a>e <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-102-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-102-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><strong><em>geoms</em> para duas variáveis (uma discreta e uma contínua)</strong></p>
 <div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="m2.html#cb262-1"></a>f &lt;-<span class="st"> </span>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb262-2"><a href="m2.html#cb262-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(TIPO_GF, quant_sim))</span>
 <span id="cb262-3"><a href="m2.html#cb262-3"></a></span>
 <span id="cb262-4"><a href="m2.html#cb262-4"></a></span>
 <span id="cb262-5"><a href="m2.html#cb262-5"></a>f <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-103-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-103-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="m2.html#cb263-1"></a>f <span class="op">+</span><span class="st"> </span><span class="kw">geom_violin</span>()</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-103-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-103-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p><strong><em>geoms</em> para gráficos de linha</strong></p>
 <p>Neste ponto, vamos trocar de <em>dataset</em>. Passaremos a utilizar agora o dataset <code>tb_censo_escolar</code>. Faremos algumas transformações com <code>dplyr</code> e seguiremos direto para o plot usando pipe <code>%&gt;%</code>.</p>
 <div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="m2.html#cb264-1"></a>tb_censo_escolar <span class="op">%&gt;%</span></span>
@@ -1250,7 +1250,7 @@ run;</code></pre>
 <span id="cb264-4"><a href="m2.html#cb264-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(NU_ANO_CENSO, QTD_TOTAL, <span class="dt">colour=</span>SG_UF))<span class="op">+</span></span>
 <span id="cb264-5"><a href="m2.html#cb264-5"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;SG_UF&#39; (override with `.groups` argument)</code></pre>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-104-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-104-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>No caso de gráficos de linhas, ao invés usar cores diferentes, poderíamos ainda alterar o tipo de linha conforme as categorias de uma 3ª variável, por meio do argumento <code>linetype</code>:</p>
 <div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="m2.html#cb266-1"></a>tb_censo_escolar <span class="op">%&gt;%</span></span>
 <span id="cb266-2"><a href="m2.html#cb266-2"></a><span class="st">  </span><span class="kw">group_by</span>(SG_UF, NU_ANO_CENSO) <span class="op">%&gt;%</span></span>
@@ -1258,7 +1258,7 @@ run;</code></pre>
 <span id="cb266-4"><a href="m2.html#cb266-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(NU_ANO_CENSO, QTD_TOTAL, <span class="dt">linetype=</span>SG_UF))<span class="op">+</span></span>
 <span id="cb266-5"><a href="m2.html#cb266-5"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;SG_UF&#39; (override with `.groups` argument)</code></pre>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-105-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-105-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><strong>DICA:</strong> Há também outros <em>geoms</em> que você encontrará na página de ajuda.</p>
 <div id="positions" class="section level4">
 <h4><span class="header-section-number">2.3.8.1</span> Positions</h4>
@@ -1274,7 +1274,7 @@ run;</code></pre>
 <span id="cb268-7"><a href="m2.html#cb268-7"></a>tb_censo_escolar <span class="op">%&gt;%</span></span>
 <span id="cb268-8"><a href="m2.html#cb268-8"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>SG_UF, <span class="dt">fill=</span><span class="kw">factor</span>(NU_ANO_CENSO)))<span class="op">+</span></span>
 <span id="cb268-9"><a href="m2.html#cb268-9"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;stack&quot;</span>) <span class="co"># ou simplemente geom_bar()</span></span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-106-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-106-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><strong>DICA:</strong> Note que <em>forçamos</em> a variável <em>NU_ANO_CENSO</em> como um <em>factor</em>, para que o R a trate como uma variável categórica e não como uma data para realizar a plotagem. Um <em>factor</em> é uma abstração que o R faz para armazenas variáveis categóricas de mod mais eficiente na memória do computador. Para cada valor ele cria um <em>level</em> numérico. É muito mais eficiente guardar um número do que um nome ou uma data, por exemplo.</p>
 <ul>
 <li><strong>position = “dodge”</strong> coloca objetos sobrepostos um ao lado de outro. Nesse caso, teremos barras justapostas:</li>
@@ -1284,14 +1284,14 @@ run;</code></pre>
 <span id="cb269-3"><a href="m2.html#cb269-3"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
 <p><strong>DICA:</strong> Se voce quiser inverter as coordenadas do gráfico, pode fazer isso trocando os parâmetros <code>x</code> e <code>y</code> e em <code>aes()</code>, ou utilizando a função <code>coord_flip()</code>:</p>
 <div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="m2.html#cb270-1"></a>gg_barras <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-108-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-108-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ul>
 <li><strong>position=“fill”</strong> também empilhará os elementos, mas irá normalizar a altura de todas as barras para que fiquem na mesma escala. Isso torna mais fácil comparar as proporções entre os grupos:</li>
 </ul>
 <div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="m2.html#cb271-1"></a>tb_censo_escolar <span class="op">%&gt;%</span></span>
 <span id="cb271-2"><a href="m2.html#cb271-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>SG_UF, <span class="dt">fill=</span><span class="kw">factor</span>(NU_ANO_CENSO)))<span class="op">+</span></span>
 <span id="cb271-3"><a href="m2.html#cb271-3"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&quot;fill&quot;</span>)</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-109-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-109-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ul>
 <li><strong>position=“jitter”</strong> é útil para gráficos de dispersão, pois hpa um problema muito comum neste tipo de gráfico que é a sobreposição de pontos (<em>overplotting</em>). Com <em>jitter</em>, <em>ggplot2</em> adiciona um ruído aleatório nas posições de X e Y para que eles não se sobreponham:</li>
 </ul>
@@ -1315,14 +1315,14 @@ run;</code></pre>
 <span id="cb273-2"><a href="m2.html#cb273-2"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
 <span id="cb273-3"><a href="m2.html#cb273-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(VOLUME), <span class="dt">y=</span>PRECO_TOTAL))<span class="op">+</span></span>
 <span id="cb273-4"><a href="m2.html#cb273-4"></a><span class="st">  </span><span class="kw">facet_wrap</span>(TIPO_GF <span class="op">~</span><span class="st"> </span>UF_DESTINATÁRIO, <span class="dt">nrow =</span> <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-111-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-111-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Note acima que podemos definir o número de linhas desejado para plotagem com o argumento <code>nrow</code> ou o número de colunas com <code>ncol</code> e automaticamente o outro argumento será determinado. O símbolo <code>~</code> é muito utilizado no <strong>R</strong>. Nesse casos significa as variáveis de <code>aes()</code> serão plotadas em função das variáveis <code>STATUS_GF</code> e <code>TIPO_DESTINO</code>, ou seja, para cada combinação das categorias destas variáveis, será feito um plot com as variáveis passadas em <code>aes()</code>. Note que o arranjo das combinações das categorias <code>STATUS_GF</code> e <code>TIPO_DESTINO</code> são passadas nas colunas de gráficos, como se fossem os títulos de cada plot específico.</p>
 <p>No caso de <code>facet_grid()</code>, a organização do <em>output</em> será um pouco diferente. Será feito, como o próprio nome da função diz, um <em>grid</em>. Onde as linhas dirão respetio a uma das variáveis e a coluna à outra variável. É como se fosse um jogo de batalha naval, é uma matriz de pequenos gráficos. Como resultado, você verá que há cruzamentos entre as variáveis <em>TIPO_DESTINO</em> e <em>STATUS_GF</em> que resultam em um gráfico vazio por ausência de dados que estejam naquelas respectivas categorias das duas variáveis. No caso anterior, com <code>facte_wrap()</code> isso não ocorre.</p>
 <div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="m2.html#cb274-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb274-2"><a href="m2.html#cb274-2"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
 <span id="cb274-3"><a href="m2.html#cb274-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(VOLUME), <span class="dt">y=</span>PRECO_TOTAL))<span class="op">+</span></span>
 <span id="cb274-4"><a href="m2.html#cb274-4"></a><span class="st">  </span><span class="kw">facet_grid</span>(TIPO_GF <span class="op">~</span><span class="st"> </span>UF_DESTINATÁRIO)</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-112-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-112-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="títulos-rótulos-temas-e-legendas" class="section level3">
 <h3><span class="header-section-number">2.3.10</span> Títulos, rótulos, temas e legendas</h3>
@@ -1336,7 +1336,7 @@ run;</code></pre>
 <span id="cb275-5"><a href="m2.html#cb275-5"></a>       <span class="dt">x =</span> <span class="st">&quot;Rótulo eixo x&quot;</span>,</span>
 <span id="cb275-6"><a href="m2.html#cb275-6"></a>       <span class="dt">y =</span> <span class="st">&quot;Rótulo eixo y&quot;</span>,</span>
 <span id="cb275-7"><a href="m2.html#cb275-7"></a>       <span class="dt">colour =</span> <span class="st">&quot;Título da Legenda&quot;</span>)</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-113-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-113-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="m2.html#cb276-1"></a><span class="co"># OU</span></span>
 <span id="cb276-2"><a href="m2.html#cb276-2"></a></span>
 <span id="cb276-3"><a href="m2.html#cb276-3"></a><span class="co"># tb_ibama2 %&gt;%</span></span>
@@ -1359,7 +1359,7 @@ run;</code></pre>
 <span id="cb277-5"><a href="m2.html#cb277-5"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></span>
 <span id="cb277-6"><a href="m2.html#cb277-6"></a><span class="st">  </span><span class="kw">scale_linetype_discrete</span>(<span class="dt">name=</span><span class="st">&quot;UF&quot;</span>)</span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;SG_UF&#39; (override with `.groups` argument)</code></pre>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-114-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-114-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Podemos inclusive ter mais de um argumento de <em>mapping</em> dentro de <code>aes()</code> e podemos controlar as legendas de cada um, adicionando mais uma camada ao gráfico:</p>
 <div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="m2.html#cb279-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb279-2"><a href="m2.html#cb279-2"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
@@ -1371,7 +1371,7 @@ run;</code></pre>
 <span id="cb279-8"><a href="m2.html#cb279-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Preço Total toras&quot;</span>)<span class="op">+</span></span>
 <span id="cb279-9"><a href="m2.html#cb279-9"></a><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">name=</span><span class="st">&quot;Preço por unidade de volume&quot;</span>)<span class="op">+</span></span>
 <span id="cb279-10"><a href="m2.html#cb279-10"></a><span class="st">  </span><span class="kw">scale_colour_discrete</span>(<span class="dt">name=</span><span class="st">&quot;Grupo&quot;</span>)</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-115-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-115-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="alterar-cores-e-paleta-de-cores" class="section level3">
 <h3><span class="header-section-number">2.3.11</span> Alterar cores e paleta de cores</h3>
@@ -1387,7 +1387,7 @@ run;</code></pre>
 <span id="cb280-8"><a href="m2.html#cb280-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Preço Total toras&quot;</span>)<span class="op">+</span></span>
 <span id="cb280-9"><a href="m2.html#cb280-9"></a><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">name=</span><span class="st">&quot;Preço por unidade de volume&quot;</span>)<span class="op">+</span></span>
 <span id="cb280-10"><a href="m2.html#cb280-10"></a><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;yellow&quot;</span>))</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-116-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-116-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Por meio dessas mesmas funções do tipo de funções do tipo <code>scale_GERADOR_manual()</code>, podemos alterar também os rótulos das categorias exibidas na legenda utilizando o argumento <code>labels</code>.</p>
 <div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="m2.html#cb281-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb281-2"><a href="m2.html#cb281-2"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
@@ -1400,7 +1400,7 @@ run;</code></pre>
 <span id="cb281-9"><a href="m2.html#cb281-9"></a><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">name=</span><span class="st">&quot;Preço por unidade de volume&quot;</span>)<span class="op">+</span></span>
 <span id="cb281-10"><a href="m2.html#cb281-10"></a><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;yellow&quot;</span>),</span>
 <span id="cb281-11"><a href="m2.html#cb281-11"></a>                      <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;tipo1&quot;</span>, <span class="st">&quot;tipo2&quot;</span>, <span class="st">&quot;tipo3&quot;</span>, <span class="st">&quot;tipo4&quot;</span>, <span class="st">&quot;tipo5&quot;</span>))</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-117-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-117-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Como menicionamos várias vezes atpe este ponto do curso, no <strong>R</strong> existem várias formas de fazer uma mesma coisa. As funções do tipo <code>scale_GERADOR_manual()</code> também permite alterar o título da legenda com o argumento <code>name</code>:</p>
 <div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="m2.html#cb282-1"></a>tb_ibama2 <span class="op">%&gt;%</span></span>
 <span id="cb282-2"><a href="m2.html#cb282-2"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
@@ -1414,7 +1414,7 @@ run;</code></pre>
 <span id="cb282-10"><a href="m2.html#cb282-10"></a><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;yellow&quot;</span>),</span>
 <span id="cb282-11"><a href="m2.html#cb282-11"></a>                      <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;tipo1&quot;</span>, <span class="st">&quot;tipo2&quot;</span>, <span class="st">&quot;tipo3&quot;</span>, <span class="st">&quot;tipo4&quot;</span>, <span class="st">&quot;tipo5&quot;</span>),</span>
 <span id="cb282-12"><a href="m2.html#cb282-12"></a>                      <span class="dt">name=</span><span class="st">&quot;Grupo&quot;</span>)</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-118-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-118-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="área-de-plotagem-e-tema" class="section level3">
 <h3><span class="header-section-number">2.3.12</span> Área de Plotagem e Tema</h3>
@@ -1435,7 +1435,7 @@ run;</code></pre>
 <span id="cb283-3"><a href="m2.html#cb283-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>VOLUME, <span class="dt">y=</span>PRECO_TOTAL, <span class="dt">colour=</span>TIPO_GF))<span class="op">+</span></span>
 <span id="cb283-4"><a href="m2.html#cb283-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Título do gráfico&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Rótulo eixo x&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Rótulo eixo y&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;Título da Legenda&quot;</span>)<span class="op">+</span></span>
 <span id="cb283-5"><a href="m2.html#cb283-5"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="ADR-T_files/figure-html/unnamed-chunk-119-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="IADR-T_files/figure-html/unnamed-chunk-119-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><strong>DICA:</strong> Estranhamente, <code>ggplot2</code> alinha o título do gráfico sempre à esquerda. Você pode centralizar o título usando justamente a função <code>theme()</code>, que comentamos mais acima, escrevendo <code>theme(plot.title = element_text(hjust=0.5)</code>. <code>0.5</code> indica que o título deve ficar no meio do gráfico, conforme alinhamento horizontal especificado (parâmetro <code>hjust</code>). <code>element_text()</code> é uma <em>helper function</em> que serve para controlar aspectos textuais como tamanho (<code>size</code>) e outros parâmetros como o próprio alinhamento horizontal.</p>
 <hr />
 </div>
