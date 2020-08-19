@@ -54,7 +54,7 @@ Por esses motivos e por ser uma linguagem _open source_, dotada de um poderoso a
 
 Hoje em dia, há diversos ambientes e linguagens utilizadas para Análise de Dados, como Python, Julia, Scala, SAS, etc. No entanto, nenhuma delas fornece a combinação de um excelente ecositema de gerenciamento de pacotes, capacidades estatísticas, opções de visualização e um poderoso IDE (Integrated Development Environment) - tudo implementado pela comunidade **R**. Por todas essas características, os benefícios ao aprender a linguagem **R** são realmente consideráveis.
 
-## Organização da Apostila {-}
+## Organização do Livro {-}
 
 Este curso é dividido em 5 Módulos. O Módulo \@ref(m1) busca ambientar o aluno com os conceitos básicos da linguagem, passando pelo histórico, funcionalidades básicas e a estrutura dos objetos mais importantes no R.
 
