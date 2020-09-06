@@ -29,11 +29,9 @@ description: "Livro texto que acompanha o Curso Introdutório de Análise de Dad
 
 # Bem-vindo! {-}
 
-Este é o repositório do livro texto de *Introdução à Análise de Dados em R utilizando Tidyverse*. A principal função desta apostila é servir como **fonte de consulta** para os alunos do Instituto de Pesquisa Econômica Aplicada (IPEA) que realizam o curso. Alguns dos exemplos e exercícios a serem tratados em aula não estão presentes na apostila e constarão apenas dos slides a serem apresentados.
+Este é o repositório do livro texto do curso de *Introdução à Análise de Dados em R utilizando Tidyverse*. Para reproduzir os códigos presentes no livro, você precisa de uma versão recente do [R](https://cran.r-project.org/) e pacotes atualizados. Ao início de cada seção, você será apresentado aos pacotes necessários para executar os códigos referentes àquele assunto. 
 
-Para reproduzir os códigos presentes no livro, você precisa de uma versão recente do [R](https://cran.r-project.org/) e pacotes atualizados. Ao início de cada seção, você será apresentado aos pacotes necessários para executar os códigos referentes àquele assunto. 
-
-Todos os datasets e outros arquivos de dados a serem utilizados durante os Módulos, estão disponíveis no repositório _Git_ deste livro, na pasta __datasets__:  https://github.com/allanvc/book_ADR-T/tree/master/datasets
+Todos os datasets e outros arquivos de dados a serem utilizados durante os Módulos, estão disponíveis no repositório _Git_ deste livro, na pasta __datasets__:  https://github.com/allanvc/book_IADR-T/tree/master/datasets
 
 Também recomenda-se a utilização da versão mais recente do Ambiente Integrado de Desenvolvimento (IDE) [__RStudio__](https://www.rstudio.com/download).
 
@@ -54,7 +52,7 @@ Por esses motivos e por ser uma linguagem _open source_, dotada de um poderoso a
 
 Hoje em dia, há diversos ambientes e linguagens utilizadas para Análise de Dados, como Python, Julia, Scala, SAS, etc. No entanto, nenhuma delas fornece a combinação de um excelente ecositema de gerenciamento de pacotes, capacidades estatísticas, opções de visualização e um poderoso IDE (Integrated Development Environment) - tudo implementado pela comunidade **R**. Por todas essas características, os benefícios ao aprender a linguagem **R** são realmente consideráveis.
 
-## Organização do Livro {-}
+## Organização do Curso {-}
 
 Este curso é dividido em 5 Módulos. O Módulo \@ref(m1) busca ambientar o aluno com os conceitos básicos da linguagem, passando pelo histórico, funcionalidades básicas e a estrutura dos objetos mais importantes no R.
 

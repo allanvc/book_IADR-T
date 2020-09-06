@@ -24,7 +24,7 @@
 <meta name="author" content="Allan Vieira de Castro Quadros" />
 
 
-<meta name="date" content="2020-08-19" />
+<meta name="date" content="2020-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bem-vindo!</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#por-que-r"><i class="fa fa-check"></i>Por que R ?</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#organização-do-livro"><i class="fa fa-check"></i>Organização do Livro</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#organização-do-curso"><i class="fa fa-check"></i>Organização do Curso</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#sobre-o-autor"><i class="fa fa-check"></i>Sobre o autor</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="m1.html"><a href="m1.html"><i class="fa fa-check"></i><b>1</b> Módulo I</a><ul>
@@ -347,7 +347,7 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 <p>Caso você não possua mais o <em>tibble</em>, vamos refrescar sua memória:</p>
 <div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="m3.html#cb287-1"></a><span class="kw">library</span>(readr)</span>
 <span id="cb287-2"><a href="m3.html#cb287-2"></a></span>
-<span id="cb287-3"><a href="m3.html#cb287-3"></a>tb_ibama &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv&quot;</span>,</span>
+<span id="cb287-3"><a href="m3.html#cb287-3"></a>tb_ibama &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv&quot;</span>,</span>
 <span id="cb287-4"><a href="m3.html#cb287-4"></a>                     <span class="dt">col_types =</span> <span class="kw">cols</span>(</span>
 <span id="cb287-5"><a href="m3.html#cb287-5"></a>                       <span class="dt">X1 =</span> <span class="kw">col_double</span>(),</span>
 <span id="cb287-6"><a href="m3.html#cb287-6"></a>                       <span class="dt">TIPO_GF =</span> <span class="kw">col_character</span>(),</span>
@@ -393,20 +393,20 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 <div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="m3.html#cb290-1"></a>tb_ibama_db </span></code></pre></div>
 <pre><code>## # Source:   table&lt;tb_ibamaDB&gt; [?? x 17]
 ## # Database: sqlite 3.30.1 []
-##        X1 TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI…
-##     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;           
-##  1  40644 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              São Miguel do G…
-##  2 153879 GF1     RECEBIDO  PA           Alenquer         EMPREENDIME… XXXX             PA              Tailândia       
-##  3  66847 GF1     RECEBIDO  PA           Rurópolis        EMPREENDIME… XXXX             PA              Rurópolis       
-##  4 319645 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Macaúbas        
-##  5  19190 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas     
-##  6 317951 GF2     RECEBIDO  PA           Breu Branco      EMPREENDIME… XXXX             PA              Breu Branco     
-##  7 201275 GF3I    RECEBIDO  PA           Benevides        EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz       
-##  8 275969 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana
-##  9 158094 GF3I    RECEBIDO  PA           Moju             EMPREENDIME… &lt;NA&gt;             SE              Aracaju         
-## 10 181537 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              Santa Bárbara d…
-## # … with more rows, and 8 more variables: N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;, NOME_CIENTÍFICO &lt;chr&gt;,
-## #   PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+##        X1 TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI… N_AUTORIZAÇÃO
+##     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;        
+##  1  40644 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              São Miguel do G… 272866/2016  
+##  2 153879 GF1     RECEBIDO  PA           Alenquer         EMPREENDIME… XXXX             PA              Tailândia        272870/2016  
+##  3  66847 GF1     RECEBIDO  PA           Rurópolis        EMPREENDIME… XXXX             PA              Rurópolis        272887/2016  
+##  4 319645 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Macaúbas         &lt;NA&gt;         
+##  5  19190 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas      &lt;NA&gt;         
+##  6 317951 GF2     RECEBIDO  PA           Breu Branco      EMPREENDIME… XXXX             PA              Breu Branco      3108/2016    
+##  7 201275 GF3I    RECEBIDO  PA           Benevides        EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz        &lt;NA&gt;         
+##  8 275969 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana &lt;NA&gt;         
+##  9 158094 GF3I    RECEBIDO  PA           Moju             EMPREENDIME… &lt;NA&gt;             SE              Aracaju          &lt;NA&gt;         
+## 10 181537 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              Santa Bárbara d… 272861/2016  
+## # … with more rows, and 7 more variables: PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;, NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;,
+## #   UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
 <p>A única diferença é a referência de que os dados estão em um banco de dados SQLite.</p>
 </div>
 <div id="gerando-queries" class="section level3">
@@ -432,20 +432,20 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 <div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="m3.html#cb294-1"></a>tb_ibama_db <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(VOLUME <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # Source:   lazy query [?? x 17]
 ## # Database: sqlite 3.30.1 []
-##        X1 TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI…
-##     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;           
-##  1  40644 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              São Miguel do G…
-##  2 153879 GF1     RECEBIDO  PA           Alenquer         EMPREENDIME… XXXX             PA              Tailândia       
-##  3 319645 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Macaúbas        
-##  4  19190 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas     
-##  5 317951 GF2     RECEBIDO  PA           Breu Branco      EMPREENDIME… XXXX             PA              Breu Branco     
-##  6 201275 GF3I    RECEBIDO  PA           Benevides        EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz       
-##  7 275969 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana
-##  8 158094 GF3I    RECEBIDO  PA           Moju             EMPREENDIME… &lt;NA&gt;             SE              Aracaju         
-##  9 181537 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              Santa Bárbara d…
-## 10 187630 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas     
-## # … with more rows, and 8 more variables: N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;, NOME_CIENTÍFICO &lt;chr&gt;,
-## #   PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+##        X1 TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI… N_AUTORIZAÇÃO
+##     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;        
+##  1  40644 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              São Miguel do G… 272866/2016  
+##  2 153879 GF1     RECEBIDO  PA           Alenquer         EMPREENDIME… XXXX             PA              Tailândia        272870/2016  
+##  3 319645 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Macaúbas         &lt;NA&gt;         
+##  4  19190 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas      &lt;NA&gt;         
+##  5 317951 GF2     RECEBIDO  PA           Breu Branco      EMPREENDIME… XXXX             PA              Breu Branco      3108/2016    
+##  6 201275 GF3I    RECEBIDO  PA           Benevides        EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz        &lt;NA&gt;         
+##  7 275969 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana &lt;NA&gt;         
+##  8 158094 GF3I    RECEBIDO  PA           Moju             EMPREENDIME… &lt;NA&gt;             SE              Aracaju          &lt;NA&gt;         
+##  9 181537 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              Santa Bárbara d… 272861/2016  
+## 10 187630 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas      &lt;NA&gt;         
+## # … with more rows, and 7 more variables: PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;, NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;,
+## #   UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="m3.html#cb296-1"></a>tb_ibama_db <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb296-2"><a href="m3.html#cb296-2"></a><span class="st">  </span><span class="kw">group_by</span>(UF_DESTINATÁRIO) <span class="op">%&gt;%</span></span>
 <span id="cb296-3"><a href="m3.html#cb296-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">vol_medio_por_UF =</span> <span class="kw">mean</span>(VOLUME))</span></code></pre></div>
@@ -606,36 +606,36 @@ Vejamos exemplos de como especificar o parâmetro <code>by</code>, utilizando al
 <div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="m3.html#cb312-1"></a>flights2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(weather)</span></code></pre></div>
 <pre><code>## Joining, by = c(&quot;year&quot;, &quot;month&quot;, &quot;day&quot;, &quot;hour&quot;, &quot;origin&quot;)</code></pre>
 <pre><code>## # A tibble: 336,776 x 18
-##     year month   day  hour origin dest  tailnum carrier  temp  dewp humid wind_dir wind_speed wind_gust precip pressure
-##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
-##  1  2013     1     1     5 EWR    IAH   N14228  UA       39.0  28.0  64.4      260       12.7      NA        0    1012.
-##  2  2013     1     1     5 LGA    IAH   N24211  UA       39.9  25.0  54.8      250       15.0      21.9      0    1011.
-##  3  2013     1     1     5 JFK    MIA   N619AA  AA       39.0  27.0  61.6      260       15.0      NA        0    1012.
-##  4  2013     1     1     5 JFK    BQN   N804JB  B6       39.0  27.0  61.6      260       15.0      NA        0    1012.
-##  5  2013     1     1     6 LGA    ATL   N668DN  DL       39.9  25.0  54.8      260       16.1      23.0      0    1012.
-##  6  2013     1     1     5 EWR    ORD   N39463  UA       39.0  28.0  64.4      260       12.7      NA        0    1012.
-##  7  2013     1     1     6 EWR    FLL   N516JB  B6       37.9  28.0  67.2      240       11.5      NA        0    1012.
-##  8  2013     1     1     6 LGA    IAD   N829AS  EV       39.9  25.0  54.8      260       16.1      23.0      0    1012.
-##  9  2013     1     1     6 JFK    MCO   N593JB  B6       37.9  27.0  64.3      260       13.8      NA        0    1013.
-## 10  2013     1     1     6 LGA    ORD   N3ALAA  AA       39.9  25.0  54.8      260       16.1      23.0      0    1012.
-## # … with 336,766 more rows, and 2 more variables: visib &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
+##     year month   day  hour origin dest  tailnum carrier  temp  dewp humid wind_dir wind_speed wind_gust precip pressure visib
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+##  1  2013     1     1     5 EWR    IAH   N14228  UA       39.0  28.0  64.4      260       12.7      NA        0    1012.    10
+##  2  2013     1     1     5 LGA    IAH   N24211  UA       39.9  25.0  54.8      250       15.0      21.9      0    1011.    10
+##  3  2013     1     1     5 JFK    MIA   N619AA  AA       39.0  27.0  61.6      260       15.0      NA        0    1012.    10
+##  4  2013     1     1     5 JFK    BQN   N804JB  B6       39.0  27.0  61.6      260       15.0      NA        0    1012.    10
+##  5  2013     1     1     6 LGA    ATL   N668DN  DL       39.9  25.0  54.8      260       16.1      23.0      0    1012.    10
+##  6  2013     1     1     5 EWR    ORD   N39463  UA       39.0  28.0  64.4      260       12.7      NA        0    1012.    10
+##  7  2013     1     1     6 EWR    FLL   N516JB  B6       37.9  28.0  67.2      240       11.5      NA        0    1012.    10
+##  8  2013     1     1     6 LGA    IAD   N829AS  EV       39.9  25.0  54.8      260       16.1      23.0      0    1012.    10
+##  9  2013     1     1     6 JFK    MCO   N593JB  B6       37.9  27.0  64.3      260       13.8      NA        0    1013.    10
+## 10  2013     1     1     6 LGA    ORD   N3ALAA  AA       39.9  25.0  54.8      260       16.1      23.0      0    1012.    10
+## # … with 336,766 more rows, and 1 more variable: time_hour &lt;dttm&gt;</code></pre>
 <ul>
 <li>2ª forma) <code>by = "var1"</code> ou <code>by = c("var1", "var2", "var3")</code>: um vetor de caracteres. Opera como se fosse um <em>natural join</em>, mas utiliza somente algumas das variáveis comuns. Por exemplo, <code>flights</code> e <code>planes</code> possuem uma variável <code>year</code>, mas elas significam coisas diferentes em cada tibbe/dataframe. Então, queremos especificar uma coluna que sabemos que significa a mesma coisa em ambos os tibbles e que possa servir de índice para o <em>matching</em>. Vamos usar <code>tailnum</code> que é o número (de cauda) do avião.</li>
 </ul>
 <div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="m3.html#cb315-1"></a>flights2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(planes, <span class="dt">by =</span> <span class="st">&quot;tailnum&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 336,776 x 16
-##    year.x month   day  hour origin dest  tailnum carrier year.y type       manufacturer   model  engines seats speed engine
-##     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; 
-##  1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixed win… BOEING         737-8…       2   149    NA Turbo…
-##  2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixed win… BOEING         737-8…       2   149    NA Turbo…
-##  3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixed win… BOEING         757-2…       2   178    NA Turbo…
-##  4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixed win… AIRBUS         A320-…       2   200    NA Turbo…
-##  5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixed win… BOEING         757-2…       2   178    NA Turbo…
-##  6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixed win… BOEING         737-9…       2   191    NA Turbo…
-##  7   2013     1     1     6 EWR    FLL   N516JB  B6        2000 Fixed win… AIRBUS INDUST… A320-…       2   200    NA Turbo…
-##  8   2013     1     1     6 LGA    IAD   N829AS  EV        1998 Fixed win… CANADAIR       CL-60…       2    55    NA Turbo…
-##  9   2013     1     1     6 JFK    MCO   N593JB  B6        2004 Fixed win… AIRBUS         A320-…       2   200    NA Turbo…
-## 10   2013     1     1     6 LGA    ORD   N3ALAA  AA          NA &lt;NA&gt;       &lt;NA&gt;           &lt;NA&gt;        NA    NA    NA &lt;NA&gt;  
+##    year.x month   day  hour origin dest  tailnum carrier year.y type              manufacturer    model    engines seats speed engine 
+##     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;           &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  
+##  1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixed wing multi… BOEING          737-824        2   149    NA Turbo-…
+##  2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixed wing multi… BOEING          737-824        2   149    NA Turbo-…
+##  3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixed wing multi… BOEING          757-223        2   178    NA Turbo-…
+##  4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixed wing multi… AIRBUS          A320-232       2   200    NA Turbo-…
+##  5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixed wing multi… BOEING          757-232        2   178    NA Turbo-…
+##  6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixed wing multi… BOEING          737-924…       2   191    NA Turbo-…
+##  7   2013     1     1     6 EWR    FLL   N516JB  B6        2000 Fixed wing multi… AIRBUS INDUSTR… A320-232       2   200    NA Turbo-…
+##  8   2013     1     1     6 LGA    IAD   N829AS  EV        1998 Fixed wing multi… CANADAIR        CL-600-…       2    55    NA Turbo-…
+##  9   2013     1     1     6 JFK    MCO   N593JB  B6        2004 Fixed wing multi… AIRBUS          A320-232       2   200    NA Turbo-…
+## 10   2013     1     1     6 LGA    ORD   N3ALAA  AA          NA &lt;NA&gt;              &lt;NA&gt;            &lt;NA&gt;          NA    NA    NA &lt;NA&gt;   
 ## # … with 336,766 more rows</code></pre>
 <p>Note que ao juntar todas as colunas de ambos os tibbles, <code>dplyr</code> acrescenta um sufixo à segunda variável <code>year</code>.</p>
 <ul>
@@ -644,18 +644,18 @@ Vejamos exemplos de como especificar o parâmetro <code>by</code>, utilizando al
 <p>Cada voo tem uma origem e um aeroporto de destino. Então precisamos especificar em qual dessas variáveis do dataset <code>flight</code> queremos fazer o <em>matching</em> com a coluna <code>faa</code> do dataset <code>airports</code>.</p>
 <div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="m3.html#cb317-1"></a>flights2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(airports, <span class="kw">c</span>(<span class="st">&quot;dest&quot;</span> =<span class="st"> &quot;faa&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 336,776 x 15
-##     year month   day  hour origin dest  tailnum carrier name                       lat   lon   alt    tz dst   tzone       
-##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;                    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       
-##  1  2013     1     1     5 EWR    IAH   N14228  UA      George Bush Intercontin…  30.0 -95.3    97    -6 A     America/Chi…
-##  2  2013     1     1     5 LGA    IAH   N24211  UA      George Bush Intercontin…  30.0 -95.3    97    -6 A     America/Chi…
-##  3  2013     1     1     5 JFK    MIA   N619AA  AA      Miami Intl                25.8 -80.3     8    -5 A     America/New…
-##  4  2013     1     1     5 JFK    BQN   N804JB  B6      &lt;NA&gt;                      NA    NA      NA    NA &lt;NA&gt;  &lt;NA&gt;        
-##  5  2013     1     1     6 LGA    ATL   N668DN  DL      Hartsfield Jackson Atla…  33.6 -84.4  1026    -5 A     America/New…
-##  6  2013     1     1     5 EWR    ORD   N39463  UA      Chicago Ohare Intl        42.0 -87.9   668    -6 A     America/Chi…
-##  7  2013     1     1     6 EWR    FLL   N516JB  B6      Fort Lauderdale Hollywo…  26.1 -80.2     9    -5 A     America/New…
-##  8  2013     1     1     6 LGA    IAD   N829AS  EV      Washington Dulles Intl    38.9 -77.5   313    -5 A     America/New…
-##  9  2013     1     1     6 JFK    MCO   N593JB  B6      Orlando Intl              28.4 -81.3    96    -5 A     America/New…
-## 10  2013     1     1     6 LGA    ORD   N3ALAA  AA      Chicago Ohare Intl        42.0 -87.9   668    -6 A     America/Chi…
+##     year month   day  hour origin dest  tailnum carrier name                              lat   lon   alt    tz dst   tzone           
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;                           &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;           
+##  1  2013     1     1     5 EWR    IAH   N14228  UA      George Bush Intercontinental     30.0 -95.3    97    -6 A     America/Chicago 
+##  2  2013     1     1     5 LGA    IAH   N24211  UA      George Bush Intercontinental     30.0 -95.3    97    -6 A     America/Chicago 
+##  3  2013     1     1     5 JFK    MIA   N619AA  AA      Miami Intl                       25.8 -80.3     8    -5 A     America/New_York
+##  4  2013     1     1     5 JFK    BQN   N804JB  B6      &lt;NA&gt;                             NA    NA      NA    NA &lt;NA&gt;  &lt;NA&gt;            
+##  5  2013     1     1     6 LGA    ATL   N668DN  DL      Hartsfield Jackson Atlanta Intl  33.6 -84.4  1026    -5 A     America/New_York
+##  6  2013     1     1     5 EWR    ORD   N39463  UA      Chicago Ohare Intl               42.0 -87.9   668    -6 A     America/Chicago 
+##  7  2013     1     1     6 EWR    FLL   N516JB  B6      Fort Lauderdale Hollywood Intl   26.1 -80.2     9    -5 A     America/New_York
+##  8  2013     1     1     6 LGA    IAD   N829AS  EV      Washington Dulles Intl           38.9 -77.5   313    -5 A     America/New_York
+##  9  2013     1     1     6 JFK    MCO   N593JB  B6      Orlando Intl                     28.4 -81.3    96    -5 A     America/New_York
+## 10  2013     1     1     6 LGA    ORD   N3ALAA  AA      Chicago Ohare Intl               42.0 -87.9   668    -6 A     America/Chicago 
 ## # … with 336,766 more rows</code></pre>
 <div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="m3.html#cb319-1"></a>flights2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(airports, <span class="kw">c</span>(<span class="st">&quot;origin&quot;</span> =<span class="st"> &quot;faa&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 336,776 x 15
@@ -894,14 +894,14 @@ Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="ht
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
 ## bbox:           xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841
-## proj4string:    +proj=longlat +ellps=GRS80 +no_defs</code></pre>
+## geographic CRS: SIRGAS 2000</code></pre>
 <p>Vejamos o conteúdo deste arquivo:</p>
 <div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="m3.html#cb355-1"></a>shp_uf</span></code></pre></div>
 <pre><code>## Simple feature collection with 27 features and 3 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
 ## bbox:           xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841
-## proj4string:    +proj=longlat +ellps=GRS80 +no_defs 
+## geographic CRS: SIRGAS 2000
 ## First 10 features:
 ##            NM_ESTADO    NM_REGIAO CD_GEOCUF                       geometry
 ## 1            SERGIPE     NORDESTE        28 MULTIPOLYGON (((-37.98248 -...
@@ -938,7 +938,7 @@ Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="ht
 <p>Faça a leitura da incidência da taxa de desemprego por UF no Brasil para o ano de 2007 conforme o código abaixo:</p>
 <div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="m3.html#cb359-1"></a><span class="kw">library</span>(readr)</span>
 <span id="cb359-2"><a href="m3.html#cb359-2"></a></span>
-<span id="cb359-3"><a href="m3.html#cb359-3"></a>tb_desemp_uf &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/tx_desemp_uf2007.csv&quot;</span>)</span>
+<span id="cb359-3"><a href="m3.html#cb359-3"></a>tb_desemp_uf &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/tx_desemp_uf2007.csv&quot;</span>)</span>
 <span id="cb359-4"><a href="m3.html#cb359-4"></a></span>
 <span id="cb359-5"><a href="m3.html#cb359-5"></a>tb_desemp_uf</span></code></pre></div>
 <pre><code>## # A tibble: 27 x 4
@@ -972,7 +972,7 @@ Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="ht
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
 ## bbox:           xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841
-## proj4string:    +proj=longlat +ellps=GRS80 +no_defs 
+## geographic CRS: SIRGAS 2000
 ## First 10 features:
 ##            NM_ESTADO    NM_REGIAO CD_GEOCUF UF CO_UNID_GEO Taxa_desemp                       geometry
 ## 1            SERGIPE     NORDESTE        28 SE           2         9.8 MULTIPOLYGON (((-37.98248 -...
@@ -1021,7 +1021,7 @@ Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="ht
 <h5><span class="header-section-number">3.3.2.2.6</span> Acrescentando mais dados ao mapa</h5>
 <p>Com <code>tmap</code>, podemos acrescentar mais uma dimensão de dados ao nosso mapa, a partir de outro dataset. Imagine, por exemplo, que desejássemos plotar, além da taxa de desemprego, o % de crescimento do PIB no ano de 2007. Isso, forneceria uma melhor compreensão sobre a situação da economia de cada estado naquele ano.</p>
 <p>Primeiro vamos ler o dataset <code>cresc_PIB_uf2007.csv</code>, que estão disponíveis no repositório da apostila:</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="m3.html#cb366-1"></a>tb_cresc_PIB_uf2007 &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/cresc_PIB_uf2007.csv&quot;</span>)</span>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="m3.html#cb366-1"></a>tb_cresc_PIB_uf2007 &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/cresc_PIB_uf2007.csv&quot;</span>)</span>
 <span id="cb366-2"><a href="m3.html#cb366-2"></a></span>
 <span id="cb366-3"><a href="m3.html#cb366-3"></a>tb_cresc_PIB_uf2007</span></code></pre></div>
 <pre><code>## # A tibble: 27 x 2
@@ -1056,7 +1056,7 @@ Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="ht
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
 ## bbox:           xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841
-## proj4string:    +proj=longlat +ellps=GRS80 +no_defs 
+## geographic CRS: SIRGAS 2000
 ## First 10 features:
 ##            NM_ESTADO    NM_REGIAO CD_GEOCUF UF CO_UNID_GEO Taxa_desemp var_PIB2007                       geometry
 ## 1            SERGIPE     NORDESTE        28 SE           2         9.8         6.2 MULTIPOLYGON (((-37.98248 -...

@@ -24,7 +24,7 @@
 <meta name="author" content="Allan Vieira de Castro Quadros" />
 
 
-<meta name="date" content="2020-08-19" />
+<meta name="date" content="2020-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bem-vindo!</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#por-que-r"><i class="fa fa-check"></i>Por que R ?</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#organização-do-livro"><i class="fa fa-check"></i>Organização do Livro</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#organização-do-curso"><i class="fa fa-check"></i>Organização do Curso</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#sobre-o-autor"><i class="fa fa-check"></i>Sobre o autor</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="m1.html"><a href="m1.html"><i class="fa fa-check"></i><b>1</b> Módulo I</a><ul>
@@ -283,9 +283,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number"> 2</span> Módulo II</h1>
 <div id="leitura-de-dados-no-r" class="section level2">
 <h2><span class="header-section-number">2.1</span> Leitura de Dados no R</h2>
-<p>Até o momento, trabalhamos criando objetos a partir de dados informados via script ou console. No entanto, o mais comum quando se faz análise de dados, é ler dados a partir de fontes externas, como um arquivo .txt ou .csv, um banco de dados relacional (SQL) no servidor de nosso trabalho, ou ainda, a partir de páginas da internet. Nesta seção, veremos como ler bases de dados armazenadas localmente no computador.</p>
+<p>Até o momento, trabalhamos criando objetos a partir de dados informados via script ou console. No entanto, o mais comum quando se faz análise de dados, é ler dados a partir de fontes externas, como um arquivo .txt ou .csv, um banco de dados relacional (SQL) no servidor de nossa empresa, ou ainda, a partir de páginas da internet. Nesta seção, veremos como ler bases de dados armazenadas localmente no computador.</p>
 <p>Eu costumo dizer que, em R, sempre há pelo menos 3 formas diferentes de realizar uma mesma tarefa. No caso da leitura de dados, isso não é diferente, uma vez que o R possui diversos pacotes para realizar a leitura dos dados; uns focam na rapidez, outros na praticidade e outros, ainda, são feitos especificamente para manusear bases de dados massivas. Quanto a esse último aspecto, há de se reconhecer que o R não tem um gerenciamento de memória que permita ao usuário carregar bancos de dados muito grandes (na casa das 10 milhões de linhas mais ou menos). Isso é, de certa forma, proposital, uma vez que o R foi criado para tornar mais fácil a vida do usuário que lida com análise dados. Mas há que se ressaltar que, devido a sua comunidade extremamente ativa, vários pacotes foram e vem sendo desenvolvidos com o objetivo de melhorar a forma como o R lida com o armazenamento de objetos na memória.</p>
-<p>Neste curso, nos focaremos na utilização do pacote <code>readr</code>, por entendermos ser um meio termo entre praticidade e rapidez, considerando as alternativas do <code>base R</code> e da função <code>fread()</code> do pacote <code>data.table</code>.</p>
+<p>Neste curso, nós focaremos na utilização do pacote <code>readr</code>, por entendermos ser um meio termo entre praticidade e rapidez, considerando as alternativas do <code>base R</code> e da função <code>fread()</code> do pacote <code>data.table</code>.</p>
 <div id="o-tidyverse" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> O Tidyverse</h3>
 <p>O <code>readr</code> compõe um conjunto de pacotes chamado de <strong>Tidyverse</strong>.</p>
@@ -308,7 +308,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>read_table()</code>: lê arquivos <code>.txt</code>, onde o separador de colunas é é o espaço em branco`;</li>
 <li><code>read_delim()</code>: permite ler arquivos de diversas extensões, onde o usuário pode especificar o delimitador por meio do parâmetro <code>delim</code>.</li>
 </ul>
-<p>Vamos para a prática, utilizando dados editados a partir da base <a href="http://ibama.gov.br/flora-e-madeira/publicacoes"><em>Produção Madeireira de Espécies Nativas Brasileiras: 2012 a 2017</em></a> publicada pelo IBAMA. Há diversas bases nesse site, bem como scripts em R para facilitar a manipulação dos dados. Você pode baixar os dados. No entanto, como nosso objetivo é criar a experiência de leitua, editamos aleatoriamente essa base, reduzindo seu tamanho para 100 mil linhas, e a disponibilizamos neste <a href="https://raw.githubusercontent.com/allanvc/book_ADR-T/master/PA%20GF%202017%20jan-jun_editada.csv">link</a>. Uma vez na página, você pode salvá-la em seu computador clicando com o botão direito do mouse e depois em <code>Salvar como</code>.</p>
+<p>Vamos para a prática, utilizando dados editados a partir da base <a href="http://ibama.gov.br/flora-e-madeira/publicacoes"><em>Produção Madeireira de Espécies Nativas Brasileiras: 2012 a 2017</em></a> publicada pelo IBAMA. Há diversas bases nesse site, bem como scripts em R para facilitar a manipulação dos dados. Você pode baixar os dados. No entanto, como nosso objetivo é criar a experiência de leitua, editamos aleatoriamente essa base, reduzindo seu tamanho para 100 mil linhas, e a disponibilizamos neste <a href="https://raw.githubusercontent.com/allanvc/book_IADR-T/master/PA%20GF%202017%20jan-jun_editada.csv">link</a>. Uma vez na página, você pode salvá-la em seu computador clicando com o botão direito do mouse e depois em <code>Salvar como</code>.</p>
 <p>Note que os dados estão em um arquivo <code>.csv</code> no padrão norte-americano (colunas separadas por vírgulas <code>,</code>).</p>
 <p>Vamos fazer a leitura do arquivo que foi salvo em nosso computador.</p>
 <p><strong>DICA:</strong> No seu computador, o caminho para o arquivo será outro.</p>
@@ -344,11 +344,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- **DICA:** `readr` realmente facilita o processo de leitura de arquivos. Podemos, por exemplo, ler arquivos de dados que estão dentro de arquivos zipados `.zip`, como no exemplo abaixo. Arquivos na extensão `.zip`, `.gz`, `.bz2` ou `.xz` são automaticamente descompactados. -->
 <!-- ```{r, eval=FALSE} -->
 <!-- library(readr) -->
-<!-- tb_ibama <- read_csv(file="https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.zip") -->
+<!-- tb_ibama <- read_csv(file="https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.zip") -->
 <!-- ``` -->
 <p>Note que assim que o arquivo é lido, as funções imprimem no console os nomes de cada coluna e as formas como elas foram lidas. Isto permite ao usuário checar se tudo ocorreu bem durante a leitura. Caso alguma coluna não tenha sido lida no formato em que você esperava, é só copiar a saída e rodar a função novamente, mudando a especificação daquela coluna em particular.</p>
 <p>Por exemplo, vamos alterar a coluna EMISSAO de ponto flutante/decimal <code>double</code> (que ocupa mais espaço na memória), para que seja lida como número inteiro <code>integer</code>. Fazemos essa especificação no argumento <code>col_types</code>.</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="m2.html#cb174-1"></a>tb_ibama &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv&quot;</span>,</span>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="m2.html#cb174-1"></a>tb_ibama &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv&quot;</span>,</span>
 <span id="cb174-2"><a href="m2.html#cb174-2"></a>                     <span class="dt">col_types =</span> <span class="kw">cols</span>(</span>
 <span id="cb174-3"><a href="m2.html#cb174-3"></a>                       <span class="dt">X1 =</span> <span class="kw">col_double</span>(),</span>
 <span id="cb174-4"><a href="m2.html#cb174-4"></a>                       <span class="dt">TIPO_GF =</span> <span class="kw">col_character</span>(),</span>
@@ -372,20 +372,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Uma vez lido o arquivo, podemos inspecioná-lo chamando o objeto criado, ou clicando no nome do objeto em nosso <em>environment</em>.</p>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="m2.html#cb175-1"></a>tb_ibama</span></code></pre></div>
 <pre><code>## # A tibble: 100,000 x 17
-##        X1 TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI…
-##     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;           
-##  1  40644 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              São Miguel do G…
-##  2 153879 GF1     RECEBIDO  PA           Alenquer         EMPREENDIME… XXXX             PA              Tailândia       
-##  3  66847 GF1     RECEBIDO  PA           Rurópolis        EMPREENDIME… XXXX             PA              Rurópolis       
-##  4 319645 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Macaúbas        
-##  5  19190 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas     
-##  6 317951 GF2     RECEBIDO  PA           Breu Branco      EMPREENDIME… XXXX             PA              Breu Branco     
-##  7 201275 GF3I    RECEBIDO  PA           Benevides        EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz       
-##  8 275969 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana
-##  9 158094 GF3I    RECEBIDO  PA           Moju             EMPREENDIME… &lt;NA&gt;             SE              Aracaju         
-## 10 181537 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              Santa Bárbara d…
-## # … with 99,990 more rows, and 8 more variables: N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;,
-## #   NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+##        X1 TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI… N_AUTORIZAÇÃO
+##     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;        
+##  1  40644 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              São Miguel do G… 272866/2016  
+##  2 153879 GF1     RECEBIDO  PA           Alenquer         EMPREENDIME… XXXX             PA              Tailândia        272870/2016  
+##  3  66847 GF1     RECEBIDO  PA           Rurópolis        EMPREENDIME… XXXX             PA              Rurópolis        272887/2016  
+##  4 319645 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Macaúbas         &lt;NA&gt;         
+##  5  19190 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas      &lt;NA&gt;         
+##  6 317951 GF2     RECEBIDO  PA           Breu Branco      EMPREENDIME… XXXX             PA              Breu Branco      3108/2016    
+##  7 201275 GF3I    RECEBIDO  PA           Benevides        EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz        &lt;NA&gt;         
+##  8 275969 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana &lt;NA&gt;         
+##  9 158094 GF3I    RECEBIDO  PA           Moju             EMPREENDIME… &lt;NA&gt;             SE              Aracaju          &lt;NA&gt;         
+## 10 181537 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              Santa Bárbara d… 272861/2016  
+## # … with 99,990 more rows, and 7 more variables: PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;, NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;,
+## #   UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
 <p>Note que esse arquivo não se parece muito com o formato clássico de Dataframe que vimos no Módulo <a href="m1.html#m1">1</a>. Ele na verdade é um novo tipo de objeto, que segue a filosofia do <em>Tydeverse</em>, comentada na seção anterior. Temos aqui um <code>tibble</code>, que nada mais é que um Dataframe mais amigável. Em termos gerais, a diferença de um Dataframe clássico para um <code>tibble</code> está principalmente nas informações que nos são apresentadas quando imprimimos o conteúdo do objeto no console. Diferentemente do Dataframe, um <code>tibble</code> nos apresenta apenas as 10 primeiras linhas da tabela, os tipos das colunas, e apenas o conteúdo das colunas que cabem em nossa tela.</p>
 <p>Uma outra diferença é no resultado ao executarmos uma identificação. Ainda podemos utilizar <code>[indice_linhas, indice_colunas]</code> ou <code>nome_dataframe$nome_coluna</code>. A questão é que indexações com chaves, retornaram um <code>tibble</code>, mesmo que a operação resulte em uma única coluna. Já a indexação via <code>$</code>, retornará um vetor. Resumindo, a primeira não altera o tipo de objeto - continuamos com um <code>tibble</code>. O A segunda altera o tipo de objeto.</p>
 <p>Teste isso na prática:</p>
@@ -523,14 +523,14 @@ run;</code></pre>
 <p>Vamos selecionar todos as linhas em que o tipo de destino das madeiras é o consumidor final, na cidade de Brasil Novo:</p>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="m2.html#cb189-1"></a><span class="kw">filter</span>(tb_ibama, TIPO_DESTINO <span class="op">==</span><span class="st"> &quot;CONSUMIDOR_FINAL&quot;</span>, MUNICÍPIO_DESTINATÁRIO <span class="op">==</span><span class="st"> &quot;Brasil Novo&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 16
-##   TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI…
-##   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;           
-## 1 GF3     RECEBIDO… PA           Altamira         CONSUMIDOR_… &lt;NA&gt;             PA              Brasil Novo     
-## 2 GF3     RECEBIDO… PA           Altamira         CONSUMIDOR_… &lt;NA&gt;             PA              Brasil Novo     
-## 3 GF3     RECEBIDO… PA           Altamira         CONSUMIDOR_… &lt;NA&gt;             PA              Brasil Novo     
-## 4 GF3     RECEBIDO… PA           Altamira         CONSUMIDOR_… &lt;NA&gt;             PA              Brasil Novo     
-## # … with 8 more variables: N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;, NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;,
-## #   VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+##   TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI… N_AUTORIZAÇÃO
+##   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;        
+## 1 GF3     RECEBIDO… PA           Altamira         CONSUMIDOR_… &lt;NA&gt;             PA              Brasil Novo      &lt;NA&gt;         
+## 2 GF3     RECEBIDO… PA           Altamira         CONSUMIDOR_… &lt;NA&gt;             PA              Brasil Novo      &lt;NA&gt;         
+## 3 GF3     RECEBIDO… PA           Altamira         CONSUMIDOR_… &lt;NA&gt;             PA              Brasil Novo      &lt;NA&gt;         
+## 4 GF3     RECEBIDO… PA           Altamira         CONSUMIDOR_… &lt;NA&gt;             PA              Brasil Novo      &lt;NA&gt;         
+## # … with 7 more variables: PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;, NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;,
+## #   PRECO_TOTAL &lt;dbl&gt;</code></pre>
 <p><strong>DICA:</strong> No <code>base R</code>, isso seria equivalente ao código: <code>tb_ibama[tb_ibama$TIPO_DESTINO == "CONSUMIDOR_FINAL" &amp; tb_ibama$MUNICÌPIO_DESTINATÁRIO == "Brasil Novo", ]</code>.</p>
 </div>
 <div id="ordenando-linhas-com-arrange" class="section level3">
@@ -538,20 +538,20 @@ run;</code></pre>
 <p><code>arrange()</code> funciona de modo semelhante a <em>filter</em>, mas ao invés de filtrar e selecionar linhas, ele apenas as reordena de acordo com alguma condição que passamos. Essa função recebe um data.frame e um conjunto de <em>column names</em> pelo qual vai ordenar. Se você fornecer mais de um nome de coluna, cada coluna adicional passada será usada como critério de desempate.</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="m2.html#cb191-1"></a><span class="kw">arrange</span>(tb_ibama, UF_DESTINATÁRIO, MUNICÍPIO_DESTINATÁRIO, VOLUME)</span></code></pre></div>
 <pre><code>## # A tibble: 100,000 x 16
-##    TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI…
-##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;           
-##  1 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
-##  2 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
-##  3 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
-##  4 GF3I    RECEBIDO  PA           Paragominas      EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
-##  5 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
-##  6 GF3I    RECEBIDO  PA           Ipixuna do Pará  EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
-##  7 GF3I    RECEBIDO  PA           Rondon do Pará   EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
-##  8 GF3I    RECEBIDO  PA           Novo Repartimen… EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
-##  9 GF3I    RECEBIDO  PA           Rondon do Pará   EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
-## 10 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca       
-## # … with 99,990 more rows, and 8 more variables: N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;,
-## #   NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+##    TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI… N_AUTORIZAÇÃO
+##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;        
+##  1 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca        &lt;NA&gt;         
+##  2 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca        &lt;NA&gt;         
+##  3 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca        &lt;NA&gt;         
+##  4 GF3I    RECEBIDO  PA           Paragominas      EMPREENDIME… &lt;NA&gt;             AL              Arapiraca        &lt;NA&gt;         
+##  5 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca        &lt;NA&gt;         
+##  6 GF3I    RECEBIDO  PA           Ipixuna do Pará  EMPREENDIME… &lt;NA&gt;             AL              Arapiraca        &lt;NA&gt;         
+##  7 GF3I    RECEBIDO  PA           Rondon do Pará   EMPREENDIME… &lt;NA&gt;             AL              Arapiraca        &lt;NA&gt;         
+##  8 GF3I    RECEBIDO  PA           Novo Repartimen… EMPREENDIME… &lt;NA&gt;             AL              Arapiraca        &lt;NA&gt;         
+##  9 GF3I    RECEBIDO  PA           Rondon do Pará   EMPREENDIME… &lt;NA&gt;             AL              Arapiraca        &lt;NA&gt;         
+## 10 GF3I    RECEBIDO  PA           Tomé-Açu         EMPREENDIME… &lt;NA&gt;             AL              Arapiraca        &lt;NA&gt;         
+## # … with 99,990 more rows, and 7 more variables: PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;, NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;,
+## #   UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
 <p>Se quiser ordenar de forma decrescente, utilize a função <code>desc(nome_da_coluna)</code> dentro de <code>arrange()</code>. Isso seria particularmente interessante se você quisesse ordenar os dados na coluna final do maior volume para o maior.</p>
 </div>
 <div id="selecionando-colunas-com-select" class="section level3">
@@ -592,19 +592,19 @@ run;</code></pre>
 <div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="m2.html#cb197-1"></a><span class="co"># Selecionando todas as clunas exceto aqueles em um intervalo (inclusive)</span></span>
 <span id="cb197-2"><a href="m2.html#cb197-2"></a><span class="kw">select</span>(tb_ibama, <span class="op">-</span>(UF_REMETENTE<span class="op">:</span>TIPO_DESTINO))</span></code></pre></div>
 <pre><code>## # A tibble: 100,000 x 13
-##    TIPO_GF STATUS_GF CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI… N_AUTORIZAÇÃO PROCESSO EMISSAO NOME_CIENTÍFICO
-##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;          
-##  1 GF1     RECEBIDO  XXXX             PA              São Miguel do G… 272866/2016   2015/00…   42752 Chrysophyllum …
-##  2 GF1     RECEBIDO  XXXX             PA              Tailândia        272870/2016   2014/00…   42789 Couratari taua…
-##  3 GF1     RECEBIDO  XXXX             PA              Rurópolis        272887/2016   2013/00…   42762 Manilkara hube…
-##  4 GF3I    RECEBIDO  &lt;NA&gt;             BA              Macaúbas         &lt;NA&gt;          &lt;NA&gt;       42900 Alexa grandifl…
-##  5 GF3     RECEBIDO  XXXX             PA              Paragominas      &lt;NA&gt;          &lt;NA&gt;       42746 Couratari stel…
-##  6 GF2     RECEBIDO  XXXX             PA              Breu Branco      3108/2016     2009/10…   42899 Eucalyptus pel…
-##  7 GF3I    RECEBIDO  &lt;NA&gt;             BA              Vera Cruz        &lt;NA&gt;          &lt;NA&gt;       42808 Manilkara hube…
-##  8 GF3I    RECEBIDO  &lt;NA&gt;             BA              Feira de Santana &lt;NA&gt;          &lt;NA&gt;       42860 Sclerolobium t…
-##  9 GF3I    RECEBIDO  &lt;NA&gt;             SE              Aracaju          &lt;NA&gt;          &lt;NA&gt;       42790 Hymenolobium e…
-## 10 GF1     RECEBIDO  XXXX             PA              Santa Bárbara d… 272861/2016   2015/00…   42798 Hymenaea courb…
-## # … with 99,990 more rows, and 4 more variables: PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+##    TIPO_GF STATUS_GF CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI… N_AUTORIZAÇÃO PROCESSO EMISSAO NOME_CIENTÍFICO PRODUTO VOLUME
+##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt;
+##  1 GF1     RECEBIDO  XXXX             PA              São Miguel do G… 272866/2016   2015/00…   42752 Chrysophyllum … Toras …  2.30 
+##  2 GF1     RECEBIDO  XXXX             PA              Tailândia        272870/2016   2014/00…   42789 Couratari taua… Toras …  1.26 
+##  3 GF1     RECEBIDO  XXXX             PA              Rurópolis        272887/2016   2013/00…   42762 Manilkara hube… Toras …  0.651
+##  4 GF3I    RECEBIDO  &lt;NA&gt;             BA              Macaúbas         &lt;NA&gt;          &lt;NA&gt;       42900 Alexa grandifl… Viga     2.45 
+##  5 GF3     RECEBIDO  XXXX             PA              Paragominas      &lt;NA&gt;          &lt;NA&gt;       42746 Couratari stel… Toras …  2.31 
+##  6 GF2     RECEBIDO  XXXX             PA              Breu Branco      3108/2016     2009/10…   42899 Eucalyptus pel… Toretes 25.5  
+##  7 GF3I    RECEBIDO  &lt;NA&gt;             BA              Vera Cruz        &lt;NA&gt;          &lt;NA&gt;       42808 Manilkara hube… Ripa     3.98 
+##  8 GF3I    RECEBIDO  &lt;NA&gt;             BA              Feira de Santana &lt;NA&gt;          &lt;NA&gt;       42860 Sclerolobium t… Madeir…  1.70 
+##  9 GF3I    RECEBIDO  &lt;NA&gt;             SE              Aracaju          &lt;NA&gt;          &lt;NA&gt;       42790 Hymenolobium e… Vigota   4.21 
+## 10 GF1     RECEBIDO  XXXX             PA              Santa Bárbara d… 272861/2016   2015/00…   42798 Hymenaea courb… Toras …  2.52 
+## # … with 99,990 more rows, and 2 more variables: UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
 <p><strong>DICA:</strong> Existem <em>helper functions</em> que podemos usar dentro de <code>select()</code>. São funções que lembram o funcionamento de uma <em>regular expression</em> (conceito que veremos no Módulo <a href="m3.html#m3">3</a>) para identificarmos nomes de colunas que atendem a determinado critério. São muito úteis com grandes datasets: <code>starts_with()</code>, <code>ends_with()</code>, <code>matches()</code> e <code>contains()</code>.</p>
 <p>Vamos por exemplo selecionar todas as colunas que começam com UF:</p>
 <div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="m2.html#cb199-1"></a><span class="kw">select</span>(tb_ibama, <span class="kw">starts_with</span>(<span class="st">&quot;UF&quot;</span>))</span></code></pre></div>
@@ -642,20 +642,20 @@ run;</code></pre>
 <p>No entanto, <code>select()</code> “abandona” todas as demais variáveis quando você faz uma renomeação. O melhor então é usar <code>rename()</code>:</p>
 <div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="m2.html#cb203-1"></a><span class="kw">rename</span>(tb_ibama, <span class="dt">MUN_REMETENTE =</span> MUNICÍPIO_REMETENTE)</span></code></pre></div>
 <pre><code>## # A tibble: 100,000 x 16
-##    TIPO_GF STATUS_GF UF_REMETENTE MUN_REMETENTE TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI…
-##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;           
-##  1 GF1     RECEBIDO  PA           Santarém      EMPREENDIME… XXXX             PA              São Miguel do G…
-##  2 GF1     RECEBIDO  PA           Alenquer      EMPREENDIME… XXXX             PA              Tailândia       
-##  3 GF1     RECEBIDO  PA           Rurópolis     EMPREENDIME… XXXX             PA              Rurópolis       
-##  4 GF3I    RECEBIDO  PA           Tucuruí       EMPREENDIME… &lt;NA&gt;             BA              Macaúbas        
-##  5 GF3     RECEBIDO  PA           Paragominas   EMPREENDIME… XXXX             PA              Paragominas     
-##  6 GF2     RECEBIDO  PA           Breu Branco   EMPREENDIME… XXXX             PA              Breu Branco     
-##  7 GF3I    RECEBIDO  PA           Benevides     EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz       
-##  8 GF3I    RECEBIDO  PA           Tucuruí       EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana
-##  9 GF3I    RECEBIDO  PA           Moju          EMPREENDIME… &lt;NA&gt;             SE              Aracaju         
-## 10 GF1     RECEBIDO  PA           Santarém      EMPREENDIME… XXXX             PA              Santa Bárbara d…
-## # … with 99,990 more rows, and 8 more variables: N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;,
-## #   NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+##    TIPO_GF STATUS_GF UF_REMETENTE MUN_REMETENTE TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI… N_AUTORIZAÇÃO PROCESSO
+##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;   
+##  1 GF1     RECEBIDO  PA           Santarém      EMPREENDIME… XXXX             PA              São Miguel do G… 272866/2016   2015/00…
+##  2 GF1     RECEBIDO  PA           Alenquer      EMPREENDIME… XXXX             PA              Tailândia        272870/2016   2014/00…
+##  3 GF1     RECEBIDO  PA           Rurópolis     EMPREENDIME… XXXX             PA              Rurópolis        272887/2016   2013/00…
+##  4 GF3I    RECEBIDO  PA           Tucuruí       EMPREENDIME… &lt;NA&gt;             BA              Macaúbas         &lt;NA&gt;          &lt;NA&gt;    
+##  5 GF3     RECEBIDO  PA           Paragominas   EMPREENDIME… XXXX             PA              Paragominas      &lt;NA&gt;          &lt;NA&gt;    
+##  6 GF2     RECEBIDO  PA           Breu Branco   EMPREENDIME… XXXX             PA              Breu Branco      3108/2016     2009/10…
+##  7 GF3I    RECEBIDO  PA           Benevides     EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz        &lt;NA&gt;          &lt;NA&gt;    
+##  8 GF3I    RECEBIDO  PA           Tucuruí       EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana &lt;NA&gt;          &lt;NA&gt;    
+##  9 GF3I    RECEBIDO  PA           Moju          EMPREENDIME… &lt;NA&gt;             SE              Aracaju          &lt;NA&gt;          &lt;NA&gt;    
+## 10 GF1     RECEBIDO  PA           Santarém      EMPREENDIME… XXXX             PA              Santa Bárbara d… 272861/2016   2015/00…
+## # … with 99,990 more rows, and 6 more variables: EMISSAO &lt;int&gt;, NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;,
+## #   PRECO_TOTAL &lt;dbl&gt;</code></pre>
 </div>
 <div id="adicionando-novas-colunas-com-mutate" class="section level3">
 <h3><span class="header-section-number">2.2.4</span> Adicionando novas colunas com <code>mutate()</code></h3>
@@ -664,20 +664,20 @@ run;</code></pre>
 <span id="cb205-2"><a href="m2.html#cb205-2"></a>  <span class="dt">preco_unidade =</span> PRECO_TOTAL <span class="op">/</span><span class="st"> </span>VOLUME,</span>
 <span id="cb205-3"><a href="m2.html#cb205-3"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 100,000 x 17
-##    TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI…
-##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;           
-##  1 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              São Miguel do G…
-##  2 GF1     RECEBIDO  PA           Alenquer         EMPREENDIME… XXXX             PA              Tailândia       
-##  3 GF1     RECEBIDO  PA           Rurópolis        EMPREENDIME… XXXX             PA              Rurópolis       
-##  4 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Macaúbas        
-##  5 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas     
-##  6 GF2     RECEBIDO  PA           Breu Branco      EMPREENDIME… XXXX             PA              Breu Branco     
-##  7 GF3I    RECEBIDO  PA           Benevides        EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz       
-##  8 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana
-##  9 GF3I    RECEBIDO  PA           Moju             EMPREENDIME… &lt;NA&gt;             SE              Aracaju         
-## 10 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              Santa Bárbara d…
-## # … with 99,990 more rows, and 9 more variables: N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;,
-## #   NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;, preco_unidade &lt;dbl&gt;</code></pre>
+##    TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI… N_AUTORIZAÇÃO
+##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;        
+##  1 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              São Miguel do G… 272866/2016  
+##  2 GF1     RECEBIDO  PA           Alenquer         EMPREENDIME… XXXX             PA              Tailândia        272870/2016  
+##  3 GF1     RECEBIDO  PA           Rurópolis        EMPREENDIME… XXXX             PA              Rurópolis        272887/2016  
+##  4 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Macaúbas         &lt;NA&gt;         
+##  5 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas      &lt;NA&gt;         
+##  6 GF2     RECEBIDO  PA           Breu Branco      EMPREENDIME… XXXX             PA              Breu Branco      3108/2016    
+##  7 GF3I    RECEBIDO  PA           Benevides        EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz        &lt;NA&gt;         
+##  8 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana &lt;NA&gt;         
+##  9 GF3I    RECEBIDO  PA           Moju             EMPREENDIME… &lt;NA&gt;             SE              Aracaju          &lt;NA&gt;         
+## 10 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              Santa Bárbara d… 272861/2016  
+## # … with 99,990 more rows, and 8 more variables: PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;, NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;,
+## #   UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;, preco_unidade &lt;dbl&gt;</code></pre>
 <p><code>mutate()</code> nos permite ainda nos referir a colunas que acabamos de criar no mesmo comando. Vamos salvar esta alteração em um novo <em>tibble</em>, chamado <code>tb_ibama2</code></p>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="m2.html#cb207-1"></a>tb_ibama2 &lt;-<span class="st"> </span><span class="kw">mutate</span>(tb_ibama,</span>
 <span id="cb207-2"><a href="m2.html#cb207-2"></a>  <span class="dt">preco_unidade =</span> PRECO_TOTAL <span class="op">/</span><span class="st"> </span>VOLUME,</span>
@@ -1065,12 +1065,12 @@ run;</code></pre>
 <span id="cb242-4"><a href="m2.html#cb242-4"></a></span>
 <span id="cb242-5"><a href="m2.html#cb242-5"></a><span class="co"># leitura</span></span>
 <span id="cb242-6"><a href="m2.html#cb242-6"></a></span>
-<span id="cb242-7"><a href="m2.html#cb242-7"></a>tb_censo_escolar &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/tab_censo_sample_ES_MS_RR.csv&quot;</span>)</span></code></pre></div>
+<span id="cb242-7"><a href="m2.html#cb242-7"></a>tb_censo_escolar &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/tab_censo_sample_ES_MS_RR.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Missing column names filled in: &#39;X1&#39; [1]</code></pre>
 <p>Caso, você não possua mais a <code>tb_ibama2</code> em sua sessão do R, carregue a tabela original e fça novamente as alterações que fizemos nas seções anteriores</p>
 <div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="m2.html#cb244-1"></a><span class="kw">library</span>(dplyr)</span>
 <span id="cb244-2"><a href="m2.html#cb244-2"></a></span>
-<span id="cb244-3"><a href="m2.html#cb244-3"></a>tb_ibama &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv&quot;</span>,</span>
+<span id="cb244-3"><a href="m2.html#cb244-3"></a>tb_ibama &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv&quot;</span>,</span>
 <span id="cb244-4"><a href="m2.html#cb244-4"></a>                     <span class="dt">col_types =</span> <span class="kw">cols</span>(</span>
 <span id="cb244-5"><a href="m2.html#cb244-5"></a>                       <span class="dt">X1 =</span> <span class="kw">col_double</span>(),</span>
 <span id="cb244-6"><a href="m2.html#cb244-6"></a>                       <span class="dt">TIPO_GF =</span> <span class="kw">col_character</span>(),</span>

@@ -98,7 +98,7 @@ Caso você não possua mais o _tibble_, vamos refrescar sua memória:
 ```{r, message=FALSE}
 library(readr)
 
-tb_ibama <- read_csv(file="https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv",
+tb_ibama <- read_csv(file="https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv",
                      col_types = cols(
                        X1 = col_double(),
                        TIPO_GF = col_character(),
@@ -601,7 +601,7 @@ Faça a leitura da incidência da taxa de desemprego por UF no Brasil para o ano
 ```{r, message=FALSE}
 library(readr)
 
-tb_desemp_uf <- read_csv2(file="https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/tx_desemp_uf2007.csv")
+tb_desemp_uf <- read_csv2(file="https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/tx_desemp_uf2007.csv")
 
 tb_desemp_uf
 
@@ -674,7 +674,7 @@ Com `tmap`, podemos acrescentar mais uma dimensão de dados ao nosso mapa, a par
 Primeiro vamos ler o dataset `cresc_PIB_uf2007.csv`, que estão disponíveis no repositório da apostila:
 
 ```{r, message=FALSE}
-tb_cresc_PIB_uf2007 <- read_csv2(file="https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/cresc_PIB_uf2007.csv")
+tb_cresc_PIB_uf2007 <- read_csv2(file="https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/cresc_PIB_uf2007.csv")
 
 tb_cresc_PIB_uf2007
 

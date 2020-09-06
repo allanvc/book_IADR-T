@@ -1087,7 +1087,7 @@ Vejamos alguns exemplos, em que criamos alguns _chunks_ com nome, para realizar 
 library(readr)
 library(dplyr)
 
-tb_ibama <- read_csv(file="https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv",
+tb_ibama <- read_csv(file="https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv",
                      col_types = cols(
                        X1 = col_double(),
                        TIPO_GF = col_character(),
@@ -1144,7 +1144,7 @@ O que resultaria em:
 library(readr)
 library(dplyr)
 
-tb_ibama <- read_csv(file="https://raw.githubusercontent.com/allanvc/book_ADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv",
+tb_ibama <- read_csv(file="https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv",
                      col_types = cols(
                        X1 = col_double(),
                        TIPO_GF = col_character(),
