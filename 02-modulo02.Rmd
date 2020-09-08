@@ -33,7 +33,7 @@ As funções de leitura mais importantes no pacote são:
 * `read_delim()`: permite ler arquivos de diversas extensões, onde o usuário pode especificar o delimitador por meio do parâmetro `delim`.
 
 
-Vamos para a prática, utilizando dados editados a partir da base [_Produção Madeireira de Espécies Nativas Brasileiras: 2012 a 2017_](http://ibama.gov.br/flora-e-madeira/publicacoes) publicada pelo IBAMA. Há diversas bases nesse site, bem como scripts em R para facilitar a manipulação dos dados. Você pode baixar os dados. No entanto, como nosso objetivo é criar a experiência de leitua, editamos aleatoriamente essa base, reduzindo seu tamanho para 100 mil linhas, e a disponibilizamos neste [link](https://raw.githubusercontent.com/allanvc/book_IADR-T/master/PA%20GF%202017%20jan-jun_editada.csv). Uma vez na página, você pode salvá-la em seu computador clicando com o botão direito do mouse e depois em `Salvar como`.
+Vamos para a prática, utilizando dados editados a partir da base [_Produção Madeireira de Espécies Nativas Brasileiras: 2012 a 2017_](http://ibama.gov.br/flora-e-madeira/publicacoes) publicada pelo IBAMA. Há diversas bases nesse site, bem como scripts em R para facilitar a manipulação dos dados. Você pode baixar os dados. No entanto, como nosso objetivo é criar a experiência de leitua, editamos aleatoriamente essa base, reduzindo seu tamanho para 100 mil linhas, e a disponibilizamos neste [**LINK**](https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv). Uma vez na página, você pode salvá-la em seu computador clicando com o botão direito do mouse e depois em `Salvar como`.
 
 Note que os dados estão em um arquivo `.csv` no padrão norte-americano (colunas separadas por vírgulas `,`).
 
