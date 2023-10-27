@@ -5,26 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 3 Módulo III | Introdução à Análise de Dados em R utilizando Tidyverse</title>
-  <meta name="description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse, ministrado no IPEA entre março e abril de 2020." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 3 Módulo III | Introdução à Análise de Dados em R utilizando Tidyverse" />
   <meta property="og:type" content="book" />
   
-  
-  <meta property="og:description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse, ministrado no IPEA entre março e abril de 2020." />
+  <meta property="og:description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse." />
   <meta name="github-repo" content="allanvc/book_IADR-T" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content=" 3 Módulo III | Introdução à Análise de Dados em R utilizando Tidyverse" />
   
-  <meta name="twitter:description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse, ministrado no IPEA entre março e abril de 2020." />
+  <meta name="twitter:description" content="Livro texto que acompanha o Curso Introdutório de Análise de Dados em R utilizando Tidyverse." />
   
 
 <meta name="author" content="Allan Vieira de Castro Quadros" />
 
 
-<meta name="date" content="2020-09-08" />
+<meta name="date" content="2023-10-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,8 @@
   
 <link rel="prev" href="m2.html"/>
 <link rel="next" href="m4.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,31 +49,32 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+<script src="libs/leaflet-binding-2.2.0/leaflet.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -93,13 +94,13 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -112,7 +113,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -124,6 +125,11 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -142,13 +148,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Introdução à Análise de Dados em R utilizando Tidyverse</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bem-vindo!</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bem-vindo!</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#por-que-r"><i class="fa fa-check"></i>Por que R ?</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#organização-do-curso"><i class="fa fa-check"></i>Organização do Curso</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#sobre-o-autor"><i class="fa fa-check"></i>Sobre o autor</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="m1.html"><a href="m1.html"><i class="fa fa-check"></i><b>1</b> Módulo I</a><ul>
-<li class="chapter" data-level="1.1" data-path="m1.html"><a href="m1.html#primeiros-passos"><i class="fa fa-check"></i><b>1.1</b> Primeiros Passos</a><ul>
+<li class="chapter" data-level="1" data-path="m1.html"><a href="m1.html"><i class="fa fa-check"></i><b>1</b> Módulo I</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="m1.html"><a href="m1.html#primeiros-passos"><i class="fa fa-check"></i><b>1.1</b> Primeiros Passos</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="m1.html"><a href="m1.html#breve-histórico"><i class="fa fa-check"></i><b>1.1.1</b> Breve Histórico</a></li>
 <li class="chapter" data-level="1.1.2" data-path="m1.html"><a href="m1.html#instalação-do-r"><i class="fa fa-check"></i><b>1.1.2</b> Instalação do <strong>R</strong></a></li>
 <li class="chapter" data-level="1.1.3" data-path="m1.html"><a href="m1.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> Instalação do <strong>RStudio</strong></a></li>
@@ -157,22 +166,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.6" data-path="m1.html"><a href="m1.html#estrutura-da-linguagem-r"><i class="fa fa-check"></i><b>1.1.6</b> Estrutura da linguagem R</a></li>
 <li class="chapter" data-level="1.1.7" data-path="m1.html"><a href="m1.html#como-obter-ajuda"><i class="fa fa-check"></i><b>1.1.7</b> Como obter ajuda</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="m1.html"><a href="m1.html#estrutura-de-objetos-da-linguagem-r"><i class="fa fa-check"></i><b>1.2</b> Estrutura de Objetos da Linguagem R</a><ul>
+<li class="chapter" data-level="1.2" data-path="m1.html"><a href="m1.html#estrutura-de-objetos-da-linguagem-r"><i class="fa fa-check"></i><b>1.2</b> Estrutura de Objetos da Linguagem R</a>
+<ul>
 <li class="chapter" data-level="1.2.1" data-path="m1.html"><a href="m1.html#vetores"><i class="fa fa-check"></i><b>1.2.1</b> Vetores</a></li>
 <li class="chapter" data-level="1.2.2" data-path="m1.html"><a href="m1.html#dataframes"><i class="fa fa-check"></i><b>1.2.2</b> Dataframes</a></li>
 <li class="chapter" data-level="1.2.3" data-path="m1.html"><a href="m1.html#referências-do-módulo"><i class="fa fa-check"></i><b>1.2.3</b> Referências do Módulo</a></li>
 <li class="chapter" data-level="1.2.4" data-path="m1.html"><a href="m1.html#exercícios"><i class="fa fa-check"></i><b>1.2.4</b> Exercícios</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="m2.html"><a href="m2.html"><i class="fa fa-check"></i><b>2</b> Módulo II</a><ul>
-<li class="chapter" data-level="2.1" data-path="m2.html"><a href="m2.html#leitura-de-dados-no-r"><i class="fa fa-check"></i><b>2.1</b> Leitura de Dados no R</a><ul>
+<li class="chapter" data-level="2" data-path="m2.html"><a href="m2.html"><i class="fa fa-check"></i><b>2</b> Módulo II</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="m2.html"><a href="m2.html#leitura-de-dados-no-r"><i class="fa fa-check"></i><b>2.1</b> Leitura de Dados no R</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="m2.html"><a href="m2.html#o-tidyverse"><i class="fa fa-check"></i><b>2.1.1</b> O Tidyverse</a></li>
 <li class="chapter" data-level="2.1.2" data-path="m2.html"><a href="m2.html#leitura-e-exportação-de-dados-usando-readr"><i class="fa fa-check"></i><b>2.1.2</b> Leitura e Exportação de Dados usando <code>readr</code></a></li>
 <li class="chapter" data-level="2.1.3" data-path="m2.html"><a href="m2.html#escrita-e-exportação-de-dados"><i class="fa fa-check"></i><b>2.1.3</b> Escrita e exportação de dados</a></li>
 <li class="chapter" data-level="2.1.4" data-path="m2.html"><a href="m2.html#leitura-de-dados-oriundos-do-stata-sas-e-spss"><i class="fa fa-check"></i><b>2.1.4</b> Leitura de dados oriundos do Stata, SAS e SPSS</a></li>
 <li class="chapter" data-level="2.1.5" data-path="m2.html"><a href="m2.html#referências-da-seção"><i class="fa fa-check"></i><b>2.1.5</b> Referências da seção</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="m2.html"><a href="m2.html#manipulação-de-dados-com-dplyr"><i class="fa fa-check"></i><b>2.2</b> Manipulação de dados com <code>dplyr</code></a><ul>
+<li class="chapter" data-level="2.2" data-path="m2.html"><a href="m2.html#manipulação-de-dados-com-dplyr"><i class="fa fa-check"></i><b>2.2</b> Manipulação de dados com <code>dplyr</code></a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="m2.html"><a href="m2.html#filtrando-linhas-com-filter"><i class="fa fa-check"></i><b>2.2.1</b> Filtrando linhas com <code>filter()</code></a></li>
 <li class="chapter" data-level="2.2.2" data-path="m2.html"><a href="m2.html#ordenando-linhas-com-arrange"><i class="fa fa-check"></i><b>2.2.2</b> Ordenando linhas com <code>arrange()</code></a></li>
 <li class="chapter" data-level="2.2.3" data-path="m2.html"><a href="m2.html#selecionando-colunas-com-select"><i class="fa fa-check"></i><b>2.2.3</b> Selecionando colunas com <code>select()</code></a></li>
@@ -182,9 +195,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.7" data-path="m2.html"><a href="m2.html#estrutura-do-dplyr"><i class="fa fa-check"></i><b>2.2.7</b> Estrutura do <code>dplyr</code></a></li>
 <li class="chapter" data-level="2.2.8" data-path="m2.html"><a href="m2.html#usando-o-pipe"><i class="fa fa-check"></i><b>2.2.8</b> Usando o Pipe <code>%&gt;%</code></a></li>
 <li class="chapter" data-level="2.2.9" data-path="m2.html"><a href="m2.html#referências-da-seção-1"><i class="fa fa-check"></i><b>2.2.9</b> Referências da seção</a></li>
-<li class="chapter" data-level="2.2.10" data-path="m1.html"><a href="m1.html#exercícios"><i class="fa fa-check"></i><b>2.2.10</b> Exercícios</a></li>
+<li class="chapter" data-level="2.2.10" data-path="m2.html"><a href="m2.html#exercícios-1"><i class="fa fa-check"></i><b>2.2.10</b> Exercícios</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="m2.html"><a href="m2.html#gráficos-com-ggplot2"><i class="fa fa-check"></i><b>2.3</b> Gráficos com <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="2.3" data-path="m2.html"><a href="m2.html#gráficos-com-ggplot2"><i class="fa fa-check"></i><b>2.3</b> Gráficos com <code>ggplot2</code></a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="m2.html"><a href="m2.html#introdução"><i class="fa fa-check"></i><b>2.3.1</b> Introdução</a></li>
 <li class="chapter" data-level="2.3.2" data-path="m2.html"><a href="m2.html#a-gramática-de-gráficos"><i class="fa fa-check"></i><b>2.3.2</b> A gramática de gráficos</a></li>
 <li class="chapter" data-level="2.3.3" data-path="m2.html"><a href="m2.html#data-dados"><i class="fa fa-check"></i><b>2.3.3</b> Data (Dados)</a></li>
@@ -198,45 +212,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.11" data-path="m2.html"><a href="m2.html#alterar-cores-e-paleta-de-cores"><i class="fa fa-check"></i><b>2.3.11</b> Alterar cores e paleta de cores</a></li>
 <li class="chapter" data-level="2.3.12" data-path="m2.html"><a href="m2.html#área-de-plotagem-e-tema"><i class="fa fa-check"></i><b>2.3.12</b> Área de Plotagem e Tema</a></li>
 <li class="chapter" data-level="2.3.13" data-path="m2.html"><a href="m2.html#referências-da-seção-2"><i class="fa fa-check"></i><b>2.3.13</b> Referências da seção</a></li>
-<li class="chapter" data-level="2.3.14" data-path="m2.html"><a href="m2.html#exercícios-1"><i class="fa fa-check"></i><b>2.3.14</b> Exercícios</a></li>
+<li class="chapter" data-level="2.3.14" data-path="m2.html"><a href="m2.html#exercícios-2"><i class="fa fa-check"></i><b>2.3.14</b> Exercícios</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="m3.html"><a href="m3.html"><i class="fa fa-check"></i><b>3</b> Módulo III</a><ul>
-<li class="chapter" data-level="3.1" data-path="m3.html"><a href="m3.html#acesso-a-bancos-de-dados-relacionais-com-dbplyr"><i class="fa fa-check"></i><b>3.1</b> Acesso a Bancos de Dados relacionais com <code>dbplyr</code></a><ul>
-<li class="chapter" data-level="3.1.1" data-path="m2.html"><a href="m2.html#introdução"><i class="fa fa-check"></i><b>3.1.1</b> Introdução</a></li>
+<li class="chapter" data-level="3" data-path="m3.html"><a href="m3.html"><i class="fa fa-check"></i><b>3</b> Módulo III</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="m3.html"><a href="m3.html#acesso-a-bancos-de-dados-relacionais-com-dbplyr"><i class="fa fa-check"></i><b>3.1</b> Acesso a Bancos de Dados relacionais com <code>dbplyr</code></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="m3.html"><a href="m3.html#introdução-1"><i class="fa fa-check"></i><b>3.1.1</b> Introdução</a></li>
 <li class="chapter" data-level="3.1.2" data-path="m3.html"><a href="m3.html#conectando-a-um-database"><i class="fa fa-check"></i><b>3.1.2</b> Conectando a um database</a></li>
 <li class="chapter" data-level="3.1.3" data-path="m3.html"><a href="m3.html#gerando-queries"><i class="fa fa-check"></i><b>3.1.3</b> Gerando queries</a></li>
-<li class="chapter" data-level="3.1.4" data-path="m2.html"><a href="m2.html#referências-da-seção"><i class="fa fa-check"></i><b>3.1.4</b> Referências da seção</a></li>
-<li class="chapter" data-level="3.1.5" data-path="m1.html"><a href="m1.html#exercícios"><i class="fa fa-check"></i><b>3.1.5</b> Exercícios</a></li>
+<li class="chapter" data-level="3.1.4" data-path="m3.html"><a href="m3.html#referências-da-seção-3"><i class="fa fa-check"></i><b>3.1.4</b> Referências da seção</a></li>
+<li class="chapter" data-level="3.1.5" data-path="m3.html"><a href="m3.html#exercícios-3"><i class="fa fa-check"></i><b>3.1.5</b> Exercícios</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="m3.html"><a href="m3.html#manipulação-de-dados-com-two-table-verbs---dplyr"><i class="fa fa-check"></i><b>3.2</b> Manipulação de dados com <em>Two-table verbs</em> - <code>dplyr</code></a><ul>
+<li class="chapter" data-level="3.2" data-path="m3.html"><a href="m3.html#manipulação-de-dados-com-two-table-verbs---dplyr"><i class="fa fa-check"></i><b>3.2</b> Manipulação de dados com <em>Two-table verbs</em> - <code>dplyr</code></a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="m3.html"><a href="m3.html#mutating-joins"><i class="fa fa-check"></i><b>3.2.1</b> <em>Mutating joins</em></a></li>
 <li class="chapter" data-level="3.2.2" data-path="m3.html"><a href="m3.html#filtering-joins"><i class="fa fa-check"></i><b>3.2.2</b> <em>Filtering joins</em></a></li>
-<li class="chapter" data-level="3.2.3" data-path="m2.html"><a href="m2.html#referências-da-seção-1"><i class="fa fa-check"></i><b>3.2.3</b> Referências da seção</a></li>
-<li class="chapter" data-level="3.2.4" data-path="m2.html"><a href="m2.html#exercícios-1"><i class="fa fa-check"></i><b>3.2.4</b> Exercícios</a></li>
+<li class="chapter" data-level="3.2.3" data-path="m3.html"><a href="m3.html#referências-da-seção-4"><i class="fa fa-check"></i><b>3.2.3</b> Referências da seção</a></li>
+<li class="chapter" data-level="3.2.4" data-path="m3.html"><a href="m3.html#exercícios-4"><i class="fa fa-check"></i><b>3.2.4</b> Exercícios</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="m3.html"><a href="m3.html#análise-de-dados-geográficos-no-r"><i class="fa fa-check"></i><b>3.3</b> Análise de dados geográficos no <strong>R</strong></a><ul>
-<li class="chapter" data-level="3.3.1" data-path="m3.html"><a href="m3.html#introdução-1"><i class="fa fa-check"></i><b>3.3.1</b> Introdução</a></li>
+<li class="chapter" data-level="3.3" data-path="m3.html"><a href="m3.html#análise-de-dados-geográficos-no-r"><i class="fa fa-check"></i><b>3.3</b> Análise de dados geográficos no <strong>R</strong></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="m3.html"><a href="m3.html#introdução-2"><i class="fa fa-check"></i><b>3.3.1</b> Introdução</a></li>
 <li class="chapter" data-level="3.3.2" data-path="m3.html"><a href="m3.html#produção-de-mapas-no-r"><i class="fa fa-check"></i><b>3.3.2</b> Produção de Mapas no R</a></li>
 <li class="chapter" data-level="3.3.3" data-path="m3.html"><a href="m3.html#exportando-dados-geográficos"><i class="fa fa-check"></i><b>3.3.3</b> Exportando dados geográficos</a></li>
-<li class="chapter" data-level="3.3.4" data-path="m2.html"><a href="m2.html#referências-da-seção-2"><i class="fa fa-check"></i><b>3.3.4</b> Referências da seção</a></li>
-<li class="chapter" data-level="3.3.5" data-path="m3.html"><a href="m3.html#exercícios-2"><i class="fa fa-check"></i><b>3.3.5</b> Exercícios</a></li>
+<li class="chapter" data-level="3.3.4" data-path="m3.html"><a href="m3.html#referências-da-seção-5"><i class="fa fa-check"></i><b>3.3.4</b> Referências da seção</a></li>
+<li class="chapter" data-level="3.3.5" data-path="m3.html"><a href="m3.html#exercícios-5"><i class="fa fa-check"></i><b>3.3.5</b> Exercícios</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="m4.html"><a href="m4.html"><i class="fa fa-check"></i><b>4</b> Módulo IV</a><ul>
-<li class="chapter" data-level="4.1" data-path="m4.html"><a href="m4.html#manipulação-de-strings-no-r-com-stringr"><i class="fa fa-check"></i><b>4.1</b> Manipulação de <em>strings</em> no R com <code>stringr</code></a><ul>
-<li class="chapter" data-level="4.1.1" data-path="m2.html"><a href="m2.html#introdução"><i class="fa fa-check"></i><b>4.1.1</b> Introdução</a></li>
+<li class="chapter" data-level="4" data-path="m4.html"><a href="m4.html"><i class="fa fa-check"></i><b>4</b> Módulo IV</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="m4.html"><a href="m4.html#manipulação-de-strings-no-r-com-stringr"><i class="fa fa-check"></i><b>4.1</b> Manipulação de <em>strings</em> no R com <code>stringr</code></a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="m4.html"><a href="m4.html#introdução-3"><i class="fa fa-check"></i><b>4.1.1</b> Introdução</a></li>
 <li class="chapter" data-level="4.1.2" data-path="m4.html"><a href="m4.html#operações-com-caracteres-individuais"><i class="fa fa-check"></i><b>4.1.2</b> Operações com caracteres individuais</a></li>
 <li class="chapter" data-level="4.1.3" data-path="m4.html"><a href="m4.html#pattern-matching"><i class="fa fa-check"></i><b>4.1.3</b> <em>Pattern matching</em></a></li>
-<li class="chapter" data-level="4.1.4" data-path="m2.html"><a href="m2.html#referências-da-seção"><i class="fa fa-check"></i><b>4.1.4</b> Referências da seção</a></li>
+<li class="chapter" data-level="4.1.4" data-path="m4.html"><a href="m4.html#referências-da-seção-6"><i class="fa fa-check"></i><b>4.1.4</b> Referências da seção</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="m4.html"><a href="m4.html#expressões-regulares-regex"><i class="fa fa-check"></i><b>4.2</b> Expressões Regulares (REGEX)</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="m3.html"><a href="m3.html#introdução-1"><i class="fa fa-check"></i><b>4.2.1</b> Introdução</a></li>
+<li class="chapter" data-level="4.2" data-path="m4.html"><a href="m4.html#expressões-regulares-regex"><i class="fa fa-check"></i><b>4.2</b> Expressões Regulares (REGEX)</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="m4.html"><a href="m4.html#introdução-4"><i class="fa fa-check"></i><b>4.2.1</b> Introdução</a></li>
 <li class="chapter" data-level="4.2.2" data-path="m4.html"><a href="m4.html#exemplos-de-regex-usando-stringr"><i class="fa fa-check"></i><b>4.2.2</b> Exemplos de REGEX usando <code>stringr</code></a></li>
-<li class="chapter" data-level="4.2.3" data-path="m2.html"><a href="m2.html#referências-da-seção-1"><i class="fa fa-check"></i><b>4.2.3</b> Referências da seção</a></li>
+<li class="chapter" data-level="4.2.3" data-path="m4.html"><a href="m4.html#referências-da-seção-7"><i class="fa fa-check"></i><b>4.2.3</b> Referências da seção</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="m4.html"><a href="m4.html#relatórios-e-pesquisa-reproduzível-com-rmarkdown"><i class="fa fa-check"></i><b>4.3</b> Relatórios e pesquisa reproduzível com <code>rmarkdown</code></a><ul>
-<li class="chapter" data-level="4.3.1" data-path="m4.html"><a href="m4.html#introdução-2"><i class="fa fa-check"></i><b>4.3.1</b> Introdução</a></li>
+<li class="chapter" data-level="4.3" data-path="m4.html"><a href="m4.html#relatórios-e-pesquisa-reproduzível-com-rmarkdown"><i class="fa fa-check"></i><b>4.3</b> Relatórios e pesquisa reproduzível com <code>rmarkdown</code></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="m4.html"><a href="m4.html#introdução-5"><i class="fa fa-check"></i><b>4.3.1</b> Introdução</a></li>
 <li class="chapter" data-level="4.3.2" data-path="m4.html"><a href="m4.html#cabeçalho"><i class="fa fa-check"></i><b>4.3.2</b> Cabeçalho</a></li>
 <li class="chapter" data-level="4.3.3" data-path="m4.html"><a href="m4.html#formatação-de-texto"><i class="fa fa-check"></i><b>4.3.3</b> Formatação de Texto</a></li>
 <li class="chapter" data-level="4.3.4" data-path="m4.html"><a href="m4.html#inserção-de-figuras-externas"><i class="fa fa-check"></i><b>4.3.4</b> Inserção de figuras externas</a></li>
@@ -244,18 +266,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.6" data-path="m4.html"><a href="m4.html#fórmulas-matemáticas"><i class="fa fa-check"></i><b>4.3.6</b> Fórmulas matemáticas</a></li>
 <li class="chapter" data-level="4.3.7" data-path="m4.html"><a href="m4.html#inserção-e-execução-de-códigos"><i class="fa fa-check"></i><b>4.3.7</b> Inserção e execução de códigos</a></li>
 <li class="chapter" data-level="4.3.8" data-path="m4.html"><a href="m4.html#tabelas-mais-sofisticadas"><i class="fa fa-check"></i><b>4.3.8</b> Tabelas mais sofisticadas</a></li>
-<li class="chapter" data-level="4.3.9" data-path="m2.html"><a href="m2.html#referências-da-seção-2"><i class="fa fa-check"></i><b>4.3.9</b> Referências da seção</a></li>
-<li class="chapter" data-level="4.3.10" data-path="m1.html"><a href="m1.html#exercícios"><i class="fa fa-check"></i><b>4.3.10</b> Exercícios</a></li>
+<li class="chapter" data-level="4.3.9" data-path="m4.html"><a href="m4.html#referências-da-seção-8"><i class="fa fa-check"></i><b>4.3.9</b> Referências da seção</a></li>
+<li class="chapter" data-level="4.3.10" data-path="m4.html"><a href="m4.html#exercícios-6"><i class="fa fa-check"></i><b>4.3.10</b> Exercícios</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="m5.html"><a href="m5.html"><i class="fa fa-check"></i><b>5</b> Extra</a><ul>
-<li class="chapter" data-level="5.1" data-path="m5.html"><a href="m5.html#análise-econômica-regional-com-pacote-reat"><i class="fa fa-check"></i><b>5.1</b> Análise Econômica Regional com pacote <code>REAT</code></a><ul>
-<li class="chapter" data-level="5.1.1" data-path="m2.html"><a href="m2.html#introdução"><i class="fa fa-check"></i><b>5.1.1</b> Introdução</a></li>
+<li class="chapter" data-level="5" data-path="m5.html"><a href="m5.html"><i class="fa fa-check"></i><b>5</b> Extra</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="m5.html"><a href="m5.html#análise-econômica-regional-com-pacote-reat"><i class="fa fa-check"></i><b>5.1</b> Análise Econômica Regional com pacote <code>REAT</code></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="m5.html"><a href="m5.html#introdução-6"><i class="fa fa-check"></i><b>5.1.1</b> Introdução</a></li>
 <li class="chapter" data-level="5.1.2" data-path="m5.html"><a href="m5.html#concentração-e-dispersão"><i class="fa fa-check"></i><b>5.1.2</b> Concentração e dispersão</a></li>
 <li class="chapter" data-level="5.1.3" data-path="m5.html"><a href="m5.html#especialização-regional-e-concentração-espacial-industrial"><i class="fa fa-check"></i><b>5.1.3</b> Especialização regional e concentração espacial industrial</a></li>
 <li class="chapter" data-level="5.1.4" data-path="m5.html"><a href="m5.html#crescimento-regional-anpalise-shift-share"><i class="fa fa-check"></i><b>5.1.4</b> Crescimento regional: anpalise <em>shift-share</em></a></li>
 <li class="chapter" data-level="5.1.5" data-path="m5.html"><a href="m5.html#aplicação-2"><i class="fa fa-check"></i><b>5.1.5</b> Aplicação</a></li>
-<li class="chapter" data-level="5.1.6" data-path="m2.html"><a href="m2.html#referências-da-seção"><i class="fa fa-check"></i><b>5.1.6</b> Referências da seção</a></li>
+<li class="chapter" data-level="5.1.6" data-path="m5.html"><a href="m5.html#referências-da-seção-9"><i class="fa fa-check"></i><b>5.1.6</b> Referências da seção</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="conclusão.html"><a href="conclusão.html"><i class="fa fa-check"></i>Conclusão</a></li>
@@ -279,12 +303,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="m3" class="section level1">
-<h1><span class="header-section-number"> 3</span> Módulo III</h1>
-<div id="acesso-a-bancos-de-dados-relacionais-com-dbplyr" class="section level2">
-<h2><span class="header-section-number">3.1</span> Acesso a Bancos de Dados relacionais com <code>dbplyr</code></h2>
-<div id="introdução" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Introdução</h3>
+<div id="m3" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number"> 3</span> Módulo III<a href="m3.html#m3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="acesso-a-bancos-de-dados-relacionais-com-dbplyr" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Acesso a Bancos de Dados relacionais com <code>dbplyr</code><a href="m3.html#acesso-a-bancos-de-dados-relacionais-com-dbplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introdução-1" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Introdução<a href="m3.html#introdução-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>O conteúdo desse capítulo foi adaptado a partir da <em>vignette</em> de <code>dbplyr</code> e do artigo <em>Databases using R</em> de Edgar Ruiz, autor do pacote e integrante da <strong>RStudio</strong>. <code>dbplyr</code> permite combinar a fácil gramática de manipulação de dados fornecida por <code>dplyr</code> e o acesso a bancos de dados relacionais SQL sem precisarmos utilizar efetivamente comandos <strong>SQL</strong>.</p>
 <p>Usar bancos de dados é inevitável para aqueles cuja parte do trabalho é analisar dados. A esta altura, como utilizadores da linguagem <code>R</code>, o instinto nos leva a adotar um <em>approach</em> com as bases de dados do mesmo modo com o qual faríamos a leitura de um arquivo de dados <code>.txt</code> ou <code>.csv</code>: nos tentaríamos ler os dados todos de uma vez ou partes dele até atpe formar todo o dataset. O objetivo seria “voltar” ao banco de dados o mínimo possível, de modo que para isso, nossas <em>queries</em> extrairiam o máximo de dados possível. Depois disso, nós passaríamos vários ciclos analisando aqueles dados salvos na memória de nosso computador. Seguiríamos mais ou menos o seguinte esquema:</p>
 <!-- \newline -->
@@ -311,8 +335,8 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 </ol></li>
 </ul>
 <p>Antes de começarmos é necessário que você instale e carregue os seguintes pacotes: <code>DBI</code> e <code>dbplyr</code>. <code>DBI</code> é um <em>backend</em> que permite ao <code>dplyr</code> se comunicar com vários tipos de bancos de dados SQL utilizando o mesmo código. No entanto, ao instalarmos e carregarmos <code>dbplyr</code> automaticamente também o será o pacote <code>DBI</code>.</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="m3.html#cb284-1"></a><span class="co"># install.packages(&quot;dbplyr&quot;)</span></span>
-<span id="cb284-2"><a href="m3.html#cb284-2"></a><span class="kw">library</span>(dbplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="m3.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;dbplyr&quot;)</span></span>
+<span id="cb279-2"><a href="m3.html#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span></code></pre></div>
 <p>Além de <code>dbplyr</code> (e <code>DBI</code>), nós precisaremos de um <em>backend</em> ou <em>driver</em> específico para o tipo de servidor SQL que vamos acessar. Os mais comuns são:</p>
 <ul>
 <li><strong>RMySQL</strong> conecta a MySQL e MariaDB;</li>
@@ -325,19 +349,19 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 <p>Para acessar os dados do IPEA, utilizaremos o backend <code>odbc</code>, uma vez que o servidor é o SQL Server ou MS SQL Server. Maiores detalhes sobre como conectar e exemplos de <em>queries</em> contra essas bases de dados serão passados em aula.</p>
 <p>Para os exemplos desta apostila, utilizaremos <code>RSQlite</code>, porque teremos que emular uma base de dados tipo SQL.</p>
 </div>
-<div id="conectando-a-um-database" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Conectando a um database</h3>
+<div id="conectando-a-um-database" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Conectando a um database<a href="m3.html#conectando-a-um-database" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para podermos trabalhar com uma base de dados junto com <code>dplyr</code>, primeiro devemos estabelecer uma conexão com esta base, usando <code>DBI::dbConnect()</code>. Criamos assim um objeto de conexão dentro do R que fará a ligação em nossa sessão no RStudio e o anco de dados.</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="m3.html#cb285-1"></a><span class="co"># install.packages(&quot;RSQLite&quot;)</span></span>
-<span id="cb285-2"><a href="m3.html#cb285-2"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb285-3"><a href="m3.html#cb285-3"></a>con &lt;-<span class="st"> </span>DBI<span class="op">::</span><span class="kw">dbConnect</span>(<span class="dt">drv =</span> RSQLite<span class="op">::</span><span class="kw">SQLite</span>(), <span class="dt">path =</span> <span class="st">&quot;:memory:&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="m3.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;RSQLite&quot;)</span></span>
+<span id="cb280-2"><a href="m3.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb280-3"><a href="m3.html#cb280-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="at">path =</span> <span class="st">&quot;:memory:&quot;</span>)</span></code></pre></div>
 <p>O argumento <code>drv</code> de <em>DBI::dbConnect()</em> pode variar de database para database, mas o primeiro argumento é sempre o <em>driver</em> do tipo de banco de dados ao qual você irá se conectar. Seria <code>RSQLite::SQLite()</code> para SQLite, <code>RMySQL::MySQL()</code> para MySQL, <code>RPostgreSQL::PostgreSQL()</code> para PostgreSQL, <code>odbc::odbc()</code> para SQL Server e <code>bigrquery::bigquery()</code>* para Google BigQuery. SQLite somente precisa de mais um outro argumento: o caminho para a base de dados. No nosso caso, nós usamos a <em>string</em> especial <code>[:memory:]</code> que fará com que SQLite construa uma base de dados temporária na memória de nosso computador.</p>
 <p>Contudo, a maioria das databases não “vivem” em um arquivo, mas sim em um servidor. Isso significa que na vida real seu código seria mais parecido com:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="m3.html#cb286-1"></a>con &lt;-<span class="st"> </span>DBI<span class="op">::</span><span class="kw">dbConnect</span>(RMySQL<span class="op">::</span><span class="kw">MySQL</span>(), </span>
-<span id="cb286-2"><a href="m3.html#cb286-2"></a>  <span class="dt">host =</span> <span class="st">&quot;database.ipea&quot;</span>,</span>
-<span id="cb286-3"><a href="m3.html#cb286-3"></a>  <span class="dt">user =</span> <span class="st">&quot;treinamento&quot;</span>,</span>
-<span id="cb286-4"><a href="m3.html#cb286-4"></a>  <span class="dt">password =</span> rstudioapi<span class="op">::</span><span class="kw">askForPassword</span>(<span class="st">&quot;Database password&quot;</span>)</span>
-<span id="cb286-5"><a href="m3.html#cb286-5"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="m3.html#cb281-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(), </span>
+<span id="cb281-2"><a href="m3.html#cb281-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">&quot;database.ipea&quot;</span>,</span>
+<span id="cb281-3"><a href="m3.html#cb281-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">user =</span> <span class="st">&quot;treinamento&quot;</span>,</span>
+<span id="cb281-4"><a href="m3.html#cb281-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">password =</span> rstudioapi<span class="sc">::</span><span class="fu">askForPassword</span>(<span class="st">&quot;Database password&quot;</span>)</span>
+<span id="cb281-5"><a href="m3.html#cb281-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><strong>DICA:</strong> Na vida real, ao criarmos o objeto de conexão com o servidor relacional de verdade, você veria uma aba de conexões no RStudio, com os respectivos <em>schemas</em> e/ou tabelas presentes no servidor. É como se fosse um <em>Global Environment</em> do banco de dados:</p>
 <div class="figure">
 <img src="fig/rstudio_connections.png" alt="" />
@@ -345,77 +369,78 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 </div>
 <p>A base de dados temporária que criamos anteriormente não possui qualquer tabela de dados ainda. Começaremos, então, por copiar o <em>tibble</em> <code>tb_ibama</code>, usando a função <code>copy_to()</code>. Embora esta não seja a maneira mais indicada de colocar dados em uma database, é bastante útil e fácil para utilizarmos em demonstrações:</p>
 <p>Caso você não possua mais o <em>tibble</em>, vamos refrescar sua memória:</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="m3.html#cb287-1"></a><span class="kw">library</span>(readr)</span>
-<span id="cb287-2"><a href="m3.html#cb287-2"></a></span>
-<span id="cb287-3"><a href="m3.html#cb287-3"></a>tb_ibama &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv&quot;</span>,</span>
-<span id="cb287-4"><a href="m3.html#cb287-4"></a>                     <span class="dt">col_types =</span> <span class="kw">cols</span>(</span>
-<span id="cb287-5"><a href="m3.html#cb287-5"></a>                       <span class="dt">X1 =</span> <span class="kw">col_double</span>(),</span>
-<span id="cb287-6"><a href="m3.html#cb287-6"></a>                       <span class="dt">TIPO_GF =</span> <span class="kw">col_character</span>(),</span>
-<span id="cb287-7"><a href="m3.html#cb287-7"></a>                       <span class="dt">STATUS_GF =</span> <span class="kw">col_character</span>(),</span>
-<span id="cb287-8"><a href="m3.html#cb287-8"></a>                       <span class="dt">UF_REMETENTE =</span> <span class="kw">col_character</span>(),</span>
-<span id="cb287-9"><a href="m3.html#cb287-9"></a>                       MUNICÍ<span class="dt">PIO_REMETENTE =</span> <span class="kw">col_character</span>(),</span>
-<span id="cb287-10"><a href="m3.html#cb287-10"></a>                       <span class="dt">TIPO_DESTINO =</span> <span class="kw">col_character</span>(),</span>
-<span id="cb287-11"><a href="m3.html#cb287-11"></a>                       CEPROF_DESTINATÁ<span class="dt">RIO =</span> <span class="kw">col_character</span>(),</span>
-<span id="cb287-12"><a href="m3.html#cb287-12"></a>                       UF_DESTINATÁ<span class="dt">RIO =</span> <span class="kw">col_character</span>(),</span>
-<span id="cb287-13"><a href="m3.html#cb287-13"></a>                       MUNICÍPIO_DESTINATÁ<span class="dt">RIO =</span> <span class="kw">col_character</span>(),</span>
-<span id="cb287-14"><a href="m3.html#cb287-14"></a>                       N_AUTORIZAÇÃ<span class="dt">O =</span> <span class="kw">col_character</span>(),</span>
-<span id="cb287-15"><a href="m3.html#cb287-15"></a>                       <span class="dt">PROCESSO =</span> <span class="kw">col_character</span>(),</span>
-<span id="cb287-16"><a href="m3.html#cb287-16"></a>                       <span class="dt">EMISSAO =</span> <span class="kw">col_integer</span>(),</span>
-<span id="cb287-17"><a href="m3.html#cb287-17"></a>                       NOME_CIENTÍ<span class="dt">FICO =</span> <span class="kw">col_character</span>(),</span>
-<span id="cb287-18"><a href="m3.html#cb287-18"></a>                       <span class="dt">PRODUTO =</span> <span class="kw">col_character</span>(),</span>
-<span id="cb287-19"><a href="m3.html#cb287-19"></a>                       <span class="dt">VOLUME =</span> <span class="kw">col_double</span>(),</span>
-<span id="cb287-20"><a href="m3.html#cb287-20"></a>                       <span class="dt">UNID =</span> <span class="kw">col_character</span>(),</span>
-<span id="cb287-21"><a href="m3.html#cb287-21"></a>                       <span class="dt">PRECO_TOTAL =</span> <span class="kw">col_double</span>()</span>
-<span id="cb287-22"><a href="m3.html#cb287-22"></a>                       )</span>
-<span id="cb287-23"><a href="m3.html#cb287-23"></a>                     )</span>
-<span id="cb287-24"><a href="m3.html#cb287-24"></a></span>
-<span id="cb287-25"><a href="m3.html#cb287-25"></a></span>
-<span id="cb287-26"><a href="m3.html#cb287-26"></a><span class="co"># tb_ibama$STATUS_GF[1:50000] &lt;- rep(&quot;NÃO VERIFICADO&quot;, 50000)</span></span>
-<span id="cb287-27"><a href="m3.html#cb287-27"></a><span class="co"># </span></span>
-<span id="cb287-28"><a href="m3.html#cb287-28"></a><span class="co"># tb_ibama2 &lt;- mutate(tb_ibama,</span></span>
-<span id="cb287-29"><a href="m3.html#cb287-29"></a><span class="co">#   preco_unidade = PRECO_TOTAL / VOLUME,</span></span>
-<span id="cb287-30"><a href="m3.html#cb287-30"></a><span class="co">#   preco_unidade_vezes_1000 = preco_unidade * 1000</span></span>
-<span id="cb287-31"><a href="m3.html#cb287-31"></a><span class="co"># )</span></span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="m3.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb282-2"><a href="m3.html#cb282-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb282-3"><a href="m3.html#cb282-3" aria-hidden="true" tabindex="-1"></a>tb_ibama <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/PA%20GF%202017%20jan-jun_editada.csv&quot;</span>,</span>
+<span id="cb282-4"><a href="m3.html#cb282-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
+<span id="cb282-5"><a href="m3.html#cb282-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">X1 =</span> <span class="fu">col_double</span>(),</span>
+<span id="cb282-6"><a href="m3.html#cb282-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">TIPO_GF =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb282-7"><a href="m3.html#cb282-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">STATUS_GF =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb282-8"><a href="m3.html#cb282-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">UF_REMETENTE =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb282-9"><a href="m3.html#cb282-9" aria-hidden="true" tabindex="-1"></a>                       MUNICÍPIO<span class="at">_REMETENTE =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb282-10"><a href="m3.html#cb282-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">TIPO_DESTINO =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb282-11"><a href="m3.html#cb282-11" aria-hidden="true" tabindex="-1"></a>                       CEPROF_DESTINATÁRIO <span class="ot">=</span> <span class="fu">col_character</span>(),</span>
+<span id="cb282-12"><a href="m3.html#cb282-12" aria-hidden="true" tabindex="-1"></a>                       UF_DESTINATÁRIO <span class="ot">=</span> <span class="fu">col_character</span>(),</span>
+<span id="cb282-13"><a href="m3.html#cb282-13" aria-hidden="true" tabindex="-1"></a>                       MUNICÍPIO_DESTINATÁRIO <span class="ot">=</span> <span class="fu">col_character</span>(),</span>
+<span id="cb282-14"><a href="m3.html#cb282-14" aria-hidden="true" tabindex="-1"></a>                       N_AUTORIZAÇÃO <span class="ot">=</span> <span class="fu">col_character</span>(),</span>
+<span id="cb282-15"><a href="m3.html#cb282-15" aria-hidden="true" tabindex="-1"></a>                       <span class="at">PROCESSO =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb282-16"><a href="m3.html#cb282-16" aria-hidden="true" tabindex="-1"></a>                       <span class="at">EMISSAO =</span> <span class="fu">col_integer</span>(),</span>
+<span id="cb282-17"><a href="m3.html#cb282-17" aria-hidden="true" tabindex="-1"></a>                       NOME_CIENTÍFICO <span class="ot">=</span> <span class="fu">col_character</span>(),</span>
+<span id="cb282-18"><a href="m3.html#cb282-18" aria-hidden="true" tabindex="-1"></a>                       <span class="at">PRODUTO =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb282-19"><a href="m3.html#cb282-19" aria-hidden="true" tabindex="-1"></a>                       <span class="at">VOLUME =</span> <span class="fu">col_double</span>(),</span>
+<span id="cb282-20"><a href="m3.html#cb282-20" aria-hidden="true" tabindex="-1"></a>                       <span class="at">UNID =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb282-21"><a href="m3.html#cb282-21" aria-hidden="true" tabindex="-1"></a>                       <span class="at">PRECO_TOTAL =</span> <span class="fu">col_double</span>()</span>
+<span id="cb282-22"><a href="m3.html#cb282-22" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb282-23"><a href="m3.html#cb282-23" aria-hidden="true" tabindex="-1"></a>                     )</span>
+<span id="cb282-24"><a href="m3.html#cb282-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb282-25"><a href="m3.html#cb282-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb282-26"><a href="m3.html#cb282-26" aria-hidden="true" tabindex="-1"></a><span class="co"># tb_ibama$STATUS_GF[1:50000] &lt;- rep(&quot;NÃO VERIFICADO&quot;, 50000)</span></span>
+<span id="cb282-27"><a href="m3.html#cb282-27" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb282-28"><a href="m3.html#cb282-28" aria-hidden="true" tabindex="-1"></a><span class="co"># tb_ibama2 &lt;- mutate(tb_ibama,</span></span>
+<span id="cb282-29"><a href="m3.html#cb282-29" aria-hidden="true" tabindex="-1"></a><span class="co">#   preco_unidade = PRECO_TOTAL / VOLUME,</span></span>
+<span id="cb282-30"><a href="m3.html#cb282-30" aria-hidden="true" tabindex="-1"></a><span class="co">#   preco_unidade_vezes_1000 = preco_unidade * 1000</span></span>
+<span id="cb282-31"><a href="m3.html#cb282-31" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code></pre></div>
 <p>Feito isso, podemos adicionar o <em>tibble</em> contendo os dados do IBAMA para o nosso Banco de Dados relacional fictício:</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="m3.html#cb288-1"></a><span class="kw">copy_to</span>(con, tb_ibama, <span class="st">&quot;tb_ibamaDB&quot;</span>,</span>
-<span id="cb288-2"><a href="m3.html#cb288-2"></a>  <span class="dt">temporary =</span> <span class="ot">FALSE</span>, </span>
-<span id="cb288-3"><a href="m3.html#cb288-3"></a>  <span class="dt">indexes =</span> <span class="kw">list</span>(</span>
-<span id="cb288-4"><a href="m3.html#cb288-4"></a>    <span class="st">&quot;UF_REMETENTE&quot;</span>, </span>
-<span id="cb288-5"><a href="m3.html#cb288-5"></a>    <span class="st">&quot;MUNICÍPIO_REMETENTE&quot;</span>, </span>
-<span id="cb288-6"><a href="m3.html#cb288-6"></a>    <span class="st">&quot;UF_DESTINATÁRIO&quot;</span>,</span>
-<span id="cb288-7"><a href="m3.html#cb288-7"></a>    <span class="st">&quot;MUNICÍPIO_DESTINATÁRIO&quot;</span></span>
-<span id="cb288-8"><a href="m3.html#cb288-8"></a>  )</span>
-<span id="cb288-9"><a href="m3.html#cb288-9"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="m3.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="fu">copy_to</span>(con, tb_ibama, <span class="st">&quot;tb_ibamaDB&quot;</span>,</span>
+<span id="cb283-2"><a href="m3.html#cb283-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">temporary =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb283-3"><a href="m3.html#cb283-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">indexes =</span> <span class="fu">list</span>(</span>
+<span id="cb283-4"><a href="m3.html#cb283-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;UF_REMETENTE&quot;</span>, </span>
+<span id="cb283-5"><a href="m3.html#cb283-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;MUNICÍPIO_REMETENTE&quot;</span>, </span>
+<span id="cb283-6"><a href="m3.html#cb283-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;UF_DESTINATÁRIO&quot;</span>,</span>
+<span id="cb283-7"><a href="m3.html#cb283-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;MUNICÍPIO_DESTINATÁRIO&quot;</span></span>
+<span id="cb283-8"><a href="m3.html#cb283-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb283-9"><a href="m3.html#cb283-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>A função <code>copy_to()</code> possui alguns argumentos adicionais que nos permitem fornecer índices para a tabela. Nós, então, criamos índices que nos permitirão rapidamente processar os dados por <code>UF_REMETENTE</code>, <code>MUNICÍPIO_REMETENTE</code>, <code>uf_DESTINATÁRIO</code> e <code>MUNICÍPIO_DESTINATÁRIO</code>. Criar os índices de escrita é um ponto chave para uma boa performance da base de dados ao enviarmos <em>queries</em>. No entanto, está fora do escopo deste curso.</p>
 <p>Uma vez que copiamos os dados para o servidor, podemos referenciar (ainda não estamos importando) essa tabela no <strong>R</strong> usando a função <code>tbl()</code>, que extrai a tabela chamada <code>"tb_ibamaDB"</code> do database.</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="m3.html#cb289-1"></a>tb_ibama_db &lt;-<span class="st"> </span><span class="kw">tbl</span>(con, <span class="st">&quot;tb_ibamaDB&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="m3.html#cb284-1" aria-hidden="true" tabindex="-1"></a>tb_ibama_db <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">&quot;tb_ibamaDB&quot;</span>)</span></code></pre></div>
 <p>Se imprimirmos a referência recém criada, veremos que ela se parece com um <em>tibble</em>, embora seja retratada como uma ista no <em>Global Environment</em>.</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="m3.html#cb290-1"></a>tb_ibama_db </span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="m3.html#cb285-1" aria-hidden="true" tabindex="-1"></a>tb_ibama_db </span></code></pre></div>
 <pre><code>## # Source:   table&lt;tb_ibamaDB&gt; [?? x 17]
-## # Database: sqlite 3.30.1 []
-##        X1 TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI… N_AUTORIZAÇÃO
-##     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;        
-##  1  40644 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              São Miguel do G… 272866/2016  
-##  2 153879 GF1     RECEBIDO  PA           Alenquer         EMPREENDIME… XXXX             PA              Tailândia        272870/2016  
-##  3  66847 GF1     RECEBIDO  PA           Rurópolis        EMPREENDIME… XXXX             PA              Rurópolis        272887/2016  
-##  4 319645 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Macaúbas         &lt;NA&gt;         
-##  5  19190 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas      &lt;NA&gt;         
-##  6 317951 GF2     RECEBIDO  PA           Breu Branco      EMPREENDIME… XXXX             PA              Breu Branco      3108/2016    
-##  7 201275 GF3I    RECEBIDO  PA           Benevides        EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz        &lt;NA&gt;         
-##  8 275969 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana &lt;NA&gt;         
-##  9 158094 GF3I    RECEBIDO  PA           Moju             EMPREENDIME… &lt;NA&gt;             SE              Aracaju          &lt;NA&gt;         
-## 10 181537 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              Santa Bárbara d… 272861/2016  
-## # … with more rows, and 7 more variables: PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;, NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;,
-## #   UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+## # Database: sqlite 3.39.1 []
+##        X1 TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMETENTE TIPO_DESTINO    CEPROF_DESTINATÁRIO UF_DESTINATÁRIO
+##     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;               &lt;chr&gt;           &lt;chr&gt;               &lt;chr&gt;          
+##  1  40644 GF1     RECEBIDO  PA           Santarém            EMPREENDIMENTO… XXXX                PA             
+##  2 153879 GF1     RECEBIDO  PA           Alenquer            EMPREENDIMENTO… XXXX                PA             
+##  3  66847 GF1     RECEBIDO  PA           Rurópolis           EMPREENDIMENTO… XXXX                PA             
+##  4 319645 GF3I    RECEBIDO  PA           Tucuruí             EMPREENDIMENTO… &lt;NA&gt;                BA             
+##  5  19190 GF3     RECEBIDO  PA           Paragominas         EMPREENDIMENTO… XXXX                PA             
+##  6 317951 GF2     RECEBIDO  PA           Breu Branco         EMPREENDIMENTO… XXXX                PA             
+##  7 201275 GF3I    RECEBIDO  PA           Benevides           EMPREENDIMENTO… &lt;NA&gt;                BA             
+##  8 275969 GF3I    RECEBIDO  PA           Tucuruí             EMPREENDIMENTO… &lt;NA&gt;                BA             
+##  9 158094 GF3I    RECEBIDO  PA           Moju                EMPREENDIMENTO… &lt;NA&gt;                SE             
+## 10 181537 GF1     RECEBIDO  PA           Santarém            EMPREENDIMENTO… XXXX                PA             
+## # ℹ more rows
+## # ℹ 9 more variables: MUNICÍPIO_DESTINATÁRIO &lt;chr&gt;, N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;,
+## #   NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
 <p>A única diferença é a referência de que os dados estão em um banco de dados SQLite.</p>
 </div>
-<div id="gerando-queries" class="section level3">
-<h3><span class="header-section-number">3.1.3</span> Gerando queries</h3>
+<div id="gerando-queries" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Gerando queries<a href="m3.html#gerando-queries" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para interagir com um banco de dados nós geralmente usamos <em>SQL - Structured Query Language</em>. SQL tem mais de 40 anos e é usado em praticamente todas as bases de dados que existem. O objetivo de <code>dbplyr</code> é automaticamente gerar códigos em <em>SQL</em> para que nós não sejamos forçados a utilizá-los. No entanto, <code>dbplyr</code> não faz tudo que uma linguagem SQL faz. Ele foca na declarativa <strong>SELECT</strong> e derivados, o que consideramos suficiente para o escopo desse curso.</p>
 <p>Veja como, na maioria das vezes, não precisamos saber nada de SQL e podemos continuar utilizando os verbos de <code>dplyr</code> com os quais já estamos familiarizados.</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="m3.html#cb292-1"></a>tb_ibama_db <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(TIPO_GF<span class="op">:</span>UF_REMETENTE, UF_DESTINATÁRIO, VOLUME)</span></code></pre></div>
-<pre><code>## # Source:   lazy query [?? x 5]
-## # Database: sqlite 3.30.1 []
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="m3.html#cb287-1" aria-hidden="true" tabindex="-1"></a>tb_ibama_db <span class="sc">%&gt;%</span> <span class="fu">select</span>(TIPO_GF<span class="sc">:</span>UF_REMETENTE, UF_DESTINATÁRIO, VOLUME)</span></code></pre></div>
+<pre><code>## # Source:   SQL [?? x 5]
+## # Database: sqlite 3.39.1 []
 ##    TIPO_GF STATUS_GF UF_REMETENTE UF_DESTINATÁRIO VOLUME
 ##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;dbl&gt;
 ##  1 GF1     RECEBIDO  PA           PA               2.30 
@@ -428,29 +453,30 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 ##  8 GF3I    RECEBIDO  PA           BA               1.70 
 ##  9 GF3I    RECEBIDO  PA           SE               4.21 
 ## 10 GF1     RECEBIDO  PA           PA               2.52 
-## # … with more rows</code></pre>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="m3.html#cb294-1"></a>tb_ibama_db <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(VOLUME <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## # Source:   lazy query [?? x 17]
-## # Database: sqlite 3.30.1 []
-##        X1 TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMET… TIPO_DESTINO CEPROF_DESTINAT… UF_DESTINATÁRIO MUNICÍPIO_DESTI… N_AUTORIZAÇÃO
-##     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;        
-##  1  40644 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              São Miguel do G… 272866/2016  
-##  2 153879 GF1     RECEBIDO  PA           Alenquer         EMPREENDIME… XXXX             PA              Tailândia        272870/2016  
-##  3 319645 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Macaúbas         &lt;NA&gt;         
-##  4  19190 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas      &lt;NA&gt;         
-##  5 317951 GF2     RECEBIDO  PA           Breu Branco      EMPREENDIME… XXXX             PA              Breu Branco      3108/2016    
-##  6 201275 GF3I    RECEBIDO  PA           Benevides        EMPREENDIME… &lt;NA&gt;             BA              Vera Cruz        &lt;NA&gt;         
-##  7 275969 GF3I    RECEBIDO  PA           Tucuruí          EMPREENDIME… &lt;NA&gt;             BA              Feira de Santana &lt;NA&gt;         
-##  8 158094 GF3I    RECEBIDO  PA           Moju             EMPREENDIME… &lt;NA&gt;             SE              Aracaju          &lt;NA&gt;         
-##  9 181537 GF1     RECEBIDO  PA           Santarém         EMPREENDIME… XXXX             PA              Santa Bárbara d… 272861/2016  
-## 10 187630 GF3     RECEBIDO  PA           Paragominas      EMPREENDIME… XXXX             PA              Paragominas      &lt;NA&gt;         
-## # … with more rows, and 7 more variables: PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;, NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;,
-## #   UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="m3.html#cb296-1"></a>tb_ibama_db <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb296-2"><a href="m3.html#cb296-2"></a><span class="st">  </span><span class="kw">group_by</span>(UF_DESTINATÁRIO) <span class="op">%&gt;%</span></span>
-<span id="cb296-3"><a href="m3.html#cb296-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">vol_medio_por_UF =</span> <span class="kw">mean</span>(VOLUME))</span></code></pre></div>
-<pre><code>## # Source:   lazy query [?? x 2]
-## # Database: sqlite 3.30.1 []
+## # ℹ more rows</code></pre>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="m3.html#cb289-1" aria-hidden="true" tabindex="-1"></a>tb_ibama_db <span class="sc">%&gt;%</span> <span class="fu">filter</span>(VOLUME <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## # Source:   SQL [?? x 17]
+## # Database: sqlite 3.39.1 []
+##        X1 TIPO_GF STATUS_GF UF_REMETENTE MUNICÍPIO_REMETENTE TIPO_DESTINO    CEPROF_DESTINATÁRIO UF_DESTINATÁRIO
+##     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;               &lt;chr&gt;           &lt;chr&gt;               &lt;chr&gt;          
+##  1  40644 GF1     RECEBIDO  PA           Santarém            EMPREENDIMENTO… XXXX                PA             
+##  2 153879 GF1     RECEBIDO  PA           Alenquer            EMPREENDIMENTO… XXXX                PA             
+##  3 319645 GF3I    RECEBIDO  PA           Tucuruí             EMPREENDIMENTO… &lt;NA&gt;                BA             
+##  4  19190 GF3     RECEBIDO  PA           Paragominas         EMPREENDIMENTO… XXXX                PA             
+##  5 317951 GF2     RECEBIDO  PA           Breu Branco         EMPREENDIMENTO… XXXX                PA             
+##  6 201275 GF3I    RECEBIDO  PA           Benevides           EMPREENDIMENTO… &lt;NA&gt;                BA             
+##  7 275969 GF3I    RECEBIDO  PA           Tucuruí             EMPREENDIMENTO… &lt;NA&gt;                BA             
+##  8 158094 GF3I    RECEBIDO  PA           Moju                EMPREENDIMENTO… &lt;NA&gt;                SE             
+##  9 181537 GF1     RECEBIDO  PA           Santarém            EMPREENDIMENTO… XXXX                PA             
+## 10 187630 GF3     RECEBIDO  PA           Paragominas         EMPREENDIMENTO… XXXX                PA             
+## # ℹ more rows
+## # ℹ 9 more variables: MUNICÍPIO_DESTINATÁRIO &lt;chr&gt;, N_AUTORIZAÇÃO &lt;chr&gt;, PROCESSO &lt;chr&gt;, EMISSAO &lt;int&gt;,
+## #   NOME_CIENTÍFICO &lt;chr&gt;, PRODUTO &lt;chr&gt;, VOLUME &lt;dbl&gt;, UNID &lt;chr&gt;, PRECO_TOTAL &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="m3.html#cb291-1" aria-hidden="true" tabindex="-1"></a>tb_ibama_db <span class="sc">%&gt;%</span> </span>
+<span id="cb291-2"><a href="m3.html#cb291-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(UF_DESTINATÁRIO) <span class="sc">%&gt;%</span></span>
+<span id="cb291-3"><a href="m3.html#cb291-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">vol_medio_por_UF =</span> <span class="fu">mean</span>(VOLUME))</span></code></pre></div>
+<pre><code>## # Source:   SQL [?? x 2]
+## # Database: sqlite 3.39.1 []
 ##    UF_DESTINATÁRIO vol_medio_por_UF
 ##    &lt;chr&gt;                      &lt;dbl&gt;
 ##  1 AL                          3.06
@@ -463,7 +489,7 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 ##  8 MA                          5.27
 ##  9 MG                          5.35
 ## 10 MS                          5.42
-## # … with more rows</code></pre>
+## # ℹ more rows</code></pre>
 <p>No entanto, no longo prazo é altamente recomendado que você aprenda pelo menos o básico de SQL. SQL é uma <em>skill</em> bastante importante para qualquer cientista de dados ou pessoas que lidam com dados rotineiramente.</p>
 <p>A diferença mais importante entre dataframes comuns e <em>queries</em> a bancos de dados remotos é que nosso código <strong>R</strong> é traduzido para linguagem <em>SQL</em> e <strong>executado na database</strong>, não no <strong>R</strong>. Quando trabalhamos com <em>databases</em> o <code>dplyr</code> tenta ser o mais preguiçoso possível. O <code>dplyr</code> se vale de um conceito bastante utilizado no R, que é o <em>lazy evaluation</em>:</p>
 <ul>
@@ -471,18 +497,18 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 <li><p>Ele “atrasa” fazer qualquer tarefa até o último momento: ele coleta todos comandos e manda para o banco de dados em um único passo.</p></li>
 </ul>
 <p>Veja o exemplo a seguir:</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="m3.html#cb298-1"></a>por_uf_dest_db &lt;-<span class="st"> </span>tb_ibama_db <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb298-2"><a href="m3.html#cb298-2"></a><span class="st">  </span><span class="kw">group_by</span>(UF_DESTINATÁRIO) <span class="op">%&gt;%</span></span>
-<span id="cb298-3"><a href="m3.html#cb298-3"></a><span class="st">  </span><span class="kw">summarise</span>(</span>
-<span id="cb298-4"><a href="m3.html#cb298-4"></a>    <span class="dt">preco_medio =</span> <span class="kw">mean</span>(PRECO_TOTAL, <span class="dt">na.rm=</span><span class="ot">TRUE</span>),</span>
-<span id="cb298-5"><a href="m3.html#cb298-5"></a>    <span class="dt">n =</span> <span class="kw">n</span>()</span>
-<span id="cb298-6"><a href="m3.html#cb298-6"></a>  ) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb298-7"><a href="m3.html#cb298-7"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(preco_medio)) <span class="op">%&gt;%</span></span>
-<span id="cb298-8"><a href="m3.html#cb298-8"></a><span class="st">  </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="m3.html#cb293-1" aria-hidden="true" tabindex="-1"></a>por_uf_dest_db <span class="ot">&lt;-</span> tb_ibama_db <span class="sc">%&gt;%</span> </span>
+<span id="cb293-2"><a href="m3.html#cb293-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(UF_DESTINATÁRIO) <span class="sc">%&gt;%</span></span>
+<span id="cb293-3"><a href="m3.html#cb293-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb293-4"><a href="m3.html#cb293-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">preco_medio =</span> <span class="fu">mean</span>(PRECO_TOTAL, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb293-5"><a href="m3.html#cb293-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb293-6"><a href="m3.html#cb293-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb293-7"><a href="m3.html#cb293-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(preco_medio)) <span class="sc">%&gt;%</span></span>
+<span id="cb293-8"><a href="m3.html#cb293-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">100</span>)</span></code></pre></div>
 <p>É suprpreendente o que vamos dizer agora, mas todos esses códigos não chegam a tocar a base de dados em nenhum momento; não até que solicitemos, por exemplo fazendo um <strong>printing</strong> do objeto criado <code>por_uf_dest_db</code>. Somente, então, é que <code>dplyr</code> gera o código <em>SQL</em> e solicita os resultados da base de dados no servidor SQL. Ainda sim, ele tenta minimizar o que será impresso, trazendo apenas algumas linhas e não tudo. Vea:</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="m3.html#cb299-1"></a>por_uf_dest_db</span></code></pre></div>
-<pre><code>## # Source:     lazy query [?? x 3]
-## # Database:   sqlite 3.30.1 []
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="m3.html#cb294-1" aria-hidden="true" tabindex="-1"></a>por_uf_dest_db</span></code></pre></div>
+<pre><code>## # Source:     SQL [?? x 3]
+## # Database:   sqlite 3.39.1 []
 ## # Ordered by: desc(preco_medio)
 ##    UF_DESTINATÁRIO preco_medio     n
 ##    &lt;chr&gt;                 &lt;dbl&gt; &lt;int&gt;
@@ -496,22 +522,20 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 ##  8 MA                    2434.   736
 ##  9 RJ                    2425.   770
 ## 10 TO                    2169.   143
-## # … with more rows</code></pre>
+## # ℹ more rows</code></pre>
 <p>Por de trás dos panos, <code>dbplyr</code>/<code>dplyr</code> está traduzindo o código em <strong>R</strong> para código <em>SQL</em>. Se você quiser ver (e aprender) o código SQL que está sendo enviado ao servidor, use <code>show_query()</code>:</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="m3.html#cb301-1"></a>por_uf_dest_db <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">show_query</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="m3.html#cb296-1" aria-hidden="true" tabindex="-1"></a>por_uf_dest_db <span class="sc">%&gt;%</span> <span class="fu">show_query</span>()</span></code></pre></div>
 <pre><code>## &lt;SQL&gt;
-## SELECT *
-## FROM (SELECT *
-## FROM (SELECT `UF_DESTINATÁRIO`, AVG(`PRECO_TOTAL`) AS `preco_medio`, COUNT() AS `n`
+## SELECT `UF_DESTINATÁRIO`, AVG(`PRECO_TOTAL`) AS `preco_medio`, COUNT(*) AS `n`
 ## FROM `tb_ibamaDB`
-## GROUP BY `UF_DESTINATÁRIO`)
-## ORDER BY `preco_medio` DESC)
-## WHERE (`n` &gt; 100.0)</code></pre>
+## GROUP BY `UF_DESTINATÁRIO`
+## HAVING (COUNT(*) &gt; 100.0)
+## ORDER BY `preco_medio` DESC</code></pre>
 <p>Para aqueles que são mais familiazrizados com SQL, o código acima provavelmente não seria o que você escreveria, mas ele cumpre a missão. Veja a <code>vignette("SQL-translation")</code>.</p>
 <p>Mesmo com <code>dbplyr</code>/<code>dplyr</code>, nós ainda faremos algumas iterações e tentativas até descobrir o que realmente vamos precisar dos dados. No entanto, o faremos de forma muito mais rápida. Uma vez que soubermos exatamente nosso objetivo, podemos usar <code>collect()</code> para trazer todos os dados em um <em>tibble</em> (local) em nossa máquina:</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="m3.html#cb303-1"></a>por_uf_dest_final &lt;-<span class="st"> </span>por_uf_dest_db <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>()</span>
-<span id="cb303-2"><a href="m3.html#cb303-2"></a>por_uf_dest_final</span></code></pre></div>
-<pre><code>## # A tibble: 19 x 3
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="m3.html#cb298-1" aria-hidden="true" tabindex="-1"></a>por_uf_dest_final <span class="ot">&lt;-</span> por_uf_dest_db <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
+<span id="cb298-2"><a href="m3.html#cb298-2" aria-hidden="true" tabindex="-1"></a>por_uf_dest_final</span></code></pre></div>
+<pre><code>## # A tibble: 19 × 3
 ##    UF_DESTINATÁRIO preco_medio     n
 ##    &lt;chr&gt;                 &lt;dbl&gt; &lt;int&gt;
 ##  1 PR                   14828.   366
@@ -538,22 +562,23 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 <li><p>Geralmente não há forma de determinar quantas linhas uma <em>query</em> vai retornar até que realmente a executemos. Diferente de quando estamos trabalhando com base de dados em nosso PC, o comando <code>nrow()</code> sempre retorna <code>NA</code> ao dispararmos contra bancos de dados relacionais;</p></li>
 <li><p>Como não podemos encontrar as poucas últimas linhas sem executar a <em>query</em> de todo os dados, não podemos usar <code>tail()</code>, que imprime as <span class="math inline">\(n\)</span> últimas linhas de um tibble ou dataframe.</p></li>
 </ul>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="m3.html#cb305-1"></a><span class="kw">nrow</span>(por_uf_dest_db)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="m3.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(por_uf_dest_db)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="m3.html#cb307-1"></a><span class="kw">tail</span>(por_uf_dest_db)</span></code></pre></div>
-<pre><code>## Error: tail() is not supported by sql sources</code></pre>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="m3.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(por_uf_dest_db)</span></code></pre></div>
+<pre><code>## Error in `tail()`:
+## ! `tail()` is not supported on database backends.</code></pre>
 <hr />
 </div>
-<div id="referências-da-seção" class="section level3">
-<h3><span class="header-section-number">3.1.4</span> Referências da seção</h3>
+<div id="referências-da-seção-3" class="section level3 hasAnchor" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> Referências da seção<a href="m3.html#referências-da-seção-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>Wickham, H.; Ruiz, E. (2019). <em>dbplyr: A ‘dplyr’ Back End for Databases</em>. R package version 1.4.0. URL <a href="https://CRAN.R-project.org/package=dbplyr">https://CRAN.R-project.org/package=dbplyr</a>.</p></li>
 <li><p>____. (2020). <em>dbplyr vignette: Introduction</em>. URL <a href="http://dbplyr.tidyverse.org">http://dbplyr.tidyverse.org</a>.</p></li>
 <li><p>Ruiz, E. (2017). <em>Databases using R</em>. RViews-RStudio. May 05, 2017. Disponível em: <a href="https://rviews.rstudio.com/2017/05/17/databases-using-r/">https://rviews.rstudio.com/2017/05/17/databases-using-r/</a></p></li>
 </ul>
 </div>
-<div id="exercícios" class="section level3">
-<h3><span class="header-section-number">3.1.5</span> Exercícios</h3>
+<div id="exercícios-3" class="section level3 hasAnchor" number="3.1.5">
+<h3><span class="header-section-number">3.1.5</span> Exercícios<a href="m3.html#exercícios-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Utilize os dados de acesso ao servidor do IPEA que serão informados em aula para explorar as bases existentes e aplicar o conhecimento adquirido sobre os pacotes <code>dplyr</code>, <code>dbplyr</code> e <code>ggplot2</code></li>
 </ol>
@@ -561,8 +586,8 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 <hr />
 </div>
 </div>
-<div id="manipulação-de-dados-com-two-table-verbs---dplyr" class="section level2">
-<h2><span class="header-section-number">3.2</span> Manipulação de dados com <em>Two-table verbs</em> - <code>dplyr</code></h2>
+<div id="manipulação-de-dados-com-two-table-verbs---dplyr" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Manipulação de dados com <em>Two-table verbs</em> - <code>dplyr</code><a href="m3.html#manipulação-de-dados-com-two-table-verbs---dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A Análise de dados, na maioria das vezes, envolve mais de uma base de dados. Na prática, são bases de fontes distintas que contribuem para chegarmos a um resultado final. Dessa forma, precisamos de ferramentas flexiveis para combiná-las. No pacote <code>dplyr</code>, existem três famílias de verbos que trabalham com duas tabelas de uma vez:</p>
 <ul>
 <li><p><em>mutating joins</em>, que adicionam novas variáveis a uma tabela a partir da correspondência (<em>matching</em>) das linhas em outra;</p></li>
@@ -571,18 +596,18 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 </ul>
 <p>Esses itens assumem que seus dados encontram-se no formto de <em>tidy data</em>, ou seja, linhas são observações e colunas são variáveis.</p>
 <p>Todos os <em>two-table verbs</em> (ou funções de duas tabelas) funcionam de forma similar: os primeiros dois argumentos são <code>x</code> e <code>y</code> e fornecem as duas tabelas que desejamos comparar e combinar. O <em>output</em> será sempre uma nova tabela com o mesmo tipo de objeto de <code>x</code>.</p>
-<div id="mutating-joins" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> <em>Mutating joins</em></h3>
+<div id="mutating-joins" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> <em>Mutating joins</em><a href="m3.html#mutating-joins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><em>Mutating joins</em> nos permitem combinar variáveis de múltiplas tabelas. Vamos utilizar alguns datasets do pacote <code>nycflights13</code> que contempla os dados de 336.776 voos (tibble <code>flights</code>), as condições climáticas (tibble <code>weather</code>) e as aeronaves (tibble <code>planes</code>) que pousaram e decolaram de 3 aeroportos (tibble <code>airports</code>) de Nova York em 2013. Os dados são oriundos do <em>US Bureau of Transportation Statistics</em>.</p>
 <p>Inicialmente usaremos o datase <code>flights</code>. Vamos separar algumas colunas do tibble original em outro. Depois tentaremos juntar os dois com base no nome da cia aérea.</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="m3.html#cb309-1"></a><span class="kw">library</span>(<span class="st">&quot;nycflights13&quot;</span>)</span>
-<span id="cb309-2"><a href="m3.html#cb309-2"></a><span class="co"># Drop unimportant variables so it&#39;s easier to understand the join results.</span></span>
-<span id="cb309-3"><a href="m3.html#cb309-3"></a>flights2 &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(year<span class="op">:</span>day, hour, origin, dest, tailnum, carrier)</span>
-<span id="cb309-4"><a href="m3.html#cb309-4"></a></span>
-<span id="cb309-5"><a href="m3.html#cb309-5"></a>flights2 <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb309-6"><a href="m3.html#cb309-6"></a><span class="st">  </span><span class="kw">left_join</span>(airlines)</span></code></pre></div>
-<pre><code>## Joining, by = &quot;carrier&quot;</code></pre>
-<pre><code>## # A tibble: 336,776 x 9
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="m3.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;nycflights13&quot;</span>)</span>
+<span id="cb304-2"><a href="m3.html#cb304-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop unimportant variables so it&#39;s easier to understand the join results.</span></span>
+<span id="cb304-3"><a href="m3.html#cb304-3" aria-hidden="true" tabindex="-1"></a>flights2 <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(year<span class="sc">:</span>day, hour, origin, dest, tailnum, carrier)</span>
+<span id="cb304-4"><a href="m3.html#cb304-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-5"><a href="m3.html#cb304-5" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> </span>
+<span id="cb304-6"><a href="m3.html#cb304-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(airlines)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(carrier)`</code></pre>
+<pre><code>## # A tibble: 336,776 × 9
 ##     year month   day  hour origin dest  tailnum carrier name                    
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;                   
 ##  1  2013     1     1     5 EWR    IAH   N14228  UA      United Air Lines Inc.   
@@ -595,101 +620,105 @@ Fonte: <em>Databases using R</em>, Edgar Ruiz</p>
 ##  8  2013     1     1     6 LGA    IAD   N829AS  EV      ExpressJet Airlines Inc.
 ##  9  2013     1     1     6 JFK    MCO   N593JB  B6      JetBlue Airways         
 ## 10  2013     1     1     6 LGA    ORD   N3ALAA  AA      American Airlines Inc.  
-## # … with 336,766 more rows</code></pre>
-<div id="controlando-como-as-tabelas-sofrem-match-nos-mutating-joins" class="section level4">
-<h4><span class="header-section-number">3.2.1.1</span> Controlando como as tabelas sofrem <em>match</em> nos <em>mutating joins</em></h4>
+## # ℹ 336,766 more rows</code></pre>
+<div id="controlando-como-as-tabelas-sofrem-match-nos-mutating-joins" class="section level4 hasAnchor" number="3.2.1.1">
+<h4><span class="header-section-number">3.2.1.1</span> Controlando como as tabelas sofrem <em>match</em> nos <em>mutating joins</em><a href="m3.html#controlando-como-as-tabelas-sofrem-match-nos-mutating-joins" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Juntamente com os argumentos <code>x</code> e <code>y</code>, cada <em>mutating join</em> recebe também um argumento <code>by</code> que é utilizado como índice para fazer o <em>matching</em> entre as tabelas. Há algumas maneiras de especificar esse argumento.
 Vejamos exemplos de como especificar o parâmetro <code>by</code>, utilizando algumas tabelas de <code>nycflights13</code>.</p>
 <ul>
 <li>1ª forma) <code>NULL</code>: o <em>default</em>. <code>dplyr</code> vai usar todas as variáveis que aparecerem nas duas tabelas. Chamamos isso de <strong>natural join</strong>. No exeplo a seguir, as tabelas <code>flights</code> e <code>wheather</code> serão “juntadas” com base nas variáveis comuns: <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code> e <code>origin</code>.</li>
 </ul>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="m3.html#cb312-1"></a>flights2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(weather)</span></code></pre></div>
-<pre><code>## Joining, by = c(&quot;year&quot;, &quot;month&quot;, &quot;day&quot;, &quot;hour&quot;, &quot;origin&quot;)</code></pre>
-<pre><code>## # A tibble: 336,776 x 18
-##     year month   day  hour origin dest  tailnum carrier  temp  dewp humid wind_dir wind_speed wind_gust precip pressure visib
-##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
-##  1  2013     1     1     5 EWR    IAH   N14228  UA       39.0  28.0  64.4      260       12.7      NA        0    1012.    10
-##  2  2013     1     1     5 LGA    IAH   N24211  UA       39.9  25.0  54.8      250       15.0      21.9      0    1011.    10
-##  3  2013     1     1     5 JFK    MIA   N619AA  AA       39.0  27.0  61.6      260       15.0      NA        0    1012.    10
-##  4  2013     1     1     5 JFK    BQN   N804JB  B6       39.0  27.0  61.6      260       15.0      NA        0    1012.    10
-##  5  2013     1     1     6 LGA    ATL   N668DN  DL       39.9  25.0  54.8      260       16.1      23.0      0    1012.    10
-##  6  2013     1     1     5 EWR    ORD   N39463  UA       39.0  28.0  64.4      260       12.7      NA        0    1012.    10
-##  7  2013     1     1     6 EWR    FLL   N516JB  B6       37.9  28.0  67.2      240       11.5      NA        0    1012.    10
-##  8  2013     1     1     6 LGA    IAD   N829AS  EV       39.9  25.0  54.8      260       16.1      23.0      0    1012.    10
-##  9  2013     1     1     6 JFK    MCO   N593JB  B6       37.9  27.0  64.3      260       13.8      NA        0    1013.    10
-## 10  2013     1     1     6 LGA    ORD   N3ALAA  AA       39.9  25.0  54.8      260       16.1      23.0      0    1012.    10
-## # … with 336,766 more rows, and 1 more variable: time_hour &lt;dttm&gt;</code></pre>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="m3.html#cb307-1" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(weather)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(year, month, day, hour, origin)`</code></pre>
+<pre><code>## # A tibble: 336,776 × 18
+##     year month   day  hour origin dest  tailnum carrier  temp  dewp humid wind_dir wind_speed wind_gust precip
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+##  1  2013     1     1     5 EWR    IAH   N14228  UA       39.0  28.0  64.4      260       12.7      NA        0
+##  2  2013     1     1     5 LGA    IAH   N24211  UA       39.9  25.0  54.8      250       15.0      21.9      0
+##  3  2013     1     1     5 JFK    MIA   N619AA  AA       39.0  27.0  61.6      260       15.0      NA        0
+##  4  2013     1     1     5 JFK    BQN   N804JB  B6       39.0  27.0  61.6      260       15.0      NA        0
+##  5  2013     1     1     6 LGA    ATL   N668DN  DL       39.9  25.0  54.8      260       16.1      23.0      0
+##  6  2013     1     1     5 EWR    ORD   N39463  UA       39.0  28.0  64.4      260       12.7      NA        0
+##  7  2013     1     1     6 EWR    FLL   N516JB  B6       37.9  28.0  67.2      240       11.5      NA        0
+##  8  2013     1     1     6 LGA    IAD   N829AS  EV       39.9  25.0  54.8      260       16.1      23.0      0
+##  9  2013     1     1     6 JFK    MCO   N593JB  B6       37.9  27.0  64.3      260       13.8      NA        0
+## 10  2013     1     1     6 LGA    ORD   N3ALAA  AA       39.9  25.0  54.8      260       16.1      23.0      0
+## # ℹ 336,766 more rows
+## # ℹ 3 more variables: pressure &lt;dbl&gt;, visib &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 <ul>
 <li>2ª forma) <code>by = "var1"</code> ou <code>by = c("var1", "var2", "var3")</code>: um vetor de caracteres. Opera como se fosse um <em>natural join</em>, mas utiliza somente algumas das variáveis comuns. Por exemplo, <code>flights</code> e <code>planes</code> possuem uma variável <code>year</code>, mas elas significam coisas diferentes em cada tibbe/dataframe. Então, queremos especificar uma coluna que sabemos que significa a mesma coisa em ambos os tibbles e que possa servir de índice para o <em>matching</em>. Vamos usar <code>tailnum</code> que é o número (de cauda) do avião.</li>
 </ul>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="m3.html#cb315-1"></a>flights2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(planes, <span class="dt">by =</span> <span class="st">&quot;tailnum&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 336,776 x 16
-##    year.x month   day  hour origin dest  tailnum carrier year.y type              manufacturer    model    engines seats speed engine 
-##     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;           &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  
-##  1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixed wing multi… BOEING          737-824        2   149    NA Turbo-…
-##  2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixed wing multi… BOEING          737-824        2   149    NA Turbo-…
-##  3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixed wing multi… BOEING          757-223        2   178    NA Turbo-…
-##  4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixed wing multi… AIRBUS          A320-232       2   200    NA Turbo-…
-##  5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixed wing multi… BOEING          757-232        2   178    NA Turbo-…
-##  6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixed wing multi… BOEING          737-924…       2   191    NA Turbo-…
-##  7   2013     1     1     6 EWR    FLL   N516JB  B6        2000 Fixed wing multi… AIRBUS INDUSTR… A320-232       2   200    NA Turbo-…
-##  8   2013     1     1     6 LGA    IAD   N829AS  EV        1998 Fixed wing multi… CANADAIR        CL-600-…       2    55    NA Turbo-…
-##  9   2013     1     1     6 JFK    MCO   N593JB  B6        2004 Fixed wing multi… AIRBUS          A320-232       2   200    NA Turbo-…
-## 10   2013     1     1     6 LGA    ORD   N3ALAA  AA          NA &lt;NA&gt;              &lt;NA&gt;            &lt;NA&gt;          NA    NA    NA &lt;NA&gt;   
-## # … with 336,766 more rows</code></pre>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="m3.html#cb310-1" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(planes, <span class="at">by =</span> <span class="st">&quot;tailnum&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 336,776 × 16
+##    year.x month   day  hour origin dest  tailnum carrier year.y type      manufacturer model engines seats speed
+##     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;
+##  1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixed wi… BOEING       737-…       2   149    NA
+##  2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixed wi… BOEING       737-…       2   149    NA
+##  3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixed wi… BOEING       757-…       2   178    NA
+##  4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixed wi… AIRBUS       A320…       2   200    NA
+##  5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixed wi… BOEING       757-…       2   178    NA
+##  6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixed wi… BOEING       737-…       2   191    NA
+##  7   2013     1     1     6 EWR    FLL   N516JB  B6        2000 Fixed wi… AIRBUS INDU… A320…       2   200    NA
+##  8   2013     1     1     6 LGA    IAD   N829AS  EV        1998 Fixed wi… CANADAIR     CL-6…       2    55    NA
+##  9   2013     1     1     6 JFK    MCO   N593JB  B6        2004 Fixed wi… AIRBUS       A320…       2   200    NA
+## 10   2013     1     1     6 LGA    ORD   N3ALAA  AA          NA &lt;NA&gt;      &lt;NA&gt;         &lt;NA&gt;       NA    NA    NA
+## # ℹ 336,766 more rows
+## # ℹ 1 more variable: engine &lt;chr&gt;</code></pre>
 <p>Note que ao juntar todas as colunas de ambos os tibbles, <code>dplyr</code> acrescenta um sufixo à segunda variável <code>year</code>.</p>
 <ul>
 <li>3ª forma) <code>by = c("var1" = "var3")</code>: um vetor de caracteres com nomes: . Isto vai fazer o <em>matching</em> da variável <code>var1</code> na tabela <code>x</code> com a variável <code>var3</code> na tabela <code>y</code>. As variáveis da tabela de origem <code>x</code> serão usadas no <em>output</em>.</li>
 </ul>
 <p>Cada voo tem uma origem e um aeroporto de destino. Então precisamos especificar em qual dessas variáveis do dataset <code>flight</code> queremos fazer o <em>matching</em> com a coluna <code>faa</code> do dataset <code>airports</code>.</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="m3.html#cb317-1"></a>flights2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(airports, <span class="kw">c</span>(<span class="st">&quot;dest&quot;</span> =<span class="st"> &quot;faa&quot;</span>))</span></code></pre></div>
-<pre><code>## # A tibble: 336,776 x 15
-##     year month   day  hour origin dest  tailnum carrier name                              lat   lon   alt    tz dst   tzone           
-##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;                           &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;           
-##  1  2013     1     1     5 EWR    IAH   N14228  UA      George Bush Intercontinental     30.0 -95.3    97    -6 A     America/Chicago 
-##  2  2013     1     1     5 LGA    IAH   N24211  UA      George Bush Intercontinental     30.0 -95.3    97    -6 A     America/Chicago 
-##  3  2013     1     1     5 JFK    MIA   N619AA  AA      Miami Intl                       25.8 -80.3     8    -5 A     America/New_York
-##  4  2013     1     1     5 JFK    BQN   N804JB  B6      &lt;NA&gt;                             NA    NA      NA    NA &lt;NA&gt;  &lt;NA&gt;            
-##  5  2013     1     1     6 LGA    ATL   N668DN  DL      Hartsfield Jackson Atlanta Intl  33.6 -84.4  1026    -5 A     America/New_York
-##  6  2013     1     1     5 EWR    ORD   N39463  UA      Chicago Ohare Intl               42.0 -87.9   668    -6 A     America/Chicago 
-##  7  2013     1     1     6 EWR    FLL   N516JB  B6      Fort Lauderdale Hollywood Intl   26.1 -80.2     9    -5 A     America/New_York
-##  8  2013     1     1     6 LGA    IAD   N829AS  EV      Washington Dulles Intl           38.9 -77.5   313    -5 A     America/New_York
-##  9  2013     1     1     6 JFK    MCO   N593JB  B6      Orlando Intl                     28.4 -81.3    96    -5 A     America/New_York
-## 10  2013     1     1     6 LGA    ORD   N3ALAA  AA      Chicago Ohare Intl               42.0 -87.9   668    -6 A     America/Chicago 
-## # … with 336,766 more rows</code></pre>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="m3.html#cb319-1"></a>flights2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(airports, <span class="kw">c</span>(<span class="st">&quot;origin&quot;</span> =<span class="st"> &quot;faa&quot;</span>))</span></code></pre></div>
-<pre><code>## # A tibble: 336,776 x 15
-##     year month   day  hour origin dest  tailnum carrier name                  lat   lon   alt    tz dst   tzone           
-##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;           
-##  1  2013     1     1     5 EWR    IAH   N14228  UA      Newark Liberty Intl  40.7 -74.2    18    -5 A     America/New_York
-##  2  2013     1     1     5 LGA    IAH   N24211  UA      La Guardia           40.8 -73.9    22    -5 A     America/New_York
-##  3  2013     1     1     5 JFK    MIA   N619AA  AA      John F Kennedy Intl  40.6 -73.8    13    -5 A     America/New_York
-##  4  2013     1     1     5 JFK    BQN   N804JB  B6      John F Kennedy Intl  40.6 -73.8    13    -5 A     America/New_York
-##  5  2013     1     1     6 LGA    ATL   N668DN  DL      La Guardia           40.8 -73.9    22    -5 A     America/New_York
-##  6  2013     1     1     5 EWR    ORD   N39463  UA      Newark Liberty Intl  40.7 -74.2    18    -5 A     America/New_York
-##  7  2013     1     1     6 EWR    FLL   N516JB  B6      Newark Liberty Intl  40.7 -74.2    18    -5 A     America/New_York
-##  8  2013     1     1     6 LGA    IAD   N829AS  EV      La Guardia           40.8 -73.9    22    -5 A     America/New_York
-##  9  2013     1     1     6 JFK    MCO   N593JB  B6      John F Kennedy Intl  40.6 -73.8    13    -5 A     America/New_York
-## 10  2013     1     1     6 LGA    ORD   N3ALAA  AA      La Guardia           40.8 -73.9    22    -5 A     America/New_York
-## # … with 336,766 more rows</code></pre>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="m3.html#cb312-1" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(airports, <span class="fu">c</span>(<span class="st">&quot;dest&quot;</span> <span class="ot">=</span> <span class="st">&quot;faa&quot;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 336,776 × 15
+##     year month   day  hour origin dest  tailnum carrier name                   lat   lon   alt    tz dst   tzone
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;                &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+##  1  2013     1     1     5 EWR    IAH   N14228  UA      George Bush Interco…  30.0 -95.3    97    -6 A     Amer…
+##  2  2013     1     1     5 LGA    IAH   N24211  UA      George Bush Interco…  30.0 -95.3    97    -6 A     Amer…
+##  3  2013     1     1     5 JFK    MIA   N619AA  AA      Miami Intl            25.8 -80.3     8    -5 A     Amer…
+##  4  2013     1     1     5 JFK    BQN   N804JB  B6      &lt;NA&gt;                  NA    NA      NA    NA &lt;NA&gt;  &lt;NA&gt; 
+##  5  2013     1     1     6 LGA    ATL   N668DN  DL      Hartsfield Jackson …  33.6 -84.4  1026    -5 A     Amer…
+##  6  2013     1     1     5 EWR    ORD   N39463  UA      Chicago Ohare Intl    42.0 -87.9   668    -6 A     Amer…
+##  7  2013     1     1     6 EWR    FLL   N516JB  B6      Fort Lauderdale Hol…  26.1 -80.2     9    -5 A     Amer…
+##  8  2013     1     1     6 LGA    IAD   N829AS  EV      Washington Dulles I…  38.9 -77.5   313    -5 A     Amer…
+##  9  2013     1     1     6 JFK    MCO   N593JB  B6      Orlando Intl          28.4 -81.3    96    -5 A     Amer…
+## 10  2013     1     1     6 LGA    ORD   N3ALAA  AA      Chicago Ohare Intl    42.0 -87.9   668    -6 A     Amer…
+## # ℹ 336,766 more rows</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="m3.html#cb314-1" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(airports, <span class="fu">c</span>(<span class="st">&quot;origin&quot;</span> <span class="ot">=</span> <span class="st">&quot;faa&quot;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 336,776 × 15
+##     year month   day  hour origin dest  tailnum carrier name                  lat   lon   alt    tz dst   tzone 
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1  2013     1     1     5 EWR    IAH   N14228  UA      Newark Liberty Intl  40.7 -74.2    18    -5 A     Ameri…
+##  2  2013     1     1     5 LGA    IAH   N24211  UA      La Guardia           40.8 -73.9    22    -5 A     Ameri…
+##  3  2013     1     1     5 JFK    MIA   N619AA  AA      John F Kennedy Intl  40.6 -73.8    13    -5 A     Ameri…
+##  4  2013     1     1     5 JFK    BQN   N804JB  B6      John F Kennedy Intl  40.6 -73.8    13    -5 A     Ameri…
+##  5  2013     1     1     6 LGA    ATL   N668DN  DL      La Guardia           40.8 -73.9    22    -5 A     Ameri…
+##  6  2013     1     1     5 EWR    ORD   N39463  UA      Newark Liberty Intl  40.7 -74.2    18    -5 A     Ameri…
+##  7  2013     1     1     6 EWR    FLL   N516JB  B6      Newark Liberty Intl  40.7 -74.2    18    -5 A     Ameri…
+##  8  2013     1     1     6 LGA    IAD   N829AS  EV      La Guardia           40.8 -73.9    22    -5 A     Ameri…
+##  9  2013     1     1     6 JFK    MCO   N593JB  B6      John F Kennedy Intl  40.6 -73.8    13    -5 A     Ameri…
+## 10  2013     1     1     6 LGA    ORD   N3ALAA  AA      La Guardia           40.8 -73.9    22    -5 A     Ameri…
+## # ℹ 336,766 more rows</code></pre>
 </div>
-<div id="tipos-de-mutating-joins" class="section level4">
-<h4><span class="header-section-number">3.2.1.2</span> Tipos de <em>mutating joins</em></h4>
+<div id="tipos-de-mutating-joins" class="section level4 hasAnchor" number="3.2.1.2">
+<h4><span class="header-section-number">3.2.1.2</span> Tipos de <em>mutating joins</em><a href="m3.html#tipos-de-mutating-joins" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Há 4 tipos de <em>mutating join</em>, que diferem pelo comportamento nas linhas em que <strong>não ocorre</strong> o <em>matching</em> entre as bases.</p>
 <p>Vamos criar dois dataframes e depois veremos exemplos de cada caso.</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="m3.html#cb321-1"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb321-2"><a href="m3.html#cb321-2"></a>(df1 &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">y =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">1</span>))</span></code></pre></div>
-<pre><code>## Warning: `data_frame()` is deprecated, use `tibble()`.
-## This warning is displayed once per session.</code></pre>
-<pre><code>## # A tibble: 2 x 2
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="m3.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb316-2"><a href="m3.html#cb316-2" aria-hidden="true" tabindex="-1"></a>(df1 <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">y =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">1</span>))</span></code></pre></div>
+<pre><code>## Warning: `data_frame()` was deprecated in tibble 1.1.0.
+## ℹ Please use `tibble()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## # A tibble: 2 × 2
 ##       x     y
 ##   &lt;dbl&gt; &lt;int&gt;
 ## 1     1     2
 ## 2     2     1</code></pre>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="m3.html#cb324-1"></a><span class="co"># note que a função dplyr::data_frame é diferente da função data.frame do R base</span></span>
-<span id="cb324-2"><a href="m3.html#cb324-2"></a></span>
-<span id="cb324-3"><a href="m3.html#cb324-3"></a>(df2 &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="dt">a =</span> <span class="dv">10</span>, <span class="dt">b =</span> <span class="st">&quot;a&quot;</span>))</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 3
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="m3.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note que a função dplyr::data_frame é diferente da função data.frame do R base</span></span>
+<span id="cb319-2"><a href="m3.html#cb319-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb319-3"><a href="m3.html#cb319-3" aria-hidden="true" tabindex="-1"></a>(df2 <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">a =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="st">&quot;a&quot;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 3
 ##       x     a b    
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
 ## 1     1    10 a    
@@ -697,9 +726,9 @@ Vejamos exemplos de como especificar o parâmetro <code>by</code>, utilizando al
 <ul>
 <li><code>inner_join(x, y)</code>: inclui somente observações que possuem correspondência tanto em <code>x</code> quanto em <code>y</code> (ou seja, linhas iguais nos dataframes).</li>
 </ul>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="m3.html#cb326-1"></a>df1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(df2)</span></code></pre></div>
-<pre><code>## Joining, by = &quot;x&quot;</code></pre>
-<pre><code>## # A tibble: 1 x 4
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="m3.html#cb321-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(df2)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(x)`</code></pre>
+<pre><code>## # A tibble: 1 × 4
 ##       x     y     a b    
 ##   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;
 ## 1     1     2    10 a</code></pre>
@@ -707,9 +736,9 @@ Vejamos exemplos de como especificar o parâmetro <code>by</code>, utilizando al
 <ul>
 <li><code>left_join(x, y)</code>: inclui todas as observações em <code>x</code>, independente haver <em>matching</em> ou não entre as tabelas. Esse é o tipo de <em>join</em> mais usado, porque ele garante que nós não perderemos nenhuma informação da nossa tabela primária <code>x</code>.</li>
 </ul>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="m3.html#cb329-1"></a>df1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(df2)</span></code></pre></div>
-<pre><code>## Joining, by = &quot;x&quot;</code></pre>
-<pre><code>## # A tibble: 2 x 4
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="m3.html#cb324-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(df2)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(x)`</code></pre>
+<pre><code>## # A tibble: 2 × 4
 ##       x     y     a b    
 ##   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;
 ## 1     1     2    10 a    
@@ -717,16 +746,16 @@ Vejamos exemplos de como especificar o parâmetro <code>by</code>, utilizando al
 <ul>
 <li><code>right_join(x, y)</code>: inclui todas as observações da tabela <code>y</code>. É equivalente a <code>left_join(**y**, **x**)</code>, mas a ordenação das variáveis será diferente nesse último caso:</li>
 </ul>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="m3.html#cb332-1"></a>df1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(df2)</span></code></pre></div>
-<pre><code>## Joining, by = &quot;x&quot;</code></pre>
-<pre><code>## # A tibble: 2 x 4
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="m3.html#cb327-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(df2)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(x)`</code></pre>
+<pre><code>## # A tibble: 2 × 4
 ##       x     y     a b    
 ##   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;
 ## 1     1     2    10 a    
 ## 2     3    NA    10 a</code></pre>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="m3.html#cb335-1"></a>df2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(df1)</span></code></pre></div>
-<pre><code>## Joining, by = &quot;x&quot;</code></pre>
-<pre><code>## # A tibble: 2 x 4
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="m3.html#cb330-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(df1)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(x)`</code></pre>
+<pre><code>## # A tibble: 2 × 4
 ##       x     a b         y
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;int&gt;
 ## 1     1    10 a         2
@@ -734,9 +763,9 @@ Vejamos exemplos de como especificar o parâmetro <code>by</code>, utilizando al
 <ul>
 <li><code>full_join()</code>: inclui todas as observações da tabela <code>x</code> e da <code>y</code>:</li>
 </ul>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="m3.html#cb338-1"></a>df1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(df2)</span></code></pre></div>
-<pre><code>## Joining, by = &quot;x&quot;</code></pre>
-<pre><code>## # A tibble: 3 x 4
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="m3.html#cb333-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(df2)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(x)`</code></pre>
+<pre><code>## # A tibble: 3 × 4
 ##       x     y     a b    
 ##   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;
 ## 1     1     2    10 a    
@@ -744,12 +773,16 @@ Vejamos exemplos de como especificar o parâmetro <code>by</code>, utilizando al
 ## 3     3    NA    10 a</code></pre>
 <p>Os <em>left</em>, <em>right</em> e <em>full joins</em> são conhecidos coletivamente como <strong>outer joins</strong> (ou joins externos). Quando a linha de uma tabela não possui correspondência nenhuma na outra tabel, em um <strong>outer join</strong>, as novas variáveis são preenchidas com <em>missing values</em> (<code>NA</code>).</p>
 <p>Embora os <em>mutating joins</em> existam para adicionar novas variáveis, em alguns casos eles podem gerar novas observações. Se uma correspondência não é única, um <em>join</em> vai acrescentar linhas para todas as combinações possíveis (produto cartesiano) do <em>matching</em> das observações. Esta é uma observação importante, pois muitas vezes, ao realiza um join entre duas tabelas, não compreendemos o porquê de a tabela resultante do <em>join</em> possuir mais observações que as duas tabelas originais.</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="m3.html#cb341-1"></a>df1 &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">y =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</span>
-<span id="cb341-2"><a href="m3.html#cb341-2"></a>df2 &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">z =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>))</span>
-<span id="cb341-3"><a href="m3.html#cb341-3"></a></span>
-<span id="cb341-4"><a href="m3.html#cb341-4"></a>df1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(df2)</span></code></pre></div>
-<pre><code>## Joining, by = &quot;x&quot;</code></pre>
-<pre><code>## # A tibble: 5 x 3
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="m3.html#cb336-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb336-2"><a href="m3.html#cb336-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">z =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>))</span>
+<span id="cb336-3"><a href="m3.html#cb336-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb336-4"><a href="m3.html#cb336-4" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(df2)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(x)`</code></pre>
+<pre><code>## Warning in left_join(., df2): Detected an unexpected many-to-many relationship between `x` and `y`.
+## ℹ Row 1 of `x` matches multiple rows in `y`.
+## ℹ Row 1 of `y` matches multiple rows in `x`.
+## ℹ If a many-to-many relationship is expected, set `relationship = &quot;many-to-many&quot;` to silence this warning.</code></pre>
+<pre><code>## # A tibble: 5 × 3
 ##       x     y z    
 ##   &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;
 ## 1     1     1 a    
@@ -759,18 +792,18 @@ Vejamos exemplos de como especificar o parâmetro <code>by</code>, utilizando al
 ## 5     2     3 a</code></pre>
 </div>
 </div>
-<div id="filtering-joins" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> <em>Filtering joins</em></h3>
+<div id="filtering-joins" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> <em>Filtering joins</em><a href="m3.html#filtering-joins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Filtering joins</strong> “casam” observações da mesma forma que os <em>mutating joins</em>, mas <strong>afetam as próprias observações e não as variáveis</strong>. Existem dois tipos de <em>filtering joins</em>:</p>
 <ul>
 <li><code>semi_join()</code> <strong>MANTÉM</strong> todas as observações em <code>x</code> que possuem correspondência em <code>y</code>;</li>
 <li><code>anti_join()</code> <strong>RETIRA</strong> todas as observações em <code>x</code> que possuem correspondência em <code>y</code>.</li>
 </ul>
 <p>Esses joins são muito úteis para identificar “descasamentos” entre tabelas. Por exemplos, há diversos voos no dataset <code>flights</code> que não possuem correspondências com relação ao <code>tailnum</code> no dataset <code>planes</code>:</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="m3.html#cb344-1"></a>flights <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb344-2"><a href="m3.html#cb344-2"></a><span class="st">  </span><span class="kw">anti_join</span>(planes, <span class="dt">by =</span> <span class="st">&quot;tailnum&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb344-3"><a href="m3.html#cb344-3"></a><span class="st">  </span><span class="kw">count</span>(tailnum, <span class="dt">sort =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 722 x 2
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="m3.html#cb340-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> </span>
+<span id="cb340-2"><a href="m3.html#cb340-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(planes, <span class="at">by =</span> <span class="st">&quot;tailnum&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb340-3"><a href="m3.html#cb340-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(tailnum, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 722 × 2
 ##    tailnum     n
 ##    &lt;chr&gt;   &lt;int&gt;
 ##  1 &lt;NA&gt;     2512
@@ -783,34 +816,38 @@ Vejamos exemplos de como especificar o parâmetro <code>by</code>, utilizando al
 ##  8 N534MQ    364
 ##  9 N542MQ    363
 ## 10 N531MQ    349
-## # … with 712 more rows</code></pre>
+## # ℹ 712 more rows</code></pre>
 <p>Caso você esteja preocupado com quais observações nosso <em>join</em> vai fazer o <em>matching</em>, sugere-se iniciar com um <code>semi_join()</code> ou <code>anti_join()</code> pelo seguinte motivo: esses <em>joins</em> nunca duplicam as observações, eles somente removem ou as mantém no mesmo número.</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="m3.html#cb346-1"></a>df1 &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="dt">y =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</span>
-<span id="cb346-2"><a href="m3.html#cb346-2"></a>df2 &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">z =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>))</span>
-<span id="cb346-3"><a href="m3.html#cb346-3"></a></span>
-<span id="cb346-4"><a href="m3.html#cb346-4"></a><span class="co"># Four rows to start with:</span></span>
-<span id="cb346-5"><a href="m3.html#cb346-5"></a>df1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">nrow</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="m3.html#cb342-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb342-2"><a href="m3.html#cb342-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">z =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>))</span>
+<span id="cb342-3"><a href="m3.html#cb342-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb342-4"><a href="m3.html#cb342-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Four rows to start with:</span></span>
+<span id="cb342-5"><a href="m3.html#cb342-5" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="m3.html#cb348-1"></a><span class="co"># And we get four rows after the join</span></span>
-<span id="cb348-2"><a href="m3.html#cb348-2"></a>df1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(df2, <span class="dt">by =</span> <span class="st">&quot;x&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">nrow</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="m3.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="co"># And we get four rows after the join</span></span>
+<span id="cb344-2"><a href="m3.html#cb344-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(df2, <span class="at">by =</span> <span class="st">&quot;x&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span></code></pre></div>
+<pre><code>## Warning in inner_join(., df2, by = &quot;x&quot;): Detected an unexpected many-to-many relationship between `x` and `y`.
+## ℹ Row 1 of `x` matches multiple rows in `y`.
+## ℹ Row 1 of `y` matches multiple rows in `x`.
+## ℹ If a many-to-many relationship is expected, set `relationship = &quot;many-to-many&quot;` to silence this warning.</code></pre>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="m3.html#cb350-1"></a><span class="co"># But only two rows actually match</span></span>
-<span id="cb350-2"><a href="m3.html#cb350-2"></a>df1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">semi_join</span>(df2, <span class="dt">by =</span> <span class="st">&quot;x&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">nrow</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="m3.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="co"># But only two rows actually match</span></span>
+<span id="cb347-2"><a href="m3.html#cb347-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">semi_join</span>(df2, <span class="at">by =</span> <span class="st">&quot;x&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>Por fim, cabe fazer menção a funções que seriam úteis caso você tivesse que trabalhar com 3 ou mais tabelas. Dê uma lida em <code>purrr::reduce()</code> ou <code>Reduce()</code>, como descrito em <em>“Advanced R”</em>, para iterativamente combinar espandir seus conhecimentos de <em>two-table verbs</em> de modo a lidar com um número maior de tabelas.</p>
 <p>O conteúdo deste capítulo foi adaptado da vignette de <em>two-table verbs</em>, disponível em <a href="http://dplyr.tidyverse.org/articles/two-table.html">http://dplyr.tidyverse.org/articles/two-table.html</a>.</p>
 <hr />
 </div>
-<div id="referências-da-seção-1" class="section level3">
-<h3><span class="header-section-number">3.2.3</span> Referências da seção</h3>
+<div id="referências-da-seção-4" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Referências da seção<a href="m3.html#referências-da-seção-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>Wickham H.; François, R.; Henry, L.; Müller K. (2019). <em>dplyr: A Grammar of Data Manipulation</em>. R package version 0.8.1. URL <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.</p></li>
 <li><p>Wickham H.; François, R.; Henry, L.; Müller K. (2020). <em>dplyr vignette: Two-table</em>. Article._ Disponível em: <a href="http://dplyr.tidyverse.org/articles/two-table.html">http://dplyr.tidyverse.org/articles/two-table.html</a>.</p></li>
 <li><p>Wickham, H.; Grolemund, G. (2016). <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. O’Reilly Media. december 2016. 522 pages. Disponível em: <a href="htps://www.r4ds.co.nz">htps://www.r4ds.co.nz</a>.</p></li>
 </ul>
 </div>
-<div id="exercícios-1" class="section level3">
-<h3><span class="header-section-number">3.2.4</span> Exercícios</h3>
+<div id="exercícios-4" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Exercícios<a href="m3.html#exercícios-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><ol style="list-style-type: decimal">
 <li>Procure replicar cada um dos <em>joins</em> apresentados nesta seção às tabelas <code>[dbo].[licitacoes]</code> nos <em>schemas</em> <code>ComprasPI</code> e <code>ComprasCE</code> do servidor relacional do IPEA.</li>
@@ -820,25 +857,25 @@ Vejamos exemplos de como especificar o parâmetro <code>by</code>, utilizando al
 <hr />
 </div>
 </div>
-<div id="análise-de-dados-geográficos-no-r" class="section level2">
-<h2><span class="header-section-number">3.3</span> Análise de dados geográficos no <strong>R</strong></h2>
-<div id="introdução-1" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Introdução</h3>
+<div id="análise-de-dados-geográficos-no-r" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Análise de dados geográficos no <strong>R</strong><a href="m3.html#análise-de-dados-geográficos-no-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introdução-2" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Introdução<a href="m3.html#introdução-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Nas últimas décadas houve uma verdadeira revolução das técnicas de geocomputação. Graças a esse grande avanço, a análise de dados geográficos não se restringe mais apenas àqueles que tem acesso a hardwares e softwares caros. De certa forma, podemos dizer que o <strong>R</strong> também contribuiu para este avanço. Embora a linguagem possuísse algumas limitações referentes à geocomputação nos anos iniciais de desenvolvimento da linguagem, ultimamente diversos pacotes do <strong>R</strong> levaram a geocomputação a um novo patamar, principalmente no que diz respeito à <strong>reproducibilidade</strong>.</p>
 <p>Enquanto os softwares baseados em Sistemas de Informações Geográficas (SIG ou GIS no inglês), que tem como disciplina base a Geografia e o foco voltado para interfaces gráficas, deixam a desejar na reproducibilidade dos mapas gerados, o <strong>R</strong>, que tem como base a Estatística e Computação por meio de linha de comando e programação, faz com que a análise geográfica de dados seja muito mais fluida e passível de reprodução por outros usuários e desenvolvedores.</p>
 <p>Nesta seção, apresentaremos alguns dos principais pacotes e técnicas utilizadas para produção de mapas usando <strong>R</strong>.</p>
-<div id="modelos-de-dados-geográficos-vetor-vs-raster" class="section level4">
-<h4><span class="header-section-number">3.3.1.1</span> Modelos de dados geográficos: <em>vetor</em> vs <em>raster</em></h4>
+<div id="modelos-de-dados-geográficos-vetor-vs-raster" class="section level4 hasAnchor" number="3.3.1.1">
+<h4><span class="header-section-number">3.3.1.1</span> Modelos de dados geográficos: <em>vetor</em> vs <em>raster</em><a href="m3.html#modelos-de-dados-geográficos-vetor-vs-raster" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>No campo da geocomputação, precisamos saber diferenciar os dois tipos de dados geográficos principais: <em>vetor</em> e <em>raster</em>.</p>
 <p>Dados geográficos em forma de <strong>vetor</strong> utilizam <em>pontos</em>, <em>linhas</em> e <em>polígonos</em> para representar um mapa. Nesse caso, as bordas dos objetos (ex: Estados, Municípios, Países) são bem definidos.</p>
-<div class="figure"><span id="fig:unnamed-chunk-146"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-146"></span>
 <img src="IADR-T_files/figure-html/unnamed-chunk-146-1.png" alt="Exemplo de plot em _vetor_" width="672" />
 <p class="caption">
 Figure 3.1: Exemplo de plot em <em>vetor</em>
 </p>
 </div>
 <p>Já os dados em formato <strong>raster</strong> dividem a superfície de um mapa em células de tamanhos constantes. Os datasets em formato <em>raster</em> são comumente utilizados para gerar mapas como imagens de fundo (<em>background</em>). Os modelos <em>raster</em> são utilizados praticamente desde a origem dos aparelhos e satélites de Sensoriamento Remoto.</p>
-<div class="figure"><span id="fig:unnamed-chunk-147"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-147"></span>
 <img src="IADR-T_files/figure-html/unnamed-chunk-147-1.png" alt="Plot em _raster_: Batimetria do Golfo do México (https://geo.gcoos.org/data/topography/SRTM30PLUS.html)" width="672" />
 <p class="caption">
 Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="https://geo.gcoos.org/data/topography/SRTM30PLUS.html" class="uri">https://geo.gcoos.org/data/topography/SRTM30PLUS.html</a>)
@@ -848,10 +885,10 @@ Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="ht
 <p>Agora que sabemos as diferenças conceituais entre os principais modelos de dados geográficos, vamos à prática.</p>
 </div>
 </div>
-<div id="produção-de-mapas-no-r" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Produção de Mapas no R</h3>
-<div id="shapefiles" class="section level4">
-<h4><span class="header-section-number">3.3.2.1</span> <em>Shapefiles</em></h4>
+<div id="produção-de-mapas-no-r" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Produção de Mapas no R<a href="m3.html#produção-de-mapas-no-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="shapefiles" class="section level4 hasAnchor" number="3.3.2.1">
+<h4><span class="header-section-number">3.3.2.1</span> <em>Shapefiles</em><a href="m3.html#shapefiles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><em>Shapefiles</em> são arquivos que seguem o modelo de dados geográficos em <em>vetor</em>, contendo elementos gráficos em formato de <em>ponto</em>, <em>linha</em> e/ou <em>polígonos</em> podendo ser trabalhados juntamente com coordenadas geográficas para descrever um fenômeno específico, como tamanho de população, incidência de doenças, etc. A partir dessas informações, é possível, então, construir-se um mapa.</p>
 <p>Um <em>shapefile</em>, normalmente, contém três arquivos principais <code>.shp</code>, <code>.shx</code>, <code>.dbf</code>. Existem diversos locais de onde você pode obter <em>shapefiles</em> para confecção de mapas.</p>
 <p>Se o seu objetivo é obter <em>shapefiles</em> para a malha territorial brasileira, você pode obtê-las nessas três fontes:</p>
@@ -864,44 +901,45 @@ Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="ht
 <p><strong>DICA:</strong> O IPEA recentemente desenvolveu o pacote <a href="https://www.github.com/geobr"><code>geobr</code></a>, que facilita a obtenção das <em>shapefiles</em> diretamente pelo R.</p>
 <p>Focaremos na demonstração de como obter <em>shapefiles</em> a partir do repositório do IBGE. Para qualquer outra fonte de dados, os procedimentos serão praticamente os mesmos.</p>
 </div>
-<div id="mapa-da-malha-estadual-brasileira" class="section level4">
-<h4><span class="header-section-number">3.3.2.2</span> Mapa da malha estadual brasileira</h4>
-<div id="obtenção-do-arquivo" class="section level5">
-<h5><span class="header-section-number">3.3.2.2.1</span> Obtenção do arquivo</h5>
+<div id="mapa-da-malha-estadual-brasileira" class="section level4 hasAnchor" number="3.3.2.2">
+<h4><span class="header-section-number">3.3.2.2</span> Mapa da malha estadual brasileira<a href="m3.html#mapa-da-malha-estadual-brasileira" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="obtenção-do-arquivo" class="section level5 hasAnchor" number="3.3.2.2.1">
+<h5><span class="header-section-number">3.3.2.2.1</span> Obtenção do arquivo<a href="m3.html#obtenção-do-arquivo" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Você pode obtar por realizar o download do arquivo <code>br_unidade_da_federacao.zip</code>, que contém as <em>shapefiles</em> para os estados brasileiros, diretamente do <em>ftp</em> do IBGE, como na imagem abaixo:</p>
 <div class="figure">
 <img src="fig/ftp_ibge.png" alt="" />
 <p class="caption">FTP Server do IBGE</p>
 </div>
 <p>No entanto, sugerimos utilizar a solução abaixo que faz tudo issoa partir do <strong>R</strong>, utilizando as funções <code>download.file()</code> e <code>unzip()</code>.</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="m3.html#cb352-1"></a><span class="co"># obtém arquivo zip</span></span>
-<span id="cb352-2"><a href="m3.html#cb352-2"></a><span class="kw">download.file</span>(<span class="st">&quot;ftp://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2018/Brasil/BR/br_unidades_da_federacao.zip&quot;</span>,</span>
-<span id="cb352-3"><a href="m3.html#cb352-3"></a>              <span class="dt">destfile =</span> <span class="st">&#39;shp_ibge_uf2018.zip&#39;</span>) <span class="co"># escolhe um nome para o arquivo zip na máquina</span></span>
-<span id="cb352-4"><a href="m3.html#cb352-4"></a></span>
-<span id="cb352-5"><a href="m3.html#cb352-5"></a></span>
-<span id="cb352-6"><a href="m3.html#cb352-6"></a><span class="co"># descompactar arquivo</span></span>
-<span id="cb352-7"><a href="m3.html#cb352-7"></a><span class="kw">unzip</span>(<span class="dt">zipfile =</span> <span class="st">&quot;shp_ibge_uf2018.zip&quot;</span>,</span>
-<span id="cb352-8"><a href="m3.html#cb352-8"></a>      <span class="dt">exdir =</span> <span class="st">&#39;shp_ibge_uf2018&#39;</span>) <span class="co"># nome da pasta a ser criada para receber os arquivos do zip</span></span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="m3.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="co"># obtém arquivo zip</span></span>
+<span id="cb349-2"><a href="m3.html#cb349-2" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;ftp://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2018/Brasil/BR/br_unidades_da_federacao.zip&quot;</span>,</span>
+<span id="cb349-3"><a href="m3.html#cb349-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&#39;shp_ibge_uf2018.zip&#39;</span>) <span class="co"># escolhe um nome para o arquivo zip na máquina</span></span>
+<span id="cb349-4"><a href="m3.html#cb349-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb349-5"><a href="m3.html#cb349-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb349-6"><a href="m3.html#cb349-6" aria-hidden="true" tabindex="-1"></a><span class="co"># descompactar arquivo</span></span>
+<span id="cb349-7"><a href="m3.html#cb349-7" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(<span class="at">zipfile =</span> <span class="st">&quot;shp_ibge_uf2018.zip&quot;</span>,</span>
+<span id="cb349-8"><a href="m3.html#cb349-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">exdir =</span> <span class="st">&#39;shp_ibge_uf2018&#39;</span>) <span class="co"># nome da pasta a ser criada para receber os arquivos do zip</span></span></code></pre></div>
 </div>
-<div id="leitura-do-arquivo-.shp" class="section level5">
-<h5><span class="header-section-number">3.3.2.2.2</span> Leitura do arquivo <code>.shp</code></h5>
+<div id="leitura-do-arquivo-.shp" class="section level5 hasAnchor" number="3.3.2.2.2">
+<h5><span class="header-section-number">3.3.2.2.2</span> Leitura do arquivo <code>.shp</code><a href="m3.html#leitura-do-arquivo-.shp" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Agora podemos ler o <em>shapefile</em> utilizando o pacote <code>sf</code>, que quer dizer <em>simple features</em>. Este é um termo bastante utilizado na geocomputação, pois serve para descrever como objetos do mundo real são representados no computador, principalmente objetos de cunho geográfico. O pacote <code>sf</code>, portanto, serve como interface para que isto possa ser feito no R. Além disso, o pacote <code>sf</code> facilita a integração com pacotes do <em>tidyverse</em>.</p>
 <p>A princípio, a função que você mais vai utilizar do pacote <code>sf</code> é a <code>st_read()</code>, que serve justamente para ler <em>shapefiles</em> de modo que sejam representadas como um por um objeto de classe <code>data.frame</code> no R. Como na leitura de todo dataframe, a função <code>st_read()</code> também precisa que setemos <code>stringsAsFactors=FALSE</code>, para que as variáveis categóricas não sejam lidas como fatores.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="m3.html#cb353-1"></a><span class="co"># lendo arquivo .shp</span></span>
-<span id="cb353-2"><a href="m3.html#cb353-2"></a>shp_uf =<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;./shp_ibge_uf2018/BRUFE250GC_SIR.shp&quot;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</span></code></pre></div>
-<pre><code>## Reading layer `BRUFE250GC_SIR&#39; from data source `/home/allan/Documents/teaching/book_IADR-T/shp_ibge_uf2018/BRUFE250GC_SIR.shp&#39; using driver `ESRI Shapefile&#39;
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="m3.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lendo arquivo .shp</span></span>
+<span id="cb350-2"><a href="m3.html#cb350-2" aria-hidden="true" tabindex="-1"></a>shp_uf <span class="ot">=</span> <span class="fu">st_read</span>(<span class="st">&quot;./shp_ibge_uf2018/BRUFE250GC_SIR.shp&quot;</span>, <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## Reading layer `BRUFE250GC_SIR&#39; from data source 
+##   `/home/allan/Documents/teaching/book_IADR-T/shp_ibge_uf2018/BRUFE250GC_SIR.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 27 features and 3 fields
-## geometry type:  MULTIPOLYGON
-## dimension:      XY
-## bbox:           xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841
-## geographic CRS: SIRGAS 2000</code></pre>
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841
+## Geodetic CRS:  SIRGAS 2000</code></pre>
 <p>Vejamos o conteúdo deste arquivo:</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="m3.html#cb355-1"></a>shp_uf</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="m3.html#cb352-1" aria-hidden="true" tabindex="-1"></a>shp_uf</span></code></pre></div>
 <pre><code>## Simple feature collection with 27 features and 3 fields
-## geometry type:  MULTIPOLYGON
-## dimension:      XY
-## bbox:           xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841
-## geographic CRS: SIRGAS 2000
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841
+## Geodetic CRS:  SIRGAS 2000
 ## First 10 features:
 ##            NM_ESTADO    NM_REGIAO CD_GEOCUF                       geometry
 ## 1            SERGIPE     NORDESTE        28 MULTIPOLYGON (((-37.98248 -...
@@ -916,32 +954,33 @@ Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="ht
 ## 10             PIAUÍ     NORDESTE        22 MULTIPOLYGON (((-42.91539 -...</code></pre>
 <p>Note que além dos nomes dos Estados, da Região a que pertence e o código de geoidentificação do estado <code>CD_GEOCUF</code>, este dataframe especial possui uma coluna chamada <code>geometry</code>. Esta coluna possui os elementos vetoriais geométricos para confecção do mapa no modelo de dados <em>vetor</em> mencionado anteriormente.</p>
 </div>
-<div id="plotagem-do-mapa" class="section level5">
-<h5><span class="header-section-number">3.3.2.2.3</span> Plotagem do Mapa</h5>
+<div id="plotagem-do-mapa" class="section level5 hasAnchor" number="3.3.2.2.3">
+<h5><span class="header-section-number">3.3.2.2.3</span> Plotagem do Mapa<a href="m3.html#plotagem-do-mapa" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Para realizar a plotagem do mapa, precisaremos de outro pacote. Há diversos pacotes para plotagem de mapas no R, mas optaremos pelo pacote <code>tmap</code>, por entendermos ser o mais completo atualmente. Um aspecto interessante de <code>tmap</code> é que ele funciona com a plotagem em camadas, assim como o <code>ggplot2</code> visto no Módulo <a href="m2.html#m2">2</a>. Podemos ajustar diversos aspectos como legendas, bordas, fronteiras, cores, etc.</p>
 <p>Primeiramente devemos especificar o dataframe base criado a partir da leitura da shapefile, utilizando a função <code>tm_shape(nome_data_frame)</code>. Feito isso, a plotagem dos polígonos da coluna <code>geometry</code> de <code>shp_uf</code> já pode ser feita ao acrescentarmos a camada de polígonos com <code>tm_borders()</code> ou <code>tm_ploygons()</code>.</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="m3.html#cb357-1"></a><span class="kw">library</span>(tmap)</span>
-<span id="cb357-2"><a href="m3.html#cb357-2"></a></span>
-<span id="cb357-3"><a href="m3.html#cb357-3"></a><span class="kw">tm_shape</span>(shp_uf)<span class="op">+</span></span>
-<span id="cb357-4"><a href="m3.html#cb357-4"></a><span class="st">  </span><span class="kw">tm_borders</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="m3.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb354-2"><a href="m3.html#cb354-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_options</span>(<span class="at">check.and.fix =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb354-3"><a href="m3.html#cb354-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(shp_uf)<span class="sc">+</span></span>
+<span id="cb354-4"><a href="m3.html#cb354-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_borders</span>()</span></code></pre></div>
+<pre><code>## Warning: The shape shp_uf is invalid. See sf::st_is_valid</code></pre>
 <p><img src="IADR-T_files/figure-html/unnamed-chunk-151-1.png" width="672" /></p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="m3.html#cb358-1"></a><span class="co"># OU</span></span>
-<span id="cb358-2"><a href="m3.html#cb358-2"></a><span class="co"># tm_shape(shp_uf)+</span></span>
-<span id="cb358-3"><a href="m3.html#cb358-3"></a><span class="co">#   tm_polygons()</span></span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="m3.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OU</span></span>
+<span id="cb356-2"><a href="m3.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tm_shape(shp_uf)+</span></span>
+<span id="cb356-3"><a href="m3.html#cb356-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   tm_polygons()</span></span></code></pre></div>
 <p><strong>DICA:</strong> Pode ocorrer de alguns <em>shapefiles</em> do IBGE perderem a formatação dentro do <strong>R</strong> e não serem mais reconhecidos como um datatframe que contem dados espaciais, o que acarretará em um erro ao tentarmos plotar o mapa. Para retomar o tipo adequado do objeto, você pode utilizar a função <code>st_as_sf()</code> do pacote <code>sf</code>, i.e. <code>objeto_espacial &lt;- st_as_sf(objeto_espacial)</code>.</p>
 <p>Muito simples fazer mapas no <strong>R</strong>, não?</p>
 </div>
-<div id="adicionando-dados-ao-mapa" class="section level5">
-<h5><span class="header-section-number">3.3.2.2.4</span> Adicionando dados ao mapa</h5>
+<div id="adicionando-dados-ao-mapa" class="section level5 hasAnchor" number="3.3.2.2.4">
+<h5><span class="header-section-number">3.3.2.2.4</span> Adicionando dados ao mapa<a href="m3.html#adicionando-dados-ao-mapa" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Normalmente, ao fazermos análises geográficas, nosso objetivo é representar algum fênomeno que ocorre no território, como por exemplo o comportamento da taxa de desemprego por UF. Normalmente esses dados vem de uma outra fonte, ou seja, estão em outra base de dados que precisa ser “juntada” ao nosso dataframe de <em>shapefile</em>.</p>
 <p>Aqui será muito útil o conhecimento sobre <em>Two table verbs</em> e as funções de <em>join</em>, porque teremos que juntar o dataset que possui os dados do fenômeno que desejamos tratar separado por UF com os dados vetoriais/geométricos de plotagem para cada UF também.</p>
 <p>Faça a leitura da incidência da taxa de desemprego por UF no Brasil para o ano de 2007 conforme o código abaixo:</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="m3.html#cb359-1"></a><span class="kw">library</span>(readr)</span>
-<span id="cb359-2"><a href="m3.html#cb359-2"></a></span>
-<span id="cb359-3"><a href="m3.html#cb359-3"></a>tb_desemp_uf &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/tx_desemp_uf2007.csv&quot;</span>)</span>
-<span id="cb359-4"><a href="m3.html#cb359-4"></a></span>
-<span id="cb359-5"><a href="m3.html#cb359-5"></a>tb_desemp_uf</span></code></pre></div>
-<pre><code>## # A tibble: 27 x 4
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="m3.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb357-2"><a href="m3.html#cb357-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-3"><a href="m3.html#cb357-3" aria-hidden="true" tabindex="-1"></a>tb_desemp_uf <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="at">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/tx_desemp_uf2007.csv&quot;</span>)</span>
+<span id="cb357-4"><a href="m3.html#cb357-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-5"><a href="m3.html#cb357-5" aria-hidden="true" tabindex="-1"></a>tb_desemp_uf</span></code></pre></div>
+<pre><code>## # A tibble: 27 × 4
 ##    UF    Nome             CO_UNID_GEO Taxa_desemp
 ##    &lt;chr&gt; &lt;chr&gt;                  &lt;dbl&gt;       &lt;dbl&gt;
 ##  1 AC    Acre                       1         5.8
@@ -954,25 +993,25 @@ Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="ht
 ##  8 ES    Espírito Santo             3        10.8
 ##  9 GO    Goiás                      5         8.2
 ## 10 MA    Maranhão                   2         8.3
-## # … with 17 more rows</code></pre>
+## # ℹ 17 more rows</code></pre>
 <p>Agora devemos juntar esses dados ao dataframe contendo os os limites da malha estadual brasileira que trabalhamos anteriormente. Vamos utilizar a função <code>left_join()</code> de <code>dplyr</code>. Vamos fazer a junção das tabelas com base na coluna que contém os nomes dos Estados. Contudo, note que as colunas com os nomes possuem nomes diferentes em cada uma das bases: <code>NM_ESTADO</code> vs <code>Nome</code>. Ainda bem, que já sabemos como tratar este pequeno problema com <code>dplyr</code>. Se estiver em dúvida, volte ao Módulo <a href="m2.html#m2">2</a>.</p>
 <p>Antes de você continuar, note também que os nomes dos estados em <code>shp_uf</code> estão em caixa alta, ao passo que em <code>tb_desemp_uf</code> estão apenas com a primeira letra maiúscula. Para contornar este problema, usaremos a função <code>mutate()</code> de <code>dplyr</code> em conjunto com a função <code>toupper()</code> do <code>base R</code>, para transformar todos os nomes da base <code>tb_desemp_uf</code> para caixa alta.</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="m3.html#cb361-1"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb361-2"><a href="m3.html#cb361-2"></a></span>
-<span id="cb361-3"><a href="m3.html#cb361-3"></a>tb_desemp_uf &lt;-<span class="st"> </span>tb_desemp_uf <span class="op">%&gt;%</span></span>
-<span id="cb361-4"><a href="m3.html#cb361-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Nome =</span> <span class="kw">toupper</span>(Nome))</span>
-<span id="cb361-5"><a href="m3.html#cb361-5"></a></span>
-<span id="cb361-6"><a href="m3.html#cb361-6"></a>shape_data_join &lt;-<span class="st"> </span><span class="kw">left_join</span>(shp_uf, </span>
-<span id="cb361-7"><a href="m3.html#cb361-7"></a>                             tb_desemp_uf, </span>
-<span id="cb361-8"><a href="m3.html#cb361-8"></a>                             <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;NM_ESTADO&quot;</span> =<span class="st"> &quot;Nome&quot;</span>)) <span class="co"># utilizando aula do two table verbs</span></span>
-<span id="cb361-9"><a href="m3.html#cb361-9"></a></span>
-<span id="cb361-10"><a href="m3.html#cb361-10"></a></span>
-<span id="cb361-11"><a href="m3.html#cb361-11"></a>shape_data_join</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="m3.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb359-2"><a href="m3.html#cb359-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-3"><a href="m3.html#cb359-3" aria-hidden="true" tabindex="-1"></a>tb_desemp_uf <span class="ot">&lt;-</span> tb_desemp_uf <span class="sc">%&gt;%</span></span>
+<span id="cb359-4"><a href="m3.html#cb359-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Nome =</span> <span class="fu">toupper</span>(Nome))</span>
+<span id="cb359-5"><a href="m3.html#cb359-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-6"><a href="m3.html#cb359-6" aria-hidden="true" tabindex="-1"></a>shape_data_join <span class="ot">&lt;-</span> <span class="fu">left_join</span>(shp_uf, </span>
+<span id="cb359-7"><a href="m3.html#cb359-7" aria-hidden="true" tabindex="-1"></a>                             tb_desemp_uf, </span>
+<span id="cb359-8"><a href="m3.html#cb359-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;NM_ESTADO&quot;</span> <span class="ot">=</span> <span class="st">&quot;Nome&quot;</span>)) <span class="co"># utilizando aula do two table verbs</span></span>
+<span id="cb359-9"><a href="m3.html#cb359-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-10"><a href="m3.html#cb359-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-11"><a href="m3.html#cb359-11" aria-hidden="true" tabindex="-1"></a>shape_data_join</span></code></pre></div>
 <pre><code>## Simple feature collection with 27 features and 6 fields
-## geometry type:  MULTIPOLYGON
-## dimension:      XY
-## bbox:           xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841
-## geographic CRS: SIRGAS 2000
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841
+## Geodetic CRS:  SIRGAS 2000
 ## First 10 features:
 ##            NM_ESTADO    NM_REGIAO CD_GEOCUF UF CO_UNID_GEO Taxa_desemp                       geometry
 ## 1            SERGIPE     NORDESTE        28 SE           2         9.8 MULTIPOLYGON (((-37.98248 -...
@@ -986,45 +1025,47 @@ Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="ht
 ## 9            PARAÍBA     NORDESTE        25 PB           2         8.5 MULTIPOLYGON (((-34.79576 -...
 ## 10             PIAUÍ     NORDESTE        22 PI           2         4.6 MULTIPOLYGON (((-42.91539 -...</code></pre>
 <p>Agora temos praticamente tudo pronto para plotar como a taxa de desemprego se distribuia pelos estados no ano de 2007. Para fazer com que essas informações sejam incluídas no mapa, acrescentamos uma <em>layer</em> ao gráfico anterior, utilizando a função <code>tm_fill("Taxa_desemp")</code>. Assim, o polígono de cada estado será preenchido com uma cor diferente dependendo da intensidade da taxa de desemprego verificada naquela UF. Note que nossos dados base agora são <code>shape_data_join</code>.</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="m3.html#cb363-1"></a><span class="kw">tm_shape</span>(shape_data_join)<span class="op">+</span></span>
-<span id="cb363-2"><a href="m3.html#cb363-2"></a><span class="st">  </span><span class="kw">tm_borders</span>()<span class="op">+</span></span>
-<span id="cb363-3"><a href="m3.html#cb363-3"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="st">&quot;Taxa_desemp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="m3.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(shape_data_join)<span class="sc">+</span></span>
+<span id="cb361-2"><a href="m3.html#cb361-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_borders</span>()<span class="sc">+</span></span>
+<span id="cb361-3"><a href="m3.html#cb361-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_fill</span>(<span class="st">&quot;Taxa_desemp&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: The shape shape_data_join is invalid. See sf::st_is_valid</code></pre>
 <p><img src="IADR-T_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
 <p><strong>DICA:</strong> Uma vez que acrescentamos uma nova <em>layer</em> com <code>tm_fill()</code>, não poderemos utilizar <code>tm_polygons()</code> para traçar as fronteiras, apenas <code>tm_borders()</code>.</p>
 </div>
-<div id="melhorias-no-mapa" class="section level5">
-<h5><span class="header-section-number">3.3.2.2.5</span> Melhorias no mapa</h5>
+<div id="melhorias-no-mapa" class="section level5 hasAnchor" number="3.3.2.2.5">
+<h5><span class="header-section-number">3.3.2.2.5</span> Melhorias no mapa<a href="m3.html#melhorias-no-mapa" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Podemos melhorar ainda mais nossos mapas, acrescentando outras <em>layers</em>. Podemos controlar a intensidade das fronterias estaduais, o posicionamento da legenda com <code>tm_legend()</code>, o estilo do mapa <code>tm_style()</code>, exibir uma régua de escala <code>tm_scale_bar()</code>, uma rosa dos ventos com <code>tm_compass()</code> e muito mais. Sugerimos ler a documentação do pacote <code>tmap</code>.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="m3.html#cb364-1"></a>mapa_desemp2007_uf &lt;-<span class="st"> </span><span class="kw">tm_shape</span>(shape_data_join)<span class="op">+</span></span>
-<span id="cb364-2"><a href="m3.html#cb364-2"></a><span class="st">  </span><span class="co"># linhas fronteiras:</span></span>
-<span id="cb364-3"><a href="m3.html#cb364-3"></a><span class="st">  </span><span class="kw">tm_borders</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>)<span class="op">+</span></span>
-<span id="cb364-4"><a href="m3.html#cb364-4"></a><span class="st">  </span><span class="co"># preenchimento e título legenda:</span></span>
-<span id="cb364-5"><a href="m3.html#cb364-5"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="st">&quot;Taxa_desemp&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Taxa desemprego (%)&quot;</span>)<span class="op">+</span></span>
-<span id="cb364-6"><a href="m3.html#cb364-6"></a><span class="st">  </span><span class="co"># estilo (formatação do gráfico, cores, etc):</span></span>
-<span id="cb364-7"><a href="m3.html#cb364-7"></a><span class="st">  </span><span class="co"># tm_style(&quot;classic&quot;)+</span></span>
-<span id="cb364-8"><a href="m3.html#cb364-8"></a><span class="st">  </span><span class="co"># posição da legenda:</span></span>
-<span id="cb364-9"><a href="m3.html#cb364-9"></a><span class="st">  </span><span class="kw">tm_legend</span>(<span class="dt">position=</span><span class="kw">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>))<span class="op">+</span></span>
-<span id="cb364-10"><a href="m3.html#cb364-10"></a><span class="st">  </span><span class="co"># agulha ou rosa dos ventos (posição e tipo):</span></span>
-<span id="cb364-11"><a href="m3.html#cb364-11"></a><span class="st">  </span><span class="kw">tm_compass</span>(<span class="dt">position=</span><span class="kw">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;top&quot;</span>), <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">type=</span><span class="st">&quot;arrow&quot;</span>)<span class="op">+</span></span>
-<span id="cb364-12"><a href="m3.html#cb364-12"></a><span class="st">  </span><span class="co"># régua de escala:</span></span>
-<span id="cb364-13"><a href="m3.html#cb364-13"></a><span class="st">  </span><span class="kw">tm_scale_bar</span>()<span class="op">+</span></span>
-<span id="cb364-14"><a href="m3.html#cb364-14"></a><span class="st">  </span><span class="co"># tpitulo fora da área de plotagem:</span></span>
-<span id="cb364-15"><a href="m3.html#cb364-15"></a><span class="st">  </span><span class="kw">tm_layout</span>(<span class="dt">main.title=</span><span class="st">&quot;Taxa de desemprego por UF, 2007&quot;</span>)<span class="op">+</span></span>
-<span id="cb364-16"><a href="m3.html#cb364-16"></a><span class="st">  </span><span class="co"># créditos/fonte:</span></span>
-<span id="cb364-17"><a href="m3.html#cb364-17"></a><span class="st">  </span><span class="kw">tm_credits</span>(<span class="dt">text=</span><span class="st">&quot;Fonte: IBGE&quot;</span>)</span>
-<span id="cb364-18"><a href="m3.html#cb364-18"></a>  </span>
-<span id="cb364-19"><a href="m3.html#cb364-19"></a>mapa_desemp2007_uf  </span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="m3.html#cb363-1" aria-hidden="true" tabindex="-1"></a>mapa_desemp2007_uf <span class="ot">&lt;-</span> <span class="fu">tm_shape</span>(shape_data_join)<span class="sc">+</span></span>
+<span id="cb363-2"><a href="m3.html#cb363-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># linhas fronteiras:</span></span>
+<span id="cb363-3"><a href="m3.html#cb363-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_borders</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>)<span class="sc">+</span></span>
+<span id="cb363-4"><a href="m3.html#cb363-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># preenchimento e título legenda:</span></span>
+<span id="cb363-5"><a href="m3.html#cb363-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_fill</span>(<span class="st">&quot;Taxa_desemp&quot;</span>, <span class="at">title=</span><span class="st">&quot;Taxa desemprego (%)&quot;</span>)<span class="sc">+</span></span>
+<span id="cb363-6"><a href="m3.html#cb363-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># estilo (formatação do gráfico, cores, etc):</span></span>
+<span id="cb363-7"><a href="m3.html#cb363-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tm_style(&quot;classic&quot;)+</span></span>
+<span id="cb363-8"><a href="m3.html#cb363-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># posição da legenda:</span></span>
+<span id="cb363-9"><a href="m3.html#cb363-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_legend</span>(<span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>))<span class="sc">+</span></span>
+<span id="cb363-10"><a href="m3.html#cb363-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># agulha ou rosa dos ventos (posição e tipo):</span></span>
+<span id="cb363-11"><a href="m3.html#cb363-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_compass</span>(<span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;top&quot;</span>), <span class="at">size=</span><span class="dv">3</span>, <span class="at">type=</span><span class="st">&quot;arrow&quot;</span>)<span class="sc">+</span></span>
+<span id="cb363-12"><a href="m3.html#cb363-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># régua de escala:</span></span>
+<span id="cb363-13"><a href="m3.html#cb363-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_scale_bar</span>()<span class="sc">+</span></span>
+<span id="cb363-14"><a href="m3.html#cb363-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tpitulo fora da área de plotagem:</span></span>
+<span id="cb363-15"><a href="m3.html#cb363-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_layout</span>(<span class="at">main.title=</span><span class="st">&quot;Taxa de desemprego por UF, 2007&quot;</span>)<span class="sc">+</span></span>
+<span id="cb363-16"><a href="m3.html#cb363-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># créditos/fonte:</span></span>
+<span id="cb363-17"><a href="m3.html#cb363-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_credits</span>(<span class="at">text=</span><span class="st">&quot;Fonte: IBGE&quot;</span>)</span>
+<span id="cb363-18"><a href="m3.html#cb363-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb363-19"><a href="m3.html#cb363-19" aria-hidden="true" tabindex="-1"></a>mapa_desemp2007_uf  </span></code></pre></div>
+<pre><code>## Warning: The shape shape_data_join is invalid. See sf::st_is_valid</code></pre>
 <pre><code>## Scale bar set for latitude km and will be different at the top and bottom of the map.</code></pre>
 <p><img src="IADR-T_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
 </div>
-<div id="acrescentando-mais-dados-ao-mapa" class="section level5">
-<h5><span class="header-section-number">3.3.2.2.6</span> Acrescentando mais dados ao mapa</h5>
+<div id="acrescentando-mais-dados-ao-mapa" class="section level5 hasAnchor" number="3.3.2.2.6">
+<h5><span class="header-section-number">3.3.2.2.6</span> Acrescentando mais dados ao mapa<a href="m3.html#acrescentando-mais-dados-ao-mapa" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Com <code>tmap</code>, podemos acrescentar mais uma dimensão de dados ao nosso mapa, a partir de outro dataset. Imagine, por exemplo, que desejássemos plotar, além da taxa de desemprego, o % de crescimento do PIB no ano de 2007. Isso, forneceria uma melhor compreensão sobre a situação da economia de cada estado naquele ano.</p>
 <p>Primeiro vamos ler o dataset <code>cresc_PIB_uf2007.csv</code>, que estão disponíveis no repositório da apostila:</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="m3.html#cb366-1"></a>tb_cresc_PIB_uf2007 &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="dt">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/cresc_PIB_uf2007.csv&quot;</span>)</span>
-<span id="cb366-2"><a href="m3.html#cb366-2"></a></span>
-<span id="cb366-3"><a href="m3.html#cb366-3"></a>tb_cresc_PIB_uf2007</span></code></pre></div>
-<pre><code>## # A tibble: 27 x 2
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="m3.html#cb366-1" aria-hidden="true" tabindex="-1"></a>tb_cresc_PIB_uf2007 <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="at">file=</span><span class="st">&quot;https://raw.githubusercontent.com/allanvc/book_IADR-T/master/datasets/cresc_PIB_uf2007.csv&quot;</span>)</span>
+<span id="cb366-2"><a href="m3.html#cb366-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb366-3"><a href="m3.html#cb366-3" aria-hidden="true" tabindex="-1"></a>tb_cresc_PIB_uf2007</span></code></pre></div>
+<pre><code>## # A tibble: 27 × 2
 ##    UF                  var_PIB2007
 ##    &lt;chr&gt;                     &lt;dbl&gt;
 ##  1  Espírito Santo             7.8
@@ -1037,101 +1078,113 @@ Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="ht
 ##  8  Sergipe                    6.2
 ##  9  Ceará                      3.3
 ## 10  Goiás                      5.5
-## # … with 17 more rows</code></pre>
+## # ℹ 17 more rows</code></pre>
 <p>Vamos realizar o join dessa nova base com o dataset <code>shape_data_join</code> que já conta com os dados de polígono e taxa de desemprego para as unidades da federação. Lembre-se que as colunas referentes aos nomes dos estados em cada base possuem denominações diferentes e que os nomes do dataset do PIB não estão em caixa alta.</p>
 <p><strong>CUIDADO:</strong> Antes que você quebre a cabeça tentando resolver um problema, temos um detalhe na coluna <code>UF</code> do tibble <code>tb_cresc_PIB_uf2007</code>: há um espaço em branco à frente dos nomes dos estados. Resolveremos isso com <code>mutate()</code> + <code>str_trim()</code> do pacote <code>stringr</code>, que remove todos os espaços em branco à frente e depois do nome de uma <em>string</em>. O pacote <code>stringr</code> e a amnipulação de <em>strings</em> serão tratados mais profundamente no Módulo <a href="m4.html#m4">4</a>.</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="m3.html#cb368-1"></a><span class="kw">library</span>(stringr)</span>
-<span id="cb368-2"><a href="m3.html#cb368-2"></a></span>
-<span id="cb368-3"><a href="m3.html#cb368-3"></a>tb_cresc_PIB_uf2007 &lt;-<span class="st"> </span>tb_cresc_PIB_uf2007 <span class="op">%&gt;%</span></span>
-<span id="cb368-4"><a href="m3.html#cb368-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">UF =</span> <span class="kw">toupper</span>(<span class="kw">str_trim</span>(UF)))</span>
-<span id="cb368-5"><a href="m3.html#cb368-5"></a></span>
-<span id="cb368-6"><a href="m3.html#cb368-6"></a></span>
-<span id="cb368-7"><a href="m3.html#cb368-7"></a>shape_data_join2 &lt;-<span class="st"> </span><span class="kw">left_join</span>(shape_data_join, </span>
-<span id="cb368-8"><a href="m3.html#cb368-8"></a>                             tb_cresc_PIB_uf2007, </span>
-<span id="cb368-9"><a href="m3.html#cb368-9"></a>                             <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;NM_ESTADO&quot;</span> =<span class="st"> &quot;UF&quot;</span>)) <span class="co"># utilizando aula do two table verbs</span></span>
-<span id="cb368-10"><a href="m3.html#cb368-10"></a></span>
-<span id="cb368-11"><a href="m3.html#cb368-11"></a></span>
-<span id="cb368-12"><a href="m3.html#cb368-12"></a>shape_data_join2</span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="m3.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb368-2"><a href="m3.html#cb368-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb368-3"><a href="m3.html#cb368-3" aria-hidden="true" tabindex="-1"></a>tb_cresc_PIB_uf2007 <span class="ot">&lt;-</span> tb_cresc_PIB_uf2007 <span class="sc">%&gt;%</span></span>
+<span id="cb368-4"><a href="m3.html#cb368-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">UF =</span> <span class="fu">toupper</span>(<span class="fu">str_trim</span>(UF)))</span>
+<span id="cb368-5"><a href="m3.html#cb368-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb368-6"><a href="m3.html#cb368-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb368-7"><a href="m3.html#cb368-7" aria-hidden="true" tabindex="-1"></a>shape_data_join2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(shape_data_join, </span>
+<span id="cb368-8"><a href="m3.html#cb368-8" aria-hidden="true" tabindex="-1"></a>                             tb_cresc_PIB_uf2007, </span>
+<span id="cb368-9"><a href="m3.html#cb368-9" aria-hidden="true" tabindex="-1"></a>                             <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;NM_ESTADO&quot;</span> <span class="ot">=</span> <span class="st">&quot;UF&quot;</span>)) <span class="co"># utilizando aula do two table verbs</span></span>
+<span id="cb368-10"><a href="m3.html#cb368-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb368-11"><a href="m3.html#cb368-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb368-12"><a href="m3.html#cb368-12" aria-hidden="true" tabindex="-1"></a>shape_data_join2</span></code></pre></div>
 <pre><code>## Simple feature collection with 27 features and 7 fields
-## geometry type:  MULTIPOLYGON
-## dimension:      XY
-## bbox:           xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841
-## geographic CRS: SIRGAS 2000
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841
+## Geodetic CRS:  SIRGAS 2000
 ## First 10 features:
-##            NM_ESTADO    NM_REGIAO CD_GEOCUF UF CO_UNID_GEO Taxa_desemp var_PIB2007                       geometry
-## 1            SERGIPE     NORDESTE        28 SE           2         9.8         6.2 MULTIPOLYGON (((-37.98248 -...
-## 2           MARANHÃO     NORDESTE        21 MA           2         8.3         9.1 MULTIPOLYGON (((-44.48155 -...
-## 3     ESPÍRITO SANTO      SUDESTE        32 ES           3        10.8         7.8 MULTIPOLYGON (((-29.33711 -...
-## 4           AMAZONAS        NORTE        13 AM           1        12.2         4.5 MULTIPOLYGON (((-69.61341 -...
-## 5            RORAIMA        NORTE        14 RR           1        12.1         2.6 MULTIPOLYGON (((-63.97805 2...
-## 6              GOIÁS CENTRO-OESTE        52 GO           5         8.2         5.5 MULTIPOLYGON (((-49.36953 -...
-## 7              AMAPÁ        NORTE        16 AP           1        16.3         5.1 MULTIPOLYGON (((-53.27918 2...
-## 8  RIO GRANDE DO SUL          SUL        43 RS           4         7.4         6.5 MULTIPOLYGON (((-49.70392 -...
-## 9            PARAÍBA     NORDESTE        25 PB           2         8.5         2.2 MULTIPOLYGON (((-34.79576 -...
-## 10             PIAUÍ     NORDESTE        22 PI           2         4.6         2.0 MULTIPOLYGON (((-42.91539 -...</code></pre>
+##            NM_ESTADO    NM_REGIAO CD_GEOCUF UF CO_UNID_GEO Taxa_desemp var_PIB2007
+## 1            SERGIPE     NORDESTE        28 SE           2         9.8         6.2
+## 2           MARANHÃO     NORDESTE        21 MA           2         8.3         9.1
+## 3     ESPÍRITO SANTO      SUDESTE        32 ES           3        10.8         7.8
+## 4           AMAZONAS        NORTE        13 AM           1        12.2         4.5
+## 5            RORAIMA        NORTE        14 RR           1        12.1         2.6
+## 6              GOIÁS CENTRO-OESTE        52 GO           5         8.2         5.5
+## 7              AMAPÁ        NORTE        16 AP           1        16.3         5.1
+## 8  RIO GRANDE DO SUL          SUL        43 RS           4         7.4         6.5
+## 9            PARAÍBA     NORDESTE        25 PB           2         8.5         2.2
+## 10             PIAUÍ     NORDESTE        22 PI           2         4.6         2.0
+##                          geometry
+## 1  MULTIPOLYGON (((-37.98248 -...
+## 2  MULTIPOLYGON (((-44.48155 -...
+## 3  MULTIPOLYGON (((-29.33711 -...
+## 4  MULTIPOLYGON (((-69.61341 -...
+## 5  MULTIPOLYGON (((-63.97805 2...
+## 6  MULTIPOLYGON (((-49.36953 -...
+## 7  MULTIPOLYGON (((-53.27918 2...
+## 8  MULTIPOLYGON (((-49.70392 -...
+## 9  MULTIPOLYGON (((-34.79576 -...
+## 10 MULTIPOLYGON (((-42.91539 -...</code></pre>
 <p>Feitos os devidos ajustes, partimos para a plotagem do mapa. ANtes, porém, precisamos pensar em qual forma geométrica usaremos para apresentação do dado de crescimento do PIB. Considerando, que utilizamos <code>tm_fill()</code> para a variável <code>Taxa_desemp</code>, podemos utilizar círculos cujo tamanho vçao variar conforme a intensidade de crescimento do PIB do estado. Fazemos isso com a função <code>tm_bubbles()</code>, passando o nome da variável para o argumento <code>size</code>.</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="m3.html#cb370-1"></a>mapa_desempvsPIB2007_uf &lt;-<span class="st"> </span><span class="kw">tm_shape</span>(shape_data_join2)<span class="op">+</span></span>
-<span id="cb370-2"><a href="m3.html#cb370-2"></a><span class="st">  </span><span class="co"># linhas fronteiras:</span></span>
-<span id="cb370-3"><a href="m3.html#cb370-3"></a><span class="st">  </span><span class="kw">tm_borders</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>)<span class="op">+</span></span>
-<span id="cb370-4"><a href="m3.html#cb370-4"></a><span class="st">  </span><span class="co"># preenchimento e título legenda:</span></span>
-<span id="cb370-5"><a href="m3.html#cb370-5"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="st">&quot;Taxa_desemp&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Taxa desemprego (%)&quot;</span>)<span class="op">+</span></span>
-<span id="cb370-6"><a href="m3.html#cb370-6"></a><span class="st">  </span><span class="co"># inserindo a camada que retrata o crescimento do PIB em 2007</span></span>
-<span id="cb370-7"><a href="m3.html#cb370-7"></a><span class="st">  </span><span class="kw">tm_bubbles</span>(<span class="dt">size=</span><span class="st">&quot;var_PIB2007&quot;</span>, <span class="dt">col =</span> <span class="st">&#39;yellow&#39;</span>, <span class="dt">title.size=</span><span class="st">&#39;Variação PIB (%)&#39;</span>)<span class="op">+</span></span>
-<span id="cb370-8"><a href="m3.html#cb370-8"></a><span class="st">  </span><span class="co"># estilo (formatação do gráfico, cores, etc):</span></span>
-<span id="cb370-9"><a href="m3.html#cb370-9"></a><span class="st">  </span><span class="co"># tm_style(&quot;classic&quot;)+</span></span>
-<span id="cb370-10"><a href="m3.html#cb370-10"></a><span class="st">  </span><span class="co"># posição da legenda:</span></span>
-<span id="cb370-11"><a href="m3.html#cb370-11"></a><span class="st">  </span><span class="kw">tm_legend</span>(<span class="dt">position=</span><span class="kw">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>))<span class="op">+</span></span>
-<span id="cb370-12"><a href="m3.html#cb370-12"></a><span class="st">  </span><span class="co"># agulha ou rosa dos ventos (posição e tipo):</span></span>
-<span id="cb370-13"><a href="m3.html#cb370-13"></a><span class="st">  </span><span class="kw">tm_compass</span>(<span class="dt">position=</span><span class="kw">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;top&quot;</span>), <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">type=</span><span class="st">&quot;arrow&quot;</span>)<span class="op">+</span></span>
-<span id="cb370-14"><a href="m3.html#cb370-14"></a><span class="st">  </span><span class="co"># régua de escala:</span></span>
-<span id="cb370-15"><a href="m3.html#cb370-15"></a><span class="st">  </span><span class="kw">tm_scale_bar</span>()<span class="op">+</span></span>
-<span id="cb370-16"><a href="m3.html#cb370-16"></a><span class="st">  </span><span class="co"># tpitulo fora da área de plotagem:</span></span>
-<span id="cb370-17"><a href="m3.html#cb370-17"></a><span class="st">  </span><span class="kw">tm_layout</span>(<span class="dt">main.title=</span><span class="st">&quot;Taxa de desemprego por UF, 2007&quot;</span>)<span class="op">+</span></span>
-<span id="cb370-18"><a href="m3.html#cb370-18"></a><span class="st">  </span><span class="co"># créditos/fonte:</span></span>
-<span id="cb370-19"><a href="m3.html#cb370-19"></a><span class="st">  </span><span class="kw">tm_credits</span>(<span class="dt">text=</span><span class="st">&quot;Fonte: IBGE&quot;</span>)</span>
-<span id="cb370-20"><a href="m3.html#cb370-20"></a>  </span>
-<span id="cb370-21"><a href="m3.html#cb370-21"></a>mapa_desempvsPIB2007_uf  </span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="m3.html#cb370-1" aria-hidden="true" tabindex="-1"></a>mapa_desempvsPIB2007_uf <span class="ot">&lt;-</span> <span class="fu">tm_shape</span>(shape_data_join2)<span class="sc">+</span></span>
+<span id="cb370-2"><a href="m3.html#cb370-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># linhas fronteiras:</span></span>
+<span id="cb370-3"><a href="m3.html#cb370-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_borders</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>)<span class="sc">+</span></span>
+<span id="cb370-4"><a href="m3.html#cb370-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># preenchimento e título legenda:</span></span>
+<span id="cb370-5"><a href="m3.html#cb370-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_fill</span>(<span class="st">&quot;Taxa_desemp&quot;</span>, <span class="at">title=</span><span class="st">&quot;Taxa desemprego (%)&quot;</span>)<span class="sc">+</span></span>
+<span id="cb370-6"><a href="m3.html#cb370-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># inserindo a camada que retrata o crescimento do PIB em 2007</span></span>
+<span id="cb370-7"><a href="m3.html#cb370-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_bubbles</span>(<span class="at">size=</span><span class="st">&quot;var_PIB2007&quot;</span>, <span class="at">col =</span> <span class="st">&#39;yellow&#39;</span>, <span class="at">title.size=</span><span class="st">&#39;Variação PIB (%)&#39;</span>)<span class="sc">+</span></span>
+<span id="cb370-8"><a href="m3.html#cb370-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># estilo (formatação do gráfico, cores, etc):</span></span>
+<span id="cb370-9"><a href="m3.html#cb370-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tm_style(&quot;classic&quot;)+</span></span>
+<span id="cb370-10"><a href="m3.html#cb370-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># posição da legenda:</span></span>
+<span id="cb370-11"><a href="m3.html#cb370-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_legend</span>(<span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;bottom&quot;</span>))<span class="sc">+</span></span>
+<span id="cb370-12"><a href="m3.html#cb370-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># agulha ou rosa dos ventos (posição e tipo):</span></span>
+<span id="cb370-13"><a href="m3.html#cb370-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_compass</span>(<span class="at">position=</span><span class="fu">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;top&quot;</span>), <span class="at">size=</span><span class="dv">3</span>, <span class="at">type=</span><span class="st">&quot;arrow&quot;</span>)<span class="sc">+</span></span>
+<span id="cb370-14"><a href="m3.html#cb370-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># régua de escala:</span></span>
+<span id="cb370-15"><a href="m3.html#cb370-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_scale_bar</span>()<span class="sc">+</span></span>
+<span id="cb370-16"><a href="m3.html#cb370-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tpitulo fora da área de plotagem:</span></span>
+<span id="cb370-17"><a href="m3.html#cb370-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_layout</span>(<span class="at">main.title=</span><span class="st">&quot;Taxa de desemprego por UF, 2007&quot;</span>)<span class="sc">+</span></span>
+<span id="cb370-18"><a href="m3.html#cb370-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># créditos/fonte:</span></span>
+<span id="cb370-19"><a href="m3.html#cb370-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_credits</span>(<span class="at">text=</span><span class="st">&quot;Fonte: IBGE&quot;</span>)</span>
+<span id="cb370-20"><a href="m3.html#cb370-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb370-21"><a href="m3.html#cb370-21" aria-hidden="true" tabindex="-1"></a>mapa_desempvsPIB2007_uf  </span></code></pre></div>
+<pre><code>## Warning: The shape shape_data_join2 is invalid. See sf::st_is_valid</code></pre>
 <pre><code>## Scale bar set for latitude km and will be different at the top and bottom of the map.</code></pre>
 <p><img src="IADR-T_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
 </div>
-<div id="outros-pacotes-para-geração-de-mapas" class="section level5">
-<h5><span class="header-section-number">3.3.2.2.7</span> Outros pacotes para geração de mapas</h5>
+<div id="outros-pacotes-para-geração-de-mapas" class="section level5 hasAnchor" number="3.3.2.2.7">
+<h5><span class="header-section-number">3.3.2.2.7</span> Outros pacotes para geração de mapas<a href="m3.html#outros-pacotes-para-geração-de-mapas" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Embora <code>tmap</code> seja um pacote bastante poderoso e flexível para a geração de mapas, há diversas outras alternativas no ecosistema do <strong>R</strong> para geração tanto de mapas estáticos quanto interativos: <code>maptools</code>, <code>maps</code>, <code>ggmap</code> + <code>ggplot2</code>, <code>cartograph</code>, <code>ggVis</code>, <code>leaflet</code>, dentre outros.</p>
 </div>
 </div>
 </div>
-<div id="exportando-dados-geográficos" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> Exportando dados geográficos</h3>
-<div id="escrevendo-arquivos-de-dados-vetoriais" class="section level4">
-<h4><span class="header-section-number">3.3.3.1</span> Escrevendo arquivos de dados vetoriais</h4>
+<div id="exportando-dados-geográficos" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Exportando dados geográficos<a href="m3.html#exportando-dados-geográficos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="escrevendo-arquivos-de-dados-vetoriais" class="section level4 hasAnchor" number="3.3.3.1">
+<h4><span class="header-section-number">3.3.3.1</span> Escrevendo arquivos de dados vetoriais<a href="m3.html#escrevendo-arquivos-de-dados-vetoriais" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Assim como na leitura de dados vetoriais, o pacote recomendado para se proceder a escrita de dados é o <code>sf</code>. A função equivalente à <code>st_read()</code> no que se refere à escrita de dados é <code>st_write()</code>. Há vários tipos de arquivos vetoriais que se pode escrever: <code>ESRI Shapefile</code> a mais comum (extensão de arquivo <code>shp</code>), <code>GPX</code>, <code>KML</code>, <code>GeoJSON</code> e <code>GPKG</code>. Normalmente, ao especificar a extensão do arquivo, <code>st_read()</code> já se encarrega de “advinhar” o tipo de arquivo vetorial.</p>
 <p>Veja um exemplo, com a escrita de uma <em>shapefile</em> <code>.shp</code>:</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="m3.html#cb372-1"></a><span class="kw">st_write</span>(<span class="dt">obj =</span> shape_data_join2, <span class="dt">dsn =</span> <span class="st">&quot;uf_join.shp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="m3.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(<span class="at">obj =</span> shape_data_join2, <span class="at">dsn =</span> <span class="st">&quot;uf_join.shp&quot;</span>)</span></code></pre></div>
 <p>Serão produzidos 4 arquivos com extensões <code>.shp</code>, <code>.dbf</code>, <code>.shx</code> e <code>.prj</code>. Caso <code>st_write()</code> não consiga reconhecer o driver adequado, você pode passá-lo como <code>driver="ESRI Shapefile"</code> por exemplo.</p>
 </div>
-<div id="escrevendo-arquivos-de-figuras" class="section level4">
-<h4><span class="header-section-number">3.3.3.2</span> Escrevendo arquivos de figuras</h4>
+<div id="escrevendo-arquivos-de-figuras" class="section level4 hasAnchor" number="3.3.3.2">
+<h4><span class="header-section-number">3.3.3.2</span> Escrevendo arquivos de figuras<a href="m3.html#escrevendo-arquivos-de-figuras" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>O <code>base R</code> fornece uma série de funções que permitem salvar qualquer tipo de plot, incluindo mapas, nas mais diversas extensões de imagens. As funções são <code>png()</code>, <code>jpeg()</code>, <code>bmp()</code>, <code>tiff()</code>. Para salvar um mapa (e qualquer tipo de plot), você pode seguir a seguinte sequência:</p>
 <ul>
 <li><p>abrir um dispositivo de plotagem com qualquer uma das funções anteriores, especificando o nome do arquivo de destino a ser criado <code>filename</code> e as dimensões da figura <code>width</code> e <code>height</code>;</p></li>
 <li><p>executar um plot;</p></li>
 <li><p>fechar o dispositivo de plotagem com <code>dev.off()</code>.</p></li>
 </ul>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="m3.html#cb373-1"></a><span class="kw">png</span>(<span class="dt">filename =</span> <span class="st">&quot;mapa_BR_UF.png&quot;</span>, <span class="dt">width =</span> <span class="dv">500</span>, <span class="dt">height =</span> <span class="dv">350</span>)</span>
-<span id="cb373-2"><a href="m3.html#cb373-2"></a></span>
-<span id="cb373-3"><a href="m3.html#cb373-3"></a><span class="kw">tm_shape</span>(shp_uf)<span class="op">+</span></span>
-<span id="cb373-4"><a href="m3.html#cb373-4"></a><span class="st">  </span><span class="kw">tm_polygons</span>()</span>
-<span id="cb373-5"><a href="m3.html#cb373-5"></a></span>
-<span id="cb373-6"><a href="m3.html#cb373-6"></a><span class="kw">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="m3.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">filename =</span> <span class="st">&quot;mapa_BR_UF.png&quot;</span>, <span class="at">width =</span> <span class="dv">500</span>, <span class="at">height =</span> <span class="dv">350</span>)</span>
+<span id="cb374-2"><a href="m3.html#cb374-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb374-3"><a href="m3.html#cb374-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(shp_uf)<span class="sc">+</span></span>
+<span id="cb374-4"><a href="m3.html#cb374-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>()</span>
+<span id="cb374-5"><a href="m3.html#cb374-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb374-6"><a href="m3.html#cb374-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <p>O pacote <code>tmap</code> também possui uma função para salvar os mapas criados a partir do pacote como figuras. Vamos salvar o objeto <code>mapa_desempvsPIB2007_uf</code>, que contém um mapa criado com o pacote <code>tmap</code>.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="m3.html#cb374-1"></a><span class="kw">library</span>(tmap)</span>
-<span id="cb374-2"><a href="m3.html#cb374-2"></a></span>
-<span id="cb374-3"><a href="m3.html#cb374-3"></a><span class="kw">tmap_save</span>(<span class="dt">tm =</span> mapa_desempvsPIB2007_uf  , <span class="dt">filename =</span> <span class="st">&quot;lifeExp_tmap.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="m3.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb375-2"><a href="m3.html#cb375-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb375-3"><a href="m3.html#cb375-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_save</span>(<span class="at">tm =</span> mapa_desempvsPIB2007_uf  , <span class="at">filename =</span> <span class="st">&quot;lifeExp_tmap.png&quot;</span>)</span></code></pre></div>
 <hr />
 </div>
 </div>
-<div id="referências-da-seção-2" class="section level3">
-<h3><span class="header-section-number">3.3.4</span> Referências da seção</h3>
+<div id="referências-da-seção-5" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Referências da seção<a href="m3.html#referências-da-seção-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>Battisti, I.; Smolski, F. (2019). <em>Software R: curso avançado</em>. Disponível em: <a href="https://smolski.github.io/livroavancado/">https://smolski.github.io/livroavancado/</a></p></li>
 <li><p>Lovelace, R.; Nowosad, J.; Muenchow, J. (2019). <em>Geocomputation with R</em>. CRS Press. Disponível em: <a href="https://geocompr.robinlovelace.net/">https://geocompr.robinlovelace.net/</a></p></li>
@@ -1139,8 +1192,8 @@ Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="ht
 <li><p>Tennekes, M. (2018). <em>tmap: Thematic Maps in R</em>. <em>Journal of Statistical Software</em>, <em>84</em>(6), 1-39. <a href="doi:10.18637/jss.v084.i06" class="uri">doi:10.18637/jss.v084.i06</a> (URL:<a href="https://doi.org/10.18637/jss.v084.i06">https://doi.org/10.18637/jss.v084.i06</a>).</p></li>
 </ul>
 </div>
-<div id="exercícios-2" class="section level3">
-<h3><span class="header-section-number">3.3.5</span> Exercícios</h3>
+<div id="exercícios-5" class="section level3 hasAnchor" number="3.3.5">
+<h3><span class="header-section-number">3.3.5</span> Exercícios<a href="m3.html#exercícios-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
@@ -1169,7 +1222,6 @@ Figure 3.2: Plot em <em>raster</em>: Batimetria do Golfo do México (<a href="ht
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1188,6 +1240,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -1205,10 +1258,13 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
-},
-"search": true
+}
 });
 });
 </script>
@@ -1219,7 +1275,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
